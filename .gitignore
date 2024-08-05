@@ -1,0 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+
+# typescript
+*.tsbuildinfo
+
+# Enersok frontend
+/frontend/node_modules
+/frontend/.env*.local
+/frontend/.vercel
+
+
+# Enersok backend
+/backend/.tpm
+/backend/*.cache
+/backend/dist
+/backend/public/uploads/*
+/backend/build
+/backend/.strapi-updater.json
+/backend/node_modules
