@@ -62,9 +62,9 @@ Then, you have to wait until all npm packages are successfully downloaded.
 ### Running the Dev
 
 After installing NPM packages, open your code editor. Also, switch to `dev` branch and run the following command:
-
-### Running backend
-Images not synced with github. So to run backend you need to get the images from the server (folder: public) and put it in your local public folder.
+> [!IMPORTANT]
+> ### Running backend
+> Images not synced with github. So to run backend you need to get the images from the server (folder: public) and put it in your local public folder.
 Database synced with github, but to run actual data you need to use the database from the server (folder: database) and put it in your local database.
 
 ```shell
