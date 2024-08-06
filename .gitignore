@@ -38,4 +38,5 @@ yarn-error.log*
 /backend/public/uploads/*
 /backend/build
 /backend/.strapi-updater.json
+/backend/.strapi-cloud.json
 /backend/node_modules
