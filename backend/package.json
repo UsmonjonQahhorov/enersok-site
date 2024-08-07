@@ -1,8 +1,8 @@
 {
-  "name": "my-project",
+  "name": "enersok-backend",
   "private": true,
   "version": "1.0.0",
-  "description": "A Strapi application",
+  "description": "Enersok website backend",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -22,10 +22,7 @@
     "react-router-dom": "5.3.4",
     "styled-components": "5.3.3"
   },
-  "author": {
-    "name": "Yusufboy Saydullayev",
-    "email": "yusufsaydullayev@gmail.com"
-  },
+  "author": "Team64-Developers",
   "strapi": {
     "uuid": "f54dc1d6-742e-4eb9-aa48-530693925462"
   },
