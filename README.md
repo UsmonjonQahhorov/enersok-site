@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="500" src="" alt="logo">
+  <img width="500" src="https://s3-alpha-sig.figma.com/img/c3ab/8792/0049cedc12da45342fdf50d30e30cabb?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Oi3LuIy1GDpp-JaaZg0JBgZjTebJ15xLUiMusYuvLHLQATztnM6YTu0C6dQ-lenanXn0pU1u8YDH7RcXiE9lRe3yiXh2VIF-G~Bzp4zLwmIUFqwsmT6Z3Arva-kMWvtRgMBmqNzf0SThBBFOA2M9zrFgsNI-Dwn2D02IVqIR6r90AKxowBvcEmZfnlzO0wc~lKU72azWMEovAyISb9qR2MdyNLKjGdizCpaT9kz3Ifuivxg8aG~Zf8Je1dJhv0AMKP2cLVc7mtZEhtMmOiZ9Vw~-kyXHReawE4aK-MI6nGrHlCBgH8j8VVWmX1GM09T5zHCqEV6~3~Bxp78iyxap3g__" alt="enersok">
   <h1 align="center">
     Enersok website
   </h1>
