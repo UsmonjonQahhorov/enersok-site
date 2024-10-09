@@ -1,3 +1,15 @@
-export const Router = {
+export const RouterConfig = {
 	Home: '/',
+	AboutCompany: 'About Company',
+	OrganizationalStructure: '/structure',
+	AboutSponsors: '/sponsors',
+	DocumentsAndGuidelines: '/documents',
+	Project: '/project',
+	OpenData: '/kpi',
+	News: '/news',
+	SingleNews: (slug: string) => `/news/new/${slug}`,
+	Careers: '/careers',
+	SingleCareers: (slug: string) => `/careers/career/${slug}`,
+	GRMSubmission: '/submission',
+	ContactUs: 'contacts',
 } as const;
