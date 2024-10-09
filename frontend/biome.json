@@ -56,7 +56,6 @@
 				"useAsConstAssertion": "error",
 				"useConst": "error",
 				"useDefaultParameterLast": "warn",
-				"useFragmentSyntax": "error",
 				"useTemplate": "error"
 			},
 			"suspicious": {
