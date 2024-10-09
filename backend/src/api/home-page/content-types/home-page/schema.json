@@ -232,7 +232,7 @@
       "required": true,
       "default": "Join Our Community by Following Us on Social Media"
     },
-    "community_section_second_title": {
+    "community_section_social_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -270,6 +270,42 @@
       "required": true
     },
     "community_section_facebook_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "community_section_first_picture": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "community_section_second_picture": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "community_section_third_picture": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "community_section_fourth_picture": {
       "pluginOptions": {
         "i18n": {
           "localized": false
