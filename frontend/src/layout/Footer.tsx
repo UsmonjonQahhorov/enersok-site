@@ -61,7 +61,7 @@ export const Footer: FC<FooterProps> = ({
                                     height={16}
                                     className='w-4 h-4'
                                 />
-                                <span className='w-full text-white text-base leading-none'>+998 77 000 45 94</span>
+                                <span className='w-full text-white text-base leading-5'>+998 77 000 45 94</span>
                             </Link>
                         </li>
                         <li>
@@ -73,7 +73,7 @@ export const Footer: FC<FooterProps> = ({
                                     height={16}
                                     className='w-4 h-4'
                                 />
-                                <span className='w-full text-white text-base leading-none'>info@enersok.uz</span>
+                                <span className='w-full text-white text-base leading-5'>info@enersok.uz</span>
                             </Link>
                         </li>
                         <li className='w-full'>
@@ -83,7 +83,7 @@ export const Footer: FC<FooterProps> = ({
                                     src={Location}
                                     className='w-4 h-4'
                                 />
-                                <span className='w-full text-white text-base leading-none'>8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan, Dmaar Business Center</span>
+                                <span className='w-full text-white text-base leading-5'>8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan, Dmaar Business Center</span>
                             </Link>
                         </li>
                         <li>
@@ -95,7 +95,7 @@ export const Footer: FC<FooterProps> = ({
                                     height={16}
                                     className='w-4 h-4'
                                 />
-                                <span className='w-full text-white text-base leading-none'>Office hours: Monday - Friday From 9:00 to 18:00</span>
+                                <span className='w-full text-white text-base leading-5'>Office hours: Monday - Friday From 9:00 to 18:00</span>
                             </Paragraph>
                         </li>
                     </ul>

@@ -25,6 +25,14 @@ const nextConfig = {
 			},
 		];
 	},
+	async rewrites() {
+		return [
+			{
+				source: '/:locale/font/:path*',
+				destination: '/font/:path*',
+			},
+		];
+	},
 };
 
 export default withNextIntl(nextConfig);
