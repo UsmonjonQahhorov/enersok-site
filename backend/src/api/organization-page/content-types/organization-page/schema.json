@@ -4,7 +4,8 @@
   "info": {
     "singularName": "organization-page",
     "pluralName": "organization-pages",
-    "displayName": "Organization-page"
+    "displayName": "Organization-page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -35,18 +36,18 @@
       "required": true,
       "default": "Organizational Structure"
     },
-    "heading_section_background_picture": {
+    "heading_section_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
     "managers_section_title": {
       "pluginOptions": {
@@ -57,6 +58,16 @@
       "type": "string",
       "required": true,
       "default": "Senior Management and Manager"
+    },
+    "managers_section_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration."
     }
   }
 }

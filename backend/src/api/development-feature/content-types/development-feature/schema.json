@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "development_features",
+  "info": {
+    "singularName": "development-feature",
+    "pluralName": "development-features",
+    "displayName": "development-features"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "info_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Establishment of the Company "
+    }
+  }
+}

@@ -794,6 +794,7 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
     singularName: 'about-page';
     pluralName: 'about-pages';
     displayName: 'about-page';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -828,14 +829,6 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
         };
       }> &
       Attribute.DefaultTo<'Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), which entered into public-private partnership agreement for construction of a Gas Combined Cycle Power Plant with capacity of 1,6 GW in Syrdarya region, Uzbekistan (On March 25, 2022). '>;
-    heading_section_button_text: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<'Get in touch with us'>;
     heading_section_picture: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -860,6 +853,67 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
       }> &
       Attribute.DefaultTo<'The key purpose of the Company is to carry out construction, \u00A0operation and maintenance activities in future. The commercial operation date is expected in 2026. \u00A0\u00A0\u00A0 The electricity produced will be sold to Uzbek state-owned power company JSC National Electricity Grid of Uzbekistan for a duration of 25 years. It will be one of the nation\u2019s largest power generating facilities upon completion and will be instrumental in helping the country meet its growing energy demands from both industry and residential sectors.'>;
     info_section_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    info_section_first_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Our Vision'>;
+    info_section_second_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Our Objective'>;
+    info_section_first_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'TO BE ACTIVILY PART OF UZBEK ENERGY TRANSITION BY BUILDING AND OPERATING A RELIABLE AND EFFICIANT ASSET'>;
+    info_section_second_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'TO REACH C.O.D. IN SAFETY (HSE), ON TIME, ACCORDING TO THE BUDGET AND WITH HIGH LEVEL OF PERFORMANCES  '>;
+    info_section_first_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    info_section_second_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    development_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'VIEW AT ENERSOK DEVELOPMENT'>;
+    heading_section_background_picture: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -989,6 +1043,21 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
           localized: false;
         };
       }>;
+    heading_section_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    work_hours: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'From 9:00 to18:00'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1007,6 +1076,114 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'api::contact-page.contact-page',
       'oneToMany',
       'api::contact-page.contact-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiDevelopmentDevelopment extends Schema.CollectionType {
+  collectionName: 'developments';
+  info: {
+    singularName: 'development';
+    pluralName: 'developments';
+    displayName: 'developments';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    development_year: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'2026'>;
+    development_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    features: Attribute.Relation<
+      'api::development.development',
+      'oneToMany',
+      'api::development-feature.development-feature'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::development.development',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::development.development',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::development.development',
+      'oneToMany',
+      'api::development.development'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiDevelopmentFeatureDevelopmentFeature
+  extends Schema.CollectionType {
+  collectionName: 'development_features';
+  info: {
+    singularName: 'development-feature';
+    pluralName: 'development-features';
+    displayName: 'development-features';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    info_text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Establishment of the Company '>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::development-feature.development-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::development-feature.development-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::development-feature.development-feature',
+      'oneToMany',
+      'api::development-feature.development-feature'
     >;
     locale: Attribute.String;
   };
@@ -1133,6 +1310,7 @@ export interface ApiHeaderHeader extends Schema.SingleType {
     singularName: 'header';
     pluralName: 'headers';
     displayName: 'header';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1150,14 +1328,6 @@ export interface ApiHeaderHeader extends Schema.SingleType {
           localized: false;
         };
       }>;
-    contactus_button_text: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<'Contact us'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1451,12 +1621,75 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
 }
 
+export interface ApiManagerManager extends Schema.CollectionType {
+  collectionName: 'managers';
+  info: {
+    singularName: 'manager';
+    pluralName: 'managers';
+    displayName: 'managers';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    manger_name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Regis Chancel'>;
+    manager_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    manager_position: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'CEO'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::manager.manager',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::manager.manager',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::manager.manager',
+      'oneToMany',
+      'api::manager.manager'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiOrganizationPageOrganizationPage extends Schema.SingleType {
   collectionName: 'organization_pages';
   info: {
     singularName: 'organization-page';
     pluralName: 'organization-pages';
     displayName: 'Organization-page';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1483,7 +1716,7 @@ export interface ApiOrganizationPageOrganizationPage extends Schema.SingleType {
         };
       }> &
       Attribute.DefaultTo<'Organizational Structure'>;
-    heading_section_background_picture: Attribute.Media<'images'> &
+    heading_section_picture: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1498,6 +1731,14 @@ export interface ApiOrganizationPageOrganizationPage extends Schema.SingleType {
         };
       }> &
       Attribute.DefaultTo<'Senior Management and Manager'>;
+    managers_section_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1603,9 +1844,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::development.development': ApiDevelopmentDevelopment;
+      'api::development-feature.development-feature': ApiDevelopmentFeatureDevelopmentFeature;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::manager.manager': ApiManagerManager;
       'api::organization-page.organization-page': ApiOrganizationPageOrganizationPage;
       'api::sponsor.sponsor': ApiSponsorSponsor;
     }
