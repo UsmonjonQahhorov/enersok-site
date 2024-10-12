@@ -279,39 +279,55 @@
       "required": true
     },
     "community_section_first_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "string",
       "required": true
     },
     "community_section_second_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "string",
       "required": true
     },
     "community_section_third_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "string",
       "required": true
     },
     "community_section_fourth_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "string",
       "required": true
     }
   }
