@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-page",
     "pluralName": "about-pages",
-    "displayName": "about-page"
+    "displayName": "about-page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -45,28 +46,18 @@
       "required": true,
       "default": "Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), which entered into public-private partnership agreement for construction of a Gas Combined Cycle Power Plant with capacity of 1,6 GW in Syrdarya region, Uzbekistan (On March 25, 2022). "
     },
-    "heading_section_button_text": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "default": "Get in touch with us",
-      "required": true
-    },
     "heading_section_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
     "info_section_title": {
       "pluginOptions": {
@@ -89,17 +80,106 @@
       "required": true
     },
     "info_section_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
+      }
+    },
+    "info_section_first_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
       },
-      "required": true
+      "type": "string",
+      "required": true,
+      "default": "Our Vision"
+    },
+    "info_section_second_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Our Objective"
+    },
+    "info_section_first_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "TO BE ACTIVILY PART OF UZBEK ENERGY TRANSITION BY BUILDING AND OPERATING A RELIABLE AND EFFICIANT ASSET"
+    },
+    "info_section_second_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "TO REACH C.O.D. IN SAFETY (HSE), ON TIME, ACCORDING TO THE BUDGET AND WITH HIGH LEVEL OF PERFORMANCES  "
+    },
+    "info_section_first_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "info_section_second_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "development_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "VIEW AT ENERSOK DEVELOPMENT"
+    },
+    "heading_section_background_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

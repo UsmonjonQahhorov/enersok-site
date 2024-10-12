@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "developments",
+  "info": {
+    "singularName": "development",
+    "pluralName": "developments",
+    "displayName": "developments",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "development_year": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "2026"
+    },
+    "development_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::development-feature.development-feature"
+    }
+  }
+}
