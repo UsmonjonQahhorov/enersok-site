@@ -12,8 +12,10 @@ const config: Config = {
 			colors: {
 				primary: '#198ABF',
 				secondary: '#073348',
-				button_1: '#1AAD21',
-				button_2: '#F4F4F4',
+				secondaryOpacity1: '#0733484D',
+				secondaryOpacity2: '#07334899',
+				button1: '#1AAD21',
+				button2: '#F4F4F4',
 			}, 
 			boxShadow: {
 				shadow: '0 9px 139.2px 1px #0000001F;',
