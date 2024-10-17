@@ -1,6 +1,5 @@
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { redirect } from '@/navigation';
 import type { PageType } from '@/types/component.types';
 
 const DashboardPage: PageType = async () => {
