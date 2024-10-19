@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "managers",
+  "collectionName": "new",
   "info": {
-    "singularName": "manager",
-    "pluralName": "managers",
-    "displayName": "Managers",
+    "singularName": "news",
+    "pluralName": "new",
+    "displayName": "News (every news)",
     "description": ""
   },
   "options": {
@@ -16,17 +16,17 @@
     }
   },
   "attributes": {
-    "manger_name": {
+    "preview_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
+      "type": "text",
       "required": true,
-      "default": "Regis Chancel"
+      "default": "Enersok FE LLC was formed in 2022"
     },
-    "manager_picture": {
+    "preview_picture": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -39,7 +39,7 @@
         }
       }
     },
-    "manager_position": {
+    "preview_time": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -47,7 +47,26 @@
       },
       "type": "string",
       "required": true,
-      "default": "CEO"
+      "default": "5 min"
+    },
+    "preview_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "date",
+      "required": true,
+      "default": "2024-08-05"
+    },
+    "news_description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks",
+      "required": true
     }
   }
 }

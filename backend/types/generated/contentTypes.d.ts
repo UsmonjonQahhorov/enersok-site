@@ -793,7 +793,7 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
   info: {
     singularName: 'about-page';
     pluralName: 'about-pages';
-    displayName: 'about-page';
+    displayName: 'About Page';
     description: '';
   };
   options: {
@@ -948,7 +948,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
   info: {
     singularName: 'contact-page';
     pluralName: 'contact-pages';
-    displayName: 'Contact-page';
+    displayName: 'Contact Page';
     description: '';
   };
   options: {
@@ -1086,7 +1086,7 @@ export interface ApiDevelopmentDevelopment extends Schema.CollectionType {
   info: {
     singularName: 'development';
     pluralName: 'developments';
-    displayName: 'developments';
+    displayName: 'Developments';
     description: '';
   };
   options: {
@@ -1147,7 +1147,8 @@ export interface ApiDevelopmentFeatureDevelopmentFeature
   info: {
     singularName: 'development-feature';
     pluralName: 'development-features';
-    displayName: 'development-features';
+    displayName: 'Development features';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1184,6 +1185,125 @@ export interface ApiDevelopmentFeatureDevelopmentFeature
       'api::development-feature.development-feature',
       'oneToMany',
       'api::development-feature.development-feature'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiDocumentsAndGuidlineDocumentsAndGuidline
+  extends Schema.CollectionType {
+  collectionName: 'documents_and_guidlines';
+  info: {
+    singularName: 'documents-and-guidline';
+    pluralName: 'documents-and-guidlines';
+    displayName: 'Documents and Guidlines';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    document: Attribute.Media<'files'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::documents-and-guidline.documents-and-guidline',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::documents-and-guidline.documents-and-guidline',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::documents-and-guidline.documents-and-guidline',
+      'oneToMany',
+      'api::documents-and-guidline.documents-and-guidline'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiDocumentsGuidlinesPageDocumentsGuidlinesPage
+  extends Schema.SingleType {
+  collectionName: 'documents_and_guidlines_pages';
+  info: {
+    singularName: 'documents-guidlines-page';
+    pluralName: 'documents-and-guidlines-pages';
+    displayName: 'Documents and Guidlines Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'DOCUMENTS AND GUIDELINES'>;
+    heading_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'DOCUMENTS AND GUIDELINES'>;
+    heading_image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    about_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::documents-guidlines-page.documents-guidlines-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::documents-guidlines-page.documents-guidlines-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::documents-guidlines-page.documents-guidlines-page',
+      'oneToMany',
+      'api::documents-guidlines-page.documents-guidlines-page'
     >;
     locale: Attribute.String;
   };
@@ -1304,6 +1424,77 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
+export interface ApiGrmSubmissionPageGrmSubmissionPage
+  extends Schema.SingleType {
+  collectionName: 'grm_submission_pages';
+  info: {
+    singularName: 'grm-submission-page';
+    pluralName: 'grm-submission-pages';
+    displayName: 'Grm Submission Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'GRM Submission'>;
+    about_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.'>;
+    background_image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    form_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::grm-submission-page.grm-submission-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::grm-submission-page.grm-submission-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::grm-submission-page.grm-submission-page',
+      'oneToMany',
+      'api::grm-submission-page.grm-submission-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHeaderHeader extends Schema.SingleType {
   collectionName: 'headers';
   info: {
@@ -1356,7 +1547,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   info: {
     singularName: 'home-page';
     pluralName: 'home-pages';
-    displayName: 'home-page';
+    displayName: 'Home Page';
     description: '';
   };
   options: {
@@ -1626,7 +1817,8 @@ export interface ApiManagerManager extends Schema.CollectionType {
   info: {
     singularName: 'manager';
     pluralName: 'managers';
-    displayName: 'managers';
+    displayName: 'Managers';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1683,12 +1875,137 @@ export interface ApiManagerManager extends Schema.CollectionType {
   };
 }
 
+export interface ApiNewsNews extends Schema.CollectionType {
+  collectionName: 'new';
+  info: {
+    singularName: 'news';
+    pluralName: 'new';
+    displayName: 'News (every news)';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    preview_title: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Enersok FE LLC was formed in 2022'>;
+    preview_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    preview_time: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'5 min'>;
+    preview_date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'2024-08-05'>;
+    news_description: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::news.news', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::news.news', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::news.news',
+      'oneToMany',
+      'api::news.news'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiNewsPageNewsPage extends Schema.SingleType {
+  collectionName: 'news_pages';
+  info: {
+    singularName: 'news-page';
+    pluralName: 'news-pages';
+    displayName: 'News Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Our News'>;
+    heading_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::news-page.news-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::news-page.news-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::news-page.news-page',
+      'oneToMany',
+      'api::news-page.news-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiOrganizationPageOrganizationPage extends Schema.SingleType {
   collectionName: 'organization_pages';
   info: {
     singularName: 'organization-page';
     pluralName: 'organization-pages';
-    displayName: 'Organization-page';
+    displayName: 'Organization Page';
     description: '';
   };
   options: {
@@ -1801,6 +2118,29 @@ export interface ApiSponsorSponsor extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    sponsor_logo: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    sponsor_website_link: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'www.edf.fr'>;
+    about_sponsor: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Sojitz Group is engaged in a wide range of businesses globally as trading and investment house, including manufacturing, selling, importing, and exporting a variety of products, in addition to providing services and investing in diversified businesses, both in Japan and overseas. Sojitz has more than 70 office over the world and operates with a 7-division structure comprising the Automotive Division; the Aerospace & Transportation Project Division; the Infrastructure & Healthcare Division; the Metals, Mineral Resources & Recycling Division; the Chemicals Division; the Consumer Industry & Agriculture Business Division; and the Retail & Consumer Service Division.'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1819,6 +2159,108 @@ export interface ApiSponsorSponsor extends Schema.CollectionType {
       'api::sponsor.sponsor',
       'oneToMany',
       'api::sponsor.sponsor'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiVacanciesPageVacanciesPage extends Schema.SingleType {
+  collectionName: 'vacancies_pages';
+  info: {
+    singularName: 'vacancies-page';
+    pluralName: 'vacancies-pages';
+    displayName: 'Vacancies Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Vacancies'>;
+    heading_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'CAREERS'>;
+    heading_about_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'For a brighter future with us! '>;
+    heading_about_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<"If you're looking for a fulfilling career where your work truly matters, we invite you to explore opportunities with us. Together, we can create a brighter future! ">;
+    heading_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    heading_background_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    about_vacancies_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.'>;
+    about_vacancies_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Latest Vacancies\u00A0\u00A0'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vacancies-page.vacancies-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vacancies-page.vacancies-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::vacancies-page.vacancies-page',
+      'oneToMany',
+      'api::vacancies-page.vacancies-page'
     >;
     locale: Attribute.String;
   };
@@ -1846,12 +2288,18 @@ declare module '@strapi/types' {
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::development.development': ApiDevelopmentDevelopment;
       'api::development-feature.development-feature': ApiDevelopmentFeatureDevelopmentFeature;
+      'api::documents-and-guidline.documents-and-guidline': ApiDocumentsAndGuidlineDocumentsAndGuidline;
+      'api::documents-guidlines-page.documents-guidlines-page': ApiDocumentsGuidlinesPageDocumentsGuidlinesPage;
       'api::footer.footer': ApiFooterFooter;
+      'api::grm-submission-page.grm-submission-page': ApiGrmSubmissionPageGrmSubmissionPage;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::manager.manager': ApiManagerManager;
+      'api::news.news': ApiNewsNews;
+      'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::organization-page.organization-page': ApiOrganizationPageOrganizationPage;
       'api::sponsor.sponsor': ApiSponsorSponsor;
+      'api::vacancies-page.vacancies-page': ApiVacanciesPageVacanciesPage;
     }
   }
 }

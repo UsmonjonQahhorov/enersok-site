@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents_and_guidlines",
+  "info": {
+    "singularName": "documents-and-guidline",
+    "pluralName": "documents-and-guidlines",
+    "displayName": "Documents and Guidlines"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "document": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    }
+  }
+}

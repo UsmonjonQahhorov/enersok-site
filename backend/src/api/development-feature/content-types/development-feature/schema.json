@@ -4,7 +4,8 @@
   "info": {
     "singularName": "development-feature",
     "pluralName": "development-features",
-    "displayName": "development-features"
+    "displayName": "Development features",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
