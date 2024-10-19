@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "managers",
+  "kind": "singleType",
+  "collectionName": "news_pages",
   "info": {
-    "singularName": "manager",
-    "pluralName": "managers",
-    "displayName": "Managers",
+    "singularName": "news-page",
+    "pluralName": "news-pages",
+    "displayName": "News Page",
     "description": ""
   },
   "options": {
@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "manger_name": {
+    "page_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,9 +24,9 @@
       },
       "type": "string",
       "required": true,
-      "default": "Regis Chancel"
+      "default": "Our News"
     },
-    "manager_picture": {
+    "heading_picture": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -38,16 +38,6 @@
           "localized": false
         }
       }
-    },
-    "manager_position": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true,
-      "default": "CEO"
     }
   }
 }

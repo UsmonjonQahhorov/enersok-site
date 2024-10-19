@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "organization_pages",
+  "collectionName": "documents_and_guidlines_pages",
   "info": {
-    "singularName": "organization-page",
-    "pluralName": "organization-pages",
-    "displayName": "Organization Page",
+    "singularName": "documents-guidlines-page",
+    "pluralName": "documents-and-guidlines-pages",
+    "displayName": "Documents and Guidlines Page",
     "description": ""
   },
   "options": {
@@ -24,19 +24,19 @@
       },
       "type": "string",
       "required": true,
-      "default": "Organizational Structure"
+      "default": "DOCUMENTS AND GUIDELINES"
     },
-    "heading_section_title": {
+    "heading_text": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
+      "type": "text",
       "required": true,
-      "default": "Organizational Structure"
+      "default": "DOCUMENTS AND GUIDELINES"
     },
-    "heading_section_picture": {
+    "heading_image": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -49,23 +49,14 @@
         }
       }
     },
-    "managers_section_title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true,
-      "default": "Senior Management and Manager"
-    },
-    "managers_section_text": {
+    "about_text": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "text",
+      "unique": false,
       "required": true,
       "default": "Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration."
     }
