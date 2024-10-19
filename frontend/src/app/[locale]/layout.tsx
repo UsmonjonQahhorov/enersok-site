@@ -1,9 +1,9 @@
-import { fontConfig } from '@/configs/font.config';
 import { locales } from '@/configs/i18n.config';
 import { cn } from '@/utils/cn';
 import '@/styles/global.css';
 import type { LayoutType } from '@/types/component.types';
 import type { Metadata } from 'next';
+import { Footer, Header } from '@/layout';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -18,13 +18,18 @@ const RootLayout: LayoutType = async ({
 	children,
 	params: { locale },
 }) => {
+
 	return (
 		<html
 			lang={locale}
-			className={cn(fontConfig.className, 'text-balance antialiased')}
+			className={cn('text-balance antialiased font-mori')}
 		>
 			<body>
+				<Header
+					locale={locale}
+				/>
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

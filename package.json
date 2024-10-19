@@ -1,17 +1,17 @@
 {
   "name": "enersok-website",
   "version": "1.0.0",
-  "description": "Enersok Website",
+  "description": "Enersok website",
   "main": "index.js",
   "scripts": {
-    "frontend:prepare": "cd enersok-frontend && npm install",
-    "frontend:dev": "cd enersok-frontend && npm run dev",
-    "frontend:build": "cd enersok-frontend && npm run build",
-    "frontend:serve": "cd enersok-frontend && npm run start",
-    "backend:prepare": "cd enersok-backend && npm install",
-    "backend:dev": "cd enersok-backend && npm run develop",
-    "backend:build": "cd enersok-backend && npm run build",
-    "backend:serve": "cd enersok-backend && npm run start"
+    "frontend:prepare": "cd frontend && npm install",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:serve": "cd frontend && npm run start",
+    "backend:prepare": "cd -backend && npm install",
+    "backend:dev": "cd backend && npm run develop",
+    "backend:build": "cd backend && npm run build",
+    "backend:serve": "cd backend && npm run start"
   },
   "author": "Team64-Developers",
   "license": "Apache-2.0"

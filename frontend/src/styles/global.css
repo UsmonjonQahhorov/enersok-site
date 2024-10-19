@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'PPMori';
+    src: url('/font/PPMori-Regular.otf') format('opentype');
+    font-weight: 400;
+}
+  
+@font-face {
+    font-family: 'PPMori';
+    src: url('/font/PPMori-SemiBold.otf') format('opentype');
+    font-weight: 600;
+}

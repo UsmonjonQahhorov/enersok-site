@@ -1,5 +1,13 @@
-const NotFound = () => {
-	return <div>not-found 1</div>;
-};
+import { Heading } from "@/components/ui/Heading";
 
-export default NotFound;
+export default function NotFound() {
+	return (
+		<body>
+			{/* <Header /> */}
+			<main>
+				<Heading className="text-red-600 text-center">LOCALE NOT FOUND</Heading>
+			</main>
+			{/* <Footer /> */}
+		</body>
+	);
+}

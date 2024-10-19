@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "home-page",
+    "displayName": "Home Page",
     "description": ""
   },
   "options": {
@@ -232,7 +232,7 @@
       "required": true,
       "default": "Join Our Community by Following Us on Social Media"
     },
-    "community_section_second_title": {
+    "community_section_social_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -277,6 +277,58 @@
       },
       "type": "string",
       "required": true
+    },
+    "community_section_first_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "community_section_second_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "community_section_third_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "community_section_fourth_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
