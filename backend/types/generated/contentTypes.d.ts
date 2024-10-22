@@ -1197,6 +1197,7 @@ export interface ApiDocumentsAndGuidlineDocumentsAndGuidline
     singularName: 'documents-and-guidline';
     pluralName: 'documents-and-guidlines';
     displayName: 'Documents and Guidlines';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1214,6 +1215,14 @@ export interface ApiDocumentsAndGuidlineDocumentsAndGuidline
           localized: true;
         };
       }>;
+    document_name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'Syrdarya CCGT_ESIA Volume 1 NTS_v1.2'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1923,7 +1932,7 @@ export interface ApiNewsNews extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<'2024-08-05'>;
-    news_description: Attribute.Blocks &
+    news_description: Attribute.RichText &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2266,6 +2275,77 @@ export interface ApiVacanciesPageVacanciesPage extends Schema.SingleType {
   };
 }
 
+export interface ApiVacancyVacancy extends Schema.CollectionType {
+  collectionName: 'vacancies';
+  info: {
+    singularName: 'vacancy';
+    pluralName: 'vacancies';
+    displayName: 'Vacancies';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    vacancy_name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Finance Controller'>;
+    vacancy_location: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Tashkent Headquarters'>;
+    vacancy_closing_date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    vacancy_description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vacancy.vacancy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vacancy.vacancy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::vacancy.vacancy',
+      'oneToMany',
+      'api::vacancy.vacancy'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -2300,6 +2380,7 @@ declare module '@strapi/types' {
       'api::organization-page.organization-page': ApiOrganizationPageOrganizationPage;
       'api::sponsor.sponsor': ApiSponsorSponsor;
       'api::vacancies-page.vacancies-page': ApiVacanciesPageVacanciesPage;
+      'api::vacancy.vacancy': ApiVacancyVacancy;
     }
   }
 }
