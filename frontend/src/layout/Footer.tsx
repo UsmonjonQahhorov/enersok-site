@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Container } from '@/components/ui/Container';
 import { RouterConfig } from '@/configs/router.config';
+import { SocialIcon } from '@/components/ui/SocialIcon';
 
 export const Footer: FC<FooterProps> = ({
     className
@@ -36,7 +37,7 @@ export const Footer: FC<FooterProps> = ({
                             <Link className='text-2xl text-white font-normal' href={RouterConfig.AboutSponsors}>About Sponsors </Link>
                         </li>
                         <li>
-                            <Link className='text-2xl text-white font-normal' href={RouterConfig.Project}>Project</Link>
+                            <Link className='text-2xl text-white font-normal' href={RouterConfig.ProjectDetails}>Project</Link>
                         </li>
                         <li>
                             <Link className='text-2xl text-white font-normal' href={RouterConfig.OpenData}>Open Data</Link>
@@ -103,23 +104,17 @@ export const Footer: FC<FooterProps> = ({
                 <div className='pt-4 pb-[100px] flex justify-between items-center'>
                     <Paragraph size='sm' className='text-white '>© 2024 Enersok</Paragraph>
                     <ul className='flex gap-x-3'>
-                        <li className='w-12 h-12 rounded-full border flex justify-center items-center'>
-                            <Link target='_blank' href={'https://t.me/SYRDARYA_CCGT_2'}>
-                                <Image
-                                    src={Telegram}
-                                    alt='Enersok Telegram'
-                                    className='w-[13px] height-[13px]'
-                                />
-                            </Link>
+                        <li>
+                            <SocialIcon
+                                src={Telegram}
+                                alt={'Enersok Telegram'}
+                            />
                         </li>
-                        <li className='w-12 h-12 rounded-full border flex justify-center items-center'>
-                            <Link target='_blank' href={'https://www.linkedin.com/company/enersok-fe-llc'}>
-                                <Image
-                                    src={LinkedIn}
-                                    alt='Enersok LinkedIn'
-                                    className='w-[13px] height-[13px]'
-                                />
-                            </Link>
+                        <li>
+                            <SocialIcon
+                                src={LinkedIn}
+                                alt='Enersok LinkedIn'
+                            />
                         </li>
                     </ul>
                 </div>

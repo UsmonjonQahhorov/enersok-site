@@ -26,7 +26,7 @@ export const navigation = [
     {
         name_en: 'Project',
         name_uz: 'Project',
-        href: RouterConfig.Project,
+        href: RouterConfig.ProjectDetails,
     },
     {
         name_en: 'Open Data',
