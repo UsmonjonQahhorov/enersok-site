@@ -1,10 +1,10 @@
 import type { PageType } from '@/types/component.types';
 
-const OrganizationalStructurePage: PageType = () => {
+const GRMSubmissionPage: PageType = () => {
     return (
         <>
         </>
     )
 }
 
-export default OrganizationalStructurePage;
+export default GRMSubmissionPage;
