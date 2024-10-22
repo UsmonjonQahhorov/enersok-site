@@ -40,7 +40,7 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({
             menu.childMenus ? (
               <Item key={menu.href}>
                 <Trigger
-                  className="whitespace-nowrap font-normal lg:text-base 2xl:text-lg"
+                  className="whitespace-nowrap text-secondary font-normal lg:text-base 2xl:text-lg"
                 >
                   {locale === 'en' && menu.name_en}
                   {locale === 'uz' && menu.name_uz}
@@ -52,7 +52,7 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({
                       asChild={true}
                       className={cn(
                         'whitespace-nowrap font-normal duration-100 lg:text-base 2xl:text-lg',
-                        'rounded-lg p-2 hover:bg-primary hover:text-white',
+                        'rounded-lg p-2 text-secondary hover:bg-primary hover:text-white',
                       )}
                     >
                       <NextLink locale={locale} href={childMenu.href}>
@@ -70,7 +70,7 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({
                     locale={locale}
                     href={menu.href}
                     className={cn(
-                      'whitespace-nowrap text-xs font-normal lg:text-base 2xl:text-lg',
+                      'whitespace-nowrap text-secondary hover:text-secondary/90 text-xs font-normal lg:text-base 2xl:text-lg',
                     )}
                   >
                     {locale === 'en' && menu.name_en}

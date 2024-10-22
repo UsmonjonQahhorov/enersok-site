@@ -8,7 +8,7 @@ import { cn } from '@/utils/cn';
 export const Header: FC<HeaderProps> = ({ locale, className }) => {
 
     return (
-        <header className={cn(className, 'py-12 bg-backgroundImage1')}>
+        <header className={cn(className, 'py-12 absolute top-0 left-0 w-full z-[1]')}>
             <Container className='flex justify-between items-center'>
                 <Image
                     src={Logo}
