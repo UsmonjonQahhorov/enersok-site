@@ -7,18 +7,24 @@ export const SocialIcon: FC<SocialIconProps> = ({
     alt,
     src,
     className,
-    color = 'white',
+    url,
+    black = false,
 }) => {
     return (
-        <Link className={cn(className, 'w-12 h-12 rounded-full border flex justify-center items-center')} target='_blank' href={src}>
+        <Link className={cn(
+        className, 
+        'w-12 h-12 rounded-full border flex justify-center items-center',
+        {
+            'border-secondary': black === true
+        }
+        )} target='_blank' href={url}>
             <Image
                 src={src}
                 alt={alt}
                 className={cn(
                     'w-[13px] height-[13px]',
                     {
-                        'fill-white': color === 'white',
-                        'fill-black': color === 'black'
+                        'brightness-0': black === true
                     }
                 )}
             />
@@ -28,7 +34,8 @@ export const SocialIcon: FC<SocialIconProps> = ({
 
 interface SocialIconProps {
     className?: string;
+    url: string;
     src: string;
     alt: string;
-    color?: 'white' | 'black';
+    black?: boolean;
 }
