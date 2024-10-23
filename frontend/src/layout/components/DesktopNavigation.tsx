@@ -126,7 +126,7 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({
           />
         </div>
         <span>ENG</span>
-        <NextLink className='text-lg py-4 px-6 bg-button1 rounded-[100px] text-white' href='/about'>Contact us</NextLink>
+        <NextLink className='text-lg py-4 px-6 bg-button1 rounded-[100px] text-white' href='/contacts'>Contact us</NextLink>
       </div>
     </div>
   );

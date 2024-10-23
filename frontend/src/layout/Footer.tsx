@@ -106,14 +106,16 @@ export const Footer: FC<FooterProps> = ({
                     <ul className='flex gap-x-3'>
                         <li>
                             <SocialIcon
+                                url={'https://t.me/SYRDARYA_CCGT_2'}
                                 src={Telegram}
                                 alt={'Enersok Telegram'}
                             />
                         </li>
                         <li>
                             <SocialIcon
+                                url={'http://www.linkedin.com/company/enersok-fe-llc'}
                                 src={LinkedIn}
-                                alt='Enersok LinkedIn'
+                                alt={'Enersok LinkedIn'}
                             />
                         </li>
                     </ul>
