@@ -16,6 +16,7 @@ const config: Config = {
 				secondaryOpacity2: '#07334899',
 				secondaryOpacity3: '#0733481f',
 				secondaryOpacity4: '#07334852',
+				secondaryOpacity5: '#07334880',
 				button1: '#1AAD21',
 				button2: '#F4F4F4',
 				download: '#F4F4F4',
