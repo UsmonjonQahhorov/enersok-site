@@ -33,7 +33,7 @@ const RootLayout: LayoutType = async ({
 	return (
 		<html
 			lang={locale}
-			className={cn('text-balance antialiased font-mori')}
+			className={cn('text-balance antialiased font-mori scroll-smooth')}
 		>
 			<body>
 				<NextIntlClientProvider>
