@@ -4,18 +4,21 @@ import Logo from './../../public/logo.png';
 import { Container } from '@/components/ui/Container';
 import { DesktopNavigation } from './components';
 import { cn } from '@/utils/cn';
+import { Link } from '@/i18n/routing';
 
 export const Header: FC<HeaderProps> = ({ locale, className }) => {
 
     return (
         <header className={cn(className, 'py-12 absolute top-0 left-0 w-full z-[100]')}>
             <Container className='flex justify-between items-center'>
-                <Image
-                    src={Logo}
-                    alt='Enersok Header Logo'
-                    priority={true}
-                    className='w-[205px] h-fit'
-                />
+                <Link href={'/'}>
+                    <Image
+                        src={Logo}
+                        alt='Enersok Header Logo'
+                        priority={true}
+                        className='w-[205px] h-fit'
+                    />
+                </Link>
                 <DesktopNavigation
                     locale={locale}
                 />

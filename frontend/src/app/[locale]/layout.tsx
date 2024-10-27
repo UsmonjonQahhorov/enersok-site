@@ -3,7 +3,11 @@ import { cn } from '@/utils/cn';
 import '@/styles/global.css';
 import type { LayoutType } from '@/types/component.types';
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import { Footer, Header } from '@/layout';
+import { routing } from '@/i18n/routing';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -16,8 +20,15 @@ export const generateStaticParams = async () => {
 
 const RootLayout: LayoutType = async ({
 	children,
-	params: { locale },
+	params,
 }) => {
+
+	const { locale } = await params;
+	if (!routing.locales.includes(locale)) {
+		notFound();
+	}
+
+	setRequestLocale(locale);
 
 	return (
 		<html
@@ -25,11 +36,13 @@ const RootLayout: LayoutType = async ({
 			className={cn('text-balance antialiased font-mori')}
 		>
 			<body>
-				<Header
-					locale={locale}
-				/>
-				{children}
-				<Footer />
+				<NextIntlClientProvider>
+					<Header
+						locale={locale}
+					/>
+					{children}
+					<Footer />
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	);
