@@ -1,6 +1,6 @@
 export const RouterConfig = {
 	Home: '/',
-	AboutCompany: 'About Company',
+	AboutCompany: '/about',
 	OrganizationalStructure: '/structure',
 	AboutSponsors: '/sponsors',
 	DocumentsAndGuidelines: '/documents',
