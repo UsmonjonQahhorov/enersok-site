@@ -20,7 +20,8 @@ const config: Config = {
 				button1: '#1AAD21',
 				button2: '#F4F4F4',
 				download: '#F4F4F4',
-			}, 
+				borderColor: 'rgba(0, 0, 0, 0.12)'
+			},
 			boxShadow: {
 				shadow: '0 9px 139.2px 1px #0000001F;',
 			},

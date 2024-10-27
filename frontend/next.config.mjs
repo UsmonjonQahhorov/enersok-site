@@ -24,7 +24,7 @@ const nextConfig = {
 				headers: [
 					{
 						key: 'X-Developed-By',
-						value: '',
+						value: 'Team64',
 					},
 				],
 			},
