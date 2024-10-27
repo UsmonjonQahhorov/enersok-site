@@ -1,50 +1,44 @@
 import type { Locale } from "@/configs/i18n.config";
 import { http } from "@/utils/http"
 
-export const getFooter = async (locale: Locale = 'en') => {
-     const response = await http<GetFooter>(`/footer?populate=logo&locale=${locale}`, {
+export const getCarousel = async (locale: Locale = 'en') => {
+     const response = await http<GetCarousel>(`/carousels?populate=picture&locale=${locale}`, {
           method: 'GET',
      })
 
      return response
 }
 
-
-interface GetFooter {
-     data: GetFooterData;
+interface GetCarousel {
+     data: Datum[];
+     meta: Meta;
 }
 
-interface GetFooterData {
+interface Datum {
      id: number;
-     attributes: PurpleAttributes;
+     attributes: DatumAttributes;
 }
 
-interface PurpleAttributes {
-     email: string;
-     phone: string;
-     address_text: string;
-     address_link: string;
-     work_hours_text: string;
+interface DatumAttributes {
+     title: string;
+     text: string;
      createdAt: Date;
      updatedAt: Date;
+     publishedAt: Date;
      locale: string;
-     x_link: string;
-     telegram_link: string;
-     facebook_link: string;
-     linkedIn_link: string;
-     logo: Logo;
+     picture: Picture;
 }
 
-interface Logo {
-     data: LogoData;
+interface Picture {
+     data: Data;
 }
 
-interface LogoData {
+interface Data {
      id: number;
-     attributes: FluffyAttributes;
+     attributes: DataAttributes;
 }
 
-interface FluffyAttributes {
+interface DataAttributes {
      name: string;
      alternativeText: null;
      caption: null;
@@ -79,3 +73,15 @@ interface Thumbnail {
      sizeInBytes: number;
      url: string;
 }
+
+interface Meta {
+     pagination: Pagination;
+}
+
+interface Pagination {
+     page: number;
+     pageSize: number;
+     pageCount: number;
+     total: number;
+}
+

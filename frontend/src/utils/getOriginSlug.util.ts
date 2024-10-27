@@ -1,13 +1,13 @@
 /**
- * Returns the slug for the 'ru' locale from the given Localizations object.
+ * Returns the slug for the 'en' locale from the given Localizations object.
  * @param locales - The Localizations object containing data for multiple locales.
- * @returns The slug for the 'ru' locale.
+ * @returns The slug for the 'en' locale.
  */
 export const getOriginSlug = (locales: Localizations) => {
      let slug = '';
 
      locales.data.forEach((locales) => {
-          if (locales.attributes.locale === 'ru') {
+          if (locales.attributes.locale === 'en') {
                slug += locales.attributes.slug;
           }
      });
