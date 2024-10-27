@@ -10,14 +10,14 @@ export interface ParamsWithLocale {
 export type PageType<
 	Params extends ParamsWithLocale = ParamsWithLocale,
 	SearchParams = searchParams> = FC<{
-		params: Params;
-		searchParams?: SearchParams;
+		params: Promise<Params>;
+		searchParams?: Promise<SearchParams>;
 	}>
 
 export type LayoutType<
 	Params extends ParamsWithLocale = ParamsWithLocale,
 > = FC<{
-	params: Params;
+	params: Promise<Params>;
 	children: ReactNode;
 }>;
 

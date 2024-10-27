@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-21T16:29:32.619Z"
+    "x-generation-date": "2024-10-27T11:00:02.053Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1731,6 +1731,1844 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/AboutPageResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "AboutSponsorLocalizationRequest": {
+        "required": [
+          "page_title",
+          "heading_picture",
+          "heading_title",
+          "about_section_title",
+          "about_section_text",
+          "sponsors_section_title",
+          "locale"
+        ],
+        "type": "object",
+        "properties": {
+          "page_title": {
+            "type": "string"
+          },
+          "heading_picture": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "string or id"
+          },
+          "heading_title": {
+            "type": "string"
+          },
+          "about_section_title": {
+            "type": "string"
+          },
+          "about_section_text": {
+            "type": "string"
+          },
+          "sponsors_section_title": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string"
+          }
+        }
+      },
+      "AboutSponsorRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "required": [
+              "page_title",
+              "heading_picture",
+              "heading_title",
+              "about_section_title",
+              "about_section_text",
+              "sponsors_section_title"
+            ],
+            "type": "object",
+            "properties": {
+              "page_title": {
+                "type": "string"
+              },
+              "heading_picture": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
+              "heading_title": {
+                "type": "string"
+              },
+              "about_section_title": {
+                "type": "string"
+              },
+              "about_section_text": {
+                "type": "string"
+              },
+              "sponsors_section_title": {
+                "type": "string"
+              },
+              "locale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "AboutSponsorResponseDataObjectLocalized": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/AboutSponsor"
+          }
+        }
+      },
+      "AboutSponsorLocalizationResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AboutSponsorResponseDataObjectLocalized"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "AboutSponsorListResponseDataItemLocalized": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/AboutSponsor"
+          }
+        }
+      },
+      "AboutSponsorLocalizationListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AboutSponsorListResponseDataItemLocalized"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AboutSponsorListResponseDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/AboutSponsor"
+          }
+        }
+      },
+      "AboutSponsorListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AboutSponsorListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AboutSponsor": {
+        "type": "object",
+        "required": [
+          "page_title",
+          "heading_picture",
+          "heading_title",
+          "about_section_title",
+          "about_section_text",
+          "sponsors_section_title"
+        ],
+        "properties": {
+          "page_title": {
+            "type": "string"
+          },
+          "heading_picture": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "alternativeText": {
+                        "type": "string"
+                      },
+                      "caption": {
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      },
+                      "formats": {},
+                      "hash": {
+                        "type": "string"
+                      },
+                      "ext": {
+                        "type": "string"
+                      },
+                      "mime": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number",
+                        "format": "float"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "previewUrl": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "provider_metadata": {},
+                      "related": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "folder": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "pathId": {
+                                    "type": "integer"
+                                  },
+                                  "parent": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "children": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "files": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "alternativeText": {
+                                                  "type": "string"
+                                                },
+                                                "caption": {
+                                                  "type": "string"
+                                                },
+                                                "width": {
+                                                  "type": "integer"
+                                                },
+                                                "height": {
+                                                  "type": "integer"
+                                                },
+                                                "formats": {},
+                                                "hash": {
+                                                  "type": "string"
+                                                },
+                                                "ext": {
+                                                  "type": "string"
+                                                },
+                                                "mime": {
+                                                  "type": "string"
+                                                },
+                                                "size": {
+                                                  "type": "number",
+                                                  "format": "float"
+                                                },
+                                                "url": {
+                                                  "type": "string"
+                                                },
+                                                "previewUrl": {
+                                                  "type": "string"
+                                                },
+                                                "provider": {
+                                                  "type": "string"
+                                                },
+                                                "provider_metadata": {},
+                                                "related": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "folder": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {}
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "folderPath": {
+                                                  "type": "string"
+                                                },
+                                                "createdAt": {
+                                                  "type": "string",
+                                                  "format": "date-time"
+                                                },
+                                                "updatedAt": {
+                                                  "type": "string",
+                                                  "format": "date-time"
+                                                },
+                                                "createdBy": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "firstname": {
+                                                              "type": "string"
+                                                            },
+                                                            "lastname": {
+                                                              "type": "string"
+                                                            },
+                                                            "username": {
+                                                              "type": "string"
+                                                            },
+                                                            "email": {
+                                                              "type": "string",
+                                                              "format": "email"
+                                                            },
+                                                            "resetPasswordToken": {
+                                                              "type": "string"
+                                                            },
+                                                            "registrationToken": {
+                                                              "type": "string"
+                                                            },
+                                                            "isActive": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "roles": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                      "id": {
+                                                                        "type": "number"
+                                                                      },
+                                                                      "attributes": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                          "name": {
+                                                                            "type": "string"
+                                                                          },
+                                                                          "code": {
+                                                                            "type": "string"
+                                                                          },
+                                                                          "description": {
+                                                                            "type": "string"
+                                                                          },
+                                                                          "users": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                  "type": "object",
+                                                                                  "properties": {
+                                                                                    "id": {
+                                                                                      "type": "number"
+                                                                                    },
+                                                                                    "attributes": {
+                                                                                      "type": "object",
+                                                                                      "properties": {}
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "permissions": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                  "type": "object",
+                                                                                  "properties": {
+                                                                                    "id": {
+                                                                                      "type": "number"
+                                                                                    },
+                                                                                    "attributes": {
+                                                                                      "type": "object",
+                                                                                      "properties": {
+                                                                                        "action": {
+                                                                                          "type": "string"
+                                                                                        },
+                                                                                        "actionParameters": {},
+                                                                                        "subject": {
+                                                                                          "type": "string"
+                                                                                        },
+                                                                                        "properties": {},
+                                                                                        "conditions": {},
+                                                                                        "role": {
+                                                                                          "type": "object",
+                                                                                          "properties": {
+                                                                                            "data": {
+                                                                                              "type": "object",
+                                                                                              "properties": {
+                                                                                                "id": {
+                                                                                                  "type": "number"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                  "type": "object",
+                                                                                                  "properties": {}
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        },
+                                                                                        "createdAt": {
+                                                                                          "type": "string",
+                                                                                          "format": "date-time"
+                                                                                        },
+                                                                                        "updatedAt": {
+                                                                                          "type": "string",
+                                                                                          "format": "date-time"
+                                                                                        },
+                                                                                        "createdBy": {
+                                                                                          "type": "object",
+                                                                                          "properties": {
+                                                                                            "data": {
+                                                                                              "type": "object",
+                                                                                              "properties": {
+                                                                                                "id": {
+                                                                                                  "type": "number"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                  "type": "object",
+                                                                                                  "properties": {}
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        },
+                                                                                        "updatedBy": {
+                                                                                          "type": "object",
+                                                                                          "properties": {
+                                                                                            "data": {
+                                                                                              "type": "object",
+                                                                                              "properties": {
+                                                                                                "id": {
+                                                                                                  "type": "number"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                  "type": "object",
+                                                                                                  "properties": {}
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "createdAt": {
+                                                                            "type": "string",
+                                                                            "format": "date-time"
+                                                                          },
+                                                                          "updatedAt": {
+                                                                            "type": "string",
+                                                                            "format": "date-time"
+                                                                          },
+                                                                          "createdBy": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                  "id": {
+                                                                                    "type": "number"
+                                                                                  },
+                                                                                  "attributes": {
+                                                                                    "type": "object",
+                                                                                    "properties": {}
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "updatedBy": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                  "id": {
+                                                                                    "type": "number"
+                                                                                  },
+                                                                                  "attributes": {
+                                                                                    "type": "object",
+                                                                                    "properties": {}
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "blocked": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "preferedLanguage": {
+                                                              "type": "string"
+                                                            },
+                                                            "createdAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "updatedAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "createdBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "updatedBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "updatedBy": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {}
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "path": {
+                                    "type": "string"
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "createdBy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "updatedBy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "folderPath": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "heading_title": {
+            "type": "string"
+          },
+          "about_section_title": {
+            "type": "string"
+          },
+          "about_section_text": {
+            "type": "string"
+          },
+          "sponsors_section_title": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          },
+          "localizations": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AboutSponsorListResponseDataItemLocalized"
+                }
+              }
+            }
+          },
+          "locale": {
+            "type": "string"
+          }
+        }
+      },
+      "AboutSponsorResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/AboutSponsor"
+          }
+        }
+      },
+      "AboutSponsorResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AboutSponsorResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "CarouselLocalizationRequest": {
+        "required": [
+          "title",
+          "text",
+          "picture",
+          "locale"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "picture": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "string or id"
+          },
+          "locale": {
+            "type": "string"
+          }
+        }
+      },
+      "CarouselRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "required": [
+              "title",
+              "text",
+              "picture"
+            ],
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "picture": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
+              "locale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "CarouselResponseDataObjectLocalized": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Carousel"
+          }
+        }
+      },
+      "CarouselLocalizationResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarouselResponseDataObjectLocalized"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
+      },
+      "CarouselListResponseDataItemLocalized": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Carousel"
+          }
+        }
+      },
+      "CarouselLocalizationListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarouselListResponseDataItemLocalized"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CarouselListResponseDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Carousel"
+          }
+        }
+      },
+      "CarouselListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarouselListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Carousel": {
+        "type": "object",
+        "required": [
+          "title",
+          "text",
+          "picture"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "alternativeText": {
+                        "type": "string"
+                      },
+                      "caption": {
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      },
+                      "formats": {},
+                      "hash": {
+                        "type": "string"
+                      },
+                      "ext": {
+                        "type": "string"
+                      },
+                      "mime": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number",
+                        "format": "float"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "previewUrl": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "provider_metadata": {},
+                      "related": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "folder": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "pathId": {
+                                    "type": "integer"
+                                  },
+                                  "parent": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "children": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "files": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "alternativeText": {
+                                                  "type": "string"
+                                                },
+                                                "caption": {
+                                                  "type": "string"
+                                                },
+                                                "width": {
+                                                  "type": "integer"
+                                                },
+                                                "height": {
+                                                  "type": "integer"
+                                                },
+                                                "formats": {},
+                                                "hash": {
+                                                  "type": "string"
+                                                },
+                                                "ext": {
+                                                  "type": "string"
+                                                },
+                                                "mime": {
+                                                  "type": "string"
+                                                },
+                                                "size": {
+                                                  "type": "number",
+                                                  "format": "float"
+                                                },
+                                                "url": {
+                                                  "type": "string"
+                                                },
+                                                "previewUrl": {
+                                                  "type": "string"
+                                                },
+                                                "provider": {
+                                                  "type": "string"
+                                                },
+                                                "provider_metadata": {},
+                                                "related": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "folder": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {}
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "folderPath": {
+                                                  "type": "string"
+                                                },
+                                                "createdAt": {
+                                                  "type": "string",
+                                                  "format": "date-time"
+                                                },
+                                                "updatedAt": {
+                                                  "type": "string",
+                                                  "format": "date-time"
+                                                },
+                                                "createdBy": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "firstname": {
+                                                              "type": "string"
+                                                            },
+                                                            "lastname": {
+                                                              "type": "string"
+                                                            },
+                                                            "username": {
+                                                              "type": "string"
+                                                            },
+                                                            "email": {
+                                                              "type": "string",
+                                                              "format": "email"
+                                                            },
+                                                            "resetPasswordToken": {
+                                                              "type": "string"
+                                                            },
+                                                            "registrationToken": {
+                                                              "type": "string"
+                                                            },
+                                                            "isActive": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "roles": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                      "id": {
+                                                                        "type": "number"
+                                                                      },
+                                                                      "attributes": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                          "name": {
+                                                                            "type": "string"
+                                                                          },
+                                                                          "code": {
+                                                                            "type": "string"
+                                                                          },
+                                                                          "description": {
+                                                                            "type": "string"
+                                                                          },
+                                                                          "users": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                  "type": "object",
+                                                                                  "properties": {
+                                                                                    "id": {
+                                                                                      "type": "number"
+                                                                                    },
+                                                                                    "attributes": {
+                                                                                      "type": "object",
+                                                                                      "properties": {}
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "permissions": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                  "type": "object",
+                                                                                  "properties": {
+                                                                                    "id": {
+                                                                                      "type": "number"
+                                                                                    },
+                                                                                    "attributes": {
+                                                                                      "type": "object",
+                                                                                      "properties": {
+                                                                                        "action": {
+                                                                                          "type": "string"
+                                                                                        },
+                                                                                        "actionParameters": {},
+                                                                                        "subject": {
+                                                                                          "type": "string"
+                                                                                        },
+                                                                                        "properties": {},
+                                                                                        "conditions": {},
+                                                                                        "role": {
+                                                                                          "type": "object",
+                                                                                          "properties": {
+                                                                                            "data": {
+                                                                                              "type": "object",
+                                                                                              "properties": {
+                                                                                                "id": {
+                                                                                                  "type": "number"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                  "type": "object",
+                                                                                                  "properties": {}
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        },
+                                                                                        "createdAt": {
+                                                                                          "type": "string",
+                                                                                          "format": "date-time"
+                                                                                        },
+                                                                                        "updatedAt": {
+                                                                                          "type": "string",
+                                                                                          "format": "date-time"
+                                                                                        },
+                                                                                        "createdBy": {
+                                                                                          "type": "object",
+                                                                                          "properties": {
+                                                                                            "data": {
+                                                                                              "type": "object",
+                                                                                              "properties": {
+                                                                                                "id": {
+                                                                                                  "type": "number"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                  "type": "object",
+                                                                                                  "properties": {}
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        },
+                                                                                        "updatedBy": {
+                                                                                          "type": "object",
+                                                                                          "properties": {
+                                                                                            "data": {
+                                                                                              "type": "object",
+                                                                                              "properties": {
+                                                                                                "id": {
+                                                                                                  "type": "number"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                  "type": "object",
+                                                                                                  "properties": {}
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "createdAt": {
+                                                                            "type": "string",
+                                                                            "format": "date-time"
+                                                                          },
+                                                                          "updatedAt": {
+                                                                            "type": "string",
+                                                                            "format": "date-time"
+                                                                          },
+                                                                          "createdBy": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                  "id": {
+                                                                                    "type": "number"
+                                                                                  },
+                                                                                  "attributes": {
+                                                                                    "type": "object",
+                                                                                    "properties": {}
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "updatedBy": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "data": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                  "id": {
+                                                                                    "type": "number"
+                                                                                  },
+                                                                                  "attributes": {
+                                                                                    "type": "object",
+                                                                                    "properties": {}
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "blocked": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "preferedLanguage": {
+                                                              "type": "string"
+                                                            },
+                                                            "createdAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "updatedAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "createdBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "updatedBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "updatedBy": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {}
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "path": {
+                                    "type": "string"
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "createdBy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "updatedBy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "folderPath": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          },
+          "localizations": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CarouselListResponseDataItemLocalized"
+                }
+              }
+            }
+          },
+          "locale": {
+            "type": "string"
+          }
+        }
+      },
+      "CarouselResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Carousel"
+          }
+        }
+      },
+      "CarouselResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarouselResponseDataObject"
           },
           "meta": {
             "type": "object"
@@ -8992,6 +10830,7 @@
           "community_section_second_picture",
           "community_section_third_picture",
           "community_section_fourth_picture",
+          "heading_background_picture",
           "locale"
         ],
         "type": "object",
@@ -9134,6 +10973,17 @@
             ],
             "example": "string or id"
           },
+          "heading_background_picture": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "string or id"
+          },
           "locale": {
             "type": "string"
           }
@@ -9176,7 +11026,8 @@
               "community_section_first_picture",
               "community_section_second_picture",
               "community_section_third_picture",
-              "community_section_fourth_picture"
+              "community_section_fourth_picture",
+              "heading_background_picture"
             ],
             "type": "object",
             "properties": {
@@ -9308,6 +11159,17 @@
                 "example": "string or id"
               },
               "community_section_fourth_picture": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
+              "heading_background_picture": {
                 "oneOf": [
                   {
                     "type": "integer"
@@ -9471,7 +11333,8 @@
           "community_section_first_picture",
           "community_section_second_picture",
           "community_section_third_picture",
-          "community_section_fourth_picture"
+          "community_section_fourth_picture",
+          "heading_background_picture"
         ],
         "properties": {
           "page_title": {
@@ -10725,6 +12588,145 @@
             }
           },
           "community_section_fourth_picture": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "alternativeText": {
+                        "type": "string"
+                      },
+                      "caption": {
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      },
+                      "formats": {},
+                      "hash": {
+                        "type": "string"
+                      },
+                      "ext": {
+                        "type": "string"
+                      },
+                      "mime": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number",
+                        "format": "float"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "previewUrl": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "provider_metadata": {},
+                      "related": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "folder": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "folderPath": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "heading_background_picture": {
             "type": "object",
             "properties": {
               "data": {
@@ -11849,6 +13851,7 @@
           "preview_time",
           "preview_date",
           "news_description",
+          "slug",
           "locale"
         ],
         "type": "object",
@@ -11877,6 +13880,9 @@
           "news_description": {
             "type": "string"
           },
+          "slug": {
+            "type": "string"
+          },
           "locale": {
             "type": "string"
           }
@@ -11894,7 +13900,8 @@
               "preview_picture",
               "preview_time",
               "preview_date",
-              "news_description"
+              "news_description",
+              "slug"
             ],
             "type": "object",
             "properties": {
@@ -11920,6 +13927,9 @@
                 "format": "date"
               },
               "news_description": {
+                "type": "string"
+              },
+              "slug": {
                 "type": "string"
               },
               "locale": {
@@ -12050,7 +14060,8 @@
           "preview_picture",
           "preview_time",
           "preview_date",
-          "news_description"
+          "news_description",
+          "slug"
         ],
         "properties": {
           "preview_title": {
@@ -12686,6 +14697,9 @@
             "format": "date"
           },
           "news_description": {
+            "type": "string"
+          },
+          "slug": {
             "type": "string"
           },
           "createdAt": {
@@ -16630,6 +18644,7 @@
           "vacancy_location",
           "vacancy_closing_date",
           "vacancy_description",
+          "slug",
           "locale"
         ],
         "type": "object",
@@ -16645,6 +18660,9 @@
             "format": "date"
           },
           "vacancy_description": {
+            "type": "string"
+          },
+          "slug": {
             "type": "string"
           },
           "locale": {
@@ -16663,7 +18681,8 @@
               "vacancy_name",
               "vacancy_location",
               "vacancy_closing_date",
-              "vacancy_description"
+              "vacancy_description",
+              "slug"
             ],
             "type": "object",
             "properties": {
@@ -16678,6 +18697,9 @@
                 "format": "date"
               },
               "vacancy_description": {
+                "type": "string"
+              },
+              "slug": {
                 "type": "string"
               },
               "locale": {
@@ -16807,7 +18829,8 @@
           "vacancy_name",
           "vacancy_location",
           "vacancy_closing_date",
-          "vacancy_description"
+          "vacancy_description",
+          "slug"
         ],
         "properties": {
           "vacancy_name": {
@@ -16821,6 +18844,9 @@
             "format": "date"
           },
           "vacancy_description": {
+            "type": "string"
+          },
+          "slug": {
             "type": "string"
           },
           "createdAt": {
@@ -17765,6 +19791,1008 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/AboutPageLocalizationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/about-sponsor": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AboutSponsorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "About-sponsor"
+        ],
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort by attributes ascending (asc) or descending (desc)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[withCount]",
+            "in": "query",
+            "description": "Return page/pageSize (default: true)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination[page]",
+            "in": "query",
+            "description": "Page number (default: 0)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pagination[pageSize]",
+            "in": "query",
+            "description": "Page size (default: 25)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pagination[start]",
+            "in": "query",
+            "description": "Offset value (default: 0)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pagination[limit]",
+            "in": "query",
+            "description": "Number of entities to return (default: 25)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "Fields to return (ex: title,author)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "in": "query",
+            "description": "Relations to return",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Filters to apply",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "style": "deepObject"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "Locale to apply",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "get/about-sponsor"
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AboutSponsorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "About-sponsor"
+        ],
+        "parameters": [],
+        "operationId": "put/about-sponsor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AboutSponsorRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "About-sponsor"
+        ],
+        "parameters": [],
+        "operationId": "delete/about-sponsor"
+      }
+    },
+    "/about-sponsor/localizations": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AboutSponsorLocalizationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "About-sponsor"
+        ],
+        "parameters": [],
+        "operationId": "post/about-sponsor/localizations",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AboutSponsorLocalizationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carousels": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarouselListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Carousel"
+        ],
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort by attributes ascending (asc) or descending (desc)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[withCount]",
+            "in": "query",
+            "description": "Return page/pageSize (default: true)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination[page]",
+            "in": "query",
+            "description": "Page number (default: 0)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pagination[pageSize]",
+            "in": "query",
+            "description": "Page size (default: 25)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pagination[start]",
+            "in": "query",
+            "description": "Offset value (default: 0)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pagination[limit]",
+            "in": "query",
+            "description": "Number of entities to return (default: 25)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "Fields to return (ex: title,author)",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "in": "query",
+            "description": "Relations to return",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Filters to apply",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "style": "deepObject"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "Locale to apply",
+            "deprecated": false,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "get/carousels"
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarouselResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Carousel"
+        ],
+        "parameters": [],
+        "operationId": "post/carousels",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarouselRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carousels/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarouselResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Carousel"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "get/carousels/{id}"
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarouselResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Carousel"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "put/carousels/{id}",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarouselRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Carousel"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "delete/carousels/{id}"
+      }
+    },
+    "/carousels/{id}/localizations": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarouselLocalizationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Carousel"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "post/carousels/{id}/localizations",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarouselLocalizationRequest"
               }
             }
           }

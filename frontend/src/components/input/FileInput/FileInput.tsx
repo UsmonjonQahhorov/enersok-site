@@ -1,11 +1,11 @@
 'use client';
 
-import type { ComponentPropsWithRef, ReactNode } from 'react';
+import type { ComponentPropsWithRef, ReactNode, ChangeEvent } from 'react';
 import { forwardRef, useRef, useState } from 'react';
 import { FieldErrorText } from '../FieldErrorText';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import FileImage from './../../../../public/file.svg';
+import FileImage from '@public/file.svg';
 
 type FileInputRef = HTMLInputElement;
 type FileInputProps = ComponentPropsWithRef<'input'> & {
@@ -27,7 +27,7 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
             }
         };
 
-        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
             if (event.target.files && event.target.files.length > 0) {
                 setFileName(event.target.files?.[0]?.name ?? '');
             }
@@ -60,7 +60,7 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
                         if (typeof ref === 'function') {
                             ref(node);
                         } else if (ref) {
-                            (ref as React.MutableRefObject<HTMLInputElement | null>).current = node;
+                            (ref.current = node);
                         }
                     }}
                     onChange={handleChange}
