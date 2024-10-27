@@ -7,6 +7,11 @@ export const navigation = [
         href: RouterConfig.AboutCompany,
         childMenus: [
             {
+                name_en: 'About Company',
+                name_uz: 'Kompaniya haqida',
+                href: RouterConfig.AboutCompany,
+            },
+            {
                 name_en: 'Organizational Structure',
                 name_uz: 'Tashkiliy tuzilma',
                 href: RouterConfig.OrganizationalStructure,
