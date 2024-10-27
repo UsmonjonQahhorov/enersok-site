@@ -12,6 +12,11 @@ const nextConfig = {
 	images: {
 		remotePatterns: [],
 	},
+	experimental: {
+		staleTimes: {
+			dynamic: 30,
+		},
+	},
 	headers: async () => {
 		return [
 			{
