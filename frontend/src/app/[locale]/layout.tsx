@@ -40,7 +40,9 @@ const RootLayout: LayoutType = async ({
 					<Header
 						locale={locale}
 					/>
-					{children}
+					<main>
+						{children}
+					</main>
 					<Footer />
 				</NextIntlClientProvider>
 			</body>
