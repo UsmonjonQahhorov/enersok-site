@@ -943,6 +943,92 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
   };
 }
 
+export interface ApiAboutSponsorAboutSponsor extends Schema.SingleType {
+  collectionName: 'about_sponsors';
+  info: {
+    singularName: 'about-sponsor';
+    pluralName: 'about-sponsors';
+    displayName: 'About Sponsors';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'ABOUT SPONSORS'>;
+    heading_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    heading_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'ABOUT SPONSORS'>;
+    about_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Distribution'>;
+    about_section_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), Enersok FE LLC '>;
+    sponsors_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'SPONSORS'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-sponsor.about-sponsor',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-sponsor.about-sponsor',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::about-sponsor.about-sponsor',
+      'oneToMany',
+      'api::about-sponsor.about-sponsor'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiContactPageContactPage extends Schema.SingleType {
   collectionName: 'contact_pages';
   info: {
@@ -2365,6 +2451,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::about-sponsor.about-sponsor': ApiAboutSponsorAboutSponsor;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::development.development': ApiDevelopmentDevelopment;
       'api::development-feature.development-feature': ApiDevelopmentFeatureDevelopmentFeature;
