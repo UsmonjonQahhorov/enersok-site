@@ -3,14 +3,14 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
+import Factory from '@public/facroty.png';
 import { RouterConfig } from '@/configs/router.config';
 import { Map } from '@/components/ui/Map';
 import { Paragraph } from '@/components/ui/Paragraph';
 import Link from 'next/link';
 import { SocialIcon } from '@/components/ui/SocialIcon';
-import Telegram from './../../../../public/socials/telegram.svg';
-import LinkedIn from './../../../../public/socials/linked-in.svg';
+import Telegram from '@public/socials/telegram.svg';
+import LinkedIn from '@public/socials/linked-in.svg';
 
 const ContactsPage: PageType = () => {
     return (
@@ -37,7 +37,7 @@ const ContactsPage: PageType = () => {
             <section>
                 <Container className='pt-[95px] pb-[142px] grid grid-cols-[4.5fr,5.5fr] gap-x-[100px] items-center'>
                     <div className='flex flex-col gap-y-8 py-5'>
-                        <Heading className='text-secondary text-[48px] pb-6'>GET IN TOUCH WITH US</Heading>
+                        <Heading as='h3' className='text-secondary text-[48px] pb-6'>GET IN TOUCH WITH US</Heading>
                         <ul className='flex flex-col gap-y-8'>
                             <li>
                                 <Paragraph className='text-secondaryOpacity5 text-base font-normal pb-1'>Phone:</Paragraph>

@@ -3,7 +3,7 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
+import Factory from '@public/facroty.png';
 import { RouterConfig } from '@/configs/router.config';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { CareerForm } from '@/components/form/CareerForm';
@@ -50,7 +50,7 @@ const SingleCareerPage: PageType = () => {
                 <Container className='pt-[100px] pb-[170px] grid grid-cols-2 gap-x-40'>
                     <div className='flex flex-col gap-y-11'>
                         <div className='flex flex-col'>
-                            <Heading className='text-4xl text-secondary pb-6'>Responsibilities:</Heading>
+                            <Heading as='h4' className='text-4xl text-secondary pb-6'>Responsibilities:</Heading>
                             <ul className='flex flex-col'>
                                 <li className='text-lg text-secondary pb-1'>- visual inspection of construction structures with assessment of technical condition based on external signs;</li>
                                 <li className='text-lg text-secondary pb-1'>- visual inspection of construction structures with assessment of technical condition based on external signs;</li>
@@ -59,7 +59,7 @@ const SingleCareerPage: PageType = () => {
                             </ul>
                         </div>
                         <div className='flex flex-col'>
-                            <Heading className='text-4xl text-secondary pb-6'>Requirements:</Heading>
+                            <Heading as='h4' className='text-4xl text-secondary pb-6'>Requirements:</Heading>
                             <ul className='flex flex-col'>
                                 <li className='text-lg text-secondary pb-1'>- visual inspection of construction structures with assessment of technical condition based on external signs;</li>
                                 <li className='text-lg text-secondary pb-1'>- visual inspection of construction structures with assessment of technical condition based on external signs;</li>
@@ -68,7 +68,7 @@ const SingleCareerPage: PageType = () => {
                             </ul>
                         </div>
                         <div className='flex flex-col'>
-                            <Heading className='text-4xl text-secondary pb-6'>Working conditions:</Heading>
+                            <Heading as='h4' className='text-4xl text-secondary pb-6'>Working conditions:</Heading>
                             <ul className='flex flex-col'>
                                 <li className='text-lg text-secondary pb-1'>visual inspection of construction structures with assessment of technical condition based on external signs;</li>
                                 <li className='text-lg text-secondary pb-1'>visual inspection of construction structures with assessment of technical condition based on external signs;</li>
@@ -76,7 +76,7 @@ const SingleCareerPage: PageType = () => {
                             </ul>
                         </div>
                         <div className='flex flex-col'>
-                            <Heading className='text-4xl text-secondary pb-6'>Key skills:</Heading>
+                            <Heading as='h4' className='text-4xl text-secondary pb-6'>Key skills:</Heading>
                             <ul className='flex flex-col'>
                                 <li className='text-lg text-secondary pb-1'>Lyra-Sapr, AutoCAD, Engineering systems, MS Outlook, Team work, Quality control</li>
                             </ul>

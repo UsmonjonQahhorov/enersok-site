@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import Logo from './../../public/logo.png';
+import Logo from '@public/logo.png';
 import { Container } from '@/components/ui/Container';
 import { DesktopNavigation } from './components';
 import { cn } from '@/utils/cn';

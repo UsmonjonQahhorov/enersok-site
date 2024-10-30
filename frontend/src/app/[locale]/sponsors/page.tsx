@@ -4,14 +4,14 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
-import Sponsor1 from './../../../../public/sponsors/sponsor1.png';
-import Sponsor2 from './../../../../public/sponsors/sponsor2.png';
-import Sponsor3 from './../../../../public/sponsors/sponsor3.png';
-import Sponsor4 from './../../../../public/sponsors/sponsor4.png';
-import Sponsor5 from './../../../../public/logo.png';
-import Line1 from './../../../../public/sponsors/line1.png';
-import Line2 from './../../../../public/sponsors/line2.png';
+import Factory from '@public/facroty.png';
+import Sponsor1 from '@public/sponsors/sponsor1.png';
+import Sponsor2 from '@public/sponsors/sponsor2.png';
+import Sponsor3 from '@public/sponsors/sponsor3.png';
+import Sponsor4 from '@public/sponsors/sponsor4.png';
+import Sponsor5 from '@public/logo.png';
+import Line1 from '@public/sponsors/line1.png';
+import Line2 from '@public/sponsors/line2.png';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
 import { SponsorCard } from '@/components/ui/SponsorCard';
@@ -41,12 +41,12 @@ const AboutSponsorsPage: PageType = () => {
             <section>
                 <Container className='pt-[133px] pb-[160px]'>
                     <div className='w-2/5'>
-                        <Heading className='text-[64px] text-secondary uppercase'>Distribution</Heading>
+                        <Heading as='h3' className='text-[64px] text-secondary uppercase'>Distribution</Heading>
                         <Paragraph className='text-lg text-secondary'>Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), Enersok FE LLC</Paragraph>
                     </div>
                     <div className='pt-20'>
                         <div className='w-full flex flex-col items-center relative'>
-                            <Heading className='text-2xl text-secondary absolute top-[-12px] px-4 bg-white -translate-x-1/2 left-[50%]'>Project Sponsors</Heading>
+                            <Heading as='h4' className='text-2xl text-secondary absolute top-[-12px] px-4 bg-white -translate-x-1/2 left-[50%]'>Project Sponsors</Heading>
                             <Image
                                 src={Line1}
                                 alt='Line1 Enersok'
@@ -79,14 +79,14 @@ const AboutSponsorsPage: PageType = () => {
                                 alt='Line2 Enersok'
                             />
                             <div className='flex flex-col items-center'>
-                                <Heading className='text-center py-3'>Holding Сompany</Heading>
+                                <Heading as='h5' className='text-center py-3'>Holding Сompany</Heading>
                                 <div className='min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3'>
                                     <Paragraph className='text-center text-[32px] text-[#5055E6]'>NEKS Energy B.V.</Paragraph>
                                 </div>
                                 <span className='w-[2px] h-[73px] bg-black' />
                             </div>
                             <div className='flex flex-col items-center'>
-                                <Heading className='text-center py-3'>Project Сompany</Heading>
+                                <Heading as='h5' className='text-center py-3'>Project Сompany</Heading>
                                 <div className='min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3'>
                                     <Image
                                         src={Sponsor5}
@@ -101,7 +101,7 @@ const AboutSponsorsPage: PageType = () => {
             </section>
             <section>
                 <Container className='pb-36'>
-                    <Heading className='text-[64px] text-secondary uppercase pb-28'>Sponsors</Heading>
+                    <Heading as='h3' className='text-[64px] text-secondary uppercase pb-28'>Sponsors</Heading>
                     <div className='flex flex-col gap-y-12'>
                         <SponsorCardInfo
                             image={Sponsor1}

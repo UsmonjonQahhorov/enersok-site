@@ -4,21 +4,21 @@ import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
-import Factory2 from './../../../../public/factory2.png';
-import Project1 from './../../../../public/project-icons/project1.svg';
-import Project2 from './../../../../public/project-icons/project2.svg';
-import Project3 from './../../../../public/project-icons/project3.svg';
-import Project4 from './../../../../public/project-icons/project4.svg';
-import Project5 from './../../../../public/project-icons/project5.svg';
-import Project6 from './../../../../public/project-icons/project6.svg';
-import Project7 from './../../../../public/project-icons/project7.svg';
-import Project8 from './../../../../public/project-icons/project8.svg';
-import Afs1 from './../../../../public/project-icons/afs1.svg';
-import Afs2 from './../../../../public/project-icons/afs2.svg';
-import Banner from './../../../../public/project.png';
-import Banner2 from './../../../../public/project2.png';
-import Location from './../../../../public/location-green.svg';
+import Factory from '@public/facroty.png';
+import Factory2 from '@public/factory2.png';
+import Project1 from '@public/project-icons/project1.svg';
+import Project2 from '@public/project-icons/project2.svg';
+import Project3 from '@public/project-icons/project3.svg';
+import Project4 from '@public/project-icons/project4.svg';
+import Project5 from '@public/project-icons/project5.svg';
+import Project6 from '@public/project-icons/project6.svg';
+import Project7 from '@public/project-icons/project7.svg';
+import Project8 from '@public/project-icons/project8.svg';
+import Afs1 from '@public/project-icons/afs1.svg';
+import Afs2 from '@public/project-icons/afs2.svg';
+import Banner from '@public/project.png';
+import Banner2 from '@public/project2.png';
+import Location from '@public/location-green.svg';
 import { RouterConfig } from '@/configs/router.config';
 
 const ProjectDetailsPage: PageType = () => {
@@ -37,7 +37,7 @@ const ProjectDetailsPage: PageType = () => {
                             Syrdarya  2
                         </Heading>
                         <div className='pb-12 border-b-[1px] border-solid border-secondaryOpacity3'>
-                            <Heading className='text-lg text-secondary font-semibold pb-11'>Project Period:</Heading>
+                            <Heading as='h4' className='text-lg text-secondary font-semibold pb-11'>Project Period:</Heading>
                             <div className='flex flex-col gap-y-4'>
                                 <div className='flex flex-row items-center gap-x-6'>
                                     <div className='flex flex-row items-center w-fit py-[10] pl-3 pr-6 gap-x-3 bg-button1 rounded-[38px]'>
@@ -59,7 +59,7 @@ const ProjectDetailsPage: PageType = () => {
                             </div>
                         </div>
                         <div className='pt-11'>
-                            <Heading className='text-lg text-secondary font-semibold pb-9'>Project Location:</Heading>
+                            <Heading as='h4' className='text-lg text-secondary font-semibold pb-9'>Project Location:</Heading>
                             <div className='flex flex-row gap-x-6 items-center pb-20'>
                                 <div className='bg-white rounded-full min-w-[60px] h-[60px] flex items-center justify-center'>
                                     <Image
@@ -90,7 +90,7 @@ const ProjectDetailsPage: PageType = () => {
             </section>
             <section>
                 <Container className='py-40'>
-                    <Heading className='text-secondary text-6xl uppercase pb-11'>About Project</Heading>
+                    <Heading as='h3' className='text-secondary text-6xl uppercase pb-11'>About Project</Heading>
                     <Paragraph className='text-2xl text-secondary pr-[20%]'>Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration. ENERSOK has selected an EPC contractor (Harbin Electric International Company Limited) to deliver  the engineering  design  of the facility, to procure all equipment and to build all temporary and permanent facilities of the project. The EPC contractor was selected through a competitive tender process from five international EPC Contractors considering financial, technical and E&S qualifications.</Paragraph>
                 </Container>
             </section>
@@ -167,7 +167,7 @@ const ProjectDetailsPage: PageType = () => {
             <section>
                 <Container className='py-[220px] grid grid-cols-2 gap-x-20'>
                     <div>
-                        <Heading className='text-[64px] text-secondary uppercase !leading-[normal] pb-[60px]'>Associated Facilities (AFs) will be limited to the following:</Heading>
+                        <Heading as='h3' className='text-[64px] text-secondary uppercase !leading-[normal] pb-[60px]'>Associated Facilities (AFs) will be limited to the following:</Heading>
                         <div>
                             <div className='flex flex-row gap-x-7 pb-[38px] border-b-[1px] border-solid border-secondaryOpacity3'>
                                 <div className='flex min-w-12 h-12 items-center justify-center bg-primary rounded-xl'>

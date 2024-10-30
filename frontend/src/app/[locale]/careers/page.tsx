@@ -4,8 +4,8 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
-import Banner from './../../../../public/vacancy-banner.png';
+import Factory from '@public/facroty.png';
+import Banner from '@public/vacancy-banner.png';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { CareerCard } from '@/components/ui/CareerCard';
 
@@ -48,7 +48,7 @@ const CareersPage: PageType = () => {
             <section>
                 <Container>
                     <Paragraph size='2xl' className='w-full pb-7 whitespace-[10px] py-[50px] text-secondary'>Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.</Paragraph>
-                    <Heading className='text-secondary uppercase font-normal text-[64px] pt-20 pb-8'>Latest Vacancies</Heading>
+                    <Heading as='h3' className='text-secondary uppercase font-normal text-[64px] pt-20 pb-8'>Latest Vacancies</Heading>
                     <div className='grid grid-cols-1'>
                         <CareerCard
                             title='Finance Controller'

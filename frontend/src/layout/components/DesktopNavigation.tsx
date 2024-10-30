@@ -19,7 +19,7 @@ import { cn } from '@/utils/cn';
 import NextLink from 'next/link';
 import { navigation } from '@/locales/navigations';
 import Image from 'next/image';
-import Search from './../../../public/search.svg';
+import Search from '@public/search.svg';
 
 export const DesktopNavigation: FC<DesktopNavigationProps> = ({
   locale,

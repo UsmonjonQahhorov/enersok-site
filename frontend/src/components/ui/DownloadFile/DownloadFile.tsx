@@ -2,8 +2,8 @@ import { cn } from '@/utils/cn';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { Paragraph } from '../Paragraph';
-import Document from './../../../../public/document.svg';
-import Download from './../../../../public/download.svg';
+import Document from '@public/document.svg';
+import Download from '@public/download.svg';
 import Image from 'next/image';
 
 export const DownloadFile: FC<DownloadFileProps> = ({

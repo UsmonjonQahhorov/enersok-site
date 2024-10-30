@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import Logo from './../../public/logo-white.png';
-import Telegram from './../../public/socials/telegram.svg';
-import LinkedIn from './../../public/socials/linked-in.svg';
-import Email from './../../public/footer-icons/email.svg';
-import Phone from './../../public/footer-icons/phone.svg';
-import Time from './../../public/footer-icons/time.svg';
-import Location from './../../public/footer-icons/location.svg';
+import Logo from '@public/logo-white.png';
+import Telegram from '@public/socials/telegram.svg';
+import LinkedIn from '@public/socials/linked-in.svg';
+import Email from '@public/footer-icons/email.svg';
+import Phone from '@public/footer-icons/phone.svg';
+import Time from '@public/footer-icons/time.svg';
+import Location from '@public/footer-icons/location.svg';
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
 import { Paragraph } from '@/components/ui/Paragraph';
@@ -38,9 +38,6 @@ export const Footer: FC<FooterProps> = ({
                         </li>
                         <li>
                             <Link className='text-2xl text-white font-normal' href={RouterConfig.ProjectDetails}>Project</Link>
-                        </li>
-                        <li>
-                            <Link className='text-2xl text-white font-normal' href={RouterConfig.OpenData}>Open Data</Link>
                         </li>
                         <li>
                             <Link className='text-2xl text-white font-normal' href={RouterConfig.News}>News</Link>

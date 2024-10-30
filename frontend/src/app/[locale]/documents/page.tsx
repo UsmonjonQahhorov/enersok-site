@@ -4,7 +4,7 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
+import Factory from '@public/facroty.png';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { DownloadFile } from '@/components/ui/DownloadFile';
 

@@ -20,7 +20,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
                     className='object-cover rounded-xl min-h-[371px] w-full h-full'
                 />
             </div>
-            <Heading className='pt-5 text-[32px] leading-[34px] font-normal text-secondary hover:text-secondary/85'>{name}</Heading>
+            <Heading as='h5' className='pt-5 text-[32px] leading-[34px] font-normal text-secondary hover:text-secondary/85'>{name}</Heading>
             <Paragraph className='text-base leading-[18px] font-normal text-secondary hover:text-secondary/85'>{job}</Paragraph>
         </div>
     )

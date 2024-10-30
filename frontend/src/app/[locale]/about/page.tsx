@@ -3,13 +3,13 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
-import Banner from './../../../../public/vacancy-banner.png';
-import AboutBanner1 from './../../../../public/about.png';
-import AboutBanner2 from './../../../../public/about2.jpg';
-import Development from './../../../../public/development.png';
-import About1 from './../../../../public/about-icons/about1.svg';
-import About2 from './../../../../public/about-icons/about2.svg';
+import Factory from '@public/facroty.png';
+import Banner from '@public/vacancy-banner.png';
+import AboutBanner1 from '@public/about.png';
+import AboutBanner2 from '@public/about2.jpg';
+import Development from '@public/development.png';
+import About1 from '@public/about-icons/about1.svg';
+import About2 from '@public/about-icons/about2.svg';
 import { RouterConfig } from '@/configs/router.config';
 import { Paragraph } from '@/components/ui/Paragraph';
 
@@ -56,7 +56,7 @@ const AboutCompanyPage: PageType = () => {
                         />
                     </div>
                     <div>
-                        <Heading className='text-[64px] text-secondary uppercase !leading-[normal] py-10'>New Power Plant in Uzbekistan</Heading>
+                        <Heading as='h3' className='text-[64px] text-secondary uppercase !leading-[normal] py-10'>New Power Plant in Uzbekistan</Heading>
                         <div className='flex flex-col gap-y-11 text-secondary pb-20'>
                             <Paragraph className='text-lg'>The key purpose of the Company is to carry out construction,  operation and maintenance activities in future. The commercial operation date is expected in 2026.</Paragraph>
                             <Paragraph className='text-lg'>The electricity produced will be sold to Uzbek state-owned power company JSC National Electricity Grid of Uzbekistan for a duration of 25 years.</Paragraph>
@@ -67,10 +67,10 @@ const AboutCompanyPage: PageType = () => {
             </section>
             <section>
                 <Container className='pb-[140px]'>
-                    <Heading className='w-2/5 text-secondary text-[64px] !leading-[normal] pb-[50px]'>VIEW AT ENERSOK DEVELOPMENT</Heading>
+                    <Heading as='h3' className='w-2/5 text-secondary text-[64px] !leading-[normal] pb-[50px]'>VIEW AT ENERSOK DEVELOPMENT</Heading>
                     <div className='grid grid-cols-4 gap-x-5'>
                         <div className='flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit'>
-                            <Heading className='text-[80px] text-button1 uppercase'>2022</Heading>
+                            <Heading as='h4' className='text-[80px] text-button1 uppercase'>2022</Heading>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Establishment of the Company</Paragraph>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Establishment of the Company</Paragraph>
                             <div className='w-full h-full rounded-xl'>
@@ -82,7 +82,7 @@ const AboutCompanyPage: PageType = () => {
                             </div>
                         </div>
                         <div className='flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 mt-[100px] h-fit'>
-                            <Heading className='text-[80px] text-button1 uppercase'>2023</Heading>
+                            <Heading as='h4' className='text-[80px] text-button1 uppercase'>2023</Heading>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Start of Construction of Combined-cycle Gas Turbine Station</Paragraph>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Start of Construction of Combined-cycle Gas Turbine Station</Paragraph>
                             <div className='w-full h-full rounded-xl'>
@@ -94,7 +94,7 @@ const AboutCompanyPage: PageType = () => {
                             </div>
                         </div>
                         <div className='flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit'>
-                            <Heading className='text-[80px] text-button1 uppercase'>2026</Heading>
+                            <Heading as='h4' className='text-[80px] text-button1 uppercase'>2026</Heading>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Commercial Operation Start</Paragraph>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Commercial Operation Start</Paragraph>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Commercial Operation Start</Paragraph>
@@ -107,7 +107,7 @@ const AboutCompanyPage: PageType = () => {
                             </div>
                         </div>
                         <div className='flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 mt-[100px] h-fit'>
-                            <Heading className='text-[80px] text-button1 uppercase'>Future</Heading>
+                            <Heading as='h4' className='text-[80px] text-button1 uppercase'>Future</Heading>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Establishment of the Company</Paragraph>
                             <Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>Establishment of the Company</Paragraph>
                             <div className='w-full h-full rounded-xl'>
@@ -125,7 +125,7 @@ const AboutCompanyPage: PageType = () => {
                 <Container className='grid grid-cols-2 gap-x-5 pb-[200px]'>
                     <div className='bg-backgroundImage5 p-8 rounded-xl flex flex-col justify-between'>
                         <div>
-                            <Heading className='text-[64px] text-secondary uppercase pb-8 border-b-[1px] border-solid border-secondaryOpacity3'>Our Vision</Heading>
+                            <Heading as='h3' className='text-[64px] text-secondary uppercase pb-8 border-b-[1px] border-solid border-secondaryOpacity3'>Our Vision</Heading>
                             <div className='pt-8 pb-4 flex flex-col'>
                                 <div className='flex w-fit min-w-12 h-12 items-center justify-center bg-button1 rounded-xl'>
                                     <Image
@@ -146,7 +146,7 @@ const AboutCompanyPage: PageType = () => {
                     </div>
                     <div className='bg-backgroundImage5 p-8 rounded-xl flex flex-col justify-between'>
                         <div>
-                            <Heading className='text-[64px] text-secondary uppercase pb-8 border-b-[1px] border-solid border-secondaryOpacity3'>Our Objective</Heading>
+                            <Heading as='h3' className='text-[64px] text-secondary uppercase pb-8 border-b-[1px] border-solid border-secondaryOpacity3'>Our Objective</Heading>
                             <div className='pt-8 pb-4 flex flex-col'>
                                 <div className='flex w-fit min-w-12 h-12 items-center justify-center bg-button1 rounded-xl'>
                                     <Image

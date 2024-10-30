@@ -4,9 +4,9 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
+import Factory from '@public/facroty.png';
 import { NewCard } from '@/components/ui/NewCard';
-import News from './../../../../public/news.png';
+import News from '@public/news.png';
 
 const NewsPage: PageType = () => {
     return (

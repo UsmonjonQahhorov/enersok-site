@@ -4,10 +4,10 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/facroty.png';
+import Factory from '@public/facroty.png';
+import Employee from '@public/employee.png';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { EmployeeCard } from '@/components/ui/EmployeeCard';
-import Employee from './../../../../public/employee.png';
 
 const OrganizationalStructurePage: PageType = () => {
     return (
@@ -35,7 +35,7 @@ const OrganizationalStructurePage: PageType = () => {
                 <Container>
                     <Paragraph size='2xl' className='w-full pb-7 border-b-[1px] border-solid border-secondaryOpacity3 whitespace-[10px] py-[50px] text-secondary'>Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.</Paragraph>
                     <div className='py-[100px]'>
-                        <Heading className='!leading-[normal] text-secondary uppercase text-[64px] max-w-[50%] pb-16'>
+                        <Heading as='h3' className='!leading-[normal] text-secondary uppercase text-[64px] max-w-[50%] pb-16'>
                             Senior Management and Manager
                         </Heading>
                         <div className='grid grid-cols-4 gap-x-5 gap-y-14'>

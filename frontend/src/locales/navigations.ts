@@ -29,14 +29,9 @@ export const navigation = [
         ],
     },
     {
-        name_en: 'Project',
-        name_uz: 'Loyihalar',
+        name_en: 'Project Details',
+        name_uz: 'Loyiha Tafsilotlari',
         href: RouterConfig.ProjectDetails,
-    },
-    {
-        name_en: 'Open Data',
-        name_uz: 'Ochiq ma`lumotlar',
-        href: RouterConfig.OpenData,
     },
     {
         name_en: 'News',

@@ -18,7 +18,7 @@ export const SponsorCard: FC<SponsorCardProps> = ({
                 alt='Sponsor 1 Enersok'
                 className='max-h-[40px] w-auto h-full'
             />
-            <Heading className='text-xl text-secondary pt-8 pb-3 text-center'>{title}</Heading>
+            <Heading as='h5' className='text-xl text-secondary pt-8 pb-3 text-center'>{title}</Heading>
             <Paragraph className='text-2xl font-semibold text-secondary text-center'>{text}</Paragraph>
         </div>
     )

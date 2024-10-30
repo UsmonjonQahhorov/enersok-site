@@ -14,7 +14,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 }) => {
     return (
         <div className={cn(className, 'grid grid-cols-[3.5fr,3.5fr,3.5fr,1fr] py-8 text-secondary border-t-[1px] border-solid border-secondaryOpacity3 items-center')}>
-            <Heading className='font-normal text-[32px]'>{title}</Heading>
+            <Heading as='h4' className='font-normal text-[32px]'>{title}</Heading>
             <div className='flex flex-col items-start justify-center'>
                 <Paragraph className='text-sm text-secondaryOpacity4 pb-2'>Location</Paragraph>
                 <Paragraph className='text-xl'>{location}</Paragraph>

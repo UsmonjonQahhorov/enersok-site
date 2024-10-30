@@ -4,8 +4,8 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from './../../../../public/factory2.png';
-import Banner from './../../../../public/submission-banner.png';
+import Factory from '@public/factory2.png';
+import Banner from '@public/submission-banner.png';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { GrmSubmissionForm } from '@/components/form/GrmSubmissionForm';
 

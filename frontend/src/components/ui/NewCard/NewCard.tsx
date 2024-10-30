@@ -3,7 +3,7 @@ import Image, { type StaticImageData } from 'next/image';
 import type { FC } from 'react';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
-import Time from './../../../../public/time.svg';
+import Time from '@public/time.svg';
 
 export const NewCard: FC<NewCardProps> = ({
     date,
@@ -21,7 +21,7 @@ export const NewCard: FC<NewCardProps> = ({
                     className='max-h-[287px] w-full h-full object-cover object-center rounded-xl'
                 />
             </div>
-            <Heading className='text-[32px]'>{title}</Heading>
+            <Heading as='h4' className='text-[32px]'>{title}</Heading>
             <div className='flex flex-row gap-x-5 items-center'>
                 <Paragraph className='text-base !leading-[normal]'>{date}</Paragraph>
                 <div className='flex flex-row items-center gap-x-1'>
