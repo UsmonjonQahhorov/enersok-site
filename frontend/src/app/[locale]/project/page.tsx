@@ -20,6 +20,7 @@ import Banner from '@public/project.png';
 import Banner2 from '@public/project2.png';
 import Location from '@public/location-green.svg';
 import { RouterConfig } from '@/configs/router.config';
+import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
 
 const ProjectDetailsPage: PageType = () => {
     return (
@@ -91,7 +92,43 @@ const ProjectDetailsPage: PageType = () => {
             <section>
                 <Container className='py-40'>
                     <Heading as='h3' className='text-secondary text-6xl uppercase pb-11'>About Project</Heading>
-                    <Paragraph className='text-2xl text-secondary pr-[20%]'>Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration. ENERSOK has selected an EPC contractor (Harbin Electric International Company Limited) to deliver  the engineering  design  of the facility, to procure all equipment and to build all temporary and permanent facilities of the project. The EPC contractor was selected through a competitive tender process from five international EPC Contractors considering financial, technical and E&S qualifications.</Paragraph>
+                    <Paragraph className='text-2xl text-secondary pr-[20%] pb-[95px]'>Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration. ENERSOK has selected an EPC contractor (Harbin Electric International Company Limited) to deliver  the engineering  design  of the facility, to procure all equipment and to build all temporary and permanent facilities of the project. The EPC contractor was selected through a competitive tender process from five international EPC Contractors considering financial, technical and E&S qualifications.</Paragraph>
+                    <EmblaCarousel
+                        showCounter={false}
+                        slidesToShow={3}
+                        slides={[
+                            <Image
+                                src={Banner}
+                                alt='Slide Enersok'
+                                className='max-h-[321px] w-full rounded-xl'
+                            />,
+                            <Image
+                                src={Banner}
+                                alt='Slide Enersok'
+                                className='max-h-[321px] w-full rounded-xl'
+                            />,
+                            <Image
+                                src={Banner}
+                                alt='Slide Enersok'
+                                className='max-h-[321px] w-full rounded-xl'
+                            />,
+                            <Image
+                                src={Banner}
+                                alt='Slide Enersok'
+                                className='max-h-[321px] w-full rounded-xl'
+                            />,
+                            <Image
+                                src={Banner}
+                                alt='Slide Enersok'
+                                className='max-h-[321px] w-full rounded-xl'
+                            />,
+                            <Image
+                                src={Banner}
+                                alt='Slide Enersok'
+                                className='max-h-[321px] w-full rounded-xl'
+                            />,
+                        ]}
+                    />
                 </Container>
             </section>
             <section className='bg-backgroundImage1 relative overflow-hidden'>

@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import type { PageType } from '@/types/component.types';
@@ -13,12 +12,54 @@ import StationImage from '@public/Rectangle 6.png';
 import PeopelsImage from '@public/image (1).png';
 import EnergyIcon from '@public/energy-icon.svg';
 import { cn } from '@/utils/cn';
+import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
 
 const DashboardPage: PageType = async () => {
 
 	return (
 		<>
-
+			<section>
+				<Container>
+					<EmblaCarousel
+						slides={[
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+							<NextImage
+								src={PeopelsImage}
+								alt='Slide 1'
+							/>,
+						]}
+						showCounter={true}
+						controlsPosition="below"
+					/>
+				</Container>
+			</section>
 			{/* Feature section */}
 			<section className='pt-32 pb-64'>
 				<Container className='flex flex-wrap gap-16 justify-evenly *:text-secondary'>
