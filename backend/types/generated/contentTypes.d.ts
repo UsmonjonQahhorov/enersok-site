@@ -2252,6 +2252,219 @@ export interface ApiOrganizationPageOrganizationPage extends Schema.SingleType {
   };
 }
 
+export interface ApiProjectDetailProjectDetail extends Schema.SingleType {
+  collectionName: 'project_details';
+  info: {
+    singularName: 'project-detail';
+    pluralName: 'project-details';
+    displayName: 'Project Detail';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Project detail'>;
+    heading_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Syrdarya  2 '>;
+    heading_background_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    heading_section_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    about_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'About Project '>;
+    about_section_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration. ENERSOK has selected an EPC contractor (Harbin Electric International Company Limited) to deliver  the engineering  design  of the facility, to procure all equipment and to build all temporary and permanent facilities of the project. The EPC contractor was selected through a competitive tender process from five international EPC Contractors considering financial, technical and E&S qualifications. '>;
+    info_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'The main project facilities will include:'>;
+    info_section_first_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Power block and stacks including two Gas Turbines (GT), two Heat Recovery Steam Generators (HRSG) and one Steam Turbine (ST)'>;
+    info_section_second_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Closed Loop Cooling Water system, with mechanical draft air cooling tower blocks'>;
+    info_section_third_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Gas receiving terminal'>;
+    info_section_fourth_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Access road'>;
+    info_section_five_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Intake and outfall corridor to a surface water canal, known as the YG Canal'>;
+    info_section_six_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Wastewater treatment plants (industrial and sanitary)'>;
+    info_section_seven_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Ancillary/support facilities (i.e. electrical system, site entrance and security building)'>;
+    info_section_eight_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'500/220kv switchgear station shared with and being constructed by the adjacent ACWA Power Syrdarya 1,500MW CCGT Power Plant '>;
+    follow_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Associated Facilities (AFs) will be limited to the following:'>;
+    follow_section_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    follow_section_first_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'1 km gas pipeline connection to an existing gas supply system to be constructed by NEGU (or its appointed contractor) and operated by the gas supplier, JSC Uztransgaz.'>;
+    follow_section_second_text: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Re-routing of an existing 500kV Overhead Transmission Line (OHTL) by NEGU. The OHTL run through the centre of the project site and will be rerouted alongside its western boundary.\u00A0\u00A0'>;
+    heading_first_phase: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Construction period : 2023 \u2013 2026'>;
+    heading_second_phase: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Opearating period : 2026-2051'>;
+    heading_location_address: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<' So called Syrdarya 2 will be located in Bayaut district, Syrdarya region, approximately 150 km south of Tashkent.      '>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project-detail.project-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project-detail.project-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::project-detail.project-detail',
+      'oneToMany',
+      'api::project-detail.project-detail'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiSponsorSponsor extends Schema.CollectionType {
   collectionName: 'sponsors';
   info: {
@@ -2551,6 +2764,7 @@ declare module '@strapi/types' {
       'api::news.news': ApiNewsNews;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::organization-page.organization-page': ApiOrganizationPageOrganizationPage;
+      'api::project-detail.project-detail': ApiProjectDetailProjectDetail;
       'api::sponsor.sponsor': ApiSponsorSponsor;
       'api::vacancies-page.vacancies-page': ApiVacanciesPageVacanciesPage;
       'api::vacancy.vacancy': ApiVacancyVacancy;
