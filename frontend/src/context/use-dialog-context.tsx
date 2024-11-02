@@ -12,7 +12,7 @@ import {
 import { useDialog } from '@/hooks/useDialog';
 import { parseLocalizedValue } from '@/utils/parseLocalized.util';
 
-interface useDialogContext {
+interface UseDialogContext {
   openDialog: () => void;
   closeDialog: () => void;
   isOpen: boolean;
@@ -24,10 +24,10 @@ interface useDialogContext {
   openErrorDialog: () => void;
 }
 
-const useDialogContext = createContext<useDialogContext>(
-  {} as useDialogContext,
+const UseDialogContext = createContext<UseDialogContext>(
+  {} as UseDialogContext,
 );
-export const useDialogData = () => useContext(useDialogContext);
+export const useDialogData = () => useContext(UseDialogContext);
 
 export const UseDialogProvider: FC<DialogProviderProps> = ({
   locale,
@@ -81,7 +81,7 @@ export const UseDialogProvider: FC<DialogProviderProps> = ({
     openDialog();
   };
 
-  const value: useDialogContext = {
+  const value: UseDialogContext = {
     isOpen,
     message,
     title,
@@ -94,7 +94,7 @@ export const UseDialogProvider: FC<DialogProviderProps> = ({
   };
 
   return (
-    <useDialogContext.Provider value={value}>
+    <UseDialogContext.Provider value={value}>
       {children}
       <Dialog open={isOpen} onClose={closeDialog}>
         <DialogHeader>
@@ -107,7 +107,7 @@ export const UseDialogProvider: FC<DialogProviderProps> = ({
           </DialogAction>
         </DialogFooter>
       </Dialog>
-    </useDialogContext.Provider>
+    </UseDialogContext.Provider>
   );
 };
 

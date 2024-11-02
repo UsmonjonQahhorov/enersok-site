@@ -1,8 +1,8 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	logging: {
 		fetches: {
@@ -10,12 +10,13 @@ const nextConfig = {
 		},
 	},
 	images: {
-		remotePatterns: [],
-	},
-	experimental: {
-		staleTimes: {
-			dynamic: 30,
-		},
+		// TODO: Add production backend URL
+		remotePatterns: [
+			{
+				protocol: 'http',
+				hostname: 'localhost',
+			},
+		],
 	},
 	headers: async () => {
 		return [
