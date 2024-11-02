@@ -18,11 +18,7 @@ export const generateStaticParams = async () => {
 	return locales.map((locale) => ({ locale }));
 };
 
-const RootLayout: LayoutType = async ({
-	children,
-	params,
-}) => {
-
+const RootLayout: LayoutType = async ({ children, params }) => {
 	const { locale } = await params;
 	if (!routing.locales.includes(locale)) {
 		notFound();
@@ -37,12 +33,8 @@ const RootLayout: LayoutType = async ({
 		>
 			<body>
 				<NextIntlClientProvider>
-					<Header
-						locale={locale}
-					/>
-					<main>
-						{children}
-					</main>
+					<Header locale={locale} />
+					<main>{children}</main>
 					<Footer />
 				</NextIntlClientProvider>
 			</body>

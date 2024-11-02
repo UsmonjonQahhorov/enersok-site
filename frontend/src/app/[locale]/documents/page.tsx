@@ -9,80 +9,67 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { DownloadFile } from '@/components/ui/DownloadFile';
 
 const DocumentsAndGuidelinesPage: PageType = () => {
-    return (
-        <>
-            <section className='bg-backgroundImage1 relative'>
-                <Container className='pt-[164px] pb-5'>
-                    <Breadcrumbs
-                        textHome={'Main'}
-                        textPage={'Documents and guidelines'}
-                        urlHome={RouterConfig.Home}
-                        urlPage={RouterConfig.DocumentsAndGuidelines}
-                    />
-                    <Heading className='!leading-[normal] text-secondary uppercase py-[75px] text-[100px]'>
-                        Documents and guidelines
-                    </Heading>
-                </Container>
-                <Image
-                    src={Factory}
-                    alt="Banner Enersok"
-                    className='absolute bottom-0 right-[122px]'
-                    priority={true}
-                />
-            </section>
-            <section>
-                <Container className='pb-[84px]'>
-                    <Paragraph size='2xl' className='w-full whitespace-[10px] py-[50px] text-secondary'>Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.</Paragraph>
-                    <div className='grid grid-cols-2 gap-5'>
-                        <DownloadFile
-                            text='Syrdarya CCGT_ESIA Volume 1 NTS_v1.2'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_ESIA Volume 2_v1.3'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_ESIA Volume 3_v1.2'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_ESIA Volume 4_v1.1'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_LALRP Exec Summary_v.1.0'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_Land Acquisition and Livelihoods Restoration Plan_v.1.3'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_Stakeholder Engagement Plan_v1.3'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Syrdarya CCGT_ESIA Vol 1 NTS_v1.2_uzbek version'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='National EIA_Syrdarya 1600 MW_ru'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='National EIA_Syrdarya 1600 MW_en'
-                            url='/'
-                        />
-                        <DownloadFile
-                            text='Conclusion_Syrdarya 1600MW_ru'
-                            url='/'
-                        />
-                    </div>
-                </Container>
-            </section>
-        </>
-    )
-}
+	return (
+		<>
+			<section className="bg-backgroundImage1 relative">
+				<Container className="pt-[164px] pb-5">
+					<Breadcrumbs
+						textHome={'Main'}
+						textPage={'Documents and guidelines'}
+						urlHome={RouterConfig.Home}
+						urlPage={RouterConfig.DocumentsAndGuidelines}
+					/>
+					<Heading className="!leading-[normal] text-secondary uppercase py-[75px] text-[100px]">
+						Documents and guidelines
+					</Heading>
+				</Container>
+				<Image
+					src={Factory}
+					alt="Banner Enersok"
+					className="absolute bottom-0 right-[122px]"
+					priority={true}
+				/>
+			</section>
+			<section>
+				<Container className="pb-[84px]">
+					<Paragraph
+						size="2xl"
+						className="w-full whitespace-[10px] py-[50px] text-secondary"
+					>
+						Construction period started in March 2023 and the COD (Commercial
+						Operating Date) should be reach in June 2026. That means the plant
+						will be fully operational with two gas turbines and one steam
+						turbine in combined cycle configuration.
+					</Paragraph>
+					<div className="grid grid-cols-2 gap-5">
+						<DownloadFile text="Syrdarya CCGT_ESIA Volume 1 NTS_v1.2" url="/" />
+						<DownloadFile text="Syrdarya CCGT_ESIA Volume 2_v1.3" url="/" />
+						<DownloadFile text="Syrdarya CCGT_ESIA Volume 3_v1.2" url="/" />
+						<DownloadFile text="Syrdarya CCGT_ESIA Volume 4_v1.1" url="/" />
+						<DownloadFile
+							text="Syrdarya CCGT_LALRP Exec Summary_v.1.0"
+							url="/"
+						/>
+						<DownloadFile
+							text="Syrdarya CCGT_Land Acquisition and Livelihoods Restoration Plan_v.1.3"
+							url="/"
+						/>
+						<DownloadFile
+							text="Syrdarya CCGT_Stakeholder Engagement Plan_v1.3"
+							url="/"
+						/>
+						<DownloadFile
+							text="Syrdarya CCGT_ESIA Vol 1 NTS_v1.2_uzbek version"
+							url="/"
+						/>
+						<DownloadFile text="National EIA_Syrdarya 1600 MW_ru" url="/" />
+						<DownloadFile text="National EIA_Syrdarya 1600 MW_en" url="/" />
+						<DownloadFile text="Conclusion_Syrdarya 1600MW_ru" url="/" />
+					</div>
+				</Container>
+			</section>
+		</>
+	);
+};
 
 export default DocumentsAndGuidelinesPage;

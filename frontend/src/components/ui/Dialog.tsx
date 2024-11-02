@@ -1,19 +1,19 @@
 'use client';
 import type {
-     ComponentPropsWithoutRef,
-     ComponentPropsWithRef,
-     FC,
-     ReactNode,
-     RefObject,
+	ComponentPropsWithoutRef,
+	ComponentPropsWithRef,
+	FC,
+	ReactNode,
+	RefObject,
 } from 'react';
 import { Children } from 'react';
 import {
-     Content,
-     Description,
-     Overlay,
-     Portal,
-     Root,
-     Title,
+	Content,
+	Description,
+	Overlay,
+	Portal,
+	Root,
+	Title,
 } from '@radix-ui/react-dialog';
 import { CircleX } from 'lucide-react';
 import { Button, type ButtonProps } from '@/components/ui/Button';
@@ -21,26 +21,26 @@ import { Heading } from '@/components/ui/Heading';
 import { cn } from '@/utils/cn';
 
 type PointerDownOutsideEvent = CustomEvent<{
-     originalEvent: PointerEvent;
+	originalEvent: PointerEvent;
 }>;
 type FocusOutsideEvent = CustomEvent<{
-     originalEvent: FocusEvent;
+	originalEvent: FocusEvent;
 }>;
 interface DialogProps {
-     open?: boolean;
-     children?: ReactNode;
-     onOpen?: () => void;
-     onClose?: () => void;
-     hasBlur?: boolean;
-     id?: string;
-     hasFocusLock?: boolean;
-     closeOnEscape?: boolean;
-     closeOnOutside?: boolean;
-     dialogContentProps?: Omit<
-          ComponentPropsWithoutRef<typeof Content>,
-          'onInteractOutside' | 'onOpenAutoFocus' | 'onEscapeKeyDown'
-     >;
-     ref?: DialogRef;
+	open?: boolean;
+	children?: ReactNode;
+	onOpen?: () => void;
+	onClose?: () => void;
+	hasBlur?: boolean;
+	id?: string;
+	hasFocusLock?: boolean;
+	closeOnEscape?: boolean;
+	closeOnOutside?: boolean;
+	dialogContentProps?: Omit<
+		ComponentPropsWithoutRef<typeof Content>,
+		'onInteractOutside' | 'onOpenAutoFocus' | 'onEscapeKeyDown'
+	>;
+	ref?: DialogRef;
 }
 type DialogRef = RefObject<HTMLDivElement>;
 /**
@@ -72,99 +72,95 @@ type DialogRef = RefObject<HTMLDivElement>;
  * @param {ComponentPropsWithoutRef<typeof Content>} [dialogContentProps] - Additional props to be passed to the Content component.
  * @returns {JSX.Element} - The Dialog component.
  */
-const Dialog =
-     (
-          {
-               children,
-               onClose,
-               onOpen,
-               open,
-               closeOnEscape = true,
-               closeOnOutside = true,
-               dialogContentProps,
-               hasFocusLock = true,
-               ref,
-          }: DialogProps,
-     ) => {
-          const { className, ...restDialogContentProps } = dialogContentProps || {};
+const Dialog = ({
+	children,
+	onClose,
+	onOpen,
+	open,
+	closeOnEscape = true,
+	closeOnOutside = true,
+	dialogContentProps,
+	hasFocusLock = true,
+	ref,
+}: DialogProps) => {
+	const { className, ...restDialogContentProps } = dialogContentProps || {};
 
-          function onOpenChangeHandler(open: boolean) {
-               if (open === false) {
-                    if (onClose) {
-                         onClose();
-                    }
-               } else {
-                    if (onOpen) {
-                         onOpen();
-                    }
-               }
-          }
+	function onOpenChangeHandler(open: boolean) {
+		if (open === false) {
+			if (onClose) {
+				onClose();
+			}
+		} else {
+			if (onOpen) {
+				onOpen();
+			}
+		}
+	}
 
-          function onEscapePressHandler(e: KeyboardEvent) {
-               if (closeOnEscape === false) {
-                    e.preventDefault();
-               }
-          }
+	function onEscapePressHandler(e: KeyboardEvent) {
+		if (closeOnEscape === false) {
+			e.preventDefault();
+		}
+	}
 
-          function onClickContentOutside(
-               event: PointerDownOutsideEvent | FocusOutsideEvent,
-          ) {
-               if (closeOnOutside === false) {
-                    event.preventDefault();
-               }
-          }
+	function onClickContentOutside(
+		event: PointerDownOutsideEvent | FocusOutsideEvent,
+	) {
+		if (closeOnOutside === false) {
+			event.preventDefault();
+		}
+	}
 
-          function onOpenAutoFocus(e: Event) {
-               if (hasFocusLock === false) {
-                    e.preventDefault();
-               }
-          }
+	function onOpenAutoFocus(e: Event) {
+		if (hasFocusLock === false) {
+			e.preventDefault();
+		}
+	}
 
-          return (
-               <Root open={open} modal={true} onOpenChange={onOpenChangeHandler}>
-                    <Portal>
-                         <Overlay
-                              className={cn(
-                                   'fixed inset-0 bg-black/40 transition-opacity data-[state=open]:animate-overlayShow',
-                              )}
-                         >
-                              <Content
-                                   className={cn(
-                                        'rounded-cardRadius data-[state=open]:animate-contentShow',
-                                        'w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-2/6',
-                                        'fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] lg:top-[30%]',
-                                        'flex flex-col bg-white',
-                                        'gap-y-5 pb-7',
-                                        className,
-                                   )}
-                                   onEscapeKeyDown={onEscapePressHandler}
-                                   onOpenAutoFocus={onOpenAutoFocus}
-                                   onInteractOutside={onClickContentOutside}
-                                   ref={ref}
-                                   {...restDialogContentProps}
-                              >
-                                   {children}
-                              </Content>
-                         </Overlay>
-                    </Portal>
-               </Root>
-          );
-     };
-
+	return (
+		<Root open={open} modal={true} onOpenChange={onOpenChangeHandler}>
+			<Portal>
+				<Overlay
+					className={cn(
+						'fixed inset-0 bg-black/40 transition-opacity data-[state=open]:animate-overlayShow',
+					)}
+				>
+					<Content
+						className={cn(
+							'rounded-cardRadius data-[state=open]:animate-contentShow',
+							'w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-2/6',
+							'fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] lg:top-[30%]',
+							'flex flex-col bg-white',
+							'gap-y-5 pb-7',
+							className,
+						)}
+						onEscapeKeyDown={onEscapePressHandler}
+						onOpenAutoFocus={onOpenAutoFocus}
+						onInteractOutside={onClickContentOutside}
+						ref={ref}
+						{...restDialogContentProps}
+					>
+						{children}
+					</Content>
+				</Overlay>
+			</Portal>
+		</Root>
+	);
+};
 
 type DialogHeaderProps = ComponentPropsWithRef<'div'> & {
-     iconClassName?: string;
-     ref?: RefObject<DialogHeaderRef>;
+	iconClassName?: string;
+	ref?: RefObject<DialogHeaderRef>;
 } & AdditionalDialogHeaderPropsProps;
 type AdditionalDialogHeaderPropsProps =
-     | {
-          hasCloseIcon?: true;
-          onClose: () => void;
-     }
-     | {
-          hasCloseIcon?: false;
-          onClose?: () => void;
-     };
+	| {
+			hasCloseIcon?: true;
+			onClose: () => void;
+	  }
+	| {
+			hasCloseIcon?: false;
+			onClose?: () => void;
+	  };
 type DialogHeaderRef = HTMLDivElement;
 
 /**
@@ -175,49 +171,54 @@ type DialogHeaderRef = HTMLDivElement;
  * @param {() => void} [onClose] - A function to be called when the close icon is clicked.
  * @returns {JSX.Element} - The DialogHeader component.
  */
-const DialogHeader = ({ children, className, hasCloseIcon = true, onClose, ref, ...props }: DialogHeaderProps) => {
-     const onCrossClickHandler = () => {
-          if (hasCloseIcon === true && onClose) {
-               onClose();
-          }
-     };
+const DialogHeader = ({
+	children,
+	className,
+	hasCloseIcon = true,
+	onClose,
+	ref,
+	...props
+}: DialogHeaderProps) => {
+	const onCrossClickHandler = () => {
+		if (hasCloseIcon === true && onClose) {
+			onClose();
+		}
+	};
 
-     return (
-          <div
-               className={cn(
-                    'border-b border-[#D9D9D9] p-5',
-                    'lg:p-5 lg:px-10',
-                    {
-                         'flex w-full items-center justify-between': hasCloseIcon === true,
-                    },
-                    className,
-               )}
-               {...props}
-               ref={ref}
-          >
-               {children}
-               {hasCloseIcon && (
-                    <button
-                         className={cn(
-                              'flex',
-                              'border-none bg-transparent outline-none',
-                              'text-xl lg:text-2xl',
-                         )}
-                         onClick={onCrossClickHandler}
-                         type="button"
-                    >
-                         <CircleX color="#8F8C8C" />
-                    </button>
-               )}
-          </div>
-     );
+	return (
+		<div
+			className={cn(
+				'border-b border-[#D9D9D9] p-5',
+				'lg:p-5 lg:px-10',
+				{
+					'flex w-full items-center justify-between': hasCloseIcon === true,
+				},
+				className,
+			)}
+			{...props}
+			ref={ref}
+		>
+			{children}
+			{hasCloseIcon && (
+				<button
+					className={cn(
+						'flex',
+						'border-none bg-transparent outline-none',
+						'text-xl lg:text-2xl',
+					)}
+					onClick={onCrossClickHandler}
+					type="button"
+				>
+					<CircleX color="#8F8C8C" />
+				</button>
+			)}
+		</div>
+	);
 };
 
-
-
 type DialogTitleProps = ComponentPropsWithRef<typeof Heading> & {
-     ref?: RefObject<HTMLHeadingElement>;
-}
+	ref?: RefObject<HTMLHeadingElement>;
+};
 /**
  * A component that can be used to display a title in a dialog. Inherits all props from the `Heading` component.
  * @param {ReactNode} [children] - The content to be displayed inside the title.
@@ -226,40 +227,47 @@ type DialogTitleProps = ComponentPropsWithRef<typeof Heading> & {
  * @param {string} [weight='medium'] - The weight of the title.
  * @returns {JSX.Element} The DialogTitle component.
  */
-const DialogTitle = ({ children, className, size = 'xl', weight = 'semibold', ref, ...props }: DialogTitleProps) => {
-     return (
-          <Title ref={ref} asChild={true}>
-               <Heading
-                    className={cn(
-                         'text-black',
-                         'text-base lg:text-lg xl:text-xl',
-                         className,
-                    )}
-                    size={size}
-                    weight={weight}
-                    {...props}
-               >
-                    {children}
-               </Heading>
-          </Title>
-     );
+const DialogTitle = ({
+	children,
+	className,
+	size = 'xl',
+	weight = 'semibold',
+	ref,
+	...props
+}: DialogTitleProps) => {
+	return (
+		<Title ref={ref} asChild={true}>
+			<Heading
+				className={cn(
+					'text-black',
+					'text-base lg:text-lg xl:text-xl',
+					className,
+				)}
+				size={size}
+				weight={weight}
+				{...props}
+			>
+				{children}
+			</Heading>
+		</Title>
+	);
 };
 
 type DialogBodyProps = ComponentPropsWithRef<'div'>;
 const DialogBody: FC<DialogBodyProps> = ({ children, className, ...props }) => {
-     return (
-          <div
-               className={cn(
-                    'px-5 text-start leading-normal',
-                    'text-base',
-                    'lg:px-10 lg:text-xl',
-                    className,
-               )}
-               {...props}
-          >
-               {children}
-          </div>
-     );
+	return (
+		<div
+			className={cn(
+				'px-5 text-start leading-normal',
+				'text-base',
+				'lg:px-10 lg:text-xl',
+				className,
+			)}
+			{...props}
+		>
+			{children}
+		</div>
+	);
 };
 
 type DialogDescriptionProps = ComponentPropsWithRef<typeof Description>;
@@ -269,58 +277,67 @@ type DialogDescriptionProps = ComponentPropsWithRef<typeof Description>;
  * @param {asChild} [asChild=false] - Whether the description should be rendered as a child of underlying element or not.
  * @returns {JSX.Element} The DialogDescription component.
  */
-const DialogDescription = ({ children, className, ...props }: DialogDescriptionProps) => {
-     return (
-          <Description
-               className={cn('text-base text-gray-500', className)}
-               {...props}
-          >
-               {children}
-          </Description>
-     );
+const DialogDescription = ({
+	children,
+	className,
+	...props
+}: DialogDescriptionProps) => {
+	return (
+		<Description
+			className={cn('text-base text-gray-500', className)}
+			{...props}
+		>
+			{children}
+		</Description>
+	);
 };
 
 type DialogFooterProps = ComponentPropsWithRef<'div'>;
 const DialogFooter: FC<DialogFooterProps> = ({
-     className,
-     children,
-     ...props
+	className,
+	children,
+	...props
 }) => {
-     const numberOfChildren = Children.count(children);
+	const numberOfChildren = Children.count(children);
 
-     return (
-          <div
-               className={cn(
-                    'mt-5',
-                    {
-                         'flex w-full justify-center gap-5': numberOfChildren > 1,
-                         'self-end px-10': numberOfChildren === 1,
-                    },
-                    className,
-               )}
-               {...props}
-          >
-               {children}
-          </div>
-     );
+	return (
+		<div
+			className={cn(
+				'mt-5',
+				{
+					'flex w-full justify-center gap-5': numberOfChildren > 1,
+					'self-end px-10': numberOfChildren === 1,
+				},
+				className,
+			)}
+			{...props}
+		>
+			{children}
+		</div>
+	);
 };
 
-const DialogAction = ({ children, className, size = 'default', ...props }: ButtonProps) => {
-     return (
-          <Button className={cn(className)} size={size} {...props}>
-               {children}
-          </Button>
-     );
+const DialogAction = ({
+	children,
+	className,
+	size = 'default',
+	...props
+}: ButtonProps) => {
+	return (
+		<Button className={cn(className)} size={size} {...props}>
+			{children}
+		</Button>
+	);
 };
 
 DialogAction.displayName = 'DialogAction';
 
 export {
-     Dialog,
-     DialogAction,
-     DialogBody,
-     DialogDescription,
-     DialogFooter,
-     DialogHeader,
-     DialogTitle,
+	Dialog,
+	DialogAction,
+	DialogBody,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
 };

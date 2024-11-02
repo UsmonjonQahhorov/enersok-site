@@ -11,16 +11,16 @@
     })}
  */
 export const parseLocalizedValue = (
-     locale: string | undefined,
-     values: LocalizedValues,
+	locale: string | undefined,
+	values: LocalizedValues,
 ): string => {
-     let result = '';
+	let result = '';
 
-     if (locale) {
-          result = values[locale] || '';
-     }
+	if (locale) {
+		result = values[locale] || '';
+	}
 
-     return result;
+	return result;
 };
 
 export type LocalizedValues = Record<string, string>;

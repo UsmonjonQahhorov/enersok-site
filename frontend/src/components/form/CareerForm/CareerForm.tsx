@@ -7,59 +7,58 @@ import { cn } from '@/utils/cn';
 import { FileInput } from '@/components/input/FileInput';
 
 export const CareerForm: FC<CareerFormProps> = ({
-    email,
-    message,
-    name,
-    phone,
-    sumbmit,
-    className,
-    file
+	email,
+	message,
+	name,
+	phone,
+	sumbmit,
+	className,
+	file,
 }) => {
-    return (
-        <form className={cn(className, 'p-12 h-fit bg-backgroundImage2 [&>div:nth-last-of-type(1)]:w-[40%] flex flex-col gap-y-12 rounded-xl')}>
-            <TextInput
-                placeholder={name}
-                required={true}
-                className='bg-transparent'
-            />
-            <InputBase
-                type='email'
-                placeholder={email}
-                required={true}
-                className='bg-transparent'
-            />
-            <InputBase
-                type='tel'
-                placeholder={phone}
-                required={true}
-                pattern="[+]{1}[0-9]{7,15}"
-                className='bg-transparent'
-            />
-            <Textarea
-                placeholder={message}
-                required={true}
-                className='bg-transparent'
-            />
-            <FileInput
-                placeholder={file}
-                className='bg-transparent'
-            />
-            <Button
-                type='submit'
-                className='w-fit'
-            >
-                {sumbmit}
-            </Button>
-        </form>
-    )
-}
+	return (
+		<form
+			className={cn(
+				className,
+				'p-12 h-fit bg-backgroundImage2 [&>div:nth-last-of-type(1)]:w-[40%] flex flex-col gap-y-12 rounded-xl',
+			)}
+		>
+			<TextInput
+				placeholder={name}
+				required={true}
+				className="bg-transparent"
+			/>
+			<InputBase
+				type="email"
+				placeholder={email}
+				required={true}
+				className="bg-transparent"
+			/>
+			<InputBase
+				type="tel"
+				placeholder={phone}
+				required={true}
+				pattern="[+]{1}[0-9]{7,15}"
+				className="bg-transparent"
+			/>
+			<Textarea
+				placeholder={message}
+				required={true}
+				className="bg-transparent"
+			/>
+			<FileInput placeholder={file} className="bg-transparent" />
+			<Button type="submit" className="w-fit">
+				{sumbmit}
+			</Button>
+		</form>
+	);
+};
 
 interface CareerFormProps {
-    className?: string;
-    name: string;
-    email: string;
-    phone: string;
-    message: string;
-    sumbmit: string;
-    file: string;
+	className?: string;
+	name: string;
+	email: string;
+	phone: string;
+	message: string;
+	sumbmit: string;
+	file: string;
 }
