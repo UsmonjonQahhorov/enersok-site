@@ -1,7 +1,7 @@
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import NextImage from 'next/image';
-import PeopelsImage from '@public/image (1).png';
+import PeopelsImage from '@public/image (3).png';
 import { cn } from '@/utils/cn';
 
 export const CarouselItem = () => {
@@ -22,7 +22,10 @@ export const CarouselItem = () => {
 					International (Japan)
 				</Paragraph>
 			</div>
-			<NextImage src={PeopelsImage} alt="Slide 1" />
+			<NextImage
+				src={PeopelsImage}
+				alt="Slide 1"
+			/>
 		</div>
 	);
 };

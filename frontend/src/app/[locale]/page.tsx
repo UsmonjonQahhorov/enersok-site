@@ -14,11 +14,14 @@ import EnergyIcon from '@public/energy-icon.svg';
 import { cn } from '@/utils/cn';
 import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
 import { CarouselItem } from './_components/CarouselItem';
+import Factory from '@public/facroty.png';
+
 
 const DashboardPage: PageType = async () => {
 	return (
 		<>
-			<section className="bg-backgroundImage1 relative overflow-hidden pt-[200px] pb-[100px]">
+			{/* Heading */}
+			<section className="bg-backgroundImage1 relative overflow-hidden pt-[200px] pb-[80px]">
 				<Container>
 					<EmblaCarousel
 						autoLoopInterval={100000}
@@ -37,7 +40,14 @@ const DashboardPage: PageType = async () => {
 						controlsPosition="below"
 					/>
 				</Container>
+				<NextImage
+					src={Factory}
+					alt="Banner Enersok"
+					className="absolute bottom-0 right-[-100px] z-[1]"
+					priority={true}
+				/>
 			</section>
+
 			{/* Feature section */}
 			<section className="pt-32 pb-64">
 				<Container className="flex flex-wrap gap-16 justify-evenly *:text-secondary">
@@ -187,6 +197,9 @@ const DashboardPage: PageType = async () => {
 					<div></div>
 				</Container>
 			</section>
+
+			{/* Community */}
+			<section></section>
 		</>
 	);
 };
