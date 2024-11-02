@@ -13,3 +13,8 @@
     src: url('/font/PPMori-SemiBold.otf') format('opentype');
     font-weight: 600;
 }
+
+.embla__slide {
+    margin-right: 20px;
+    margin-left: 20px;
+}

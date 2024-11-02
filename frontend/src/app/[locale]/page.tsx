@@ -13,47 +13,26 @@ import PeopelsImage from '@public/image (1).png';
 import EnergyIcon from '@public/energy-icon.svg';
 import { cn } from '@/utils/cn';
 import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
+import { CarouselItem } from './_components/CarouselItem';
 
 const DashboardPage: PageType = async () => {
 
 	return (
 		<>
-			<section>
+			<section className='bg-backgroundImage1 relative overflow-hidden pt-[200px] pb-[100px]'>
 				<Container>
 					<EmblaCarousel
+						autoLoopInterval={100000}
 						slides={[
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
-							<NextImage
-								src={PeopelsImage}
-								alt='Slide 1'
-							/>,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
 						]}
 						showCounter={true}
 						controlsPosition="below"
