@@ -20,6 +20,7 @@ import Image1 from '@public/image (4).png';
 import Image2 from '@public/image (5).png';
 import Image3 from '@public/image (6).png';
 import Image4 from '@public/image (7).png';
+import { SponsorDonutChart } from './_components/Chart';
 
 
 
@@ -200,7 +201,9 @@ const DashboardPage: PageType = async () => {
 						</div>
 					</div>
 					{/* Chart */}
-					<div></div>
+					<div className='flex justify-center'>
+						<SponsorDonutChart/>
+					</div>
 				</Container>
 			</section>
 

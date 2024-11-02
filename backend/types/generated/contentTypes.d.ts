@@ -2489,13 +2489,6 @@ export interface ApiSponsorSponsor extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    sponsor_value: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     sponsor_color: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'> &
@@ -2527,6 +2520,14 @@ export interface ApiSponsorSponsor extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<'Sojitz Group is engaged in a wide range of businesses globally as trading and investment house, including manufacturing, selling, importing, and exporting a variety of products, in addition to providing services and investing in diversified businesses, both in Japan and overseas. Sojitz has more than 70 office over the world and operates with a 7-division structure comprising the Automotive Division; the Aerospace & Transportation Project Division; the Infrastructure & Healthcare Division; the Metals, Mineral Resources & Recycling Division; the Chemicals Division; the Consumer Industry & Agriculture Business Division; and the Retail & Consumer Service Division.'>;
+    sponsor_value: Attribute.Float &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<33.33>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

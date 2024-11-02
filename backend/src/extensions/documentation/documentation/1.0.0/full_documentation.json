@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-30T17:59:27.030Z"
+    "x-generation-date": "2024-11-02T12:00:52.439Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -18026,19 +18026,16 @@
       "SponsorLocalizationRequest": {
         "required": [
           "sponsor_name",
-          "sponsor_value",
           "sponsor_color",
           "sponsor_logo",
           "sponsor_website_link",
           "about_sponsor",
+          "sponsor_value",
           "locale"
         ],
         "type": "object",
         "properties": {
           "sponsor_name": {
-            "type": "string"
-          },
-          "sponsor_value": {
             "type": "string"
           },
           "sponsor_color": {
@@ -18061,6 +18058,10 @@
           "about_sponsor": {
             "type": "string"
           },
+          "sponsor_value": {
+            "type": "number",
+            "format": "float"
+          },
           "locale": {
             "type": "string"
           }
@@ -18075,18 +18076,15 @@
           "data": {
             "required": [
               "sponsor_name",
-              "sponsor_value",
               "sponsor_color",
               "sponsor_logo",
               "sponsor_website_link",
-              "about_sponsor"
+              "about_sponsor",
+              "sponsor_value"
             ],
             "type": "object",
             "properties": {
               "sponsor_name": {
-                "type": "string"
-              },
-              "sponsor_value": {
                 "type": "string"
               },
               "sponsor_color": {
@@ -18108,6 +18106,10 @@
               },
               "about_sponsor": {
                 "type": "string"
+              },
+              "sponsor_value": {
+                "type": "number",
+                "format": "float"
               },
               "locale": {
                 "type": "string"
@@ -18234,17 +18236,14 @@
         "type": "object",
         "required": [
           "sponsor_name",
-          "sponsor_value",
           "sponsor_color",
           "sponsor_logo",
           "sponsor_website_link",
-          "about_sponsor"
+          "about_sponsor",
+          "sponsor_value"
         ],
         "properties": {
           "sponsor_name": {
-            "type": "string"
-          },
-          "sponsor_value": {
             "type": "string"
           },
           "sponsor_color": {
@@ -18877,6 +18876,10 @@
           },
           "about_sponsor": {
             "type": "string"
+          },
+          "sponsor_value": {
+            "type": "number",
+            "format": "float"
           },
           "createdAt": {
             "type": "string",
