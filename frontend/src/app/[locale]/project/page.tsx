@@ -21,6 +21,7 @@ import Banner2 from '@public/project2.png';
 import Location from '@public/location-green.svg';
 import { RouterConfig } from '@/configs/router.config';
 import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
+import { CarouselItem } from './_components/CarouselItem';
 
 const ProjectDetailsPage: PageType = () => {
 	return (
@@ -131,36 +132,17 @@ const ProjectDetailsPage: PageType = () => {
 						showCounter={false}
 						slidesToShow={3}
 						slides={[
-							<Image
-								src={Banner}
-								alt="Slide Enersok"
-								className="max-h-[321px] w-full rounded-xl"
-							/>,
-							<Image
-								src={Banner}
-								alt="Slide Enersok"
-								className="max-h-[321px] w-full rounded-xl"
-							/>,
-							<Image
-								src={Banner}
-								alt="Slide Enersok"
-								className="max-h-[321px] w-full rounded-xl"
-							/>,
-							<Image
-								src={Banner}
-								alt="Slide Enersok"
-								className="max-h-[321px] w-full rounded-xl"
-							/>,
-							<Image
-								src={Banner}
-								alt="Slide Enersok"
-								className="max-h-[321px] w-full rounded-xl"
-							/>,
-							<Image
-								src={Banner}
-								alt="Slide Enersok"
-								className="max-h-[321px] w-full rounded-xl"
-							/>,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+							<CarouselItem />,
+
 						]}
 					/>
 				</Container>
