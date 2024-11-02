@@ -7,5 +7,4 @@ export interface Sponsor {
 	sponsorWebsiteLink: string;
 	sponsorDescription: string;
 	sponsorLogo: Image;
-	slug: string;
 }
