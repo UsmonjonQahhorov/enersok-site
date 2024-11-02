@@ -11,7 +11,7 @@ export const CarouselItem = () => {
 				<Heading
 					size="3xl"
 					as="h1"
-					className={cn('md:text-6xl font-semibold', 'lg:text-7xl')}
+					className={cn('md:text-6xl font-semibold uppercase', 'lg:text-[102px]')}
 				>
 					Enersok
 					<span className="text-3xl mx-6">FE LLC</span>

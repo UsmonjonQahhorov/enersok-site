@@ -105,7 +105,7 @@ const DashboardPage: PageType = async () => {
 							alt="Link"
 						/>
 						<div>
-							<Heading size="3xl" as="h3" className="md:text-6xl">
+							<Heading size="3xl" as="h3" className="md:text-[64px] uppercase">
 								Enersok FE LLC
 							</Heading>
 							<Paragraph
@@ -201,35 +201,24 @@ const DashboardPage: PageType = async () => {
 						</div>
 					</div>
 					{/* Chart */}
-					<div className='flex justify-center'>
-						<SponsorDonutChart/>
+					<div className='flex justify-center overflow-hidden'>
+						<SponsorDonutChart />
 					</div>
 				</Container>
 			</section>
 
 			{/* Community */}
 			<section className='bg-backgroundImage1 pt-[150px] pb-[120px] relative overflow-hidden'>
-				<Container className='flex justify-between flex-col-reverse lg:flex-row'>
+				<Container className='grid grid-cols-[1fr,0.8fr]'>
 					<div className='*:text-secondary z-10'>
-						<Heading as='h3' size='3xl' className='md:text-6xl max-w-[650px]'>
+						<Heading as='h3' size='3xl' className='md:text-[64px] !leading-[normal] max-w-[780px] uppercase'>
 							Join Our Community by Following Us on Social Media
 						</Heading>
 						<div>
-							<Heading as='h3' size='sm' className='mt-16'>
-								FOLLOW US
+							<Heading as='h3' size='xl' className='mt-16'>
+								Follow us
 							</Heading>
 							<ul className='flex gap-3 mt-6 items-center'>
-								<li>
-									<a href=""
-										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
-									>
-										<svg
-											className='fill-[#198ABF] group-hover:fill-white'
-											width="24" height="25" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
-											<path d="M0.775913 0.365234C2.0851 1.88479 3.39696 3.4017 4.70881 4.92126C6.32196 6.78823 7.93778 8.65519 9.55094 10.5195C9.59893 10.5725 9.64159 10.6282 9.70559 10.7025C6.47661 15.3752 3.24764 20.0506 0 24.7524C0.0879898 24.7604 0.14665 24.7684 0.205311 24.771C2.45039 24.771 4.69281 24.771 6.93789 24.7763C7.09521 24.7763 7.17787 24.7206 7.26319 24.596C9.34296 21.5781 11.4281 18.5628 13.5132 15.5476C13.5665 15.4707 13.6225 15.3964 13.6891 15.3009C14.2997 16.0064 14.8943 16.6906 15.4863 17.3774C17.574 19.7907 19.6618 22.2066 21.7549 24.6172C21.8269 24.6994 21.9629 24.7631 22.0722 24.7657C22.6935 24.779 23.3147 24.7737 24 24.7737C20.859 21.1405 17.75 17.5471 14.6304 13.9432C14.6757 13.8715 14.7157 13.8079 14.761 13.7443C17.7714 9.37652 20.787 5.01143 23.8 0.64634C23.8613 0.556174 23.9147 0.458052 23.9733 0.365234C21.5923 0.365234 19.2112 0.365234 16.8328 0.365234C16.8141 0.39971 16.7981 0.436837 16.7768 0.46866C14.7664 3.38049 12.7559 6.29231 10.7455 9.20149C10.7161 9.24392 10.6921 9.29431 10.6628 9.35C8.03911 6.32414 5.46073 3.34336 2.88501 0.365234C2.18109 0.365234 1.47717 0.365234 0.775913 0.365234ZM2.90101 23.2408C2.97567 23.1295 3.02366 23.0579 3.07433 22.9863C4.36752 21.1458 5.66337 19.3054 6.95656 17.4623C10.5322 12.3759 14.1104 7.28944 17.678 2.19772C17.814 2.00413 17.9527 1.93783 18.1846 1.94049C19.0699 1.95374 19.9578 1.94579 20.843 1.94579C20.9177 1.94579 20.9923 1.95374 21.0937 1.95905C21.0377 2.04391 21.003 2.1049 20.963 2.1606C16.0622 9.13519 11.1588 16.1071 6.26064 23.0844C6.17265 23.209 6.08199 23.2568 5.92734 23.2568C5.00211 23.2488 4.07421 23.2541 3.14898 23.2514C3.08232 23.2541 3.013 23.2461 2.90101 23.2408Z" />
-										</svg>
-									</a>
-								</li>
 								<li>
 									<a href="https://t.me/SYRDARYA_CCGT_2"
 										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
@@ -254,41 +243,25 @@ const DashboardPage: PageType = async () => {
 										</svg>
 									</a>
 								</li>
-								<li>
-									<a
-										href=""
-										className="w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out"
-									>
-										<svg
-											className="fill-[#198ABF] group-hover:fill-white"
-											width="14"
-											height="25"
-											viewBox="0 0 14 25"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path d="M4.16973 9.70049H4.66973V9.20049V6.47723C4.66973 4.78716 5.19304 3.44323 6.07583 2.52499C6.95665 1.60881 8.23878 1.07089 9.84755 1.0708C9.84768 1.0708 9.84781 1.0708 9.84795 1.0708L12.9001 1.07577V4.71835L10.8494 4.7191C10.8493 4.7191 10.8493 4.7191 10.8492 4.7191C10.0956 4.71912 9.48439 4.86319 9.09434 5.31105C8.71914 5.74185 8.66274 6.33256 8.66274 6.89195V9.20049V9.70049H9.16274H12.7563L12.7548 13.6252H9.16274H8.66274V14.1252V24.0708H4.66973V14.1252V13.6252H4.16973H1.1001V9.70049H4.16973Z" />
-										</svg>
-									</a>
-
-								</li>
 							</ul>
 						</div>
 					</div>
 					{/* TODO: Fix position of the images */}
-					<div className='grid gap-2 p-4 z-10'>
+					<div className='grid gap-2 p-4 z-10 grid-cols-3 grid-rows-2'>
 						<NextImage
-							className="col-start-2 col-span-2"
-							src={Image1} alt="Peopels" />
+							className="col-start-2 col-span-2 row-start-1 h-full"
+							src={Image1} alt="Peoples" />
 						<NextImage
-							className="row-span-2"
-							src={Image2} alt="Peopels" />
+							className="col-start-1 row-span-2 place-self-center w-full"
+							src={Image2} alt="Peoples" />
 						<NextImage
-							className="col-span-1"
-							src={Image4} alt="Peopels" />
+							className="col-start-2 row-start-2 w-full"
+							src={Image4} alt="Peoples" />
 						<NextImage
-							className="col-span-1"
-							src={Image3} alt="Peopels" />
+							className="col-start-3 row-start-2"
+							src={Image3} alt="Peoples" />
 					</div>
+
 				</Container>
 				<NextImage
 					src={Factory2}
