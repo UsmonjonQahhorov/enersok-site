@@ -36,19 +36,34 @@ const NewsPage: PageType = () => {
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 						/>
 					</div>
@@ -56,14 +71,24 @@ const NewsPage: PageType = () => {
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 							className="[&>div>img]:max-h-[385px]"
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 							className="[&>div>img]:max-h-[385px]"
 						/>
@@ -72,19 +97,34 @@ const NewsPage: PageType = () => {
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
 							date="05.08. 2024"
-							image={News}
+							image={{
+								width: News.width,
+								height: News.height,
+								url: News.src,
+								name: 'News',
+							}}
 							time="5 min"
 						/>
 					</div>

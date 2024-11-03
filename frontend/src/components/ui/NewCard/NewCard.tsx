@@ -1,9 +1,10 @@
 import { cn } from '@/utils/cn';
-import Image, { type StaticImageData } from 'next/image';
+import NextImage from 'next/image';
 import type { FC } from 'react';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import Time from '@public/time.svg';
+import type { Image } from '@/types/shared.types';
 
 export const NewCard: FC<NewCardProps> = ({
 	date,
@@ -20,8 +21,8 @@ export const NewCard: FC<NewCardProps> = ({
 			)}
 		>
 			<div className="w-full h-full">
-				<Image
-					src={image}
+				<NextImage
+					src={image.url}
 					alt="Enersok News Image"
 					className="max-h-[287px] w-full h-full object-cover object-center rounded-xl"
 				/>
@@ -32,7 +33,7 @@ export const NewCard: FC<NewCardProps> = ({
 			<div className="flex flex-row gap-x-5 items-center">
 				<Paragraph className="text-base !leading-[normal]">{date}</Paragraph>
 				<div className="flex flex-row items-center gap-x-1">
-					<Image src={Time} alt="Time Enersok News" className="w-4 h-4" />
+					<NextImage src={Time} alt="Time Enersok News" className="w-4 h-4" />
 					<Paragraph className="!leading-[normal]">{time}</Paragraph>
 				</div>
 			</div>
@@ -45,5 +46,5 @@ interface NewCardProps {
 	title: string;
 	date: string;
 	time: string;
-	image: StaticImageData;
+	image: Image;
 }

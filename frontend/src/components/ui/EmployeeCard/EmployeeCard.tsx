@@ -1,22 +1,22 @@
 import { cn } from '@/utils/cn';
-import Image, { type StaticImageData } from 'next/image';
+import NextImage from 'next/image';
 import type { FC } from 'react';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
+import type { Image } from '@/types/shared.types';
 
 export const EmployeeCard: FC<EmployeeCardProps> = ({
 	image,
 	job,
 	name,
 	className,
-	alt,
 }) => {
 	return (
 		<div className={cn(className, 'flex flex-col gap-y-3')}>
 			<div className="rounded-xl w-full h-full">
-				<Image
-					src={image}
-					alt={alt}
+				<NextImage
+					src={image.url}
+					alt={image.name}
 					className="object-cover rounded-xl min-h-[371px] w-full h-full"
 				/>
 			</div>
@@ -35,8 +35,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 
 interface EmployeeCardProps {
 	className?: string;
-	image: StaticImageData;
-	alt: string;
+	image: Image;
 	name: string;
 	job: string;
 }
