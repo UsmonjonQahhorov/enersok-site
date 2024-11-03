@@ -16,16 +16,16 @@ import Image2 from '@public/image (5).png';
 import Image3 from '@public/image (6).png';
 import Image4 from '@public/image (7).png';
 import LinkImage from '@public/link.svg';
-import LocationIcon from '@public/location-icon.svg';
 import StationImage from '@public/Rectangle 6.png';
 import ReliabilityImage from '@public/reliability.svg';
-import UzbMap from '@public/uzb-map.png';
 import NextImage from 'next/image';
 import { CarouselItem } from './_components/CarouselItem';
 import { SponsorDonutChart } from './_components/Chart';
 import { NewsCarouselItem } from './_components/NewsCarouselItem';
+import { LocationSection } from './_components/LocationSection';
 
-const DashboardPage: PageType = async () => {
+const HomePage: PageType = async () => {
+
 	return (
 		<>
 			{/* Heading */}
@@ -210,36 +210,7 @@ const DashboardPage: PageType = async () => {
 
 			{/* Location section */}
 			<section className='py-60 bg-[#1375A4]'>
-				<Container className='flex justify-between'>
-					<div className='*:text-white'>
-						<Heading as="h3" size="3xl" className="md:text-[64px] uppercase max-w-[600px] xl:text-6xl leading-8">
-							We and our projects are on the map
-						</Heading>
-						<Paragraph size="sm" className="max-w-[590px] mt-6 xl:text-lg leading-7">
-							Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), Enersok FE LLC
-						</Paragraph>
-						<div className='mt-36 flex flex-col'>
-							<div className='flex items-center gap-5'>
-								<NextImage src={LocationIcon} alt="location" />
-								<Paragraph
-
-									className='max-w-96'>
-									8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan, Dmaar Business Center
-								</Paragraph>
-							</div>
-							<hr className='my-5 max-w-[450px]' />
-							<div className='flex items-center gap-5'>
-								<NextImage src={LocationIcon} alt="location" />
-								<Paragraph>
-									Shirin City, Syrdarya region, Uzbekistan
-								</Paragraph>
-							</div>
-						</div>
-					</div>
-					<div className='relative'>
-						<NextImage src={UzbMap} alt='map' />
-					</div>
-				</Container>
+				<LocationSection />
 			</section>
 
 			{/* News Carousel section */}
@@ -333,4 +304,4 @@ const DashboardPage: PageType = async () => {
 	);
 };
 
-export default DashboardPage;
+export default HomePage;

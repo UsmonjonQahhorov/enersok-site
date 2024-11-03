@@ -4,6 +4,7 @@ import * as React from "react"
 import { Pie, PieChart, Cell, Sector, Label } from "recharts"
 import {
      ChartContainer,
+     ChartTooltip,
 } from "@/components/ui/Chart"
 import { type ChartConfig } from "@/components/ui/Chart"
 import type { PieSectorDataItem } from "recharts/types/polar/Pie";
@@ -122,9 +123,9 @@ export const SponsorDonutChart = () => {
                          ))}
                     </Pie>
                     {/* On hover show value */}
-                    {/* <ChartTooltip
+                    <ChartTooltip
                               formatter={(value: string) => `${value}`}
-                         /> */}
+                         />
                </PieChart>
           </ChartContainer>
      )
