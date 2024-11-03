@@ -5,13 +5,15 @@ import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import Time from '@public/time.svg';
 import type { Image } from '@/types/shared.types';
+import Link from 'next/link';
 
 export const NewCard: FC<NewCardProps> = ({
 	date,
 	time,
 	title,
 	className,
-	image
+	image,
+	url
 }) => {
 	return (
 		<div
@@ -20,18 +22,18 @@ export const NewCard: FC<NewCardProps> = ({
 				'flex flex-col gap-y-8 items-start text-secondary',
 			)}
 		>
-			<div className="w-full h-full">
+			<Link href={url} className="w-full h-full">
 				<NextImage
 					src={image.url}
 					alt="Enersok News Image"
 					className="max-h-[287px] w-full h-full object-cover object-center rounded-xl"
 				/>
-			</div>
-			<div>
+			</Link>
+			<Link href={url}>
 				<Heading as="h4" className="text-[32px] hover:text-primary duration-300">
 					{title}
 				</Heading>
-			</div>
+			</Link>
 			<div className="flex flex-row gap-x-5 items-center">
 				<Paragraph className="text-base !leading-[normal]">{date}</Paragraph>
 				<div className="flex flex-row items-center gap-x-1">
@@ -49,4 +51,5 @@ interface NewCardProps {
 	date: string;
 	time: string;
 	image: Image;
+	url: string;
 }
