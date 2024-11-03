@@ -1,6 +1,5 @@
 'use client';
 
-import { type FC } from 'react';
 import {
 	Content,
 	Indicator,
@@ -13,7 +12,6 @@ import {
 import {
 	Close,
 	Content as PopoverContent,
-	Portal,
 	Root as PopopverRoot,
 	Trigger as PopoverTrigger,
 } from '@radix-ui/react-popover';
@@ -46,7 +44,7 @@ export const DesktopNavigation = () => {
 											key={childMenu.href}
 											asChild={true}
 											className={cn(
-												'whitespace-nowrap font-normal duration-100 lg:text-base 2xl:text-lg',
+												'whitespace-nowrap font-normal duration-200 lg:text-base 2xl:text-lg',
 												'rounded-lg p-2 text-secondary hover:bg-primary hover:text-white',
 											)}
 										>
@@ -65,7 +63,7 @@ export const DesktopNavigation = () => {
 										locale={locale}
 										href={menu.href}
 										className={cn(
-											'whitespace-nowrap text-secondary hover:text-secondary/90 text-xs font-normal lg:text-base 2xl:text-lg',
+											'whitespace-nowrap text-secondary hover:text-primary duration-200 text-xs font-normal lg:text-base 2xl:text-lg',
 										)}
 									>
 										{locale === 'en' && menu.name_en}
@@ -118,7 +116,7 @@ export const DesktopNavigation = () => {
 					</PopoverContent>
 				</PopopverRoot>
 				<NavigationLink
-					className="text-lg py-4 px-6 bg-button1 rounded-[100px] text-white"
+					className="text-lg py-4 px-6 bg-button1 hover:bg-button1/80 duration-200 rounded-[100px] text-white"
 					href="/contacts"
 					locale={locale}
 				>
