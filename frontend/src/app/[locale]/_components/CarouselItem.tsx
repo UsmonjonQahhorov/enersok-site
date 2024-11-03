@@ -3,6 +3,7 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import NextImage from 'next/image';
 import PeopelsImage from '@public/image (3).png';
 import { cn } from '@/utils/cn';
+import type { Image } from '@/types/shared.types';
 
 export const CarouselItem = () => {
 	return (
@@ -32,8 +33,7 @@ export const CarouselItem = () => {
 
 // TODO: Integrate the CarouselItemProps interface
 interface CarouselItemProps {
-	src: string;
-	alt: string;
+	image: Image;
 	title: string;
 	description: string;
 }

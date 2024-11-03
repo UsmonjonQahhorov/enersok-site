@@ -1,11 +1,11 @@
+import type { Image } from '@/types/shared.types';
 import { cn } from '@/utils/cn';
-import type { StaticImageData } from 'next/image';
-import Image from 'next/image';
-import type { FC } from 'react';
-import { Paragraph } from '../Paragraph';
-import { Heading } from '../Heading';
-import Link from 'next/link';
 import IconLink from '@public/sponsors/link.svg';
+import NextImage from 'next/image';
+import Link from 'next/link';
+import type { FC } from 'react';
+import { Heading } from '../Heading';
+import { Paragraph } from '../Paragraph';
 
 export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 	image,
@@ -22,9 +22,9 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				'grid grid-cols-[1fr,3fr] gap-x-[100px] pb-12 border-b-[1px] border-solid border-secondaryOpacity3',
 			)}
 		>
-			<div className="max-h-[150px] w-full bg-[#F8F8F8] rounded-xl flex items-center justify-center hover:shadow-lg duration-200">
-				<Image
-					src={image}
+			<div className="max-h-[150px] w-full bg-[#F8F8F8] rounded-xl flex items-center justify-center">
+				<NextImage
+					src={image.url}
 					alt={'Sponsor Image Enersok'}
 					className="max-h-[60px] w-auto h-full"
 				/>
@@ -35,7 +35,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				</Heading>
 				<Paragraph className="text-lg text-secondary">{text}</Paragraph>
 				<div className="flex flex-row gap-x-2 items-center">
-					<Image src={IconLink} alt="Link Icon Enersok" className="w-6 h-6" />
+					<NextImage src={IconLink} alt="Link Icon Enersok" className="w-6 h-6" />
 					<Link
 						className="text-2xl text-secondary hover:text-primary duration-200 !leading-[normal]"
 						href={url}
@@ -50,7 +50,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 
 interface SponsorCardInfoProps {
 	className?: string;
-	image: StaticImageData;
+	image: Image;
 	title: string;
 	text: string;
 	url: string;

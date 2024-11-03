@@ -51,50 +51,82 @@ const OrganizationalStructurePage: PageType = () => {
 						</Heading>
 						<div className="grid grid-cols-4 gap-x-5 gap-y-14">
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Regis Chancel'}
 								job={'CEO'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Lola'}
 								job={'Secretary General'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Masuyo Yo'}
 								job={'CEO'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Emrah Ipekci'}
 								job={'HSES Director'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Regis Chancel'}
 								job={'CEO'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Lola'}
 								job={'Secretary General'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Masuyo Yo'}
 								job={'CEO'}
 							/>
 							<EmployeeCard
-								image={Employee}
-								alt={'Enersok Employee'}
+								image={{
+									width: Employee.width,
+									height: Employee.height,
+									url: Employee.src,
+									name: 'Employee',
+								}}
 								name={'Emrah Ipekci'}
 								job={'HSES Director'}
 							/>

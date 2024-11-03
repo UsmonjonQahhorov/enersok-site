@@ -61,22 +61,42 @@ const AboutSponsorsPage: PageType = () => {
 							<Image src={Line1} alt="Line1 Enersok" className="pb-3 px-4" />
 							<div className="grid grid-cols-4 gap-x-3">
 								<SponsorCard
-									image={Sponsor1}
+									image={{
+										width: Sponsor1.width,
+										height: Sponsor1.height,
+										url: Sponsor1.src,
+										name: 'Sponsor1',
+									}}
 									title="EDF International S.A.S."
 									text="33,3%"
 								/>
 								<SponsorCard
-									image={Sponsor2}
+									image={{
+										width: Sponsor2.width,
+										height: Sponsor2.height,
+										url: Sponsor2.src,
+										name: 'Sponsor2',
+									}}
 									title="Nebras Power Investment Management B.V."
 									text="33,3%"
 								/>
 								<SponsorCard
-									image={Sponsor3}
+									image={{
+										width: Sponsor3.width,
+										height: Sponsor3.height,
+										url: Sponsor3.src,
+										name: 'Sponsor3',
+									}}
 									title="Sojitz Corporation"
 									text="19%"
 								/>
 								<SponsorCard
-									image={Sponsor4}
+									image={{
+										width: Sponsor4.width,
+										height: Sponsor4.height,
+										url: Sponsor4.src,
+										name: 'Sponsor4',
+									}}
 									title="Kyuden International Corporation"
 									text="14,3%"
 								/>
@@ -119,28 +139,48 @@ const AboutSponsorsPage: PageType = () => {
 					</Heading>
 					<div className="flex flex-col gap-y-12">
 						<SponsorCardInfo
-							image={Sponsor1}
+							image={{
+								width: Sponsor1.width,
+								height: Sponsor1.height,
+								url: Sponsor1.src,
+								name: 'Sponsor1',
+							}}
 							title="EDF Group"
 							text="The EDF Group is a key player in the energy transition, as an integrated energy operator engaged in all aspects of the energy business: power generation, transmission, distribution, trading, energy sales and energy services. The EDF Group is a world leader in low-carbon energy, with a diverse generation mix based mainly on nuclear and renewable energy (including hydropower). It is also investing in new technologies to support the energy transition. EDF’s raison d’être is to build a net zero energy future with electricity and innovative solutions and services, to help save the planet and drive well-being and economic development. The EDF Group helps provide energy and services to approximately 39.8 million customers, 30.3 million of them in France."
 							linkText="www.edf.fr"
 							url="https://www.edf.fr/"
 						/>
 						<SponsorCardInfo
-							image={Sponsor2}
+							image={{
+								width: Sponsor2.width,
+								height: Sponsor2.height,
+								url: Sponsor2.src,
+								name: 'Sponsor2',
+							}}
 							title="Nebras Power Q.P.S.C."
 							text='Nebras Power, a global power development and investment company, was established in 2014 and it is headquartered in Doha, Qatar. The company is a wholly owned venture of Qatar Electricity and Water Company ("QEWC"), (which is a Government Related Entity (“GRE”). It owns 21 power plants (operational and under construction) with a gross capacity of 6.6 GW across conventional power and Renewable Energy projects. It has three operational gas-fired power plants in Jordan and Oman. and one under construction in Bangladesh.'
 							linkText="www.nebras-power.com"
 							url="https://www.nebras-power.com/"
 						/>
 						<SponsorCardInfo
-							image={Sponsor3}
+							image={{
+								width: Sponsor3.width,
+								height: Sponsor3.height,
+								url: Sponsor3.src,
+								name: 'Sponsor3',
+							}}
 							title="Sojitz Corporation"
 							text="Sojitz Group is engaged in a wide range of businesses globally as trading and investment house, including manufacturing, selling, importing, and exporting a variety of products, in addition to providing services and investing in diversified businesses, both in Japan and overseas. Sojitz has more than 70 office over the world and operates with a 7-division structure comprising the Automotive Division; the Aerospace & Transportation Project Division; the Infrastructure & Healthcare Division; the Metals, Mineral Resources & Recycling Division; the Chemicals Division; the Consumer Industry & Agriculture Business Division; and the Retail & Consumer Service Division."
 							linkText="www.sojitz.com "
 							url="https://www.sojitz.com/en/"
 						/>
 						<SponsorCardInfo
-							image={Sponsor4}
+							image={{
+								width: Sponsor4.width,
+								height: Sponsor4.height,
+								url: Sponsor4.src,
+								name: 'Sponsor4',
+							}}
 							title="Kyuden International Corporation"
 							text="Kyuden International Corporation (KIC) a wholly-owned subsidiary of Kyushu Electric Power Company in overseas business, providing electricity-focused energy solutions globally, and contributing to the creation of a future society that is both comfortable and environmentally-friendly. Kyushu Electric Power Company is one of magor utilities in Japan, covering power generation, transmission, and distribution, which operates more than 17 GW of power facilities using thermal, geothermal, hydro and nuclear with approx. 144,000 km of high- and low-voltage transmission systems. Using the technology and know-how that has been accumulated in Japan and abroad, KIC is developing overseas power business and consulting services. KIC’s power generation equity ownership capacity is approx. 2.8 GW with 22 projects in 16 countries."
 							linkText="www.kyuden-intl.co.jp"
