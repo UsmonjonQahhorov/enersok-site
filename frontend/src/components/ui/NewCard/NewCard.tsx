@@ -25,6 +25,8 @@ export const NewCard: FC<NewCardProps> = ({
 			<Link href={url} className="w-full h-full">
 				<NextImage
 					src={image.url}
+					width={image.width}
+					height={image.height}
 					alt="Enersok News Image"
 					className="max-h-[287px] w-full h-full object-cover object-center rounded-xl"
 				/>
