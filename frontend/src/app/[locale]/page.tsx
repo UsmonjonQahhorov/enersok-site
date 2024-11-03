@@ -25,8 +25,6 @@ import { CarouselItem } from './_components/CarouselItem';
 import { SponsorDonutChart } from './_components/Chart';
 import { NewsCarouselItem } from './_components/NewsCarouselItem';
 
-
-
 const DashboardPage: PageType = async () => {
 	return (
 		<>
@@ -247,14 +245,16 @@ const DashboardPage: PageType = async () => {
 			{/* News Carousel section */}
 			<section className='py-48'>
 				<Container>
-					<Heading as='h3' size='3xl' className='md:text-[64px] uppercase *:text-secondary'>
-						News
-					</Heading>
 					<EmblaCarousel
 						autoLoopInterval={100000}
 						showCounter={false}
 						slidesToShow={1}
 						controlsPosition='above'
+						controlsTitle='News'
+						controlsButton={{
+							link: '/news',
+							text: 'All news',
+						}}
 						slides={[
 							<NewsCarouselItem />,
 							<NewsCarouselItem />,
