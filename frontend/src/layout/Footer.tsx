@@ -53,7 +53,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 								className="text-2xl text-white font-normal"
 								href={RouterConfig.ProjectDetails}
 							>
-								Project
+								Project Details
 							</Link>
 						</li>
 						<li>
