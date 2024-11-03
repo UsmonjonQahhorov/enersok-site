@@ -22,11 +22,11 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 			</div>
 			<Heading
 				as="h5"
-				className="pt-5 text-[32px] leading-[34px] font-normal text-secondary hover:text-secondary/85"
+				className="pt-5 text-[32px] leading-[34px] font-normal text-secondary hover:text-primary duration-300"
 			>
 				{name}
 			</Heading>
-			<Paragraph className="text-base leading-[18px] font-normal text-secondary hover:text-secondary/85">
+			<Paragraph className="text-base leading-[18px] font-normal text-secondary hover:text-primary duration-300">
 				{job}
 			</Paragraph>
 		</article>

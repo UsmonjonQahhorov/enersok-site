@@ -43,6 +43,7 @@ const NewsPage: PageType = () => {
 								name: 'News',
 							}}
 							time="5 min"
+							url=''
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
@@ -54,6 +55,7 @@ const NewsPage: PageType = () => {
 								name: 'News',
 							}}
 							time="5 min"
+							url=''
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
@@ -65,6 +67,7 @@ const NewsPage: PageType = () => {
 								name: 'News',
 							}}
 							time="5 min"
+							url=''
 						/>
 					</div>
 					<div className="grid grid-cols-2 gap-x-5">
@@ -79,6 +82,7 @@ const NewsPage: PageType = () => {
 							}}
 							time="5 min"
 							className="[&>div>img]:max-h-[385px]"
+							url=''
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
@@ -91,6 +95,7 @@ const NewsPage: PageType = () => {
 							}}
 							time="5 min"
 							className="[&>div>img]:max-h-[385px]"
+							url=''
 						/>
 					</div>
 					<div className="grid grid-cols-3 gap-x-5">
@@ -104,6 +109,7 @@ const NewsPage: PageType = () => {
 								name: 'News',
 							}}
 							time="5 min"
+							url=''
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
@@ -115,6 +121,7 @@ const NewsPage: PageType = () => {
 								name: 'News',
 							}}
 							time="5 min"
+							url=''
 						/>
 						<NewCard
 							title="Enersok FE LLC was formed in 2022"
@@ -126,6 +133,7 @@ const NewsPage: PageType = () => {
 								name: 'News',
 							}}
 							time="5 min"
+							url=''
 						/>
 					</div>
 				</Container>

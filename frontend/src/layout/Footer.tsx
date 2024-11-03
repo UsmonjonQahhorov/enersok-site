@@ -34,7 +34,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 					<ul className="flex flex-col text-left gap-y-1">
 						<li>
 							<Link
-								className="text-2xl text-white font-normal"
+								className="text-2xl text-white font-normal hover:text-button1 duration-200"
 								href={RouterConfig.AboutCompany}
 							>
 								About Company
@@ -42,7 +42,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						</li>
 						<li>
 							<Link
-								className="text-2xl text-white font-normal"
+								className="text-2xl text-white font-normal hover:text-button1 duration-200"
 								href={RouterConfig.AboutSponsors}
 							>
 								About Sponsors 
@@ -50,7 +50,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						</li>
 						<li>
 							<Link
-								className="text-2xl text-white font-normal"
+								className="text-2xl text-white font-normal hover:text-button1 duration-200"
 								href={RouterConfig.ProjectDetails}
 							>
 								Project Details
@@ -58,7 +58,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						</li>
 						<li>
 							<Link
-								className="text-2xl text-white font-normal"
+								className="text-2xl text-white font-normal hover:text-button1 duration-200"
 								href={RouterConfig.News}
 							>
 								News
@@ -66,7 +66,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						</li>
 						<li>
 							<Link
-								className="text-2xl text-white font-normal"
+								className="text-2xl text-white font-normal hover:text-button1 duration-200"
 								href={RouterConfig.Careers}
 							>
 								Careers
@@ -74,7 +74,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						</li>
 						<li>
 							<Link
-								className="text-2xl text-white font-normal"
+								className="text-2xl text-white font-normal hover:text-button1 duration-200"
 								href={RouterConfig.ContactUs}
 							>
 								Contacts
@@ -94,7 +94,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									height={16}
 									className="w-4 h-4"
 								/>
-								<span className="w-full text-white text-base leading-5">
+								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
 									+998 77 000 45 94
 								</span>
 							</Link>
@@ -111,7 +111,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									height={16}
 									className="w-4 h-4"
 								/>
-								<span className="w-full text-white text-base leading-5">
+								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
 									info@enersok.uz
 								</span>
 							</Link>
@@ -126,7 +126,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									src={Location}
 									className="w-4 h-4"
 								/>
-								<span className="w-full text-white text-base leading-5">
+								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
 									8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan,
 									Dmaar Business Center
 								</span>
@@ -149,7 +149,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 					</ul>
 				</div>
 				<div className="pt-4 pb-[100px] flex justify-between items-center">
-					<Paragraph size="sm" className="text-white ">
+					<Paragraph size="sm" className="text-white hover:text-button1 duration-200">
 						© 2024 Enersok
 					</Paragraph>
 					<ul className="flex gap-x-3">

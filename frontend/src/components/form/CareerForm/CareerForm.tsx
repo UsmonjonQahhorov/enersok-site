@@ -46,7 +46,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 				className="bg-transparent"
 			/>
 			<FileInput placeholder={file} className="bg-transparent" />
-			<Button type="submit" className="w-fit">
+			<Button type="submit" className="w-fit hover:bg-button1/80 duration-300">
 				{sumbmit}
 			</Button>
 		</form>

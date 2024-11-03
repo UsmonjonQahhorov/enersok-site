@@ -88,7 +88,7 @@ const ProjectDetailsPage: PageType = () => {
 										className="w-[26px] h-auto"
 									/>
 								</div>
-								<Paragraph className="text-lg text-secondary">
+								<Paragraph className="text-lg text-secondary hover:text-button1 duration-200">
 									So called Syrdarya 2 will be located in Bayaut district,
 									Syrdarya region, approximately 150 km south of Tashkent.
 								</Paragraph>

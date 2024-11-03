@@ -15,7 +15,7 @@ export const SponsorCard: FC<SponsorCardProps> = ({
 		<article
 			className={cn(
 				className,
-				'bg-[#F2F7FA] min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-col justify-center items-center',
+				'bg-[#F2F7FA] min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-col justify-center items-center hover:shadow-lg duration-200',
 			)}
 		>
 			<NextImage

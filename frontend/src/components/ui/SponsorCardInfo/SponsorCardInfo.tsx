@@ -37,7 +37,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				<div className="flex flex-row gap-x-2 items-center">
 					<NextImage src={IconLink} alt="Link Icon Enersok" className="w-6 h-6" />
 					<Link
-						className="text-2xl text-secondary !leading-[normal]"
+						className="text-2xl text-secondary hover:text-primary duration-200 !leading-[normal]"
 						href={url}
 					>
 						{linkText}

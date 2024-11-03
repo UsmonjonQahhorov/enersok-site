@@ -106,7 +106,7 @@ const AboutSponsorsPage: PageType = () => {
 								<Heading as="h5" className="text-center py-3">
 									Holding Сompany
 								</Heading>
-								<div className="min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3">
+								<div className="min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Paragraph className="text-center text-[32px] text-[#5055E6]">
 										NEKS Energy B.V.
 									</Paragraph>
@@ -117,7 +117,7 @@ const AboutSponsorsPage: PageType = () => {
 								<Heading as="h5" className="text-center py-3">
 									Project Сompany
 								</Heading>
-								<div className="min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3">
+								<div className="min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Image
 										src={Sponsor5}
 										alt="Sponsor5 Enersok"
