@@ -43,7 +43,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 				</div>
 			</div>
 			<Link
-				className="w-fit bg-button1 text-lg text-white py-4 px-9 rounded-[100px]"
+				className="w-fit bg-button1 hover:bg-button1/80 duration-300 text-lg text-white py-4 px-9 rounded-[100px]"
 				href={url}
 			>
 				View

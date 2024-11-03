@@ -29,7 +29,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 				pattern="[+]{1}[0-9]{7,15}"
 			/>
 			<Textarea placeholder={message} required={true} />
-			<Button type="submit" className="w-fit">
+			<Button type="submit" className="w-fit hover:bg-button1/80">
 				{sumbmit}
 			</Button>
 		</form>
