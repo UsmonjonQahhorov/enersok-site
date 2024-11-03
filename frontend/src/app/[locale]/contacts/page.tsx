@@ -46,7 +46,7 @@ const ContactsPage: PageType = () => {
 									Phone:
 								</Paragraph>
 								<Link
-									className="text-secondary text-2xl font-normal"
+									className="text-secondary text-2xl font-normal hover:text-primary duration-200"
 									href={'tel:+998770004594'}
 								>
 									+998 77 000 45 94
@@ -57,7 +57,7 @@ const ContactsPage: PageType = () => {
 									Email:
 								</Paragraph>
 								<Link
-									className="text-secondary text-2xl font-normal"
+									className="text-secondary text-2xl font-normal hover:text-primary duration-200"
 									href={'mailto:info@enersok.uz'}
 								>
 									info@enersok.uz
