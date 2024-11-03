@@ -16,7 +16,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 	className,
 }) => {
 	return (
-		<div
+		<article
 			className={cn(
 				className,
 				'grid grid-cols-[1fr,3fr] gap-x-[100px] pb-12 border-b-[1px] border-solid border-secondaryOpacity3',
@@ -44,7 +44,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 					</Link>
 				</div>
 			</div>
-		</div>
+		</article>
 	);
 };
 

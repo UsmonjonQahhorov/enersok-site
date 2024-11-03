@@ -12,7 +12,7 @@ export const SponsorCard: FC<SponsorCardProps> = ({
 	className,
 }) => {
 	return (
-		<div
+		<article
 			className={cn(
 				className,
 				'bg-[#F2F7FA] min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-col justify-center items-center',
@@ -29,7 +29,7 @@ export const SponsorCard: FC<SponsorCardProps> = ({
 			<Paragraph className="text-2xl font-semibold text-secondary text-center">
 				{text}
 			</Paragraph>
-		</div>
+		</article>
 	);
 };
 

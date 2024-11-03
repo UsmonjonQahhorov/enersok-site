@@ -142,7 +142,6 @@ const ProjectDetailsPage: PageType = () => {
 							<CarouselItem />,
 							<CarouselItem />,
 							<CarouselItem />,
-
 						]}
 					/>
 				</Container>

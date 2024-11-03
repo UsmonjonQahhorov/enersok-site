@@ -1,4 +1,6 @@
-import { startTransition, type FC } from 'react';
+'use client';
+
+import { type FC } from 'react';
 import {
 	Content,
 	Indicator,
@@ -16,20 +18,17 @@ import {
 	Trigger as PopoverTrigger,
 } from '@radix-ui/react-popover';
 import { cn } from '@/utils/cn';
-import NextLink from 'next/link';
 import { navigation } from '@/locales/navigations';
 import Image from 'next/image';
 import Search from '@public/search.svg';
+import { locales } from '@/configs/i18n.config';
+import { Link as NavigationLink, usePathname } from '@/i18n/routing';
+import { getLocale } from '@/utils/getLocale.util';
 
-export const DesktopNavigation: FC<DesktopNavigationProps> = ({ locale }) => {
-	// const pathName = usePathname();
-	// const router = useRouter();
+export const DesktopNavigation = () => {
+	const pathName = usePathname();
+	const locale = getLocale();
 
-	// function changeLang(locale: string) {
-	//   startTransition(() => {
-	//     router.replace(pathName, { locale: locale });
-	//   });
-	// }
 	return (
 		<div className="hidden items-center sm:gap-x-4 md:gap-x-8 lg:flex 2xl:gap-x-20">
 			<Root aria-label="navigation">
@@ -51,10 +50,10 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({ locale }) => {
 												'rounded-lg p-2 text-secondary hover:bg-primary hover:text-white',
 											)}
 										>
-											<NextLink locale={locale} href={childMenu.href}>
+											<NavigationLink locale={locale} href={childMenu.href}>
 												{locale === 'en' && childMenu.name_en}
 												{locale === 'uz' && childMenu.name_uz}
-											</NextLink>
+											</NavigationLink>
 										</Link>
 									))}
 								</Content>
@@ -62,7 +61,7 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({ locale }) => {
 						) : (
 							<Item key={menu.href}>
 								<Link asChild={true}>
-									<NextLink
+									<NavigationLink
 										locale={locale}
 										href={menu.href}
 										className={cn(
@@ -71,7 +70,7 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({ locale }) => {
 									>
 										{locale === 'en' && menu.name_en}
 										{locale === 'uz' && menu.name_uz}
-									</NextLink>
+									</NavigationLink>
 								</Link>
 							</Item>
 						),
@@ -81,54 +80,51 @@ export const DesktopNavigation: FC<DesktopNavigationProps> = ({ locale }) => {
 					</Indicator>
 				</List>
 			</Root>
-			{/* Select language */}
-			{/* <PopopverRoot aria-label="languages">
-        <PopoverTrigger
-          className={cn(
-            'cursor-defaul h-full bg-white px-4 text-xl text-primary md:cursor-pointer',
-          )}
-        >
-          {locale?.toUpperCase()}
-        </PopoverTrigger>
-        <Portal>
-          <PopoverContent
-            sideOffset={5}
-            className="z-20 flex flex-col gap-y-2 rounded-xl bg-white p-2 text-base shadow-xl"
-          >
-            {locales.map((item) => (
-              <Close
-                className={cn(
-                  'flex flex-col gap-y-1 rounded-xl text-center',
-                  locale === item
-                    ? 'w-full rounded-xl bg-primary-darker p-2 text-white'
-                    : 'w-full bg-white p-2 text-primary hover:bg-primary hover:text-white',
-                )}
-                // onClick={() => changeLang(item)}
-                key={item}
-              >
-                {item.toUpperCase()}
-              </Close>
-            ))}
-          </PopoverContent>
-        </Portal>
-      </PopopverRoot> */}
+
 			<div className="flex items-center gap-x-8">
 				<div className="flex items-center gap-x-24 pb-2 border-b border-black">
 					<span>Search</span>
 					<Image src={Search} alt="Search Enersok" className="w-4 h-4" />
 				</div>
-				<span>ENG</span>
-				<NextLink
+				{/* Select language */}
+				<PopopverRoot aria-label="languages">
+					<PopoverTrigger
+						className={cn(
+							'cursor-default px-4 text-xl text-secondary md:cursor-pointer',
+						)}
+					>
+						{locale?.toUpperCase()}
+					</PopoverTrigger>
+					<PopoverContent
+						sideOffset={5}
+						className="flex flex-col gap-y-2 rounded-xl bg-white p-2 text-base shadow-xl"
+					>
+						{locales.map((item) => (
+							<Close
+								asChild={true}
+								className={cn(
+									'rounded-xl text-center',
+									locale === item
+										? 'w-full rounded-xl bg-primary-darker p-2 text-black'
+										: 'w-full bg-white p-2 text-primary hover:bg-primary hover:text-white',
+								)}
+								key={item}
+							>
+								<NavigationLink href={pathName} locale={item}>
+									{item.toUpperCase()}
+								</NavigationLink>
+							</Close>
+						))}
+					</PopoverContent>
+				</PopopverRoot>
+				<NavigationLink
 					className="text-lg py-4 px-6 bg-button1 rounded-[100px] text-white"
 					href="/contacts"
+					locale={locale}
 				>
 					Contact us
-				</NextLink>
+				</NavigationLink>
 			</div>
 		</div>
 	);
 };
-
-interface DesktopNavigationProps {
-	locale: string;
-}

@@ -1,26 +1,29 @@
+import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
+import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { PageType } from '@/types/component.types';
-import EcoFriendlyImage from '@public/ecoFriendly.svg';
-import EnergyImage from '@public/energy.svg';
-import NextImage from 'next/image';
-import ReliabilityImage from '@public/reliability.svg';
-import { Container } from '@/components/ui/Container';
 import { Link } from '@/i18n/routing';
-import LinkImage from '@public/link.svg';
-import StationImage from '@public/Rectangle 6.png';
-import PeopelsImage from '@public/image (1).png';
-import EnergyIcon from '@public/energy-icon.svg';
+import type { PageType } from '@/types/component.types';
 import { cn } from '@/utils/cn';
-import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
-import { CarouselItem } from './_components/CarouselItem';
+import EcoFriendlyImage from '@public/ecoFriendly.svg';
+import EnergyIcon from '@public/energy-icon.svg';
+import EnergyImage from '@public/energy.svg';
 import Factory from '@public/facroty.png';
 import Factory2 from '@public/factory2.png';
+import PeopelsImage from '@public/image (1).png';
 import Image1 from '@public/image (4).png';
 import Image2 from '@public/image (5).png';
 import Image3 from '@public/image (6).png';
 import Image4 from '@public/image (7).png';
+import LinkImage from '@public/link.svg';
+import LocationIcon from '@public/location-icon.svg';
+import StationImage from '@public/Rectangle 6.png';
+import ReliabilityImage from '@public/reliability.svg';
+import UzbMap from '@public/uzb-map.png';
+import NextImage from 'next/image';
+import { CarouselItem } from './_components/CarouselItem';
 import { SponsorDonutChart } from './_components/Chart';
+import { NewsCarouselItem } from './_components/NewsCarouselItem';
 
 
 
@@ -204,6 +207,62 @@ const DashboardPage: PageType = async () => {
 					<div className='flex justify-center overflow-hidden'>
 						<SponsorDonutChart />
 					</div>
+				</Container>
+			</section>
+
+			{/* Location section */}
+			<section className='py-60 bg-[#1375A4]'>
+				<Container className='flex justify-between'>
+					<div className='*:text-white'>
+						<Heading as="h3" size="3xl" className="md:text-[64px] uppercase max-w-[600px] xl:text-6xl leading-8">
+							We and our projects are on the map
+						</Heading>
+						<Paragraph size="sm" className="max-w-[590px] mt-6 xl:text-lg leading-7">
+							Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), Enersok FE LLC
+						</Paragraph>
+						<div className='mt-36 flex flex-col'>
+							<div className='flex items-center gap-5'>
+								<NextImage src={LocationIcon} alt="location" />
+								<Paragraph
+
+									className='max-w-96'>
+									8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan, Dmaar Business Center
+								</Paragraph>
+							</div>
+							<hr className='my-5 max-w-[450px]' />
+							<div className='flex items-center gap-5'>
+								<NextImage src={LocationIcon} alt="location" />
+								<Paragraph>
+									Shirin City, Syrdarya region, Uzbekistan
+								</Paragraph>
+							</div>
+						</div>
+					</div>
+					<div className='relative'>
+						<NextImage src={UzbMap} alt='map' />
+					</div>
+				</Container>
+			</section>
+
+			{/* News Carousel section */}
+			<section className='py-48'>
+				<Container>
+					<Heading as='h3' size='3xl' className='md:text-[64px] uppercase *:text-secondary'>
+						News
+					</Heading>
+					<EmblaCarousel
+						autoLoopInterval={100000}
+						showCounter={false}
+						slidesToShow={1}
+						controlsPosition='above'
+						slides={[
+							<NewsCarouselItem />,
+							<NewsCarouselItem />,
+							<NewsCarouselItem />,
+							<NewsCarouselItem />,
+							<NewsCarouselItem />,
+						]}
+					/>
 				</Container>
 			</section>
 

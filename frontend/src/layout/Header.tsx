@@ -6,7 +6,7 @@ import { DesktopNavigation } from './components';
 import { cn } from '@/utils/cn';
 import { Link } from '@/i18n/routing';
 
-export const Header: FC<HeaderProps> = ({ locale, className }) => {
+export const Header: FC<HeaderProps> = ({ className }) => {
 	return (
 		<header
 			className={cn(className, 'py-12 absolute top-0 left-0 w-full z-[100]')}
@@ -20,7 +20,7 @@ export const Header: FC<HeaderProps> = ({ locale, className }) => {
 						className="w-[205px] h-fit"
 					/>
 				</Link>
-				<DesktopNavigation locale={locale} />
+				<DesktopNavigation />
 			</Container>
 		</header>
 	);

@@ -12,7 +12,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 	className,
 }) => {
 	return (
-		<div className={cn(className, 'flex flex-col gap-y-3')}>
+		<article className={cn(className, 'flex flex-col gap-y-3')}>
 			<div className="rounded-xl w-full h-full">
 				<NextImage
 					src={image.url}
@@ -29,7 +29,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 			<Paragraph className="text-base leading-[18px] font-normal text-secondary hover:text-secondary/85">
 				{job}
 			</Paragraph>
-		</div>
+		</article>
 	);
 };
 

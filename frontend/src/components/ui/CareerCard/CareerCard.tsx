@@ -13,7 +13,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 	className,
 }) => {
 	return (
-		<div
+		<article
 			className={cn(
 				className,
 				'grid grid-cols-[3.5fr,3.5fr,3.5fr,1fr] py-8 text-secondary border-t-[1px] border-solid border-secondaryOpacity3 items-center',
@@ -48,7 +48,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 			>
 				View
 			</Link>
-		</div>
+		</article>
 	);
 };
 

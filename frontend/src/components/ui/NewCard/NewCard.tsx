@@ -14,7 +14,7 @@ export const NewCard: FC<NewCardProps> = ({
 	image,
 }) => {
 	return (
-		<div
+		<article
 			className={cn(
 				className,
 				'flex flex-col gap-y-8 items-start text-secondary',
@@ -37,7 +37,7 @@ export const NewCard: FC<NewCardProps> = ({
 					<Paragraph className="!leading-[normal]">{time}</Paragraph>
 				</div>
 			</div>
-		</div>
+		</article>
 	);
 };
 
