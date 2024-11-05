@@ -4,7 +4,7 @@
   "info": {
     "singularName": "project-detail",
     "pluralName": "project-details",
-    "displayName": "Project Detail",
+    "displayName": "Страница сведений о проекте",
     "description": ""
   },
   "options": {

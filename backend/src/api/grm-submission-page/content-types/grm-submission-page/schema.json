@@ -4,7 +4,7 @@
   "info": {
     "singularName": "grm-submission-page",
     "pluralName": "grm-submission-pages",
-    "displayName": "Grm Submission Page",
+    "displayName": "Страница отправки данных Grm",
     "description": ""
   },
   "options": {

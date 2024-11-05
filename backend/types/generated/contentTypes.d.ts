@@ -793,7 +793,7 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
   info: {
     singularName: 'about-page';
     pluralName: 'about-pages';
-    displayName: 'About Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u041E \u041D\u0430\u0441';
     description: '';
   };
   options: {
@@ -948,7 +948,8 @@ export interface ApiAboutSponsorAboutSponsor extends Schema.SingleType {
   info: {
     singularName: 'about-sponsor';
     pluralName: 'about-sponsors';
-    displayName: 'About Sponsors';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u041E \u0421\u043F\u043E\u043D\u0441\u043E\u0440\u0430\u0445';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1034,7 +1035,7 @@ export interface ApiCarouselCarousel extends Schema.CollectionType {
   info: {
     singularName: 'carousel';
     pluralName: 'carousels';
-    displayName: 'Carousel';
+    displayName: '\u041A\u0430\u0440\u0443\u0441\u0435\u043B\u044C';
     description: '';
   };
   options: {
@@ -1098,7 +1099,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
   info: {
     singularName: 'contact-page';
     pluralName: 'contact-pages';
-    displayName: 'Contact Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B';
     description: '';
   };
   options: {
@@ -1236,7 +1237,7 @@ export interface ApiDevelopmentDevelopment extends Schema.CollectionType {
   info: {
     singularName: 'development';
     pluralName: 'developments';
-    displayName: 'Developments';
+    displayName: '\u0421\u043E\u0431\u044B\u0442\u0438\u044F';
     description: '';
   };
   options: {
@@ -1297,7 +1298,7 @@ export interface ApiDevelopmentFeatureDevelopmentFeature
   info: {
     singularName: 'development-feature';
     pluralName: 'development-features';
-    displayName: 'Development features';
+    displayName: '\u041E\u0441\u043E\u0431\u0435\u043D\u043D\u043E\u0441\u0442\u0438 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0438';
     description: '';
   };
   options: {
@@ -1346,7 +1347,7 @@ export interface ApiDocumentsAndGuidlineDocumentsAndGuidline
   info: {
     singularName: 'documents-and-guidline';
     pluralName: 'documents-and-guidlines';
-    displayName: 'Documents and Guidlines';
+    displayName: ' \u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B \u0438 \u0440\u0443\u043A\u043E\u0432\u043E\u0434\u0441\u0442\u0432\u0430';
     description: '';
   };
   options: {
@@ -1402,7 +1403,7 @@ export interface ApiDocumentsGuidlinesPageDocumentsGuidlinesPage
   info: {
     singularName: 'documents-guidlines-page';
     pluralName: 'documents-and-guidlines-pages';
-    displayName: 'Documents and Guidlines Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u00AB\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B \u0438 \u0440\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u0430\u0446\u0438\u0438\u00BB';
     description: '';
   };
   options: {
@@ -1473,7 +1474,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
   info: {
     singularName: 'footer';
     pluralName: 'footers';
-    displayName: 'Footer';
+    displayName: '\u041F\u043E\u0434\u0432\u0430\u043B';
     description: '';
   };
   options: {
@@ -1589,7 +1590,7 @@ export interface ApiGrmSubmissionPageGrmSubmissionPage
   info: {
     singularName: 'grm-submission-page';
     pluralName: 'grm-submission-pages';
-    displayName: 'Grm Submission Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0438 \u0434\u0430\u043D\u043D\u044B\u0445 Grm';
     description: '';
   };
   options: {
@@ -1659,7 +1660,7 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   info: {
     singularName: 'header';
     pluralName: 'headers';
-    displayName: 'Header';
+    displayName: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A';
     description: '';
   };
   options: {
@@ -1706,7 +1707,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   info: {
     singularName: 'home-page';
     pluralName: 'home-pages';
-    displayName: 'Home Page';
+    displayName: '\u0414\u043E\u043C\u0430\u0448\u043D\u044F\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430';
     description: '';
   };
   options: {
@@ -2043,7 +2044,7 @@ export interface ApiManagerManager extends Schema.CollectionType {
   info: {
     singularName: 'manager';
     pluralName: 'managers';
-    displayName: 'Managers';
+    displayName: '\u041C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u044B';
     description: '';
   };
   options: {
@@ -2106,7 +2107,7 @@ export interface ApiNewsNews extends Schema.CollectionType {
   info: {
     singularName: 'news';
     pluralName: 'new';
-    displayName: 'News (every news)';
+    displayName: '\u041D\u043E\u0432\u043E\u0441\u0442\u0438 (\u043A\u0430\u0436\u0434\u0430\u044F \u043D\u043E\u0432\u043E\u0441\u0442\u044C)';
     description: '';
   };
   options: {
@@ -2183,7 +2184,7 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
   info: {
     singularName: 'news-page';
     pluralName: 'news-pages';
-    displayName: 'News Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439';
     description: '';
   };
   options: {
@@ -2238,7 +2239,7 @@ export interface ApiOrganizationPageOrganizationPage extends Schema.SingleType {
   info: {
     singularName: 'organization-page';
     pluralName: 'organization-pages';
-    displayName: 'Organization Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u041E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438';
     description: '';
   };
   options: {
@@ -2317,7 +2318,7 @@ export interface ApiProjectDetailProjectDetail extends Schema.SingleType {
   info: {
     singularName: 'project-detail';
     pluralName: 'project-details';
-    displayName: 'Project Detail';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0441\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0435';
     description: '';
   };
   options: {
@@ -2530,7 +2531,7 @@ export interface ApiSponsorSponsor extends Schema.CollectionType {
   info: {
     singularName: 'sponsor';
     pluralName: 'sponsors';
-    displayName: 'Sponsors';
+    displayName: '\u0421\u043F\u043E\u043D\u0441\u043E\u0440\u044B';
     description: '';
   };
   options: {
@@ -2616,7 +2617,7 @@ export interface ApiVacanciesPageVacanciesPage extends Schema.SingleType {
   info: {
     singularName: 'vacancies-page';
     pluralName: 'vacancies-pages';
-    displayName: 'Vacancies Page';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0412\u0430\u043A\u0430\u043D\u0441\u0438\u0439';
     description: '';
   };
   options: {
@@ -2718,7 +2719,7 @@ export interface ApiVacancyVacancy extends Schema.CollectionType {
   info: {
     singularName: 'vacancy';
     pluralName: 'vacancies';
-    displayName: 'Vacancies';
+    displayName: '\u0412\u0430\u043A\u0430\u043D\u0441\u0438\u0438';
     description: '';
   };
   options: {

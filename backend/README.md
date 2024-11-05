@@ -24,5 +24,5 @@ passoword: O0ZzV99A9Jew9j
 
 // TODO: Add login credentials for admin and content manager <br/>
 Content managaer:
-login:
-password: 
+login: contentManager@gmail.com
+password: contentManager1

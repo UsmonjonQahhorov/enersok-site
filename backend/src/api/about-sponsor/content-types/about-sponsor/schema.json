@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-sponsor",
     "pluralName": "about-sponsors",
-    "displayName": "About Sponsors"
+    "displayName": "Страница О Спонсорах",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -26,17 +27,17 @@
       "default": "ABOUT SPONSORS"
     },
     "heading_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
     "heading_title": {
       "pluginOptions": {
