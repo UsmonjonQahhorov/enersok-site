@@ -1473,7 +1473,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
   info: {
     singularName: 'footer';
     pluralName: 'footers';
-    displayName: 'footer';
+    displayName: 'Footer';
     description: '';
   };
   options: {
@@ -1659,7 +1659,7 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   info: {
     singularName: 'header';
     pluralName: 'headers';
-    displayName: 'header';
+    displayName: 'Header';
     description: '';
   };
   options: {
