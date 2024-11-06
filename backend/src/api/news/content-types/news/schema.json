@@ -4,7 +4,7 @@
   "info": {
     "singularName": "news",
     "pluralName": "new",
-    "displayName": "News (every news)",
+    "displayName": "Новости (каждая новость)",
     "description": ""
   },
   "options": {
