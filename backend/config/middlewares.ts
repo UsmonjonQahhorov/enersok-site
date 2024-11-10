@@ -1,7 +1,6 @@
 export default [
   'strapi::logger',
   'strapi::errors',
-  'strapi::security',
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
@@ -20,6 +19,17 @@ export default [
       formidable: {
         // make more max file size 400mb
         maxFileSize: 400 * 1024 * 1024,
+      },
+    },
+  },
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'script-src': ['https://cdn.ckeditor.com']
+        },
       },
     },
   },

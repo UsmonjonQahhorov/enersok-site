@@ -33,6 +33,7 @@ interface DatumAttributes {
 	updatedAt: Date;
 	locale: string;
 	news_description: string;
+	news_description_full: string | null;
 	slug: string;
 	preview_picture: PreviewPicture;
 	localizations?: Localizations;

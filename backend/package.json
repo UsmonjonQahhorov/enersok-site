@@ -11,6 +11,7 @@
     "deploy": "strapi deploy"
   },
   "dependencies": {
+    "@ckeditor/strapi-plugin-ckeditor": "0.1.0",
     "@strapi/plugin-cloud": "4.25.15",
     "@strapi/plugin-color-picker": "^4.25.15",
     "@strapi/plugin-documentation": "^4.25.15",

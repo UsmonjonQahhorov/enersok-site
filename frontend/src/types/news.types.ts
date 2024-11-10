@@ -5,6 +5,7 @@ export interface FullNews {
 	previewTime: string;
 	previewDate: string;
 	newsDescription: string;
+	newsDescriptionFull: string;
 	previewPicture: Image;
 	slug: string;
 }

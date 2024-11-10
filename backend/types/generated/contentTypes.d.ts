@@ -1763,6 +1763,19 @@ export interface ApiNewsNews extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    news_description_full: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     preview_date: Attribute.Date &
       Attribute.Required &
       Attribute.SetPluginOptions<{

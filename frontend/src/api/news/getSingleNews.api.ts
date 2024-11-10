@@ -52,6 +52,7 @@ export const getSingleNews = async (
 				height: data.preview_picture.data.attributes.height,
 				name: data.preview_picture.data.attributes.name,
 			},
+			newsDescriptionFull: data.news_description_full || '',
 		};
 	}
 	if (locale === 'uz') {
@@ -74,6 +75,9 @@ export const getSingleNews = async (
 				height: data.preview_picture.data.attributes.height,
 				name: data.preview_picture.data.attributes.name,
 			},
+			newsDescriptionFull:
+				data.localizations?.data.find((item) => item.attributes.locale === 'uz')
+					?.attributes.news_description_full || '',
 		};
 	}
 
@@ -111,6 +115,7 @@ interface DatumAttributes {
 	updatedAt: Date;
 	locale: string;
 	news_description: string;
+	news_description_full: string;
 	slug: string;
 	preview_picture: PreviewPicture;
 	localizations?: Localizations;
