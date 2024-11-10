@@ -244,6 +244,19 @@
       "type": "string",
       "required": true,
       "default": " So called Syrdarya 2 will be located in Bayaut district, Syrdarya region, approximately 150 km south of Tashkent.      "
+    },
+    "info_section_background_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": true
     }
   }
 }

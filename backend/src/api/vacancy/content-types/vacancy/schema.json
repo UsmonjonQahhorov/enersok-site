@@ -61,7 +61,8 @@
         }
       },
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "vacancy_name"
     }
   }
 }
