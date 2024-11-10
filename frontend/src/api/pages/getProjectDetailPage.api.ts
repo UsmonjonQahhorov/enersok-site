@@ -39,6 +39,7 @@ interface PurpleAttributes {
      info_section_six_text: string;
      info_section_seven_text: string;
      info_section_eight_text: string;
+     info_section_background_picture: Picture;
      follow_section_title: string;
      follow_section_first_text: string;
      follow_section_second_text: string;
