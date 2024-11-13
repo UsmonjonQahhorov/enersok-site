@@ -16,28 +16,28 @@ const ContactsPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[164px] pb-5">
+				<Container className="pt-[164px] md:pb-5">
 					<Breadcrumbs
 						textHome={'Main'}
 						textPage={'Contact us'}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.ContactUs}
 					/>
-					<Heading className="!leading-[normal] text-secondary uppercase py-[75px] text-[100px]">
+					<Heading className="!leading-[normal] text-secondary uppercase py-8 md:py-[75px] text-[48px] lg:text-[100px]">
 						Contact us
 					</Heading>
 				</Container>
 				<Image
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute bottom-[-100px] right-[122px] z-[1]"
+					className="absolute hidden lg:block bottom-[-100px] right-[122px] z-[1]"
 					priority={true}
 				/>
 			</section>
 			<section>
-				<Container className="pt-[95px] pb-[142px] grid grid-cols-[4.5fr,5.5fr] gap-x-[100px] items-center">
-					<div className="flex flex-col gap-y-8 py-5">
-						<Heading as="h3" className="text-secondary text-[48px] pb-6">
+				<Container className="py-[50px] lg:pt-[95px] lg:pb-[142px] flex flex-col lg:grid lg:grid-cols-[4.5fr,5.5fr] gap-y-[50px] lg:gap-x-[100px] items-center">
+					<div className="flex flex-col gap-y-8 py-5 w-full">
+						<Heading as="h3" className="text-secondary text-[32px] lg:text-[48px] pb-6">
 							GET IN TOUCH WITH US
 						</Heading>
 						<ul className="flex flex-col gap-y-8">
@@ -46,7 +46,7 @@ const ContactsPage: PageType = () => {
 									Phone:
 								</Paragraph>
 								<Link
-									className="text-secondary text-2xl font-normal hover:text-primary duration-200"
+									className="text-secondary text-lg lg:text-2xl font-normal hover:text-primary duration-200"
 									href={'tel:+998770004594'}
 								>
 									+998 77 000 45 94
@@ -57,7 +57,7 @@ const ContactsPage: PageType = () => {
 									Email:
 								</Paragraph>
 								<Link
-									className="text-secondary text-2xl font-normal hover:text-primary duration-200"
+									className="text-secondary text-lg lg:text-2xl font-normal hover:text-primary duration-200"
 									href={'mailto:info@enersok.uz'}
 								>
 									info@enersok.uz
@@ -67,7 +67,7 @@ const ContactsPage: PageType = () => {
 								<Paragraph className="text-secondaryOpacity5 text-base font-normal pb-1">
 									Office hours: 
 								</Paragraph>
-								<Paragraph className="text-secondary text-2xl font-normal">
+								<Paragraph className="text-secondary text-lg lg:text-2xl font-normal">
 									From 9:00 to18:00
 								</Paragraph>
 							</li>
@@ -75,7 +75,7 @@ const ContactsPage: PageType = () => {
 								<Paragraph className="text-secondaryOpacity5 text-base font-normal pb-1">
 									Address:
 								</Paragraph>
-								<Paragraph className="text-secondary text-2xl font-normal">
+								<Paragraph className="text-secondary text-lg lg:text-2xl font-normal">
 									8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan,
 									Dmaar Business Center
 								</Paragraph>

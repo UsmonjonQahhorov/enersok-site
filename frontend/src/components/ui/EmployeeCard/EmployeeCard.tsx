@@ -17,16 +17,18 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 				<NextImage
 					src={image.url}
 					alt={image.name}
-					className="object-cover rounded-xl min-h-[371px] w-full h-full"
+					width={image.width}
+					height={image.height}
+					className="object-cover rounded-xl min-h-[348px] md:min-h-[371px] w-full h-full"
 				/>
 			</div>
 			<Heading
 				as="h5"
-				className="pt-5 text-[32px] leading-[34px] font-normal text-secondary hover:text-primary duration-300"
+				className="pt-5 text-2xl md:text-[32px] leading-[34px] font-normal text-secondary hover:text-primary duration-300"
 			>
 				{name}
 			</Heading>
-			<Paragraph className="text-base leading-[18px] font-normal text-secondary hover:text-primary duration-300">
+			<Paragraph className="text-sm md:text-base leading-[18px] font-normal text-secondary hover:text-primary duration-300">
 				{job}
 			</Paragraph>
 		</article>

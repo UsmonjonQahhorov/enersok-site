@@ -17,7 +17,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 		<form
 			className={cn(
 				className,
-				'p-12 bg-white flex flex-col gap-y-10 rounded-xl',
+				'p-[32px_16px_16px] md:p-12 bg-white flex flex-col gap-y-10 rounded-xl',
 			)}
 		>
 			<TextInput placeholder={name} required={true} />
@@ -29,7 +29,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 				pattern="[+]{1}[0-9]{7,15}"
 			/>
 			<Textarea placeholder={message} required={true} />
-			<Button type="submit" className="w-fit hover:bg-button1/80">
+			<Button type="submit" className="w-full md:w-fit hover:bg-button1/80">
 				{sumbmit}
 			</Button>
 		</form>

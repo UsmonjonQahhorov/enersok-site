@@ -15,14 +15,14 @@ export const DownloadFile: FC<DownloadFileProps> = ({
 		<div
 			className={cn(
 				className,
-				'p-8 border-[1px] border-solid border-secondaryOpacity3 rounded-xl flex justify-between items-center',
+				'py-[30px] px-4 md:p-8 border-[1px] border-solid border-secondaryOpacity3 rounded-xl flex justify-between items-center',
 			)}
 		>
-			<div className="w-full flex gap-x-8 justify-start items-center">
+			<div className="w-full flex gap-x-6 md:gap-x-8 justify-start items-center">
 				<Image src={Document} alt={'Enersok Document'} />
-				<Paragraph>{text}</Paragraph>
+				<Paragraph className='text-sm md:text-base'>{text}</Paragraph>
 			</div>
-			<Link className="p-6 rounded-full bg-download" href={url} target="_blank">
+			<Link className="p-6 rounded-full md:bg-download" href={url} target="_blank">
 				<Image src={Download} alt={'Enersok Download File'} />
 			</Link>
 		</div>

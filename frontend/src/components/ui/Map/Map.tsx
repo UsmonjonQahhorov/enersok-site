@@ -11,7 +11,7 @@ export const Map = ({
 	return (
 		<iframe
 			src={mapUrl}
-			className={cn('h-full w-full rounded-xl', className)}
+			className={cn('h-[250px] md:h-[400px] lg:h-full w-full rounded-xl', className)}
 			title="Enersok position position"
 			ref={ref}
 			loading="lazy"

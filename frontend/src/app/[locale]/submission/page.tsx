@@ -20,19 +20,18 @@ const GRMSubmissionPage: PageType = () => {
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.GRMSubmission}
 					/>
-					<Heading className="!leading-[normal] text-secondary uppercase pt-[75px] text-[100px]">
+					<Heading className="!leading-[normal] text-secondary uppercase pt-[32px] lg:pt-[75px] text-[48px] lg:text-[100px]">
 						GRM Submission
 					</Heading>
 					<Paragraph
-						size="2xl"
-						className="w-full pb-7 py-[30px] text-secondary"
+						className="w-full text-sm lg:text-2xl pb-7 py-[30px] text-secondary"
 					>
 						Construction period started in March 2023 and the COD (Commercial
 						Operating Date) should be reach in June 2026. That means the plant
 						will be fully operational with two gas turbines and one steam
 						turbine in combined cycle configuration.
 					</Paragraph>
-					<div className="grid grid-cols-[6fr,4fr] gap-x-7 pb-[80px]">
+					<div className="lg:grid lg:grid-cols-[6fr,4fr] gap-x-7 pb-8 md:pb-[80px]">
 						<GrmSubmissionForm
 							email="Your e-mail"
 							message="Message"
@@ -40,7 +39,7 @@ const GRMSubmissionPage: PageType = () => {
 							phone="Your phone"
 							sumbmit="Submit the form"
 						/>
-						<div className="rounded-xl">
+						<div className="rounded-xl hidden lg:block">
 							<Image
 								src={Banner}
 								alt="Submission Enersok"

@@ -13,43 +13,42 @@ const OrganizationalStructurePage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
-				<Container className="pt-[164px] pb-5">
+				<Container className="pt-[164px] lg:pb-5 relative z-10">
 					<Breadcrumbs
 						textHome={'Main'}
 						textPage={'Organizational structure'}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.OrganizationalStructure}
 					/>
-					<Heading className="!leading-[normal] text-secondary uppercase py-[75px] text-[100px]">
+					<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-[32px] lg:text-[100px]">
 						Organizational structure
 					</Heading>
 				</Container>
 				<Image
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute bottom-0 right-[122px]"
+					className="absolute hidden lg:block bottom-0 right-[122px]"
 					priority={true}
 				/>
 			</section>
 			<section>
 				<Container>
 					<Paragraph
-						size="2xl"
-						className="w-full pb-7 border-b-[1px] border-solid border-secondaryOpacity3 whitespace-[10px] py-[50px] text-secondary"
+						className="text-sm md:text-2xl w-full border-b-[1px] border-solid border-secondaryOpacity3 whitespace-[10px] pt-[50px] pb-6 lg:py-[50px] text-secondary"
 					>
 						Construction period started in March 2023 and the COD (Commercial
 						Operating Date) should be reach in June 2026. That means the plant
 						will be fully operational with two gas turbines and one steam
 						turbine in combined cycle configuration.
 					</Paragraph>
-					<div className="py-[100px]">
+					<div className="pt-20 pb-[50px] md:py-[100px]">
 						<Heading
 							as="h3"
-							className="!leading-[normal] text-secondary uppercase text-[64px] max-w-[50%] pb-16"
+							className="!leading-[normal] text-secondary uppercase text-[32px] lg:text-[64px] lg:max-w-[50%] pb-8 md:pb-16"
 						>
 							Senior Management and Manager
 						</Heading>
-						<div className="grid grid-cols-4 gap-x-5 gap-y-14">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-12 md:gap-y-14">
 							<EmployeeCard
 								image={{
 									width: Employee.width,
