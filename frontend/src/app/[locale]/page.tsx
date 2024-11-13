@@ -156,56 +156,80 @@ const HomePage: PageType = async () => {
 			</section>
 
 			{/* Sponsors */}
-			<section className="my-72">
+			<section className="py-72 relative overflow-hidden">
 				<Container
 					className={cn(
-						'flex flex-col items-center gap-12 *:text-secondary',
-						'md:flex-row',
+						'flex flex-col items-center gap-12 *:text-secondary z-10 relative',
+						'md:grid md:grid-cols-[1.3fr,1.7fr]',
 					)}
 				>
 					<div className="*:text-secondary">
-						<Heading as="h3" size="3xl" className={cn('md:text-6xl')}>
+						<Heading as="h3" size="3xl" className={cn('md:text-[64px]')}>
 							SPONSORS
 						</Heading>
 						<Paragraph
 							size="sm"
-							className={cn('max-w-[590px] mt-4', 'md:text-lg')}
+							className={cn('max-w-[590px] mt-5', 'md:text-lg')}
 						>
 							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
 							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
 							Kyuden International (Japan), Enersok FE LLC
 						</Paragraph>
 						<div>
-							<Heading as="h3" size="sm" className="mt-16">
+							<Heading as="h3" size="xs" className="mt-16 uppercase">
 								owned by
 							</Heading>
 							<ul className="flex flex-col gap-y-6 mt-11">
-								<li className="border-b border-borderColor flex justify-between">
-									<div className="flex gap-4">
-										<span className="size-[22px] rounded-[50%] bg-red-600 inline-block" />
-										<Paragraph size="sm" className={cn('md:text-lg')}>
+								<li className="border-b border-borderColor pb-3 flex justify-between">
+									<div className="flex gap-4 items-start">
+										<span className="size-[22px] rounded-[50%] bg-[#FF5E11] inline-block" />
+										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
 											EDF
 										</Paragraph>
 									</div>
-									<span>33.3%</span>
+									<span className='text-2xl !leading-[normal]'>33.3%</span>
 								</li>
-								<li className="border-b border-borderColor flex justify-between">
-									<div className="flex gap-4">
-										<span className="size-[22px] rounded-[50%] bg-green-600 inline-block" />
-										<Paragraph size="sm" className={cn('md:text-lg')}>
+								<li className="border-b border-borderColor pb-3 flex justify-between">
+									<div className="flex gap-4 items-start">
+										<span className="size-[22px] rounded-[50%] bg-[#1AAD21] inline-block" />
+										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
 											Nebras Power
 										</Paragraph>
 									</div>
-									<span>33.3%</span>
+									<span className='text-2xl !leading-[normal]'>33.3%</span>
+								</li>
+								<li className="border-b border-borderColor pb-3 flex justify-between">
+									<div className="flex gap-4 items-start">
+										<span className="size-[22px] rounded-[50%] bg-[#00479D] inline-block" />
+										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
+											Sojitz
+										</Paragraph>
+									</div>
+									<span className='text-2xl !leading-[normal]'>19%</span>
+								</li>
+								<li className="border-b border-borderColor pb-3 flex justify-between">
+									<div className="flex gap-4 items-start">
+										<span className="size-[22px] rounded-[50%] bg-[#93DCFF] inline-block" />
+										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
+											Kyuden
+										</Paragraph>
+									</div>
+									<span className='text-2xl !leading-[normal]'>14.3%</span>
 								</li>
 							</ul>
 						</div>
 					</div>
 					{/* Chart */}
-					<div className='flex justify-center overflow-hidden'>
+					<div className='flex justify-center overflow-hidden relative'>
 						<SponsorDonutChart />
 					</div>
 				</Container>
+				<NextImage
+					src={Factory2}
+					alt="Banner Enersok"
+					className="absolute bottom-0 right-[50px] z-[1]"
+					priority={true}
+				/>
 			</section>
 
 			{/* Location section */}
