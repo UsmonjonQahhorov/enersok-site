@@ -19,7 +19,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 					alt={image.name}
 					width={image.width}
 					height={image.height}
-					className="object-cover rounded-xl min-h-[348px] md:min-h-[371px] w-full h-full"
+					className="object-cover object-center rounded-xl min-h-[348px] md:min-h-[371px] w-full h-full"
 				/>
 			</div>
 			<Heading
