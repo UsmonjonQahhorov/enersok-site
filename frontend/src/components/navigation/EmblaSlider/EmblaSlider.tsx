@@ -11,6 +11,7 @@ interface EmblaCarouselProps {
 	controlsButton?: { text: string; link: string };
 	autoLoopInterval?: number;
 	slidesToShow?: number;
+	className?: string;
 }
 
 const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
@@ -21,6 +22,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 	controlsButton,
 	autoLoopInterval = 4000,
 	slidesToShow = 1,
+	className
 }) => {
 	const [viewportRef, embla] = useEmblaCarousel({ loop: true });
 	const [selectedIndex, setSelectedIndex] = useState(0);
@@ -121,7 +123,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 	);
 
 	return (
-		<div className="embla relative w-full overflow-hidden">
+		<div className={cn('embla relative w-full overflow-hidden', className)}>
 			{controlsPosition === 'above' && Controls}
 			<div className="embla__viewport w-full overflow-hidden" ref={viewportRef}>
 				<div className="embla__container flex">
