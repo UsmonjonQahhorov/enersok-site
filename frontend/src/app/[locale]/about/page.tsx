@@ -17,7 +17,7 @@ const AboutCompanyPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[164px] pb-11 grid grid-cols-2">
+				<Container className="pt-[164px] pb-8 lg:pb-11 grid grid-cols-1 lg:grid-cols-2">
 					<div>
 						<Breadcrumbs
 							textHome={'Main'}
@@ -25,10 +25,16 @@ const AboutCompanyPage: PageType = () => {
 							urlHome={RouterConfig.Home}
 							urlPage={RouterConfig.AboutCompany}
 						/>
-						<Heading className="!leading-[normal] text-secondary uppercase pt-[175px] pb-8 text-[100px]">
+						<Image
+							src={Banner}
+							alt="Careers Banner Enersok"
+							className="object-cover block my-8 lg:my-0 max-h-[250px] sm:max-h-[350px] lg:hidden object-center rounded-xl h-full"
+							priority={true}
+						/>
+						<Heading className="!leading-[normal] text-secondary uppercase lg:pt-[175px] pb-8 text-[48px] lg:text-[100px]">
 							About Company
 						</Heading>
-						<Paragraph className="text-lg font-normal text-secondary mb-3 pb-[140px] pr-[15%]">
+						<Paragraph className="text-base lg:text-lg font-normal text-secondary mb-3 lg:pb-[140px] lg:pr-[15%]">
 							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
 							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
 							Kyuden International (Japan), which entered into public-private
@@ -37,7 +43,7 @@ const AboutCompanyPage: PageType = () => {
 							(On March 25, 2022).{' '}
 						</Paragraph>
 					</div>
-					<div className="relative z-10 pl-14">
+					<div className="relative hidden lg:block z-10 pl-14">
 						<Image
 							src={Banner}
 							alt="Careers Banner Enersok"
@@ -49,13 +55,13 @@ const AboutCompanyPage: PageType = () => {
 				<Image
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute bottom-0 right-[-100px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>
 			</section>
 			<section>
-				<Container className="grid grid-cols-2 gap-x-[84px] py-[162px]">
-					<div className="rounded-xl w-full h-full">
+				<Container className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-[84px] py-20 lg:py-[162px]">
+					<div className="rounded-xl w-full max-h-[250px] sm:max-h-[350px] lg:max-h-full h-full">
 						<Image
 							src={AboutBanner1}
 							alt="About Enersok"
@@ -65,22 +71,22 @@ const AboutCompanyPage: PageType = () => {
 					<div>
 						<Heading
 							as="h3"
-							className="text-[64px] text-secondary uppercase !leading-[normal] py-10"
+							className="text-[32px] lg:text-[64px] text-secondary uppercase !leading-[normal] py-8 lg:py-10"
 						>
 							New Power Plant in Uzbekistan
 						</Heading>
-						<div className="flex flex-col gap-y-11 text-secondary pb-20">
-							<Paragraph className="text-lg">
+						<div className="flex flex-col gap-y-6 lg:gap-y-11 text-secondary lg:pb-20">
+							<Paragraph className="text-sm lg:text-lg">
 								The key purpose of the Company is to carry out construction,
 								 operation and maintenance activities in future. The commercial
 								operation date is expected in 2026.
 							</Paragraph>
-							<Paragraph className="text-lg">
+							<Paragraph className="text-sm lg:text-lg">
 								The electricity produced will be sold to Uzbek state-owned power
 								company JSC National Electricity Grid of Uzbekistan for a
 								duration of 25 years.
 							</Paragraph>
-							<Paragraph className="text-lg">
+							<Paragraph className="text-sm lg:text-lg">
 								It will be one of the nation’s largest power generating
 								facilities upon completion and will be instrumental in helping
 								the country meet its growing energy demands from both industry
@@ -94,19 +100,19 @@ const AboutCompanyPage: PageType = () => {
 				<Container className="pb-[140px]">
 					<Heading
 						as="h3"
-						className="w-2/5 text-secondary text-[64px] !leading-[normal] pb-[50px]"
+						className="lg:w-2/5 text-secondary text-[32px] lg:text-[64px] !leading-[normal] pb-8 lg:pb-[50px]"
 					>
 						VIEW AT ENERSOK DEVELOPMENT
 					</Heading>
-					<div className="grid grid-cols-4 gap-x-5">
+					<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-[42px] sm:gap-x-5">
 						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
-							<Heading as="h4" className="text-[80px] text-button1 uppercase">
+							<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 								2022
 							</Heading>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Establishment of the Company
 							</Paragraph>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Establishment of the Company
 							</Paragraph>
 							<div className="w-full h-full rounded-xl">
@@ -117,14 +123,14 @@ const AboutCompanyPage: PageType = () => {
 								/>
 							</div>
 						</div>
-						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 mt-[100px] h-fit">
-							<Heading as="h4" className="text-[80px] text-button1 uppercase">
+						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 sm:mt-[100px] h-fit">
+							<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 								2023
 							</Heading>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Start of Construction of Combined-cycle Gas Turbine Station
 							</Paragraph>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Start of Construction of Combined-cycle Gas Turbine Station
 							</Paragraph>
 							<div className="w-full h-full rounded-xl">
@@ -136,16 +142,16 @@ const AboutCompanyPage: PageType = () => {
 							</div>
 						</div>
 						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
-							<Heading as="h4" className="text-[80px] text-button1 uppercase">
+							<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 								2026
 							</Heading>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Commercial Operation Start
 							</Paragraph>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Commercial Operation Start
 							</Paragraph>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Commercial Operation Start
 							</Paragraph>
 							<div className="w-full h-full rounded-xl">
@@ -156,21 +162,21 @@ const AboutCompanyPage: PageType = () => {
 								/>
 							</div>
 						</div>
-						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 mt-[100px] h-fit">
-							<Heading as="h4" className="text-[80px] text-button1 uppercase">
+						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 sm:mt-[100px] h-fit">
+							<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 								Future
 							</Heading>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Establishment of the Company
 							</Paragraph>
-							<Paragraph className='text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 								Establishment of the Company
 							</Paragraph>
 							<div className="w-full h-full rounded-xl">
 								<Image
 									src={Development}
 									alt="Development 1 Eneksok"
-									className="rounded-xl w-full max-h-[208px] object-cover object-center"
+									className="rounded-xl w-full max-h-[150px] sm:max-h-[200px] lg:max-h-[283px] object-cover object-center"
 								/>
 							</div>
 						</div>
@@ -178,21 +184,21 @@ const AboutCompanyPage: PageType = () => {
 				</Container>
 			</section>
 			<section>
-				<Container className="grid grid-cols-2 gap-x-5 pb-[200px]">
-					<div className="bg-backgroundImage5 p-8 rounded-xl flex flex-col justify-between">
+				<Container className="grid grid-cols-1 lg:grid-cols-2 gap-y-[18px] lg:gap-x-5 pb-20 lg:pb-[200px]">
+					<div className="bg-backgroundImage5 py-6 px-4 lg:p-8 rounded-xl flex flex-col justify-between">
 						<div>
 							<Heading
 								as="h3"
-								className="text-[64px] text-secondary uppercase pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
+								className="text-[32px] lg:text-[64px] text-secondary uppercase pb-6 lg:pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
 							>
 								Our Vision
 							</Heading>
-							<div className="pt-8 pb-4 flex flex-col">
-								<div className="flex w-fit min-w-12 h-12 items-center justify-center bg-button1 rounded-xl">
+							<div className="pt-6 lg:pt-8 pb-4 flex flex-col">
+								<div className="flex w-fit min-w-12 h-12 items-center justify-center bg-primary rounded-xl">
 									<Image src={About1} alt="AFs1 Enersok" />
 								</div>
 							</div>
-							<Paragraph className="text-secondary text-2xl !leading-[normal] pb-[120px]">
+							<Paragraph className="text-secondary text-sm lg:text-2xl !leading-[normal] pb-8 lg:pb-[120px]">
 								to be activily part of uzbek energy transition by building and
 								operating a reliable and efficiant asset
 							</Paragraph>
@@ -201,24 +207,24 @@ const AboutCompanyPage: PageType = () => {
 							<Image
 								src={AboutBanner2}
 								alt="Banner2 Eneksok"
-								className="w-full max-h-[283px] object-cover object-center rounded-xl"
+								className="w-full max-h-[150px] sm:max-h-[200px] lg:max-h-[283px] object-cover object-center rounded-xl"
 							/>
 						</div>
 					</div>
-					<div className="bg-backgroundImage5 p-8 rounded-xl flex flex-col justify-between">
+					<div className="bg-backgroundImage5 py-6 px-4 lg:p-8 rounded-xl flex flex-col justify-between">
 						<div>
 							<Heading
 								as="h3"
-								className="text-[64px] text-secondary uppercase pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
+								className="text-[32px] lg:text-[64px] text-secondary uppercase pb-6 lg:pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
 							>
 								Our Objective
 							</Heading>
-							<div className="pt-8 pb-4 flex flex-col">
+							<div className="pt-6 lg:pt-8 pb-4 flex flex-col">
 								<div className="flex w-fit min-w-12 h-12 items-center justify-center bg-button1 rounded-xl">
 									<Image src={About2} alt="AFs1 Enersok" />
 								</div>
 							</div>
-							<Paragraph className="text-secondary text-2xl !leading-[normal] pb-[120px]">
+							<Paragraph className="text-secondary text-sm lg:text-2xl !leading-[normal] pb-8 lg:pb-[120px]">
 								to reach c.o.d. in safety (hse), on time, according to the
 								budget and with high level of performances
 							</Paragraph>
