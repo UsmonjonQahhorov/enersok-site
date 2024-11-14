@@ -19,7 +19,7 @@ export const NewCard: FC<NewCardProps> = ({
 		<article
 			className={cn(
 				className,
-				'flex flex-col gap-y-8 items-start text-secondary',
+				'flex flex-col gap-y-3 sm:gap-y-8 items-start text-secondary',
 			)}
 		>
 			<Link href={url} className="w-full h-full">
@@ -28,19 +28,19 @@ export const NewCard: FC<NewCardProps> = ({
 					width={image.width}
 					height={image.height}
 					alt="Enersok News Image"
-					className="max-h-[287px] w-full h-full object-cover object-center rounded-xl"
+					className="max-h-[200px] sm:max-h-[287px] w-full h-full object-cover object-center rounded-xl"
 				/>
 			</Link>
 			<Link href={url}>
-				<Heading as="h4" className="text-[32px] hover:text-primary duration-300">
+				<Heading as="h4" className="text-2xl lg:text-[32px] pt-3 md:pt-0 hover:text-primary duration-300">
 					{title}
 				</Heading>
 			</Link>
 			<div className="flex flex-row gap-x-5 items-center">
-				<Paragraph className="text-base !leading-[normal]">{date}</Paragraph>
+				<Paragraph className="text-xs sm:text-base !leading-[normal]">{date}</Paragraph>
 				<div className="flex flex-row items-center gap-x-1">
-					<NextImage src={Time} alt="Time Enersok News" className="w-4 h-4" />
-					<Paragraph className="!leading-[normal]">{time}</Paragraph>
+					<NextImage src={Time} alt="Time Enersok News" className="w-4 h-4 mb-[2px] sm:mb-0" />
+					<Paragraph className="!leading-[normal] text-xs sm:text-base">{time}</Paragraph>
 				</div>
 			</div>
 		</article>
