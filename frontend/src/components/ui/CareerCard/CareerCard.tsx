@@ -16,19 +16,19 @@ export const CareerCard: FC<CareerCardProps> = ({
 		<article
 			className={cn(
 				className,
-				'grid grid-cols-[3.5fr,3.5fr,3.5fr,1fr] py-8 text-secondary border-t-[1px] border-solid border-secondaryOpacity3 items-center',
+				'flex flex-col lg:grid lg:grid-cols-[3.5fr,3.5fr,3.5fr,1fr] py-8 text-secondary border-t-[1px] border-solid border-secondaryOpacity3 items-start lg:items-center',
 			)}
 		>
-			<Heading as="h4" className="font-normal text-[32px]">
+			<Heading as="h4" className="font-normal text-2xl md:text-[32px] pb-3 lg:pb-0">
 				{title}
 			</Heading>
 			<div className="flex flex-col items-start justify-center">
-				<Paragraph className="text-sm text-secondaryOpacity4 pb-2">
+				<Paragraph className="text-sm text-secondaryOpacity4 pb-[5px] md:pb-2">
 					Location
 				</Paragraph>
-				<Paragraph className="text-xl">{location}</Paragraph>
+				<Paragraph className="text-base md:text-xl pb-8 lg:pb-0">{location}</Paragraph>
 			</div>
-			<div className="flex flex-row gap-x-8">
+			<div className="flex flex-row gap-x-8 pb-8 lg:pb-0">
 				<div className="flex flex-col items-start justify-center">
 					<Paragraph className="text-sm text-secondaryOpacity4 pb-2">
 						Posting Date
@@ -43,7 +43,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 				</div>
 			</div>
 			<Link
-				className="w-fit bg-button1 hover:bg-button1/80 duration-300 text-lg text-white py-4 px-9 rounded-[100px]"
+				className="w-full lg:w-fit text-center lg:text-left bg-button1 hover:bg-button1/80 duration-300 text-lg text-white py-4 px-9 rounded-[100px]"
 				href={url}
 			>
 				View
