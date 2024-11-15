@@ -91,4 +91,9 @@ export const mobileNavigation = [
 		name_uz: 'GRM topshirish',
 		href: RouterConfig.GRMSubmission,
 	},
+	{
+		name_en: 'Contacts',
+		name_uz: 'Kontaktlar',
+		href: RouterConfig.ContactUs,
+	},
 ]

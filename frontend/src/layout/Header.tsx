@@ -9,7 +9,7 @@ import { Link } from '@/i18n/routing';
 export const Header: FC<HeaderProps> = ({ className }) => {
 	return (
 		<header
-			className={cn(className, 'py-12 absolute top-0 left-0 w-full z-[40]')}
+			className={cn(className, 'py-3 sm:py-6 xl:py-12 absolute top-0 left-0 w-full z-[40]')}
 		>
 			<Container className="flex justify-between items-center">
 				<Link href={'/'}>
@@ -17,7 +17,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
 						src={Logo}
 						alt="Enersok Header Logo"
 						priority={true}
-						className="w-[205px] h-fit"
+						className="w-[159px] sm:w-[205px] h-fit"
 					/>
 				</Link>
 				<DesktopNavigation />

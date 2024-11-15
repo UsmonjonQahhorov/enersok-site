@@ -13,17 +13,22 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { Container } from '@/components/ui/Container';
 import { RouterConfig } from '@/configs/router.config';
 import { SocialIcon } from '@/components/ui/SocialIcon';
+import { mobileNavigation } from '@/locales/navigations';
+import { getLocale } from '@/utils/getLocale.util';
+import { Link as NavigationLink } from '@/i18n/routing';
 
 export const Footer: FC<FooterProps> = ({ className }) => {
+	const locale = getLocale();
+
 	return (
 		<footer className={cn(className, 'bg-footer')}>
 			<Container className="flex flex-col">
 				<div
 					className={
-						'w-full grid grid-cols-[1fr,1fr,2fr] gap-x-80 py-24 border-b border-[rgba(255,_255,_255,_0.12)]'
+						'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr,1fr,1.5fr] md:gap-x-14 xl:gap-x-28 2xl:gap-x-56 pt-12 pb-8 md:py-24 md:border-b border-[rgba(255,_255,_255,_0.12)]'
 					}
 				>
-					<Link href={RouterConfig.Home}>
+					<Link className='pb-8 md:pb-0' href={RouterConfig.Home}>
 						<Image
 							src={Logo}
 							alt="Enersok Footer Logo"
@@ -32,56 +37,22 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						/>
 					</Link>
 					<ul className="flex flex-col text-left gap-y-1">
-						<li>
-							<Link
-								className="text-2xl text-white font-normal hover:text-button1 duration-200"
-								href={RouterConfig.AboutCompany}
-							>
-								About Company
-							</Link>
-						</li>
-						<li>
-							<Link
-								className="text-2xl text-white font-normal hover:text-button1 duration-200"
-								href={RouterConfig.AboutSponsors}
-							>
-								About Sponsors 
-							</Link>
-						</li>
-						<li>
-							<Link
-								className="text-2xl text-white font-normal hover:text-button1 duration-200"
-								href={RouterConfig.ProjectDetails}
-							>
-								Project Details
-							</Link>
-						</li>
-						<li>
-							<Link
-								className="text-2xl text-white font-normal hover:text-button1 duration-200"
-								href={RouterConfig.News}
-							>
-								News
-							</Link>
-						</li>
-						<li>
-							<Link
-								className="text-2xl text-white font-normal hover:text-button1 duration-200"
-								href={RouterConfig.Careers}
-							>
-								Careers
-							</Link>
-						</li>
-						<li>
-							<Link
-								className="text-2xl text-white font-normal hover:text-button1 duration-200"
-								href={RouterConfig.ContactUs}
-							>
-								Contacts
-							</Link>
-						</li>
+						{
+							mobileNavigation.map((menu) => (
+								<li key={menu.href}>
+									<NavigationLink
+										locale={locale}
+										className="text-2xl text-white font-normal hover:text-button1 duration-200"
+										href={menu.href}
+									>
+										{locale === 'en' && menu.name_en}
+										{locale === 'uz' && menu.name_uz}
+									</NavigationLink>
+								</li>
+							))
+						}
 					</ul>
-					<ul className="flex flex-col gap-y-4">
+					<ul className="hidden lg:flex flex-col gap-y-4">
 						<li>
 							<Link
 								className={'flex flex-row items-start gap-x-1'}
@@ -148,11 +119,11 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						</li>
 					</ul>
 				</div>
-				<div className="pt-4 pb-[100px] flex justify-between items-center">
-					<Paragraph size="sm" className="text-white hover:text-button1 duration-200">
+				<div className="pb-6 md:pt-4 md:pb-[100px] flex flex-col-reverse md:flex-row justify-between items-start md:items-center">
+					<Paragraph size="sm" className="text-white hover:text-button1 duration-200 tracking-widest md:tracking-normal">
 						© 2024 Enersok
 					</Paragraph>
-					<ul className="flex gap-x-3">
+					<ul className="flex gap-x-3 pb-8 md:pb-0">
 						<li>
 							<SocialIcon
 								url={'https://t.me/SYRDARYA_CCGT_2'}

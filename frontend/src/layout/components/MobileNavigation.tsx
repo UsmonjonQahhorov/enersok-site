@@ -20,7 +20,7 @@ export const MobileNavigation = () => {
 	const locale = getLocale();
 
 	return (
-		<div className="flex items-center gap-x-4 lg:hidden">
+		<div className="flex items-center gap-x-4 xl:hidden">
 			<Sheet>
 				<PopopverRoot aria-label="languages">
 					<PopoverTrigger
@@ -52,20 +52,20 @@ export const MobileNavigation = () => {
 						))}
 					</PopoverContent>
 				</PopopverRoot>
-				<SheetTrigger className="flex cursor-default items-center mt-[-2px]">
+				<SheetTrigger className="flex cursor-default items-center mt-[-4px] sm:mt-[-2px]">
 					<Image
 						src={BurgerMenu}
 						alt='BurgerMenu Enersok'
 					/>
 				</SheetTrigger>
-				<SheetContent>
+				<SheetContent className='bg-backgroundImage1'>
 					<SheetTitle />
 					<SheetBody>
 						<ul
-							className="flex flex-col gap-y-3"
+							className="flex flex-col gap-y-3 pt-[50px]"
 						>
 							{mobileNavigation.map((menu) => (
-								<li key={menu.href} className="text-black">
+								<li key={menu.href} className="text-secondary text-xl sm:text-2xl">
 									<SheetClose asChild={true}>
 										<NavigationLink
 											locale={locale}

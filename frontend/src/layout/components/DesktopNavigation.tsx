@@ -28,13 +28,13 @@ export const DesktopNavigation = () => {
 	const locale = getLocale();
 
 	return (
-		<div className="hidden items-center sm:gap-x-4 md:gap-x-8 lg:flex 2xl:gap-x-20">
+		<div className="hidden items-center sm:gap-x-4 md:gap-x-8 xl:flex 2xl:gap-x-20">
 			<Root aria-label="navigation">
 				<List className="flex lg:gap-x-8 2xl:gap-x-10" aria-label="navigation">
 					{navigation.map((menu) =>
 						menu.childMenus ? (
 							<Item key={menu.href}>
-								<Trigger className="whitespace-nowrap text-secondary font-normal lg:text-base 2xl:text-lg">
+								<Trigger className="whitespace-nowrap text-secondary font-normal xl:text-sm 2xl:text-lg">
 									{locale === 'en' && menu.name_en}
 									{locale === 'uz' && menu.name_uz}
 								</Trigger>
@@ -44,7 +44,7 @@ export const DesktopNavigation = () => {
 											key={childMenu.href}
 											asChild={true}
 											className={cn(
-												'whitespace-nowrap font-normal duration-200 lg:text-base 2xl:text-lg',
+												'whitespace-nowrap font-normal duration-200 xl:text-sm 2xl:text-lg',
 												'rounded-lg p-2 text-secondary hover:bg-primary hover:text-white',
 											)}
 										>
@@ -63,7 +63,7 @@ export const DesktopNavigation = () => {
 										locale={locale}
 										href={menu.href}
 										className={cn(
-											'whitespace-nowrap text-secondary hover:text-primary duration-200 text-xs font-normal lg:text-base 2xl:text-lg',
+											'whitespace-nowrap text-secondary hover:text-primary duration-200 text-xs font-normal xl:text-sm 2xl:text-lg',
 										)}
 									>
 										{locale === 'en' && menu.name_en}
@@ -79,16 +79,16 @@ export const DesktopNavigation = () => {
 				</List>
 			</Root>
 
-			<div className="flex items-center gap-x-8">
+			<div className="flex items-center gap-x-6 2xl:gap-x-8">
 				<div className="flex items-center gap-x-24 pb-2 border-b border-black">
-					<span>Search</span>
+					<span className='text-sm 2xl:text-base text-secondary'>Search</span>
 					<Image src={Search} alt="Search Enersok" className="w-4 h-4" />
 				</div>
 				{/* Select language */}
 				<PopopverRoot aria-label="languages">
 					<PopoverTrigger
 						className={cn(
-							'cursor-default px-4 text-xl text-secondary md:cursor-pointer',
+							'cursor-default px-4 text-base 2xl:text-xl text-secondary md:cursor-pointer',
 						)}
 					>
 						{locale?.toUpperCase()}
@@ -116,7 +116,7 @@ export const DesktopNavigation = () => {
 					</PopoverContent>
 				</PopopverRoot>
 				<NavigationLink
-					className="text-lg py-4 px-6 bg-button1 hover:bg-button1/80 duration-200 rounded-[100px] text-white"
+					className="text-base 2xl:text-lg py-3 px-4 2xl:py-4 2xl:px-6 bg-button1 hover:bg-button1/80 duration-200 rounded-[100px] text-white"
 					href="/contacts"
 					locale={locale}
 				>
