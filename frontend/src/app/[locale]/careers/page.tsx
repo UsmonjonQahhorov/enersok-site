@@ -27,7 +27,7 @@ const CareersPage: PageType = () => {
 							className="object-cover object-center mt-8 max-h-[250px] md:max-h-[350px] block lg:hidden rounded-xl h-full"
 							priority={true}
 						/>
-						<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-[48px] lg:text-[100px]">
+						<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px]">
 							Careers
 						</Heading>
 						<div className="pt-10 border-t-[1px] border-solid border-secondaryOpacity3 pb-4 lg:pb-40">

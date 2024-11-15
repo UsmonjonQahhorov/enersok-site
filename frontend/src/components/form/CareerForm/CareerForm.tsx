@@ -24,7 +24,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 				'px-6 py-12 md:p-12 h-fit bg-backgroundImage2 [&>div:nth-last-of-type(1)]:w-[70%] md:[&>div:nth-last-of-type(1)]:w-[40%] flex flex-col gap-y-12 lg:rounded-xl',
 			)}
 		>
-			<Heading as='h4' className='uppercase text-secondary text-[32px] lg:text-[48px]'>
+			<Heading as='h4' className='uppercase text-secondary text-[32px] lg:text-5xl'>
 				{text}
 			</Heading>
 			<TextInput

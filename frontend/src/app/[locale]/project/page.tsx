@@ -41,7 +41,7 @@ const ProjectDetailsPage: PageType = () => {
 							className="object-cover my-8 lg:my-0 max-h-[250px] sm:max-h-[350px] lg:hidden object-center rounded-xl h-full"
 							priority={true}
 						/>
-						<Heading className="!leading-[normal] text-secondary uppercase pb-8 lg:pt-[75px] lg:pb-[50px] text-[48px] lg:text-[100px]">
+						<Heading className="!leading-[normal] text-secondary uppercase pb-8 lg:pt-[75px] lg:pb-[50px] text-5xl lg:text-[100px]">
 							Syrdarya 2
 						</Heading>
 						<div className="pb-8 lg:pb-12 border-b-[1px] border-solid border-secondaryOpacity3">

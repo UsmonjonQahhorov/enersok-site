@@ -23,7 +23,7 @@ const ContactsPage: PageType = () => {
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.ContactUs}
 					/>
-					<Heading className="!leading-[normal] text-secondary uppercase py-8 md:py-[75px] text-[48px] lg:text-[100px]">
+					<Heading className="!leading-[normal] text-secondary uppercase py-8 md:py-[75px] text-5xl lg:text-[100px]">
 						Contact us
 					</Heading>
 				</Container>
@@ -37,7 +37,7 @@ const ContactsPage: PageType = () => {
 			<section>
 				<Container className="py-[50px] lg:pt-[95px] lg:pb-[142px] flex flex-col lg:grid lg:grid-cols-[4.5fr,5.5fr] gap-y-[50px] lg:gap-x-[100px] items-center">
 					<div className="flex flex-col gap-y-8 py-5 w-full">
-						<Heading as="h3" className="text-secondary text-[32px] lg:text-[48px] pb-6">
+						<Heading as="h3" className="text-secondary text-[32px] lg:text-5xl pb-6">
 							GET IN TOUCH WITH US
 						</Heading>
 						<ul className="flex flex-col gap-y-8">

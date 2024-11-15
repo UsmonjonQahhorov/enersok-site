@@ -20,7 +20,7 @@ const GRMSubmissionPage: PageType = () => {
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.GRMSubmission}
 					/>
-					<Heading className="!leading-[normal] text-secondary uppercase pt-[32px] lg:pt-[75px] text-[48px] lg:text-[100px]">
+					<Heading className="!leading-[normal] text-secondary uppercase pt-[32px] lg:pt-[75px] text-5xl lg:text-[100px]">
 						GRM Submission
 					</Heading>
 					<Paragraph

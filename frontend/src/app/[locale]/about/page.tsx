@@ -31,7 +31,7 @@ const AboutCompanyPage: PageType = () => {
 							className="object-cover block my-8 lg:my-0 max-h-[250px] sm:max-h-[350px] lg:hidden object-center rounded-xl h-full"
 							priority={true}
 						/>
-						<Heading className="!leading-[normal] text-secondary uppercase lg:pt-[175px] pb-8 text-[48px] lg:text-[100px]">
+						<Heading className="!leading-[normal] text-secondary uppercase lg:pt-[175px] pb-8 text-5xl lg:text-[100px]">
 							About Company
 						</Heading>
 						<Paragraph className="text-base lg:text-lg font-normal text-secondary mb-3 lg:pb-[140px] lg:pr-[15%]">

@@ -19,7 +19,7 @@ const SingleCareerPage: PageType = () => {
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.Careers}
 					/>
-					<Heading className="!leading-[normal] text-secondary w-1/2 uppercase py-8 lg:py-[75px] text-[48px] lg:text-[100px] lg:pb-16">
+					<Heading className="!leading-[normal] text-secondary w-1/2 uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
 						Finance Controller
 					</Heading>
 					<div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-16">
