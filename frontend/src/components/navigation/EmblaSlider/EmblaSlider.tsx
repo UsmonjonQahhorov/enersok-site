@@ -62,7 +62,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 			})}
 		>
 			{controlsTitle && (
-				<h3 className="text-[64px] text-secondary uppercase">
+				<h3 className="text-[32px] text-left lg:text-[64px] text-secondary uppercase">
 					{controlsTitle}
 				</h3>
 			)}
@@ -139,6 +139,14 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 				</div>
 			</div>
 			{controlsPosition === 'below' && Controls}
+			{controlsButton && (
+				<a
+					href={controlsButton.link}
+					className="mt-7 w-full py-[14.5px] px-[32px] text-center text-lg bg-button1 hover:bg-button1/90 text-white rounded-[100px] hidden"
+				>
+					{controlsButton.text}
+				</a>
+			)}
 		</div>
 	);
 };

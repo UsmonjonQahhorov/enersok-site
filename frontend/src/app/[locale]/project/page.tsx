@@ -135,7 +135,7 @@ const ProjectDetailsPage: PageType = () => {
 						financial, technical and E&S qualifications.
 					</Paragraph>
 					<EmblaCarousel
-						className='[&>div>div>div]:!flex-[0_0_100%] sm:[&>div>div>div]:!flex-[0_0_50%] lg:[&>div>div>div]:!flex-[0_0_33.3333%] [&>div:nth-last-of-type(1)]:hidden [&>div:nth-last-of-type(1)]:lg:flex'
+						className='[&>div>div>div]:!flex-[0_0_100%] [&>div>div>div]:sm:!flex-[0_0_50%] [&>div>div>div]:lg:!flex-[0_0_33.3333%] [&>div:nth-last-of-type(1)]:hidden [&>div:nth-last-of-type(1)]:lg:flex'
 						showCounter={false}
 						slidesToShow={3}
 						slides={[
