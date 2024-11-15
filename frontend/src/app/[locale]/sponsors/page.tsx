@@ -12,6 +12,7 @@ import Sponsor4 from '@public/sponsors/sponsor4.png';
 import Sponsor5 from '@public/logo.png';
 import Line1 from '@public/sponsors/line1.png';
 import Line2 from '@public/sponsors/line2.png';
+import Line3 from '@public/sponsors/line3.png';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
 import { SponsorCard } from '@/components/ui/SponsorCard';
@@ -20,46 +21,53 @@ const AboutSponsorsPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
-				<Container className="pt-[164px] pb-5">
+				<Container className="pt-[164px] lg:pb-5 relative z-10">
 					<Breadcrumbs
 						textHome={'Main'}
 						textPage={'About Sponsors'}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.AboutSponsors}
 					/>
-					<Heading className="!leading-[normal] w-1/2 text-secondary uppercase py-[75px] text-[100px]">
+					<Heading className="!leading-[normal] w-1/2 text-secondary uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px]">
 						About Sponsors
 					</Heading>
 				</Container>
 				<Image
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute bottom-0 right-[122px]"
+					className="absolute hidden lg:block bottom-0 right-[122px]"
 					priority={true}
 				/>
 			</section>
 			<section>
-				<Container className="pt-[133px] pb-[160px]">
-					<div className="w-2/5">
-						<Heading as="h3" className="text-[64px] text-secondary uppercase">
+				<Container className="pt-12 pb-[110px] lg:pt-[133px] lg:pb-[160px]">
+					<div className="w-full lg:w-2/5">
+						<Heading as="h3" className="text-[32px] lg:text-[64px] pb-[18px] lg:pb-0 text-secondary uppercase">
 							Distribution
 						</Heading>
-						<Paragraph className="text-lg text-secondary">
+						<Paragraph className="text-sm lg:text-lg text-secondary">
 							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
 							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
 							Kyuden International (Japan), Enersok FE LLC
 						</Paragraph>
 					</div>
-					<div className="pt-20">
-						<div className="w-full flex flex-col items-center relative">
+					<div className="pt-[136px] md:pt-20">
+						<div className="w-full grid grid-cols-[0.1fr,0.9fr] md:flex md:flex-col items-start md:items-center relative">
 							<Heading
 								as="h4"
-								className="text-2xl text-secondary absolute top-[-12px] px-4 bg-white -translate-x-1/2 left-[50%]"
+								className="text-2xl hidden md:block text-secondary absolute top-[-12px] px-4 bg-white -translate-x-1/2 left-[50%]"
 							>
 								Project Sponsors
 							</Heading>
-							<Image src={Line1} alt="Line1 Enersok" className="pb-3 px-4" />
-							<div className="grid grid-cols-4 gap-x-3">
+							<Image src={Line1} alt="Line1 Enersok" className="pb-3 px-4 hidden md:block" />
+							<Image src={Line3} alt="Line3 Enersok" className="block md:hidden h-[88%] mt-10" />
+							<div className="grid md:grid-cols-4 gap-y-[10px] md:gap-x-3">
+								<Heading
+									as="h4"
+									className="text-2xl absolute -top-[48px] text-secondary md:hidden"
+								>
+									Project Sponsors
+								</Heading>
 								<SponsorCard
 									image={{
 										width: Sponsor1.width,
@@ -100,28 +108,51 @@ const AboutSponsorsPage: PageType = () => {
 									title="Kyuden International Corporation"
 									text="14,3%"
 								/>
+								<div className="flex md:hidden flex-col md:items-center">
+									<Heading as="h5" className="text-base lg:text-2xl text-left md:text-center pt-6 pb-3 md:py-3">
+										Holding Сompany
+									</Heading>
+									<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+										<Paragraph className="text-center text-2xl lg:text-[32px] text-[#5055E6]">
+											NEKS Energy B.V.
+										</Paragraph>
+									</div>
+									<span className="w-[2px] h-[73px] bg-black hidden md:block" />
+								</div>
+								<div className="flex md:hidden flex-col md:items-center">
+									<Heading as="h5" className="text-base lg:text-2xl text-left md:text-center pt-8 pb-3 md:py-3">
+										Project Сompany
+									</Heading>
+									<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+										<Image
+											src={Sponsor5}
+											alt="Sponsor5 Enersok"
+											className="max-h-[34px] lg:max-h-[47px] w-auto"
+										/>
+									</div>
+								</div>
 							</div>
-							<Image src={Line2} alt="Line2 Enersok" />
-							<div className="flex flex-col items-center">
-								<Heading as="h5" className="text-center py-3">
+							<Image className='md:w-11/12 xl:w-4/5 hidden md:block' src={Line2} alt="Line2 Enersok" />
+							<div className="hidden md:flex flex-col items-center">
+								<Heading as="h5" className="text-base lg:text-2xl text-center py-3">
 									Holding Сompany
 								</Heading>
-								<div className="min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+								<div className="min-h-[83px] lg:min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Paragraph className="text-center text-[32px] text-[#5055E6]">
 										NEKS Energy B.V.
 									</Paragraph>
 								</div>
 								<span className="w-[2px] h-[73px] bg-black" />
 							</div>
-							<div className="flex flex-col items-center">
-								<Heading as="h5" className="text-center py-3">
+							<div className="hidden md:flex flex-col items-center">
+								<Heading as="h5" className="text-base lg:text-2xl text-center py-3">
 									Project Сompany
 								</Heading>
-								<div className="min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+								<div className="min-h-[83px] lg:min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Image
 										src={Sponsor5}
 										alt="Sponsor5 Enersok"
-										className="max-h-[47px] w-auto"
+										className="max-h-[34px] lg:max-h-[47px] w-auto"
 									/>
 								</div>
 							</div>
@@ -130,10 +161,10 @@ const AboutSponsorsPage: PageType = () => {
 				</Container>
 			</section>
 			<section>
-				<Container className="pb-36">
+				<Container className="pb-12 lg:pb-36">
 					<Heading
 						as="h3"
-						className="text-[64px] text-secondary uppercase pb-28"
+						className="text-[32px] lg:text-[64px] text-secondary uppercase pb-12 lg:pb-28"
 					>
 						Sponsors
 					</Heading>

@@ -15,20 +15,24 @@ export const SponsorCard: FC<SponsorCardProps> = ({
 		<article
 			className={cn(
 				className,
-				'bg-[#F2F7FA] min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-col justify-center items-center hover:shadow-lg duration-200',
+				'bg-[#F2F7FA] min-h-[85px] md:min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-row md:flex-col justify-start md:justify-center items-center hover:shadow-lg duration-200',
 			)}
 		>
 			<NextImage
 				src={image.url}
+				width={image.width}
+				height={image.height}
 				alt="Sponsor 1 Enersok"
-				className="max-h-[40px] w-auto h-full"
+				className="max-w-[62px] md:max-w-[102px] lg:max-w-full lg:max-h-[40px] w-full lg:w-auto h-auto lg:h-full"
 			/>
-			<Heading as="h5" className="text-xl text-secondary pt-8 pb-3 text-center">
-				{title}
-			</Heading>
-			<Paragraph className="text-2xl font-semibold text-secondary text-center">
-				{text}
-			</Paragraph>
+			<div className='ml-3 md:ml-0 pl-3 md:pl-0 border-l-[1px] md:border-l-0 border-secondaryOpacity3 flex flex-col md:block'>
+				<Heading as="h5" className="text-sm lg:text-xl text-secondary md:pt-8 md:pb-3 text-left md:text-center">
+					{title}
+				</Heading>
+				<Paragraph className="text-base lg:text-2xl font-semibold text-secondary text-left md:text-center">
+					{text}
+				</Paragraph>
+			</div>
 		</article>
 	);
 };
