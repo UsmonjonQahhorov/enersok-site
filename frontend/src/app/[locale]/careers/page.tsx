@@ -13,7 +13,7 @@ const CareersPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[164px] pb-11 flex lg:grid lg:grid-cols-2">
+				<Container className="pt-[104px] sm:pt-[164px] pb-11 flex lg:grid lg:grid-cols-2">
 					<div>
 						<Breadcrumbs
 							textHome={'Main'}

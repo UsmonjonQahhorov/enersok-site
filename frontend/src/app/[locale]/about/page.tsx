@@ -17,7 +17,7 @@ const AboutCompanyPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[164px] pb-8 lg:pb-11 grid grid-cols-1 lg:grid-cols-2">
+				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid grid-cols-1 xl:grid-cols-2 relative z-10">
 					<div>
 						<Breadcrumbs
 							textHome={'Main'}
@@ -28,10 +28,10 @@ const AboutCompanyPage: PageType = () => {
 						<Image
 							src={Banner}
 							alt="Careers Banner Enersok"
-							className="object-cover block my-8 lg:my-0 max-h-[250px] sm:max-h-[350px] lg:hidden object-center rounded-xl h-full"
+							className="object-cover block my-8 xl:my-0 max-h-[250px] lg:max-h-[350px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
 						/>
-						<Heading className="!leading-[normal] text-secondary uppercase lg:pt-[175px] pb-8 text-5xl lg:text-[100px]">
+						<Heading className="!leading-[normal] text-secondary uppercase xl:pt-[175px] pb-8 text-5xl lg:text-[100px]">
 							About Company
 						</Heading>
 						<Paragraph className="text-base lg:text-lg font-normal text-secondary mb-3 lg:pb-[140px] lg:pr-[15%]">
@@ -43,7 +43,7 @@ const AboutCompanyPage: PageType = () => {
 							(On March 25, 2022).{' '}
 						</Paragraph>
 					</div>
-					<div className="relative hidden lg:block z-10 pl-14">
+					<div className="relative hidden xl:block z-10 pl-14">
 						<Image
 							src={Banner}
 							alt="Careers Banner Enersok"
@@ -104,7 +104,7 @@ const AboutCompanyPage: PageType = () => {
 					>
 						VIEW AT ENERSOK DEVELOPMENT
 					</Heading>
-					<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-[42px] sm:gap-x-5">
+					<div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-y-[42px] sm:gap-x-5">
 						<div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
 							<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 								2022
@@ -189,7 +189,7 @@ const AboutCompanyPage: PageType = () => {
 						<div>
 							<Heading
 								as="h3"
-								className="text-[32px] lg:text-[64px] text-secondary uppercase pb-6 lg:pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
+								className="text-[32px] xl:text-[64px] text-secondary uppercase pb-6 lg:pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
 							>
 								Our Vision
 							</Heading>
@@ -215,7 +215,7 @@ const AboutCompanyPage: PageType = () => {
 						<div>
 							<Heading
 								as="h3"
-								className="text-[32px] lg:text-[64px] text-secondary uppercase pb-6 lg:pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
+								className="text-[32px] xl:text-[64px] text-secondary uppercase pb-6 lg:pb-8 border-b-[1px] border-solid border-secondaryOpacity3"
 							>
 								Our Objective
 							</Heading>

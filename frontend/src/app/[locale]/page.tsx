@@ -29,7 +29,7 @@ const HomePage: PageType = async () => {
 	return (
 		<>
 			{/* Heading */}
-			<section className="bg-backgroundImage1 relative overflow-hidden pt-[200px] pb-[80px]">
+			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-[80px]">
 				<Container>
 					<EmblaCarousel
 						autoLoopInterval={100000}

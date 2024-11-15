@@ -27,7 +27,7 @@ const ProjectDetailsPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[164px] pb-8 lg:pb-11 grid lg:grid-cols-2">
+				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid xl:grid-cols-2">
 					<div>
 						<Breadcrumbs
 							textHome={'Main'}
@@ -38,10 +38,10 @@ const ProjectDetailsPage: PageType = () => {
 						<Image
 							src={Banner}
 							alt="Careers Banner Enersok"
-							className="object-cover my-8 lg:my-0 max-h-[250px] sm:max-h-[350px] lg:hidden object-center rounded-xl h-full"
+							className="object-cover my-8 xl:my-0 max-h-[250px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
 						/>
-						<Heading className="!leading-[normal] text-secondary uppercase pb-8 lg:pt-[75px] lg:pb-[50px] text-5xl lg:text-[100px]">
+						<Heading className="!leading-[normal] text-secondary uppercase pb-8 xl:pt-[75px] xl:pb-[50px] text-5xl lg:text-[100px]">
 							Syrdarya 2
 						</Heading>
 						<div className="pb-8 lg:pb-12 border-b-[1px] border-solid border-secondaryOpacity3">
@@ -101,7 +101,7 @@ const ProjectDetailsPage: PageType = () => {
 							</div>
 						</div>
 					</div>
-					<div className="relative z-10 pl-14 hidden lg:block">
+					<div className="relative z-10 pl-14 hidden xl:block">
 						<Image
 							src={Banner}
 							alt="Careers Banner Enersok"

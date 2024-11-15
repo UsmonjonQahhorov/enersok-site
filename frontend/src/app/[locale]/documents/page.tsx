@@ -12,7 +12,7 @@ const DocumentsAndGuidelinesPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
-				<Container className="pt-[164px] pb-5 relative z-10">
+				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
 					<Breadcrumbs
 						textHome={'Main'}
 						textPage={'Documents and guidelines'}

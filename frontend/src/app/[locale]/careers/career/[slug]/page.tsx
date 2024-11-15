@@ -12,7 +12,7 @@ const SingleCareerPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
-				<Container className="pt-[164px] pb-8 lg:pb-20 relative z-10">
+				<Container className="pt-[104px] sm:pt-[164px] pb-8 lg:pb-20 relative z-10">
 					<Breadcrumbs
 						textHome={'Main'}
 						textPage={'Careers'}

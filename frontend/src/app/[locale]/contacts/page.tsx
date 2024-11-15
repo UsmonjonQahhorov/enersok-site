@@ -16,7 +16,7 @@ const ContactsPage: PageType = () => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[164px] md:pb-5">
+				<Container className="pt-[104px] sm:pt-[164px] md:pb-5">
 					<Breadcrumbs
 						textHome={'Main'}
 						textPage={'Contact us'}
