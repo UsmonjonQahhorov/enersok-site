@@ -1643,6 +1643,13 @@ export interface ApiManagerManager extends Schema.CollectionType {
       'oneToMany',
       'api::manager.manager'
     >;
+    manager_email: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     manager_picture: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
