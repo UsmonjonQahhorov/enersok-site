@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-10T12:07:43.103Z"
+    "x-generation-date": "2024-11-16T11:26:17.309Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -13654,6 +13654,7 @@
           "manger_name",
           "manager_picture",
           "manager_position",
+          "manager_email",
           "locale"
         ],
         "type": "object",
@@ -13675,6 +13676,9 @@
           "manager_position": {
             "type": "string"
           },
+          "manager_email": {
+            "type": "string"
+          },
           "locale": {
             "type": "string"
           }
@@ -13690,7 +13694,8 @@
             "required": [
               "manger_name",
               "manager_picture",
-              "manager_position"
+              "manager_position",
+              "manager_email"
             ],
             "type": "object",
             "properties": {
@@ -13709,6 +13714,9 @@
                 "example": "string or id"
               },
               "manager_position": {
+                "type": "string"
+              },
+              "manager_email": {
                 "type": "string"
               },
               "locale": {
@@ -13837,7 +13845,8 @@
         "required": [
           "manger_name",
           "manager_picture",
-          "manager_position"
+          "manager_position",
+          "manager_email"
         ],
         "properties": {
           "manger_name": {
@@ -14466,6 +14475,9 @@
             }
           },
           "manager_position": {
+            "type": "string"
+          },
+          "manager_email": {
             "type": "string"
           },
           "createdAt": {
