@@ -4,22 +4,22 @@ import type { FC, ReactNode } from 'react';
 
 type searchParams = { [key: string]: string | string[] | undefined };
 export interface ParamsWithLocale {
-	locale: typeof locales[number];
+	locale: (typeof locales)[number];
 }
 
 export type PageType<
 	Params extends ParamsWithLocale = ParamsWithLocale,
-	SearchParams = searchParams> = FC<{
-		params: Params;
-		searchParams?: SearchParams;
-	}>
-
-export type LayoutType<
-	Params extends ParamsWithLocale = ParamsWithLocale,
+	SearchParams = searchParams,
 > = FC<{
-	params: Params;
-	children: ReactNode;
+	params: Promise<Params>;
+	searchParams?: Promise<SearchParams>;
 }>;
+
+export type LayoutType<Params extends ParamsWithLocale = ParamsWithLocale> =
+	FC<{
+		params: Promise<Params>;
+		children: ReactNode;
+	}>;
 
 export type ErrorRouteComponent = FC<{
 	error: Error;

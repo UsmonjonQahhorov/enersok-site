@@ -1,5 +1,5 @@
 import { defaultLocale, localePrefix, locales } from '@/configs/i18n.config';
-import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import { createNavigation } from 'next-intl/navigation';
 import { defineRouting } from 'next-intl/routing';
 
 export const routing = defineRouting({
@@ -9,4 +9,4 @@ export const routing = defineRouting({
 });
 
 export const { Link, redirect, usePathname, useRouter, permanentRedirect } =
-	createSharedPathnamesNavigation(routing);
+	createNavigation(routing);

@@ -1,0 +1,262 @@
+{
+  "kind": "singleType",
+  "collectionName": "project_details",
+  "info": {
+    "singularName": "project-detail",
+    "pluralName": "project-details",
+    "displayName": "Страница сведений о проекте",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "page_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Project detail"
+    },
+    "heading_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Syrdarya  2 "
+    },
+    "heading_background_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "heading_section_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "about_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "About Project "
+    },
+    "about_section_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration. ENERSOK has selected an EPC contractor (Harbin Electric International Company Limited) to deliver  the engineering  design  of the facility, to procure all equipment and to build all temporary and permanent facilities of the project. The EPC contractor was selected through a competitive tender process from five international EPC Contractors considering financial, technical and E&S qualifications. "
+    },
+    "info_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "The main project facilities will include:"
+    },
+    "info_section_first_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Power block and stacks including two Gas Turbines (GT), two Heat Recovery Steam Generators (HRSG) and one Steam Turbine (ST)"
+    },
+    "info_section_second_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Closed Loop Cooling Water system, with mechanical draft air cooling tower blocks"
+    },
+    "info_section_third_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Gas receiving terminal"
+    },
+    "info_section_fourth_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Access road"
+    },
+    "info_section_five_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Intake and outfall corridor to a surface water canal, known as the YG Canal"
+    },
+    "info_section_six_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Wastewater treatment plants (industrial and sanitary)"
+    },
+    "info_section_seven_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Ancillary/support facilities (i.e. electrical system, site entrance and security building)"
+    },
+    "info_section_eight_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "500/220kv switchgear station shared with and being constructed by the adjacent ACWA Power Syrdarya 1,500MW CCGT Power Plant "
+    },
+    "follow_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Associated Facilities (AFs) will be limited to the following:"
+    },
+    "follow_section_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "follow_section_first_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "1 km gas pipeline connection to an existing gas supply system to be constructed by NEGU (or its appointed contractor) and operated by the gas supplier, JSC Uztransgaz."
+    },
+    "follow_section_second_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "default": "Re-routing of an existing 500kV Overhead Transmission Line (OHTL) by NEGU. The OHTL run through the centre of the project site and will be rerouted alongside its western boundary.  "
+    },
+    "heading_first_phase": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Construction period : 2023 – 2026"
+    },
+    "heading_second_phase": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Opearating period : 2026-2051"
+    },
+    "heading_location_address": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": " So called Syrdarya 2 will be located in Bayaut district, Syrdarya region, approximately 150 km south of Tashkent.      "
+    },
+    "info_section_background_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": true
+    }
+  }
+}

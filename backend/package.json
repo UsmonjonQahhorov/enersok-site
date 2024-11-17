@@ -11,15 +11,17 @@
     "deploy": "strapi deploy"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "4.25.13",
-    "@strapi/plugin-color-picker": "^4.25.13",
-    "@strapi/plugin-documentation": "^4.25.13",
-    "@strapi/plugin-i18n": "4.25.13",
-    "@strapi/plugin-users-permissions": "4.25.13",
-    "@strapi/strapi": "4.25.13",
-    "better-sqlite3": "11.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "@ckeditor/strapi-plugin-ckeditor": "0.1.0",
+    "@strapi/plugin-cloud": "4.25.16",
+    "@strapi/plugin-color-picker": "^4.25.16",
+    "@strapi/plugin-documentation": "^4.25.16",
+    "@strapi/plugin-i18n": "4.25.16",
+    "@strapi/plugin-users-permissions": "4.25.16",
+    "@strapi/strapi": "4.25.16",
+    "@strapi/typescript-utils": "4.25.16",
+    "better-sqlite3": "11.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "5.3.4",
     "styled-components": "5.3.3"
   },
@@ -28,7 +30,7 @@
     "uuid": "f54dc1d6-742e-4eb9-aa48-530693925462"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
+    "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
   },
   "license": "Apache-2.0"

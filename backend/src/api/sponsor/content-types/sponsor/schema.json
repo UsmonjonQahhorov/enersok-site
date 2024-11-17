@@ -4,7 +4,7 @@
   "info": {
     "singularName": "sponsor",
     "pluralName": "sponsors",
-    "displayName": "Sponsors",
+    "displayName": "Спонсоры",
     "description": ""
   },
   "options": {
@@ -25,15 +25,6 @@
       "type": "string",
       "required": true
     },
-    "sponsor_value": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string",
-      "required": true
-    },
     "sponsor_color": {
       "pluginOptions": {
         "i18n": {
@@ -46,17 +37,17 @@
       "customField": "plugin::color-picker.color"
     },
     "sponsor_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
     "sponsor_website_link": {
       "pluginOptions": {
@@ -77,6 +68,16 @@
       "type": "text",
       "required": true,
       "default": "Sojitz Group is engaged in a wide range of businesses globally as trading and investment house, including manufacturing, selling, importing, and exporting a variety of products, in addition to providing services and investing in diversified businesses, both in Japan and overseas. Sojitz has more than 70 office over the world and operates with a 7-division structure comprising the Automotive Division; the Aerospace & Transportation Project Division; the Infrastructure & Healthcare Division; the Metals, Mineral Resources & Recycling Division; the Chemicals Division; the Consumer Industry & Agriculture Business Division; and the Retail & Consumer Service Division."
+    },
+    "sponsor_value": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "float",
+      "required": true,
+      "default": 33.33
     }
   }
 }

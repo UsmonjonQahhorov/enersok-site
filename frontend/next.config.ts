@@ -1,0 +1,44 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+const withNextIntl = createNextIntlPlugin();
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+	reactStrictMode: true,
+	logging: {
+		fetches: {
+			fullUrl: true,
+		},
+	},
+	images: {
+		// TODO: Add production backend URL
+		remotePatterns: [
+			{
+				protocol: 'http',
+				hostname: 'localhost',
+			},
+		],
+	},
+	headers: async () => {
+		return [
+			{
+				source: '/(.*)',
+				headers: [
+					{
+						key: 'X-Developed-By',
+						value: 'Team64',
+					},
+				],
+			},
+		];
+	},
+	async rewrites() {
+		return [
+			{
+				source: '/:locale/font/:path*',
+				destination: '/font/:path*',
+			},
+		];
+	},
+};
+
+export default withNextIntl(nextConfig);

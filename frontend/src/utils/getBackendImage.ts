@@ -5,6 +5,6 @@ import { BASE_URL } from '@/configs/env.config';
  * @param url - The URL of the image on the backend.
  * @returns The full URL of the backend image.
  */
-export const getBackendImage = (url: string): string => {
-	return `${BASE_URL}${url}`;
+export const getBackendImage = (url: string | undefined | null): string => {
+	return url ? `${BASE_URL}${url}` : '';
 };

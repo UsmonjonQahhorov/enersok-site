@@ -4,7 +4,8 @@
   "info": {
     "singularName": "documents-and-guidline",
     "pluralName": "documents-and-guidlines",
-    "displayName": "Documents and Guidlines"
+    "displayName": " Документы и руководства",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -16,17 +17,27 @@
   },
   "attributes": {
     "document": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "files"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
+      }
+    },
+    "document_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
       },
-      "required": true
+      "type": "string",
+      "required": true,
+      "default": "Syrdarya CCGT_ESIA Volume 1 NTS_v1.2"
     }
   }
 }

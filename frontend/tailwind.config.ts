@@ -14,9 +14,14 @@ const config: Config = {
 				secondary: '#073348',
 				secondaryOpacity1: '#0733484D',
 				secondaryOpacity2: '#07334899',
+				secondaryOpacity3: '#0733481f',
+				secondaryOpacity4: '#07334852',
+				secondaryOpacity5: '#07334880',
 				button1: '#1AAD21',
 				button2: '#F4F4F4',
-			}, 
+				download: '#F4F4F4',
+				borderColor: 'rgba(0, 0, 0, 0.12)'
+			},
 			boxShadow: {
 				shadow: '0 9px 139.2px 1px #0000001F;',
 			},
@@ -32,6 +37,7 @@ const config: Config = {
 				backgroundImage2: 'linear-gradient(209.69deg, #F1FFF2 -12.24%, #D6E7EF 80.69%);',
 				backgroundImage3: 'linear-gradient(252.67deg, #F1FFF2 -11.24%, #D5E2E9 83.1%);',
 				backgroundImage4: 'linear-gradient(160.68deg, #F1FFF2 7.48%, #D5E2E9 94.06%);',
+				backgroundImage5: 'linear-gradient(163.12deg, #F1FFF2 6.92%, #D5E2E9 89.84%);',
 			},
 			fontFamily: {
 				mori: ['PPMori', 'sans-serif'],

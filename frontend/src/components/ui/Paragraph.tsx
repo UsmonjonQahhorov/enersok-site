@@ -34,6 +34,7 @@ export const Paragraph = ({
 					'font-black': weight === 'black',
 				},
 				className,
+				'text-wrap',
 			)}
 			{...props}
 		>
