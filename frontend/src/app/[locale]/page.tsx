@@ -29,9 +29,10 @@ const HomePage: PageType = async () => {
 	return (
 		<>
 			{/* Heading */}
-			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-[80px]">
+			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-8 md:pb-[80px]">
 				<Container>
 					<EmblaCarousel
+						className='[&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:md:flex'
 						autoLoopInterval={100000}
 						slides={[
 							<CarouselItem />,
@@ -51,21 +52,21 @@ const HomePage: PageType = async () => {
 				<NextImage
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute bottom-0 right-[-100px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>
 			</section>
 
 			{/* Feature section */}
-			<section className="pt-32 pb-64">
-				<Container className="flex flex-wrap gap-16 justify-evenly *:text-secondary">
+			<section className="py-20 lg:pt-32 lg:pb-64">
+				<Container className="grid xl:grid-cols-2 2xl:grid-cols-3 gap-y-4 gap-x-16 justify-evenly *:text-secondary">
 					<div className="flex gap-7 items-center">
 						<NextImage src={EcoFriendlyImage} alt="Eco-friendly" />
 						<div>
-							<Heading size="base" as="h3" className="mb-3 md:text-4xl">
+							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
 								Eco-Friendly
 							</Heading>
-							<Paragraph size="sm" className="max-w-80 md:text-lg">
+							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
 								Steam energy can utilize renewable resources like biomass
 							</Paragraph>
 						</div>
@@ -73,10 +74,10 @@ const HomePage: PageType = async () => {
 					<div className="flex gap-7 items-center">
 						<NextImage src={EnergyImage} alt="Energy" />
 						<div>
-							<Heading size="base" as="h3" className="mb-3 md:text-4xl">
+							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
 								Reliability
 							</Heading>
-							<Paragraph size="sm" className="max-w-80  md:text-lg">
+							<Paragraph size="sm" className="2xl:max-w-80  md:text-lg">
 								Steam turbines have long lifespans and can operate continuously
 							</Paragraph>
 						</div>
@@ -84,10 +85,10 @@ const HomePage: PageType = async () => {
 					<div className="flex gap-7 items-center">
 						<NextImage src={ReliabilityImage} alt="Reliability" />
 						<div>
-							<Heading size="base" as="h3" className="mb-3 md:text-4xl">
+							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
 								Energy Efficiency
 							</Heading>
-							<Paragraph size="sm" className="max-w-80 md:text-lg">
+							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
 								Steam allows for high energy conversion efficiency with minimal
 								losses
 							</Paragraph>
@@ -99,19 +100,19 @@ const HomePage: PageType = async () => {
 			{/* About section */}
 			<section>
 				<Container className="flex flex-col lg:flex-row justify-between *:text-secondary gap-y-16 lg:gap-x-36 lg:gap-y-0">
-					<div className="flex flex-col md:flex-col-reverse gap-8 md:gap-20">
+					<div className="flex flex-col lg:flex-col-reverse gap-8 md:gap-20">
 						<NextImage
 							className="rounded-xl w-full"
 							src={StationImage}
 							alt="Link"
 						/>
 						<div>
-							<Heading size="3xl" as="h3" className="md:text-[64px] uppercase">
+							<Heading as="h3" className="text-[32px] md:text-5xl 2xl:text-[64px] uppercase">
 								Enersok FE LLC
 							</Heading>
 							<Paragraph
 								size="sm"
-								className="md:text-lg leading-7 mt-6 mb-12 max-w-[590px]"
+								className="md:text-lg leading-7 mt-4 md:mt-6 mb-8 md:mb-12 max-w-[590px]"
 							>
 								Enersok FE LLC was formed in 2022 by the Consortium of
 								Electricite De France (EDF), Nebras Power (Qatar), Sojitz
@@ -120,7 +121,7 @@ const HomePage: PageType = async () => {
 								Nebras Power (Qatar), Sojitz Corporation and Kyuden
 								International (Japan)
 							</Paragraph>
-							<Link className="flex gap-3 items-center" href={'#'}>
+							<Link className="text-xl flex gap-3 items-center" href={'#'}>
 								Read more
 								<span>
 									<NextImage src={LinkImage} alt="Link" />
@@ -134,11 +135,11 @@ const HomePage: PageType = async () => {
 							<Heading
 								size="lg"
 								as="h3"
-								className="md:text-2xl border-b border-black md:pb-6 md:mb-6"
+								className="md:text-2xl border-b border-black pb-6 mb-6"
 							>
 								Power Plant with capacity
 							</Heading>
-							<span className="text-6xl flex items-center justify-between">
+							<span className="text-[64px] md:text-6xl flex items-center justify-between">
 								1,6 GW
 								<NextImage src={EnergyIcon} alt="Energy" />
 							</span>
@@ -156,91 +157,92 @@ const HomePage: PageType = async () => {
 			</section>
 
 			{/* Sponsors */}
-			<section className="py-72 relative overflow-hidden">
+			<section className="pt-20 pb-14 md:py-20 xl:py-72 relative overflow-hidden">
 				<Container
 					className={cn(
-						'flex flex-col items-center gap-12 *:text-secondary z-10 relative',
-						'md:grid md:grid-cols-[1.3fr,1.7fr]',
+						'flex flex-col items-center md:gap-12 *:text-secondary z-10 relative',
+						'lg:grid lg:grid-cols-[1.3fr,1.7fr]',
 					)}
 				>
 					<div className="*:text-secondary">
-						<Heading as="h3" size="3xl" className={cn('md:text-[64px]')}>
+						<Heading as="h3" className={cn('text-[32px] md:text-[64px]')}>
 							SPONSORS
 						</Heading>
 						<Paragraph
 							size="sm"
-							className={cn('max-w-[590px] mt-5', 'md:text-lg')}
+							className={cn('max-w-[590px] mt-2 md:mt-5', 'text-sm md:text-lg')}
 						>
 							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
 							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
 							Kyuden International (Japan), Enersok FE LLC
 						</Paragraph>
 						<div>
-							<Heading as="h3" size="xs" className="mt-16 uppercase">
+							<Heading as="h3" size="xs" className="mt-8 md:mt-16 uppercase">
 								owned by
 							</Heading>
 							<ul className="flex flex-col gap-y-6 mt-11">
 								<li className="border-b border-borderColor pb-3 flex justify-between">
 									<div className="flex gap-4 items-start">
 										<span className="size-[22px] rounded-[50%] bg-[#FF5E11] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
+										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
 											EDF
 										</Paragraph>
 									</div>
-									<span className='text-2xl !leading-[normal]'>33.3%</span>
+									<span className='text-lg md:text-2xl !leading-[normal]'>33.3%</span>
 								</li>
 								<li className="border-b border-borderColor pb-3 flex justify-between">
 									<div className="flex gap-4 items-start">
 										<span className="size-[22px] rounded-[50%] bg-[#1AAD21] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
+										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
 											Nebras Power
 										</Paragraph>
 									</div>
-									<span className='text-2xl !leading-[normal]'>33.3%</span>
+									<span className='text-lg md:text-2xl !leading-[normal]'>33.3%</span>
 								</li>
 								<li className="border-b border-borderColor pb-3 flex justify-between">
 									<div className="flex gap-4 items-start">
 										<span className="size-[22px] rounded-[50%] bg-[#00479D] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
+										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
 											Sojitz
 										</Paragraph>
 									</div>
-									<span className='text-2xl !leading-[normal]'>19%</span>
+									<span className='text-lg md:text-2xl !leading-[normal]'>19%</span>
 								</li>
 								<li className="border-b border-borderColor pb-3 flex justify-between">
 									<div className="flex gap-4 items-start">
 										<span className="size-[22px] rounded-[50%] bg-[#93DCFF] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
+										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
 											Kyuden
 										</Paragraph>
 									</div>
-									<span className='text-2xl !leading-[normal]'>14.3%</span>
+									<span className='text-lg md:text-2xl !leading-[normal]'>14.3%</span>
 								</li>
 							</ul>
 						</div>
 					</div>
 					{/* Chart */}
-					<div className='flex justify-center overflow-hidden relative'>
+					<div className='flex justify-center overflow-hidden relative mt-6 md:mt-0'>
 						<SponsorDonutChart />
 					</div>
 				</Container>
 				<NextImage
 					src={Factory2}
 					alt="Banner Enersok"
-					className="absolute bottom-0 right-[50px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[50px] z-[1]"
 					priority={true}
 				/>
 			</section>
 
 			{/* Location section */}
-			<section className='py-60 bg-[#1375A4]'>
+			<section className='py-16 lg:py-60 bg-[#1375A4]'>
 				<LocationSection />
 			</section>
 
 			{/* News Carousel section */}
-			<section className='py-48'>
+			<section className='py-24 xl:py-48'>
 				<Container>
 					<EmblaCarousel
+						className='[&>a]:mt-10 [&>a]:block [&>a]:md:hidden [&>div:nth-of-type(1)]:mb-8 [&>div:nth-of-type(1)]:md:mb-16 [&>div:nth-of-type(1)>div]:hidden [&>div:nth-of-type(1)>div]:md:flex'
 						autoLoopInterval={100000}
 						showCounter={false}
 						slidesToShow={1}
@@ -262,14 +264,14 @@ const HomePage: PageType = async () => {
 			</section>
 
 			{/* Community */}
-			<section className='bg-backgroundImage1 pt-[150px] pb-[120px] relative overflow-hidden'>
-				<Container className='grid grid-cols-[1fr,0.8fr]'>
+			<section className='bg-backgroundImage1 pt-16 md:pt-[150px] pb-[120px] relative overflow-hidden'>
+				<Container className='flex flex-col-reverse md:grid md:grid-cols-[1fr,0.8fr]'>
 					<div className='*:text-secondary z-10'>
-						<Heading as='h3' size='3xl' className='md:text-[64px] !leading-[normal] max-w-[780px] uppercase'>
+						<Heading as='h3' className='mt-6 md:mt-0 text-[32px] text-wrap md:text-4xl xl:text-[64px] !leading-[normal] max-w-[780px] uppercase'>
 							Join Our Community by Following Us on Social Media
 						</Heading>
 						<div>
-							<Heading as='h3' size='xl' className='mt-16'>
+							<Heading as='h3' className='text-xs md:text-xl mt-10 md:mt-16'>
 								Follow us
 							</Heading>
 							<ul className='flex gap-3 mt-6 items-center'>
@@ -290,17 +292,18 @@ const HomePage: PageType = async () => {
 										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
 
 									>
-										<svg
-											className='fill-[#198ABF] group-hover:fill-white'
-											width="24" height="25" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
-											<path d="M0.312899 2.16413L0.751222 2.37866C0.299058 3.30251 0.467184 4.38167 1.17559 5.11957C2.1043 6.08692 3.64806 6.08596 4.57304 5.11935L4.93429 5.46504L4.57305 5.11935C5.28432 4.37607 5.44929 3.30719 4.99584 2.38601L4.99584 2.38601C4.79265 1.97321 4.32708 1.51011 3.93992 1.32507L0.312899 2.16413ZM0.312899 2.16413L0.751223 2.37866M0.312899 2.16413L0.751223 2.37866M23.5 24.0708H24L23.9998 19.7532C23.9997 16.9928 23.9795 14.6553 23.9524 14.2791C23.794 12.0721 23.3103 10.6619 22.3657 9.65223M23.5 24.0708L23.4998 19.7532C23.4997 16.9797 23.4791 14.6679 23.4537 14.315L23.4537 14.3149C23.2988 12.158 22.8322 10.8827 22.0006 9.99383L22.3657 9.65223M23.5 24.0708L23.5 24.5708M23.5 24.0708H21.5147H19.5293M22.3657 9.65223L22.0006 9.99382C21.4489 9.40421 20.6978 9.00372 19.6344 8.78265C19.3769 8.72913 18.8549 8.68879 18.3052 8.67692C17.7509 8.66496 17.2541 8.68393 17.0396 8.7243L16.9471 8.23292L17.0395 8.7243C15.7116 8.97408 14.5994 9.69286 13.9198 10.7118C13.9198 10.7118 13.9198 10.7118 13.9198 10.7118M22.3657 9.65223L13.9198 10.7118M13.9198 10.7118L13.7009 11.04L12.8032 12.386L12.7849 10.7682L12.7724 9.65469L12.7654 9.03548H10.869H8.97834V16.5531V24.0708H10.9637H12.949L12.9492 20.3627C12.9493 17.7623 12.9676 15.9363 13.0016 15.5733L13.9198 10.7118ZM23.5 24.5708L13.0016 15.5732C13.0862 14.6708 13.3006 13.9137 13.6931 13.3274C14.0947 12.7276 14.6597 12.3416 15.3685 12.1533C15.632 12.0833 15.9602 12.046 16.267 12.0358C16.5722 12.0256 16.8985 12.0407 17.1561 12.0957C17.5897 12.1882 17.9665 12.3364 18.2881 12.5827C18.6111 12.8302 18.8457 13.1518 19.0332 13.5404M23.5 24.5708H21.5147H19.5293V24.0708M23.5 24.5708L19.0293 24.0708H19.5293M19.5293 24.0708V20.2153C19.5293 17.591 19.5243 16.1747 19.4643 15.3071C19.434 14.8683 19.3885 14.5481 19.3156 14.2707C19.2416 13.9891 19.1443 13.7706 19.0332 13.5404M19.0332 13.5404L18.5829 13.7577L19.0332 13.5405C19.0332 13.5405 19.0332 13.5404 19.0332 13.5404ZM0.751223 2.37866C1.03721 1.79433 1.71618 1.26255 2.34687 1.12663L0.751223 2.37866ZM4.8718 16.5656L4.88293 24.0708H2.87474H0.865808V16.5844C0.865808 14.3886 0.869372 12.3891 0.875107 10.9367C0.877975 10.2103 0.881384 9.62143 0.885155 9.21341C0.885693 9.15515 0.886238 9.10068 0.886788 9.05012C0.965343 9.04912 1.05271 9.04825 1.14796 9.0475C1.59786 9.04398 2.21555 9.04345 2.89206 9.04677L4.86068 9.05647L4.8718 16.5656ZM2.34688 1.12662C2.88402 1.01087 3.41505 1.07429 3.93989 1.32505L2.34688 1.12662Z" />
+										<svg className='fill-[#198ABF] group-hover:fill-white w-[25] h-[25]' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 310 310" xmlSpace="preserve">
+											<g id="XMLID_801_">
+												<path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73 C77.16,101.969,74.922,99.73,72.16,99.73z"></path>
+												<path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4 c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z"></path>
+												<path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599 c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319 c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995 C310,145.43,300.549,94.761,230.454,94.761z"></path>
+											</g>
 										</svg>
 									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
-					{/* TODO: Fix position of the images */}
 					<div className='grid gap-2 p-4 z-10 grid-cols-3 grid-rows-2'>
 						<NextImage
 							className="col-start-2 col-span-2 row-start-1 h-full"
@@ -320,7 +323,7 @@ const HomePage: PageType = async () => {
 				<NextImage
 					src={Factory2}
 					alt="Banner Enersok"
-					className="absolute bottom-0 right-[-100px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>
 			</section>

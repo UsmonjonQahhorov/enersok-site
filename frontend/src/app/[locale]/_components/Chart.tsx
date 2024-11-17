@@ -65,14 +65,14 @@ export const SponsorDonutChart = () => {
                          alt={`Sponsor ${activeSponsor.name}`}
                          width={115}
                          height={115}
-                         className="w-[115px] h-auto absolute -translate-y-1/2 top-[240px]"
+                         className="w-[85px] md:w-[115px] h-auto absolute -translate-y-1/2 top-[130px] md:top-[240px]"
                     />
                )}
                <ChartContainer
                     config={Config}
-                    className="h-[613px]"
+                    className="h-[350px] md:h-[613px]"
                >
-                    <PieChart>
+                    <PieChart className='flex justify-center [&>svg]:!w-[60%] [&>svg]:md:!w-full'>
                          <Pie
                               data={sponsorData}
                               dataKey="value"
