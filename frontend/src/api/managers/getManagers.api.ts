@@ -25,6 +25,7 @@ interface Datum {
 interface DatumAttributes {
      manger_name: string;
      manager_position: string;
+     manager_email: string;
      createdAt: Date;
      updatedAt: Date;
      locale: string;

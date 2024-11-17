@@ -37,8 +37,8 @@ export type DynamicMetadata<
 	SearchParams extends object = object,
 > = (
 	params: {
-		params: Params;
-		searchParams: SearchParams;
+		params: Promise<Params>;
+		searchParams: Promise<SearchParams>;
 	},
-	parent: ResolvingMetadata,
+	parent: ResolvingMetadata
 ) => Promise<Metadata> | Metadata;

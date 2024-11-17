@@ -6,6 +6,7 @@ export const getFooter = async (locale: Locale = 'en') => {
 		`/footer?populate=logo&locale=${locale}`,
 		{
 			method: 'GET',
+			cache: 'force-cache',
 		},
 	);
 

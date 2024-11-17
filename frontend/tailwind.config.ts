@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindTypography from '@tailwindcss/typography';
 
 const config: Config = {
 	content: [
@@ -45,5 +46,6 @@ const config: Config = {
 		},
 	},
 	darkMode: 'class',
+	plugins: [tailwindTypography],
 };
 export default config;

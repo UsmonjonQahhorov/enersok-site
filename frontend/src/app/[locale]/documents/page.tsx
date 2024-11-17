@@ -1,31 +1,54 @@
+import { getDocuments } from '@/api/documents/getDocuments.api';
+import { getDGPage } from '@/api/pages/getD&GPage.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
-import { Heading } from '@/components/ui/Heading';
-import { RouterConfig } from '@/configs/router.config';
-import type { PageType } from '@/types/component.types';
-import Image from 'next/image';
-import Factory from '@public/facroty.png';
-import { Paragraph } from '@/components/ui/Paragraph';
 import { DownloadFile } from '@/components/ui/DownloadFile';
+import { Heading } from '@/components/ui/Heading';
+import { Paragraph } from '@/components/ui/Paragraph';
+import { RouterConfig } from '@/configs/router.config';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
+import { getBackendImage } from '@/utils/getBackendImage';
+import type { Metadata } from 'next';
+import Image from 'next/image';
 
-const DocumentsAndGuidelinesPage: PageType = () => {
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale } = await params;
+	const aboutPageData = await getDGPage(locale);
+
+	return {
+		title: aboutPageData.data?.data.attributes.page_title,
+		description: aboutPageData.data?.data.attributes.about_text,
+	}
+}
+
+const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
+	const { locale } = await params;
+	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumPageLocale = locale === 'en' ? 'Documents and guidelines' : 'Hujjatlar va qo\'llanmalar';
+
+	const DGPageData = await getDGPage(locale);
+	const documents = await getDocuments(locale);
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
 					<Breadcrumbs
-						textHome={'Main'}
-						textPage={'Documents and guidelines'}
+						textHome={breadcrumHomeLocale}
+						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.DocumentsAndGuidelines}
 					/>
 					<Heading className="!leading-[normal] text-secondary uppercase pt-[48px] pb-[32px] lg:py-[75px] text-[32px] lg:text-[100px]">
-						Documents and guidelines
+						{DGPageData.data?.data.attributes.heading_text}
 					</Heading>
 				</Container>
 				<Image
-					src={Factory}
-					alt="Banner Enersok"
+					src={getBackendImage(DGPageData.data?.data.attributes.heading_image.data.attributes.url)}
+					width={DGPageData.data?.data.attributes.heading_image.data.attributes.width}
+					height={DGPageData.data?.data.attributes.heading_image.data.attributes.height}
+					alt={DGPageData.data?.data.attributes.heading_image.data.attributes.name || ''}
 					className="absolute hidden lg:block bottom-0 right-[122px]"
 					priority={true}
 				/>
@@ -35,35 +58,18 @@ const DocumentsAndGuidelinesPage: PageType = () => {
 					<Paragraph
 						className="w-full text-sm md:text-2xl whitespace-[10px] pt-[50px] pb-[24px] md:py-[50px] text-secondary border-b-[1px] border-secondaryOpacity3 md:border-[0]"
 					>
-						Construction period started in March 2023 and the COD (Commercial
-						Operating Date) should be reach in June 2026. That means the plant
-						will be fully operational with two gas turbines and one steam
-						turbine in combined cycle configuration.
+						{DGPageData.data?.data.attributes.about_text}
 					</Paragraph>
 					<div className="flex flex-col lg:grid lg:grid-cols-2 gap-5 pt-8 md:pt-0">
-						<DownloadFile text="Syrdarya CCGT_ESIA Volume 1 NTS_v1.2" url="/" />
-						<DownloadFile text="Syrdarya CCGT_ESIA Volume 2_v1.3" url="/" />
-						<DownloadFile text="Syrdarya CCGT_ESIA Volume 3_v1.2" url="/" />
-						<DownloadFile text="Syrdarya CCGT_ESIA Volume 4_v1.1" url="/" />
-						<DownloadFile
-							text="Syrdarya CCGT_LALRP Exec Summary_v.1.0"
-							url="/"
-						/>
-						<DownloadFile
-							text="Syrdarya CCGT_Land Acquisition and Livelihoods Restoration Plan_v.1.3"
-							url="/"
-						/>
-						<DownloadFile
-							text="Syrdarya CCGT_Stakeholder Engagement Plan_v1.3"
-							url="/"
-						/>
-						<DownloadFile
-							text="Syrdarya CCGT_ESIA Vol 1 NTS_v1.2_uzbek version"
-							url="/"
-						/>
-						<DownloadFile text="National EIA_Syrdarya 1600 MW_ru" url="/" />
-						<DownloadFile text="National EIA_Syrdarya 1600 MW_en" url="/" />
-						<DownloadFile text="Conclusion_Syrdarya 1600MW_ru" url="/" />
+						{
+							documents.data?.data.map((document, index) => (
+								<DownloadFile
+									key={index}
+									text={document.attributes.document_name}
+									url={document.attributes.document.data.attributes.url}
+								/>
+							))
+						}
 					</div>
 				</Container>
 			</section>

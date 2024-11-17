@@ -1,61 +1,90 @@
+import { getGRMSubmissionPage } from '@/api/pages/getGRMSubmissionPage.api';
+import { GrmSubmissionForm } from '@/components/form/GrmSubmissionForm';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import { RouterConfig } from '@/configs/router.config';
-import type { PageType } from '@/types/component.types';
-import Image from 'next/image';
-import Factory from '@public/factory2.png';
-import Banner from '@public/submission-banner.png';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { GrmSubmissionForm } from '@/components/form/GrmSubmissionForm';
+import { RouterConfig } from '@/configs/router.config';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
+import { getBackendImage } from '@/utils/getBackendImage';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+// import Factory from '@public/factory2.png';
+// import Banner from '@public/submission-banner.png';
 
-const GRMSubmissionPage: PageType = () => {
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale } = await params;
+	const aboutPageData = await getGRMSubmissionPage(locale);
+
+	return {
+		title: aboutPageData.data?.data.attributes.page_title,
+		description: aboutPageData.data?.data.attributes.about_text,
+	}
+}
+
+const GRMSubmissionPage: PageType = async ({ params }) => {
+	const { locale } = await params;
+	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumPageLocale = locale === 'en' ? 'GRM Submission' : 'GRM Jo\'natish';
+	const formNameLocale = locale === 'en' ? 'Your full name' : 'Sizning to\'liq ismingiz';
+	const formEmailLocale = locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
+	const formPhoneLocale = locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
+	const formMessageLocale = locale === 'en' ? 'Message' : 'Xabar';
+	const formSubmitLocale = locale === 'en' ? 'Submit the form' : 'Formani jo\'natish';
+
+	const grmSubmissionPageData = await getGRMSubmissionPage(locale);
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
 					<Breadcrumbs
-						textHome={'Main'}
-						textPage={'GRM Submission'}
+						textHome={breadcrumHomeLocale}
+						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.GRMSubmission}
 					/>
 					<Heading className="!leading-[normal] text-secondary uppercase pt-[32px] lg:pt-[75px] text-5xl lg:text-[100px]">
-						GRM Submission
+						{grmSubmissionPageData.data?.data.attributes.heading_title}
 					</Heading>
 					<Paragraph
 						className="w-full text-sm lg:text-2xl pb-7 py-[30px] text-secondary"
 					>
-						Construction period started in March 2023 and the COD (Commercial
-						Operating Date) should be reach in June 2026. That means the plant
-						will be fully operational with two gas turbines and one steam
-						turbine in combined cycle configuration.
+						{grmSubmissionPageData.data?.data.attributes.about_text}
 					</Paragraph>
 					<div className="lg:grid lg:grid-cols-[6fr,4fr] gap-x-7 pb-8 md:pb-[80px]">
 						<GrmSubmissionForm
-							email="Your e-mail"
-							message="Message"
-							name="Your full name"
-							phone="Your phone"
-							sumbmit="Submit the form"
+							email={formEmailLocale}
+							message={formMessageLocale}
+							name={formNameLocale}
+							phone={formPhoneLocale}
+							sumbmit={formSubmitLocale}
 						/>
 						<div className="rounded-xl hidden lg:block">
 							<Image
-								src={Banner}
-								alt="Submission Enersok"
+								src={getBackendImage(grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.url)}
+								width={grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.width}
+								height={grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.height}
+								alt={grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.name || ''}
+								quality={100}
 								className="w-full h-full object-cover object-center rounded-xl"
 							/>
 						</div>
 					</div>
 				</Container>
 				<Image
-					src={Factory}
-					alt="Banner Enersok"
+					src={getBackendImage(grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.url)}
+					width={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.width}
+					height={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.height}
+					alt={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.name || ''}
 					className="absolute bottom-[-100px] right-[-100px] rotate-x-180 z-[1]"
 					priority={true}
 				/>
 				<Image
-					src={Factory}
+					src={getBackendImage(grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.url)}
+					width={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.width}
+					height={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.height}
 					alt="Banner Enersok"
 					className="absolute bottom-[-20px] left-[-100px] z-[1]"
 					priority={true}

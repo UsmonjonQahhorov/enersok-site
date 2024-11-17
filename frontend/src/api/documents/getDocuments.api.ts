@@ -3,8 +3,13 @@ import { http } from "@/utils/http";
 
 export const getDocuments = async (locale: Locale = 'en') => {
 
-     const response = await http(`/documents?populate=document&locale=${locale}`, {
+     const response = await http<GetDocumentsResponse>(`/documents-and-guidlines?populate=document&locale=${locale}`, {
           method: 'GET',
+          headers: {
+               'Content-Type': 'application/json',
+          },
+          // TODO: in the future, use the cache
+          // cache: 'force-cache',
      });
 
      return response
