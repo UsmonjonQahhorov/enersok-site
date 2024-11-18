@@ -11,8 +11,9 @@ export const Pagination = ({
 	disabled = false,
 	onPaginate,
 	position = 'center',
+	className,
 }: PaginationProps & {
-	ref: React.RefObject<PaginationRef>;
+	ref?: React.RefObject<PaginationRef>;
 }) => {
 	if (total <= 1) {
 		return null;
@@ -53,7 +54,7 @@ export const Pagination = ({
 	return (
 		<div ref={ref}>
 			<HeadlessPagination
-				className={cn(paginationStyles.container, {
+				className={cn(paginationStyles.container,className, {
 					[paginationStyles.containerCenter]: position === 'center',
 					[paginationStyles.containerLeft]: position === 'left',
 					[paginationStyles.containerRight]: position === 'right',
@@ -93,6 +94,7 @@ interface PaginationProps {
 	onPaginate: (page: number) => void;
 	disabled?: boolean;
 	position?: 'left' | 'center' | 'right';
+	className?: string;
 }
 
 Pagination.displayName = 'Pagination';

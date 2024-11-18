@@ -10,6 +10,9 @@ export const getDocuments = async (locale: Locale = 'en') => {
           },
           // TODO: in the future, use the cache
           // cache: 'force-cache',
+          next: {
+               tags: ['documents'],
+          },
      });
 
      return response

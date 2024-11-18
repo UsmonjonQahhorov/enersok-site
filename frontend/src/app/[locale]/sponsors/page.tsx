@@ -1,54 +1,70 @@
+import { getAboutSponsors } from '@/api/pages/getAboutSponsors.api';
+import { getSponsors } from '@/api/sponsors/getSponsors.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
+import { Paragraph } from '@/components/ui/Paragraph';
+import { SponsorCard } from '@/components/ui/SponsorCard';
+import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
 import { RouterConfig } from '@/configs/router.config';
 import type { PageType } from '@/types/component.types';
-import Image from 'next/image';
-import Factory from '@public/facroty.png';
-import Sponsor1 from '@public/sponsors/sponsor1.png';
-import Sponsor2 from '@public/sponsors/sponsor2.png';
-import Sponsor3 from '@public/sponsors/sponsor3.png';
-import Sponsor4 from '@public/sponsors/sponsor4.png';
+import { getBackendImage } from '@/utils/getBackendImage';
 import Sponsor5 from '@public/logo.png';
 import Line1 from '@public/sponsors/line1.png';
 import Line2 from '@public/sponsors/line2.png';
 import Line3 from '@public/sponsors/line3.png';
-import { Paragraph } from '@/components/ui/Paragraph';
-import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
-import { SponsorCard } from '@/components/ui/SponsorCard';
+import Image from 'next/image';
+// import Factory from '@public/facroty.png';
+// import Sponsor1 from '@public/sponsors/sponsor1.png';
+// import Sponsor2 from '@public/sponsors/sponsor2.png';
+// import Sponsor3 from '@public/sponsors/sponsor3.png';
+// import Sponsor4 from '@public/sponsors/sponsor4.png';
 
-const AboutSponsorsPage: PageType = () => {
+const AboutSponsorsPage: PageType = async ({ params }) => {
+	const { locale } = await params;
+
+	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumPageLocale = locale === 'en' ? 'About Sponsors' : 'Sponsorlar haqida';
+	const holdingCompanyLocale = locale === 'en' ? 'Holding Сompany' : 'Holding kompaniya';
+	const projectCompanyLocale = locale === 'en' ? 'Project Сompany' : 'Loyiha kompaniyasi';
+
+	const sponsorsPageData = await getAboutSponsors(locale);
+	const sponsors = await getSponsors(locale);
+
 	return (
 		<>
+			{/* Hero Section */}
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] lg:pb-5 relative z-10">
 					<Breadcrumbs
-						textHome={'Main'}
-						textPage={'About Sponsors'}
+						textHome={breadcrumHomeLocale}
+						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.AboutSponsors}
 					/>
 					<Heading className="!leading-[normal] w-1/2 text-secondary uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px]">
-						About Sponsors
+						{sponsorsPageData.data?.data.attributes.heading_title}
 					</Heading>
 				</Container>
 				<Image
-					src={Factory}
-					alt="Banner Enersok"
+					src={getBackendImage(sponsorsPageData.data?.data.attributes.heading_picture.data.attributes.url)}
+					width={sponsorsPageData.data?.data.attributes.heading_picture.data.attributes.width}
+					height={sponsorsPageData.data?.data.attributes.heading_picture.data.attributes.height}
+					alt={sponsorsPageData.data?.data.attributes.heading_picture.data.attributes.name || 'Enersok'}
 					className="absolute hidden lg:block bottom-0 right-[122px]"
 					priority={true}
 				/>
 			</section>
+
+			{/* About Sponsors Section */}
 			<section>
 				<Container className="pt-12 pb-[110px] lg:pt-[133px] lg:pb-[160px]">
 					<div className="w-full lg:w-2/5">
 						<Heading as="h3" className="text-[32px] lg:text-[64px] pb-[18px] lg:pb-0 text-secondary uppercase">
-							Distribution
+							{sponsorsPageData.data?.data.attributes.about_section_title}
 						</Heading>
 						<Paragraph className="text-sm lg:text-lg text-secondary">
-							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
-							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
-							Kyuden International (Japan), Enersok FE LLC
+							{sponsorsPageData.data?.data.attributes.about_section_text}
 						</Paragraph>
 					</div>
 					<div className="pt-[136px] md:pt-20">
@@ -57,7 +73,7 @@ const AboutSponsorsPage: PageType = () => {
 								as="h4"
 								className="text-2xl hidden md:block text-secondary absolute top-[-12px] px-4 bg-white -translate-x-1/2 left-[50%]"
 							>
-								Project Sponsors
+								{sponsorsPageData.data?.data.attributes.sponsors_section_title}
 							</Heading>
 							<Image src={Line1} alt="Line1 Enersok" className="pb-3 px-4 hidden md:block" />
 							<Image src={Line3} alt="Line3 Enersok" className="block md:hidden h-[88%] mt-10" />
@@ -66,51 +82,27 @@ const AboutSponsorsPage: PageType = () => {
 									as="h4"
 									className="text-2xl absolute -top-[48px] text-secondary md:hidden"
 								>
-									Project Sponsors
+									{sponsorsPageData.data?.data.attributes.sponsors_section_title}
 								</Heading>
-								<SponsorCard
-									image={{
-										width: Sponsor1.width,
-										height: Sponsor1.height,
-										url: Sponsor1.src,
-										name: 'Sponsor1',
-									}}
-									title="EDF International S.A.S."
-									text="33,3%"
-								/>
-								<SponsorCard
-									image={{
-										width: Sponsor2.width,
-										height: Sponsor2.height,
-										url: Sponsor2.src,
-										name: 'Sponsor2',
-									}}
-									title="Nebras Power Investment Management B.V."
-									text="33,3%"
-								/>
-								<SponsorCard
-									image={{
-										width: Sponsor3.width,
-										height: Sponsor3.height,
-										url: Sponsor3.src,
-										name: 'Sponsor3',
-									}}
-									title="Sojitz Corporation"
-									text="19%"
-								/>
-								<SponsorCard
-									image={{
-										width: Sponsor4.width,
-										height: Sponsor4.height,
-										url: Sponsor4.src,
-										name: 'Sponsor4',
-									}}
-									title="Kyuden International Corporation"
-									text="14,3%"
-								/>
+								{
+									sponsors.data?.data.map((sponsor) => (
+										<SponsorCard
+											image={{
+												width: sponsor.attributes.sponsor_logo.data.attributes.width,
+												height: sponsor.attributes.sponsor_logo.data.attributes.height,
+												url: getBackendImage(sponsor.attributes.sponsor_logo.data.attributes.url),
+												name: sponsor.attributes.sponsor_logo.data.attributes.name,
+											}}
+											title={sponsor.attributes.sponsor_name}
+											text={`${sponsor.attributes.sponsor_value}%`}
+											key={sponsor.id}
+										/>
+									))
+								}
+
 								<div className="flex md:hidden flex-col md:items-center">
 									<Heading as="h5" className="text-base lg:text-2xl text-left md:text-center pt-6 pb-3 md:py-3">
-										Holding Сompany
+										{holdingCompanyLocale}
 									</Heading>
 									<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 										<Paragraph className="text-center text-2xl lg:text-[32px] text-[#5055E6]">
@@ -121,7 +113,7 @@ const AboutSponsorsPage: PageType = () => {
 								</div>
 								<div className="flex md:hidden flex-col md:items-center">
 									<Heading as="h5" className="text-base lg:text-2xl text-left md:text-center pt-8 pb-3 md:py-3">
-										Project Сompany
+										{projectCompanyLocale}
 									</Heading>
 									<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 										<Image
@@ -160,63 +152,34 @@ const AboutSponsorsPage: PageType = () => {
 					</div>
 				</Container>
 			</section>
+
+			{/* Sponsors Section */}
 			<section>
 				<Container className="pb-12 lg:pb-36">
 					<Heading
 						as="h3"
 						className="text-[32px] lg:text-[64px] text-secondary uppercase pb-12 lg:pb-28"
 					>
-						Sponsors
+						{sponsorsPageData.data?.data.attributes.sponsors_section_title}
 					</Heading>
 					<div className="flex flex-col gap-y-12">
-						<SponsorCardInfo
-							image={{
-								width: Sponsor1.width,
-								height: Sponsor1.height,
-								url: Sponsor1.src,
-								name: 'Sponsor1',
-							}}
-							title="EDF Group"
-							text="The EDF Group is a key player in the energy transition, as an integrated energy operator engaged in all aspects of the energy business: power generation, transmission, distribution, trading, energy sales and energy services. The EDF Group is a world leader in low-carbon energy, with a diverse generation mix based mainly on nuclear and renewable energy (including hydropower). It is also investing in new technologies to support the energy transition. EDF’s raison d’être is to build a net zero energy future with electricity and innovative solutions and services, to help save the planet and drive well-being and economic development. The EDF Group helps provide energy and services to approximately 39.8 million customers, 30.3 million of them in France."
-							linkText="www.edf.fr"
-							url="https://www.edf.fr/"
-						/>
-						<SponsorCardInfo
-							image={{
-								width: Sponsor2.width,
-								height: Sponsor2.height,
-								url: Sponsor2.src,
-								name: 'Sponsor2',
-							}}
-							title="Nebras Power Q.P.S.C."
-							text='Nebras Power, a global power development and investment company, was established in 2014 and it is headquartered in Doha, Qatar. The company is a wholly owned venture of Qatar Electricity and Water Company ("QEWC"), (which is a Government Related Entity (“GRE”). It owns 21 power plants (operational and under construction) with a gross capacity of 6.6 GW across conventional power and Renewable Energy projects. It has three operational gas-fired power plants in Jordan and Oman. and one under construction in Bangladesh.'
-							linkText="www.nebras-power.com"
-							url="https://www.nebras-power.com/"
-						/>
-						<SponsorCardInfo
-							image={{
-								width: Sponsor3.width,
-								height: Sponsor3.height,
-								url: Sponsor3.src,
-								name: 'Sponsor3',
-							}}
-							title="Sojitz Corporation"
-							text="Sojitz Group is engaged in a wide range of businesses globally as trading and investment house, including manufacturing, selling, importing, and exporting a variety of products, in addition to providing services and investing in diversified businesses, both in Japan and overseas. Sojitz has more than 70 office over the world and operates with a 7-division structure comprising the Automotive Division; the Aerospace & Transportation Project Division; the Infrastructure & Healthcare Division; the Metals, Mineral Resources & Recycling Division; the Chemicals Division; the Consumer Industry & Agriculture Business Division; and the Retail & Consumer Service Division."
-							linkText="www.sojitz.com "
-							url="https://www.sojitz.com/en/"
-						/>
-						<SponsorCardInfo
-							image={{
-								width: Sponsor4.width,
-								height: Sponsor4.height,
-								url: Sponsor4.src,
-								name: 'Sponsor4',
-							}}
-							title="Kyuden International Corporation"
-							text="Kyuden International Corporation (KIC) a wholly-owned subsidiary of Kyushu Electric Power Company in overseas business, providing electricity-focused energy solutions globally, and contributing to the creation of a future society that is both comfortable and environmentally-friendly. Kyushu Electric Power Company is one of magor utilities in Japan, covering power generation, transmission, and distribution, which operates more than 17 GW of power facilities using thermal, geothermal, hydro and nuclear with approx. 144,000 km of high- and low-voltage transmission systems. Using the technology and know-how that has been accumulated in Japan and abroad, KIC is developing overseas power business and consulting services. KIC’s power generation equity ownership capacity is approx. 2.8 GW with 22 projects in 16 countries."
-							linkText="www.kyuden-intl.co.jp"
-							url="https://www.kyuden-intl.co.jp/en/"
-						/>
+						{
+							sponsors.data?.data.map((sponsor) => (
+								<SponsorCardInfo
+									image={{
+										width: sponsor.attributes.sponsor_logo.data.attributes.width,
+										height: sponsor.attributes.sponsor_logo.data.attributes.height,
+										url: getBackendImage(sponsor.attributes.sponsor_logo.data.attributes.url),
+										name: sponsor.attributes.sponsor_logo.data.attributes.name,
+									}}
+									title={sponsor.attributes.sponsor_name}
+									text={sponsor.attributes.about_sponsor}
+									linkText={sponsor.attributes.sponsor_website_link}
+									url={sponsor.attributes.sponsor_website_link}
+									key={sponsor.id}
+								/>
+							))
+						}
 					</div>
 				</Container>
 			</section>

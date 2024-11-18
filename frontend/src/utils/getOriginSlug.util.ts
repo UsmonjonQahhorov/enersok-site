@@ -6,17 +6,21 @@
 export const getOriginSlug = (locales: Localizations) => {
 	let slug = '';
 
-	locales.data.forEach((locales) => {
+	console.log('locales:', locales);
+
+	locales.data?.forEach((locales) => {
 		if (locales.attributes.locale === 'en') {
 			slug += locales.attributes.slug;
 		}
 	});
 
+	console.log('slug:', slug);
+
 	return slug;
 };
 
 interface Localizations {
-	data: LocalizationsDatum[];
+	data?: LocalizationsDatum[];
 }
 
 interface LocalizationsDatum {
@@ -27,6 +31,8 @@ interface LocalizationsDatum {
 interface FluffyAttributes {
 	createdAt: Date;
 	updatedAt: Date;
+	publishedAt: Date;
 	locale: string;
 	slug: string;
+	localizations: Localizations;
 }

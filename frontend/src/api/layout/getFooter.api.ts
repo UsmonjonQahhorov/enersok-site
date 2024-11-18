@@ -7,6 +7,9 @@ export const getFooter = async (locale: Locale = 'en') => {
 		{
 			method: 'GET',
 			cache: 'force-cache',
+			next:{
+				tags: ['footer']
+			}
 		},
 	);
 

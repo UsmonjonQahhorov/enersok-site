@@ -8,7 +8,7 @@ export const getVacancies = async (
 	limit = PaginationConfig.perPage,
 ) => {
 	const response = await http<InitialResponse>(
-		`/vacancies?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&locale=${locale}`,
+		`/vacancies?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&populate=localizations&locale=${locale}`,
 		{
 			method: 'GET',
 		},
@@ -35,7 +35,7 @@ interface Attributes {
 	publishedAt: Date;
 	locale: string;
 	slug: string;
-	localizations?: Localizations;
+	localizations: Localizations;
 }
 
 interface Datum {
