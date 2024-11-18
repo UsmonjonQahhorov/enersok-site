@@ -52,6 +52,11 @@ export const navigation = [
 
 export const mobileNavigation = [
 	{
+		name_en: 'Главная',
+		name_uz: 'Bosh sahifa',
+		href: RouterConfig.Home,
+	},
+	{
 		name_en: 'About Company',
 		name_uz: 'Kompaniya haqida',
 		href: RouterConfig.AboutCompany,
