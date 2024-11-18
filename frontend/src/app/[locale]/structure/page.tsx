@@ -89,6 +89,7 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 											}}
 											name={manager.attributes.manger_name}
 											job={manager.attributes.manager_position}
+											email={manager.attributes.manager_email}
 										/>
 									</Link>
 

@@ -8,17 +8,17 @@ import { cn } from "@/utils/cn";
 
 export const LocationHoverCard = ({ className }: LocationHoverCardProps) => {
      return (
-          <article className={cn("flex items-center gap-6 rounded-xl bg-white p-2 pr-12 max-w-[450px]", className)}>
+          <article className={cn("flex items-center gap-3 md:gap-6 rounded-xl bg-white p-2 pr-5 md:pr-12 sm:w-[80%] md:max-w-[450px]", className)}>
                <NextImage
                     src={Factory}
                     alt="Factory"
                     className="max-w-36 h-full rounded-xl"
                />
                <div className="*:text-secondary flex flex-col gap-4">
-                    <Heading as="h4" className="text-2xl uppercase">
+                    <Heading as="h4" className="text-lg sm:text-2xl uppercase">
                          Enersok FE LLC
                     </Heading>
-                    <Paragraph size="sm" className="flex flex-row items-center gap-3">
+                    <Paragraph className="text-xs sm:text-sm flex flex-row items-center gap-3">
                          <NextImage src={LocationPosition} alt="Location Position" />
                          8A Afrosiyob St., Mirabad District, Tashkent city
                     </Paragraph>

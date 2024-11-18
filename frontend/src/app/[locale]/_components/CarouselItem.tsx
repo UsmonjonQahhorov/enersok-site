@@ -7,26 +7,28 @@ import type { Image } from '@/types/shared.types';
 
 export const CarouselItem = () => {
 	return (
-		<div className="flex justify-between items-center *:text-secondary min-h-96 cursor-pointer">
+		<div className="flex flex-col-reverse gap-y-8 md:grid md:grid-cols-[0.5fr,0.5fr] gap-x-4 lg:gap-x-0 justify-between items-center *:text-secondary min-h-96 cursor-pointer">
 			<div>
 				<Heading
-					size="3xl"
 					as="h1"
-					className={cn('md:text-6xl font-semibold uppercase', 'lg:text-[102px]')}
+					className={cn('text-[54px] md:text-4xl 2xl:text-6xl font-semibold uppercase', 'lg:text-5xl')}
 				>
 					Enersok
-					<span className="text-3xl mx-6">FE LLC</span>
+					<span className="text-base md:text-3xl mx-2 md:mx-6">FE LLC</span>
 				</Heading>
-				<Paragraph size="sm" className="md:text-lg mt-8 max-w-[600px]">
+				<Paragraph size="sm" className="md:text-lg mt-4 md:mt-8 max-w-[600px]">
 					Enersok FE LLC was formed in 2022 by the Consortium of Electricite De
 					France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden
 					International (Japan)
 				</Paragraph>
 			</div>
-			<NextImage
-				src={PeopelsImage}
-				alt="Slide 1"
-			/>
+			<div className='rounded-xl w-full overflow-hidden'>
+				<NextImage
+					src={PeopelsImage}
+					alt="Slide 1"
+					className='object-cover w-full max-h-[250px] sm:max-h-[350px] md:max-h-[650px] object-center rounded-xl'
+				/>
+			</div>
 		</div>
 	);
 };
