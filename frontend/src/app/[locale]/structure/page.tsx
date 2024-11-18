@@ -58,6 +58,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Regis Chancel'}
 								job={'CEO'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -68,6 +69,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Lola'}
 								job={'Secretary General'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -78,6 +80,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Masuyo Yo'}
 								job={'CEO'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -88,6 +91,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Emrah Ipekci'}
 								job={'HSES Director'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -98,6 +102,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Regis Chancel'}
 								job={'CEO'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -108,6 +113,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Lola'}
 								job={'Secretary General'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -118,6 +124,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Masuyo Yo'}
 								job={'CEO'}
+								email='team@gmai.com'
 							/>
 							<EmployeeCard
 								image={{
@@ -128,6 +135,7 @@ const OrganizationalStructurePage: PageType = () => {
 								}}
 								name={'Emrah Ipekci'}
 								job={'HSES Director'}
+								email='team@gmai.com'
 							/>
 						</div>
 					</div>
