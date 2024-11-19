@@ -23,8 +23,19 @@ import { CarouselItem } from './_components/CarouselItem';
 import { SponsorDonutChart } from './_components/Chart';
 import { NewsCarouselItem } from './_components/NewsCarouselItem';
 import { LocationSection } from './_components/LocationSection';
+import { getHomePage } from '@/api/pages/getHomePage.api';
+import { getCarousel } from '@/api/carousel/getCarousel.api';
+import { getBackendImage } from '@/utils/getBackendImage';
+import { getSponsors } from '@/api/sponsors/getSponsors.api';
 
-const HomePage: PageType = async () => {
+const HomePage: PageType = async ({ params }) => {
+	const { locale } = await params;
+
+	const homePageData = await getHomePage(locale);
+	const carousel = await getCarousel(locale);
+	const sponsors = await getSponsors(locale);
+
+	const readMoreLocale = locale === 'en' ? 'Read more' : 'Читать далее';
 
 	return (
 		<>
@@ -34,24 +45,30 @@ const HomePage: PageType = async () => {
 					<EmblaCarousel
 						className='[&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:md:flex'
 						autoLoopInterval={100000}
-						slides={[
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-						]}
+						slides={
+							carousel.data?.data ? carousel.data?.data.map((item) => (
+								<CarouselItem
+									key={item.id}
+									image={{
+										url: getBackendImage(item.attributes.picture.data.attributes.url),
+										width: item.attributes.picture.data.attributes.width,
+										height: item.attributes.picture.data.attributes.height,
+										name: item.attributes.picture.data.attributes.name,
+									}}
+									title={item.attributes.title}
+									description={item.attributes.text}
+								/>
+							)) : []
+						}
 						showCounter={true}
 						controlsPosition="below"
 					/>
 				</Container>
 				<NextImage
-					src={Factory}
-					alt="Banner Enersok"
+					src={getBackendImage(homePageData.data?.data.attributes.heading_background_picture.data.attributes.url)}
+					width={homePageData.data?.data.attributes.heading_background_picture.data.attributes.width}
+					height={homePageData.data?.data.attributes.heading_background_picture.data.attributes.height}
+					alt={homePageData.data?.data.attributes.heading_background_picture.data.attributes.name as string}
 					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>
@@ -64,10 +81,10 @@ const HomePage: PageType = async () => {
 						<NextImage src={EcoFriendlyImage} alt="Eco-friendly" />
 						<div>
 							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
-								Eco-Friendly
+								{homePageData.data?.data.attributes.feature_section_1_title}
 							</Heading>
 							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
-								Steam energy can utilize renewable resources like biomass
+								{homePageData.data?.data.attributes.feature_section_1_text}
 							</Paragraph>
 						</div>
 					</div>
@@ -75,10 +92,10 @@ const HomePage: PageType = async () => {
 						<NextImage src={EnergyImage} alt="Energy" />
 						<div>
 							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
-								Reliability
+								{homePageData.data?.data.attributes.feature_section_2_title}
 							</Heading>
 							<Paragraph size="sm" className="2xl:max-w-80  md:text-lg">
-								Steam turbines have long lifespans and can operate continuously
+								{homePageData.data?.data.attributes.feature_section_2_text}
 							</Paragraph>
 						</div>
 					</div>
@@ -86,11 +103,10 @@ const HomePage: PageType = async () => {
 						<NextImage src={ReliabilityImage} alt="Reliability" />
 						<div>
 							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
-								Energy Efficiency
+								{homePageData.data?.data.attributes.feature_section_3_title}
 							</Heading>
 							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
-								Steam allows for high energy conversion efficiency with minimal
-								losses
+								{homePageData.data?.data.attributes.feature_section_3_text}
 							</Paragraph>
 						</div>
 					</div>
@@ -106,23 +122,26 @@ const HomePage: PageType = async () => {
 							src={StationImage}
 							alt="Link"
 						/>
+						{/* TODO: fix responsive */}
+						{/* <NextImage
+							className="rounded-xl w-full"
+							src={getBackendImage(homePageData.data?.data.attributes.about_section_first_image.data.attributes.url)}
+							width={homePageData.data?.data.attributes.about_section_first_image.data.attributes.width}
+							height={homePageData.data?.data.attributes.about_section_first_image.data.attributes.height}
+							alt={homePageData.data?.data.attributes.about_section_first_image.data.attributes.name || 'station'}
+						/> */}
 						<div>
 							<Heading as="h3" className="text-[32px] md:text-5xl 2xl:text-[64px] uppercase">
-								Enersok FE LLC
+								{homePageData.data?.data.attributes.about_section_title}
 							</Heading>
 							<Paragraph
 								size="sm"
 								className="md:text-lg leading-7 mt-4 md:mt-6 mb-8 md:mb-12 max-w-[590px]"
 							>
-								Enersok FE LLC was formed in 2022 by the Consortium of
-								Electricite De France (EDF), Nebras Power (Qatar), Sojitz
-								Corporation and Kyuden International (Japan), Enersok FE LLC was
-								formed in 2022 by the Consortium of Electricite De France (EDF),
-								Nebras Power (Qatar), Sojitz Corporation and Kyuden
-								International (Japan)
+								{homePageData.data?.data.attributes.about_section_text}
 							</Paragraph>
 							<Link className="text-xl flex gap-3 items-center" href={'#'}>
-								Read more
+								{readMoreLocale}
 								<span>
 									<NextImage src={LinkImage} alt="Link" />
 								</span>
@@ -130,26 +149,38 @@ const HomePage: PageType = async () => {
 						</div>
 					</div>
 					<div>
-						<NextImage src={PeopelsImage} alt="Peopels" />
+						<NextImage
+							src={PeopelsImage}
+							alt="Peopels"
+						/>
+						{/* TODO: fix responsive */}
+						{/* <NextImage
+							src={getBackendImage(homePageData.data?.data.attributes.about_section_first_image.data.attributes.url)}
+							width={homePageData.data?.data.attributes.about_section_first_image.data.attributes.width}
+							height={homePageData.data?.data.attributes.about_section_first_image.data.attributes.height}
+							alt={homePageData.data?.data.attributes.about_section_first_image.data.attributes.name || 'people'}
+							className='w-full h-full max-w-[750px] rounded-xl'
+						/> */}
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
 							<Heading
 								size="lg"
 								as="h3"
 								className="md:text-2xl border-b border-black pb-6 mb-6"
 							>
-								Power Plant with capacity
+								{homePageData.data?.data.attributes.about_section_second_title}
 							</Heading>
 							<span className="text-[64px] md:text-6xl flex items-center justify-between">
-								1,6 GW
-								<NextImage src={EnergyIcon} alt="Energy" />
+								{homePageData.data?.data.attributes.about_section_info}
+								<NextImage
+									src={EnergyIcon}
+									alt="Energy"
+								/>
 							</span>
 							<Paragraph
 								size="sm"
 								className="md:text-lg leading-5 mt-12 max-w-[590px]"
 							>
-								Entered into public-private partnership agreement for
-								construction of a Gas Combined Cycle Power Plant with capacity
-								of 1,6 GW in Syrdarya region, Uzbekistan (On March 25, 2022)
+								{homePageData.data?.data.attributes.about_section_second_text}
 							</Paragraph>
 						</div>
 					</div>
@@ -166,57 +197,34 @@ const HomePage: PageType = async () => {
 				>
 					<div className="*:text-secondary">
 						<Heading as="h3" className={cn('text-[32px] md:text-[64px]')}>
-							SPONSORS
+							{homePageData.data?.data.attributes.sponsors_section_title}
 						</Heading>
 						<Paragraph
 							size="sm"
 							className={cn('max-w-[590px] mt-2 md:mt-5', 'text-sm md:text-lg')}
 						>
-							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
-							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
-							Kyuden International (Japan), Enersok FE LLC
+							{homePageData.data?.data.attributes.sponsors_section_text}
 						</Paragraph>
 						<div>
 							<Heading as="h3" size="xs" className="mt-8 md:mt-16 uppercase">
 								owned by
 							</Heading>
 							<ul className="flex flex-col gap-y-6 mt-11">
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#FF5E11] inline-block" />
-										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
-											EDF
-										</Paragraph>
-									</div>
-									<span className='text-lg md:text-2xl !leading-[normal]'>33.3%</span>
-								</li>
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#1AAD21] inline-block" />
-										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
-											Nebras Power
-										</Paragraph>
-									</div>
-									<span className='text-lg md:text-2xl !leading-[normal]'>33.3%</span>
-								</li>
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#00479D] inline-block" />
-										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
-											Sojitz
-										</Paragraph>
-									</div>
-									<span className='text-lg md:text-2xl !leading-[normal]'>19%</span>
-								</li>
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#93DCFF] inline-block" />
-										<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
-											Kyuden
-										</Paragraph>
-									</div>
-									<span className='text-lg md:text-2xl !leading-[normal]'>14.3%</span>
-								</li>
+								{
+									sponsors.data?.data.map((sponsor) => (
+										<li key={sponsor.id} className="border-b border-borderColor pb-3 flex justify-between">
+											<div className="flex gap-4 items-start">
+												<span className={cn("size-[22px] rounded-[50%] inline-block",
+													`bg-[${sponsor.attributes.sponsor_color}]`,
+												)} />
+												<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
+													{sponsor.attributes.sponsor_name}
+												</Paragraph>
+											</div>
+											<span className='text-lg md:text-2xl !leading-[normal]'>{sponsor.attributes.sponsor_value}%</span>
+										</li>
+									))
+								}
 							</ul>
 						</div>
 					</div>
@@ -226,8 +234,10 @@ const HomePage: PageType = async () => {
 					</div>
 				</Container>
 				<NextImage
-					src={Factory2}
-					alt="Banner Enersok"
+					src={getBackendImage(homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.url)}
+					width={homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.width}
+					height={homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.height}
+					alt={homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.name as string}
 					className="absolute hidden lg:block bottom-0 right-[50px] z-[1]"
 					priority={true}
 				/>
@@ -268,15 +278,15 @@ const HomePage: PageType = async () => {
 				<Container className='flex flex-col-reverse md:grid md:grid-cols-[1fr,0.8fr]'>
 					<div className='*:text-secondary z-10'>
 						<Heading as='h3' className='mt-6 md:mt-0 text-[32px] text-wrap md:text-4xl xl:text-[64px] !leading-[normal] max-w-[780px] uppercase'>
-							Join Our Community by Following Us on Social Media
+							{homePageData.data?.data.attributes.community_section_title}
 						</Heading>
 						<div>
 							<Heading as='h3' className='text-xs md:text-xl mt-10 md:mt-16'>
-								Follow us
+								{homePageData.data?.data.attributes.community_section_social_title}
 							</Heading>
 							<ul className='flex gap-3 mt-6 items-center'>
 								<li>
-									<a href="https://t.me/SYRDARYA_CCGT_2"
+									<a href={homePageData.data?.data.attributes.community_section_telegram_link}
 										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
 
 									>
@@ -288,7 +298,7 @@ const HomePage: PageType = async () => {
 									</a>
 								</li>
 								<li>
-									<a href="https://t.me/SYRDARYA_CCGT_2"
+									<a href={homePageData.data?.data.attributes.community_section_linkedIn_link}
 										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
 
 									>
@@ -306,23 +316,41 @@ const HomePage: PageType = async () => {
 					</div>
 					<div className='grid gap-2 p-4 z-10 grid-cols-3 grid-rows-2'>
 						<NextImage
-							className="col-start-2 col-span-2 row-start-1 h-full"
-							src={Image1} alt="Peoples" />
+							className="col-start-2 col-span-2 row-start-1 h-full rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_first_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_first_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_first_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_first_picture.data.attributes.name as string}
+						/>
 						<NextImage
-							className="col-start-1 row-span-2 place-self-center w-full"
-							src={Image2} alt="Peoples" />
+							className="col-start-1 row-span-2 place-self-center w-full rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_second_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_second_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_second_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_second_picture.data.attributes.name as string}
+						/>
 						<NextImage
-							className="col-start-2 row-start-2 w-full"
-							src={Image4} alt="Peoples" />
+							className="col-start-2 row-start-2 w-full rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_third_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_third_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_third_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_third_picture.data.attributes.name as string}
+						/>
 						<NextImage
-							className="col-start-3 row-start-2"
-							src={Image3} alt="Peoples" />
+							className="col-start-3 row-start-2 rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.name as string}
+						/>
 					</div>
 
 				</Container>
 				<NextImage
-					src={Factory2}
-					alt="Banner Enersok"
+					src={getBackendImage(homePageData.data?.data.attributes.community_section_background_picture.data.attributes.url)}
+					width={homePageData.data?.data.attributes.community_section_background_picture.data.attributes.width}
+					height={homePageData.data?.data.attributes.community_section_background_picture.data.attributes.height}
+					alt={homePageData.data?.data.attributes.community_section_background_picture.data.attributes.name as string}
 					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>

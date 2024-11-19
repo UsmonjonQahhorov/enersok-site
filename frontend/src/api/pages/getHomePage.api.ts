@@ -6,7 +6,8 @@ export const getHomePage = async (locale: Locale = 'en') => {
           `/home-page?populate=about_section_first_image,about_section_second_image,community_section_first_picture,community_section_second_picture,community_section_third_picture,community_section_fourth_picture,heading_background_picture,location_section_first_picture,location_section_second_picture,sponsors_section_background_picture,community_section_background_picture&locale=${locale}`,
           {
                method: "GET",
-               cache: 'force-cache'
+               // TODO: in the future, use cache to improve performance
+               // cache: 'force-cache'
           })
 
      return response
@@ -16,12 +17,12 @@ export interface GetHomePageResponse {
      data: GetHomePageResponseData;
 }
 
-interface GetHomePageResponseData {
+export interface GetHomePageResponseData {
      id: number;
      attributes: PurpleAttributes;
 }
 
-interface PurpleAttributes {
+export interface PurpleAttributes {
      page_title: string;
      createdAt: Date;
      updatedAt: Date;
@@ -76,17 +77,17 @@ interface AboutSectionFirstImageData {
 }
 
 interface FluffyAttributes {
-     name: AttributesName;
+     name: string;
      alternativeText: null;
      caption: null;
      width: number;
      height: number;
      formats: Formats;
-     hash: AttributesHash;
-     ext: EXT;
+     hash: string;
+     ext: string;
      mime: MIME;
      size: number;
-     url: AttributesURL;
+     url: string;
      previewUrl: null;
      provider: Provider;
      provider_metadata: null;
@@ -94,55 +95,29 @@ interface FluffyAttributes {
      updatedAt: Date;
 }
 
-interface EXT {
-     PNG: string;
-}
-
 interface Formats {
      thumbnail: Thumbnail;
 }
 
 interface Thumbnail {
-     name: ThumbnailName;
-     hash: ThumbnailHash;
-     ext: EXT;
+     name: string;
+     hash: string;
+     ext: string;
      mime: MIME;
      path: null;
      width: number;
      height: number;
      size: number;
      sizeInBytes: number;
-     url: ThumbnailURL;
+     url: string;
 }
 
-interface ThumbnailHash {
-     ThumbnailImage530E97C6B6: string;
+enum MIME {
+     ImageJPEG = "image/jpeg",
+     ImagePNG = "image/png",
+     ImageWebp = "image/webp",
 }
 
-interface MIME {
-     ImagePNG: string;
-}
-
-interface ThumbnailName {
-     ThumbnailImagePNG: string;
-}
-
-interface ThumbnailURL {
-     UploadsThumbnailImage530E97C6B6PNG: string;
-}
-
-interface AttributesHash {
-     Image530E97C6B6: string;
-}
-
-interface AttributesName {
-     ImagePNG: string;
-}
-
-interface Provider {
-     Local: string;
-}
-
-interface AttributesURL {
-     UploadsImage530E97C6B6PNG: string;
+enum Provider {
+     Local = "local",
 }
