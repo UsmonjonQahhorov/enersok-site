@@ -6,7 +6,7 @@ import LocationPosition from '@public/location-position-black.svg';
 import Factory from '@public/about.png';
 import { cn } from "@/utils/cn";
 
-export const LocationHoverCard = ({ className }: LocationHoverCardProps) => {
+export const LocationHoverCard = ({ className, companyName, image, location }: LocationHoverCardProps) => {
      return (
           <article className={cn("flex items-center gap-3 md:gap-6 rounded-xl bg-white p-2 pr-5 md:pr-12 sm:w-[80%] md:max-w-[450px]", className)}>
                <NextImage
@@ -16,11 +16,11 @@ export const LocationHoverCard = ({ className }: LocationHoverCardProps) => {
                />
                <div className="*:text-secondary flex flex-col gap-4">
                     <Heading as="h4" className="text-lg sm:text-2xl uppercase">
-                         Enersok FE LLC
+                         {companyName}
                     </Heading>
                     <Paragraph className="text-xs sm:text-sm flex flex-row items-center gap-3">
                          <NextImage src={LocationPosition} alt="Location Position" />
-                         8A Afrosiyob St., Mirabad District, Tashkent city
+                         {location}
                     </Paragraph>
                </div>
           </article>
@@ -28,8 +28,8 @@ export const LocationHoverCard = ({ className }: LocationHoverCardProps) => {
 }
 
 interface LocationHoverCardProps {
-     companyName?: string;
-     location?: string;
-     image?: Image;
+     companyName: string;
+     location: string;
+     image: Image;
      className?: string;
 }

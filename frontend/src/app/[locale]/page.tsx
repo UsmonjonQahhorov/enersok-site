@@ -36,6 +36,7 @@ const HomePage: PageType = async ({ params }) => {
 	const sponsors = await getSponsors(locale);
 
 	const readMoreLocale = locale === 'en' ? 'Read more' : 'Читать далее';
+	const carouselButtonsText = locale === 'en' ? 'All News' : 'Новости';
 
 	return (
 		<>
@@ -173,7 +174,7 @@ const HomePage: PageType = async ({ params }) => {
 								{homePageData.data?.data.attributes.about_section_info}
 								<NextImage
 									src={EnergyIcon}
-									alt="Energy"
+									alt="Energy Icon"
 								/>
 							</span>
 							<Paragraph
@@ -207,16 +208,19 @@ const HomePage: PageType = async ({ params }) => {
 						</Paragraph>
 						<div>
 							<Heading as="h3" size="xs" className="mt-8 md:mt-16 uppercase">
-								owned by
+								{homePageData.data?.data.attributes.sponsors_section_sponsors_title}
 							</Heading>
 							<ul className="flex flex-col gap-y-6 mt-11">
 								{
 									sponsors.data?.data.map((sponsor) => (
 										<li key={sponsor.id} className="border-b border-borderColor pb-3 flex justify-between">
 											<div className="flex gap-4 items-start">
-												<span className={cn("size-[22px] rounded-[50%] inline-block",
-													`bg-[${sponsor.attributes.sponsor_color}]`,
-												)} />
+												<span
+													style={{
+														backgroundColor: sponsor.attributes.sponsor_color
+													}}
+													className={cn("size-[22px] rounded-[50%] inline-block")}
+												/>
 												<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
 													{sponsor.attributes.sponsor_name}
 												</Paragraph>
@@ -230,7 +234,21 @@ const HomePage: PageType = async ({ params }) => {
 					</div>
 					{/* Chart */}
 					<div className='flex justify-center overflow-hidden relative mt-6 md:mt-0'>
-						<SponsorDonutChart />
+						<SponsorDonutChart
+							data={
+								sponsors.data?.data ? sponsors.data?.data.map((sponsor) => ({
+									color: sponsor.attributes.sponsor_color,
+									name: sponsor.attributes.sponsor_name,
+									value: sponsor.attributes.sponsor_value,
+									image: {
+										url: getBackendImage(sponsor.attributes.sponsor_logo.data.attributes.url),
+										width: sponsor.attributes.sponsor_logo.data.attributes.width,
+										height: sponsor.attributes.sponsor_logo.data.attributes.height,
+										name: sponsor.attributes.sponsor_logo.data.attributes.name as string,
+									}
+								})) : []
+							}
+						/>
 					</div>
 				</Container>
 				<NextImage
@@ -245,7 +263,26 @@ const HomePage: PageType = async ({ params }) => {
 
 			{/* Location section */}
 			<section className='py-16 lg:py-60 bg-[#1375A4]'>
-				<LocationSection />
+				<LocationSection
+					title={homePageData.data?.data.attributes.localtion_section_title || ''}
+					description={homePageData.data?.data.attributes.location_section_text || ''}
+					firstLocation={homePageData.data?.data.attributes.location_section_first_location || ''}
+					secondLocation={homePageData.data?.data.attributes.location_section_second_location || ''}
+					firstLocationImage={{
+						url: getBackendImage(homePageData.data?.data.attributes.location_section_first_picture.data.attributes.url),
+						width: homePageData.data?.data.attributes.location_section_first_picture.data.attributes.width || 0,
+						height: homePageData.data?.data.attributes.location_section_first_picture.data.attributes.height || 0,
+						name: homePageData.data?.data.attributes.location_section_first_picture.data.attributes.name || '',
+					}}
+					secondLocationImage={{
+						url: getBackendImage(homePageData.data?.data.attributes.location_section_second_picture.data.attributes.url),
+						width: homePageData.data?.data.attributes.location_section_second_picture.data.attributes.width || 0,
+						height: homePageData.data?.data.attributes.location_section_second_picture.data.attributes.height || 0,
+						name: homePageData.data?.data.attributes.location_section_second_picture.data.attributes.name || '',
+					}}
+					firstLocationCompanyName={homePageData.data?.data.attributes.location_section_first_company_name || ''}
+					secondLocationCompanyName={homePageData.data?.data.attributes.location_section_second_company_name || ''}
+				/>
 			</section>
 
 			{/* News Carousel section */}
@@ -260,7 +297,7 @@ const HomePage: PageType = async ({ params }) => {
 						controlsTitle='News'
 						controlsButton={{
 							link: '/news',
-							text: 'All news',
+							text: carouselButtonsText,
 						}}
 						slides={[
 							<NewsCarouselItem />,

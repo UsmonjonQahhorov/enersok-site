@@ -10,8 +10,18 @@ import LocationPosition from '@public/location-position.svg';
 import { LocationHoverCard } from "./LocationHoverCard";
 import { cn } from "@/utils/cn";
 import { useState } from "react";
+import type { Image } from "@/types/shared.types";
 
-export const LocationSection = () => {
+export const LocationSection = ({
+  description,
+  firstLocation,
+  secondLocation,
+  title,
+  firstLocationImage,
+  secondLocationImage,
+  firstLocationCompanyName,
+  secondLocationCompanyName
+}: LocationSectionProps) => {
 
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -20,10 +30,10 @@ export const LocationSection = () => {
     <Container className='grid lg:grid-cols-[0.4fr,0.6fr] gap-y-[50px] gap-x-10 xl:gap-x-0 xl:flex xl:justify-between'>
       <div className='*:text-white *:text-wrap'>
         <Heading as="h3" className="text-[32px] md:text-4xl uppercase lg:max-w-[600px] xl:text-6xl leading-8">
-          We and our projects are on the map
+          {title}
         </Heading>
         <Paragraph className="lg:max-w-[590px] mt-6 text-sm xl:text-lg leading-7">
-          Enersok FE LLC was formed in 2022 by the Consortium of Electricite De France (EDF), Nebras Power (Qatar), Sojitz Corporation and Kyuden International (Japan), Enersok FE LLC
+          {description}
         </Paragraph>
         <div className='mt-16 lg:mt-36 flex flex-col'>
           <div className='flex flex-col md:flex-row items-start md:items-center gap-5'
@@ -34,7 +44,7 @@ export const LocationSection = () => {
             <Paragraph
               className='lg:max-w-96 text-lg'
             >
-              8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan, Dmaar Business Center
+              {firstLocation}
             </Paragraph>
           </div>
           <hr className='my-5 lg:max-w-[450px]' />
@@ -46,7 +56,7 @@ export const LocationSection = () => {
             <Paragraph
               className='lg:max-w-96 text-lg'
             >
-              Shirin City, Syrdarya region, Uzbekistan
+              {secondLocation}
             </Paragraph>
           </div>
         </div>
@@ -70,15 +80,36 @@ export const LocationSection = () => {
         {/* TODO: Fix Position */}
         {
           show1 && (
-            <LocationHoverCard className={cn('absolute top-[-30px] xl:top-[-120px] left-0 sm:left-[100px] md:left-[200px] lg:left-[120px]')} />
+            <LocationHoverCard
+              companyName={firstLocationCompanyName}
+              location={firstLocation}
+              image={firstLocationImage}
+              className={cn('absolute top-[-30px] xl:top-[-120px] left-0 sm:left-[100px] md:left-[200px] lg:left-[120px]')}
+            />
           )
         }
         {
           show2 && (
-            <LocationHoverCard className={cn('absolute top-[-30px] xl:top-[-120px] left-0 sm:left-[100px] md:left-[200px] lg:left-[120px]')} />
+            <LocationHoverCard
+              companyName={secondLocationCompanyName}
+              location={secondLocation}
+              image={secondLocationImage}
+              className={cn('absolute top-[-30px] xl:top-[-120px] left-0 sm:left-[100px] md:left-[200px] lg:left-[120px]')}
+            />
           )
         }
       </div>
     </Container>
   )
+}
+
+interface LocationSectionProps {
+  title: string;
+  description: string;
+  firstLocation: string;
+  secondLocation: string;
+  firstLocationCompanyName: string;
+  secondLocationCompanyName: string;
+  firstLocationImage: Image;
+  secondLocationImage: Image;
 }
