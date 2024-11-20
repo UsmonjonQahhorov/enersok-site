@@ -7,18 +7,29 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { SponsorCard } from '@/components/ui/SponsorCard';
 import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
 import { RouterConfig } from '@/configs/router.config';
-import type { PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Sponsor5 from '@public/logo.png';
 import Line1 from '@public/sponsors/line1.png';
 import Line2 from '@public/sponsors/line2.png';
 import Line3 from '@public/sponsors/line3.png';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 // import Factory from '@public/facroty.png';
 // import Sponsor1 from '@public/sponsors/sponsor1.png';
 // import Sponsor2 from '@public/sponsors/sponsor2.png';
 // import Sponsor3 from '@public/sponsors/sponsor3.png';
 // import Sponsor4 from '@public/sponsors/sponsor4.png';
+
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale } = await params;
+	const sponsorsPageData = await getAboutSponsors(locale);
+
+	return {
+		title: sponsorsPageData.data?.data.attributes.page_title,
+	}
+}
 
 const AboutSponsorsPage: PageType = async ({ params }) => {
 	const { locale } = await params;

@@ -6,18 +6,30 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
-import type { PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Image from 'next/image';
 import { PagePagination } from './_components/PagePagination';
 import { getOriginSlug } from '@/utils/getOriginSlug.util';
+import type { Metadata } from 'next';
 // import Factory from '@public/facroty.png';
 // import Banner from '@public/vacancy-banner.png';
+
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale } = await params;
+	const aboutPageData = await getVacanciesPage(locale);
+
+	return {
+		title: aboutPageData.data?.data.attributes.page_title,
+		description: aboutPageData.data?.data.attributes.heading_about_text,
+	}
+}
 
 const CareersPage: PageType = async ({ params, searchParams }) => {
 	const { locale } = await params;
 	const query = await searchParams;
-	const page = parseInt(query?.page as string, 10) || 1;
+	const page = Number.parseInt(query?.page as string) || 1;
 
 	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	const breadcrumPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
@@ -110,7 +122,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 					</div>
 					<PagePagination
 						page={page}
-						total={vacancies.data?.meta.pagination.total ?? 0}
+						total={vacancies.data?.meta.pagination.pageCount ?? 0}
 					/>
 				</Container>
 			</section>

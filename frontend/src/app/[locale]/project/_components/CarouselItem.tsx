@@ -1,5 +1,4 @@
 import NextImage from 'next/image'
-import Banner from '@public/project.png'
 import type { Image } from '@/types/shared.types'
 import { cn } from '@/utils/cn'
 

@@ -30,11 +30,11 @@ import type { Metadata } from 'next';
 export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
 
 	const { locale } = await params;
-	const aboutPageData = await getProjectDetailPage(locale);
+	const projectDetailPageData = await getProjectDetailPage(locale);
 
 	return {
-		title: aboutPageData.data?.data.attributes.page_title,
-		description: aboutPageData.data?.data.attributes.about_section_text,
+		title: projectDetailPageData.data?.data.attributes.page_title,
+		description: projectDetailPageData.data?.data.attributes.about_section_text,
 	}
 }
 

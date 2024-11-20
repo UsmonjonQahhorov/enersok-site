@@ -1,7 +1,7 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import type { PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
 import Factory from '@public/facroty.png';
 import { RouterConfig } from '@/configs/router.config';
@@ -11,6 +11,19 @@ import { getVacancy } from '@/api/vacancies/getVanacy.api';
 import { redirect } from '@/i18n/routing';
 import { Time } from '@/utils/time';
 import Markdown from 'markdown-to-jsx';
+import type { Metadata } from 'next';
+
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale, slug } = await params;
+
+	const aboutPageData = await getVacancy(slug ?? '', locale);
+
+	return {
+		title: aboutPageData.data?.vacancyName,
+		description: aboutPageData.data?.vacancyDescription,
+	}
+}
 
 const SingleCareerPage: PageType = async ({ params }) => {
 	const { locale, slug } = await params;
@@ -21,7 +34,7 @@ const SingleCareerPage: PageType = async ({ params }) => {
 		});
 		return
 	}
-	const vacancyPageData = await getVacancy(locale, slug);
+	const vacancyPageData = await getVacancy(slug, locale);
 
 	if (!vacancyPageData.ok || !vacancyPageData.data) {
 		redirect({

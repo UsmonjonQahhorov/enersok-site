@@ -1,7 +1,6 @@
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import NextImage from 'next/image';
-import PeopelsImage from '@public/image (3).png';
 import { cn } from '@/utils/cn';
 import type { Image } from '@/types/shared.types';
 

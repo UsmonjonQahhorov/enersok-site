@@ -1,18 +1,18 @@
 "use client"
 
-import * as React from "react"
-import { Pie, PieChart, Cell, Sector, Label } from "recharts"
+import type { ChartConfig } from "@/components/ui/Chart"
 import {
      ChartContainer,
      ChartTooltip,
 } from "@/components/ui/Chart"
-import { type ChartConfig } from "@/components/ui/Chart"
-import type { PieSectorDataItem } from "recharts/types/polar/Pie";
-import NextImage from 'next/image';
-import EDF from '@public/sponsors/sponsor1.png';
-import NebrasPower from "@public/sponsors/sponsor2.png";
-import Sojitz from '@public/sponsors/sponsor3.png';
-import Kyuden from '@public/sponsors/sponsor4.png';
+import NextImage from 'next/image'
+import * as React from "react"
+import { Cell, Label, Pie, PieChart, Sector } from "recharts"
+import type { PieSectorDataItem } from "recharts/types/polar/Pie"
+// import EDF from '@public/sponsors/sponsor1.png';
+// import NebrasPower from "@public/sponsors/sponsor2.png";
+// import Sojitz from '@public/sponsors/sponsor3.png';
+// import Kyuden from '@public/sponsors/sponsor4.png';
 import type { Image } from "@/types/shared.types"
 
 // Simulated API data
@@ -53,7 +53,7 @@ export const SponsorDonutChart = ({ data }: SponsorDonutChartProps) => {
 
      const [activeIndex, setActiveIndex] = React.useState(0)
 
-     const onPieEnter = (_: any, index: number) => {
+     const onPieEnter = (_: unknown, index: number) => {
           setActiveIndex(index)
      }
 

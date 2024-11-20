@@ -14,11 +14,11 @@ import Image from 'next/image';
 export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
 
 	const { locale } = await params;
-	const aboutPageData = await getDGPage(locale);
+	const DGPageData = await getDGPage(locale);
 
 	return {
-		title: aboutPageData.data?.data.attributes.page_title,
-		description: aboutPageData.data?.data.attributes.about_text,
+		title: DGPageData.data?.data.attributes.page_title,
+		description: DGPageData.data?.data.attributes.about_text,
 	}
 }
 
@@ -62,9 +62,9 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 					</Paragraph>
 					<div className="flex flex-col lg:grid lg:grid-cols-2 gap-5 pt-8 md:pt-0">
 						{
-							documents.data?.data.map((document, index) => (
+							documents.data?.data.map((document) => (
 								<DownloadFile
-									key={index}
+									key={document.id}
 									text={document.attributes.document_name}
 									url={document.attributes.document.data.attributes.url}
 								/>

@@ -7,7 +7,6 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
-import { parseLocalizedValue } from '@/utils/parseLocalized.util';
 import About1 from '@public/about-icons/about1.svg';
 import About2 from '@public/about-icons/about2.svg';
 import Markdown from 'markdown-to-jsx';
@@ -159,14 +158,14 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							</div>
 						</div> */}
 						{
-							aboutPageDevelopmentData.data?.data.map((development, index) => (
-								<div key={index} className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
+							aboutPageDevelopmentData.data?.data.map((development) => (
+								<div key={development.id} className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
 									<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 										{development.attributes.development_year}
 									</Heading>
 									{
-										development.attributes.features.data.map((feature, index) => (
-											<Paragraph key={index} className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
+										development.attributes.features.data.map((feature) => (
+											<Paragraph key={feature.id} className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
 												{feature.attributes.info_text}
 											</Paragraph>
 										))

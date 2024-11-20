@@ -2,7 +2,7 @@ import { getContactPage } from '@/api/pages/getContactPage.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import { Map } from '@/components/ui/Map';
+import { Map as Gmap } from '@/components/ui/Map';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 import { RouterConfig } from '@/configs/router.config';
@@ -18,10 +18,10 @@ import Link from 'next/link';
 export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
 
 	const { locale } = await params;
-	const aboutPageData = await getContactPage(locale);
+	const contactPageData = await getContactPage(locale);
 
 	return {
-		title: aboutPageData.data?.data.attributes.page_title,
+		title: contactPageData.data?.data.attributes.page_title,
 	}
 }
 
@@ -124,8 +124,7 @@ const ContactsPage: PageType = async ({ params }) => {
 							</li>
 						</ul>
 					</div>
-					<Map mapUrl={contactPageData.data?.data.attributes.map_link || ''}
-					/>
+					<Gmap mapUrl={contactPageData.data?.data.attributes.map_link || ''} />
 				</Container>
 			</section>
 		</>

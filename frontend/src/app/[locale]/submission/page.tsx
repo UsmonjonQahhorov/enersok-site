@@ -15,11 +15,11 @@ import Image from 'next/image';
 export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
 
 	const { locale } = await params;
-	const aboutPageData = await getGRMSubmissionPage(locale);
+	const grmSubmissionPageData = await getGRMSubmissionPage(locale);
 
 	return {
-		title: aboutPageData.data?.data.attributes.page_title,
-		description: aboutPageData.data?.data.attributes.about_text,
+		title: grmSubmissionPageData.data?.data.attributes.page_title,
+		description: grmSubmissionPageData.data?.data.attributes.about_text,
 	}
 }
 

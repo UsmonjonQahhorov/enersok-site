@@ -17,11 +17,11 @@ import Image from 'next/image';
 export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
 
 	const { locale } = await params;
-	const aboutPageData = await getOrganizationPage(locale);
+	const organizationPageData = await getOrganizationPage(locale);
 
 	return {
-		title: aboutPageData.data?.data.attributes.page_title,
-		description: aboutPageData.data?.data.attributes.managers_section_text,
+		title: organizationPageData.data?.data.attributes.page_title,
+		description: organizationPageData.data?.data.attributes.managers_section_text,
 	}
 }
 
@@ -31,7 +31,7 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	const breadcrumPageLocale = locale === 'en' ? 'Organizational structure' : 'Tashkiliy tuzilma';
 
-	const aboutPageData = await getOrganizationPage(locale);
+	const organizationPageData = await getOrganizationPage(locale);
 	const managers = await getManagers(locale);
 
 
@@ -46,13 +46,13 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 						urlPage={RouterConfig.OrganizationalStructure}
 					/>
 					<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-[32px] lg:text-[100px]">
-						{aboutPageData.data?.data.attributes.heading_section_title}
+						{organizationPageData.data?.data.attributes.heading_section_title}
 					</Heading>
 				</Container>
 				<Image
-					src={getBackendImage(aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
-					width={aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
-					height={aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
+					src={getBackendImage(organizationPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
+					width={organizationPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
+					height={organizationPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
 					alt="Banner Enersok"
 					className="absolute hidden lg:block bottom-0 right-[122px]"
 					priority={true}
@@ -63,14 +63,14 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 					<Paragraph
 						className="text-sm md:text-2xl w-full border-b-[1px] border-solid border-secondaryOpacity3 whitespace-[10px] pt-[50px] pb-6 lg:py-[50px] text-secondary"
 					>
-						{aboutPageData.data?.data.attributes.managers_section_text}
+						{organizationPageData.data?.data.attributes.managers_section_text}
 					</Paragraph>
 					<div className="pt-20 pb-[50px] md:py-[100px]">
 						<Heading
 							as="h3"
 							className="!leading-[normal] text-secondary uppercase text-[32px] lg:text-[64px] lg:max-w-[50%] pb-8 md:pb-16"
 						>
-							{aboutPageData.data?.data.attributes.managers_section_title}
+							{organizationPageData.data?.data.attributes.managers_section_title}
 						</Heading>
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-12 md:gap-y-14">
 							{

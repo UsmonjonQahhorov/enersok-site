@@ -3,8 +3,8 @@ import type { FullNews } from '@/types/news.types';
 import { http } from '@/utils/http';
 
 export const getSingleNews = async (
-	locale: Locale = 'en',
 	slug: string,
+	locale: Locale = 'en',
 ): Promise<GetSingleNewsReturnType> => {
 	const response = await http<InitialResponse>(
 		`/new?filters[slug]=${slug}&populate=preview_picture&populate=localizations`,

@@ -1,45 +1,89 @@
+import { getSingleNews } from '@/api/news/getSingleNews.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { RouterConfig } from '@/configs/router.config';
-import type { PageType } from '@/types/component.types';
-import Image from 'next/image';
-import Time from '@public/time.svg';
-import Banner from '@public/image (1).png';
-import News from '@public/news.png';
-import Telegram from '@public/socials/telegram.svg';
-import LinkedIn from '@public/socials/linked-in.svg';
 import { SocialIcon } from '@/components/ui/SocialIcon';
+import { RouterConfig } from '@/configs/router.config';
+import { redirect } from '@/i18n/routing';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { cn } from '@/utils/cn';
-import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
-import { NewCard } from '@/components/ui/NewCard';
+import { getBackendImage } from '@/utils/getBackendImage';
+import { Time } from '@/utils/time';
+import LinkedIn from '@public/socials/linked-in.svg';
+import Telegram from '@public/socials/telegram.svg';
+import TimeIcon from '@public/time.svg';
+import Image from 'next/image';
+import { Suspense } from 'react';
+import { MoreNews } from './_components/MoreNews';
+import Markdown from 'markdown-to-jsx';
+import type { Metadata } from 'next';
+// import Banner from '@public/image (1).png';
+// import News from '@public/news.png';
 
-const SingleNewPage: PageType = () => {
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale, slug } = await params;
+
+	const singleNewsPageData = await getSingleNews(slug ?? '', locale);
+
+	return {
+		title: singleNewsPageData.data?.previewTitle,
+		description: singleNewsPageData.data?.newsDescription,
+	}
+}
+
+const SingleNewPage: PageType = async ({ params }) => {
+	const { locale, slug } = await params;
+	if (!slug) {
+		redirect({
+			href: RouterConfig.Careers,
+			locale,
+		});
+		return
+	}
+	const singleNewsPageData = await getSingleNews(slug, locale);
+
+	if (!singleNewsPageData.ok || !singleNewsPageData.data) {
+		redirect({
+			href: RouterConfig.Careers,
+			locale,
+		});
+	}
+
+	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumbsPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 flex flex-col items-center">
 					<Breadcrumbs
-						textHome={'Main'}
-						textPage={'News'}
+						textHome={breadcrumbsHomeLocale}
+						textPage={breadcrumbsPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.News}
 						className="self-start"
 					/>
 					<Heading className="!leading-[normal] text-wrap text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
-						Entered into public-private partnership
+						{singleNewsPageData.data?.previewTitle}
 					</Heading>
 					<div className="w-full xl:w-3/4 flex flex-row gap-x-6 relative pb-[137px] lg:pb-[253px]">
-						<Paragraph>05.08. 2024</Paragraph>
+						<Paragraph>
+							{Time(singleNewsPageData.data?.previewDate).format('DD.MM.YYYY')}
+						</Paragraph>
 						<div className="flex flex-row gap-x-2 items-center">
-							<Image src={Time} alt="Time Icon Enersok" className="w-4 h-4" />
-							<Paragraph className="!leading-[normal]">5 min</Paragraph>
+							<Image src={TimeIcon} alt="Time Icon Enersok" className="w-4 h-4" />
+							<Paragraph className="!leading-[normal]">
+								{singleNewsPageData.data?.previewTime}
+							</Paragraph>
 						</div>
 						<div className="absolute top-14 w-full h-full min-h-[200px] sm:min-h-[350px] lg:min-h-[525px] rounded-xl">
 							<Image
-								src={Banner}
-								alt="Banner Enersok"
+								src={getBackendImage(singleNewsPageData.data?.previewPicture.url)}
+								width={singleNewsPageData.data?.previewPicture.width}
+								height={singleNewsPageData.data?.previewPicture.height}
+								alt={singleNewsPageData.data?.previewPicture.name || 'Enersok'}
 								className="w-full h-full object-cover object-center rounded-xl"
 							/>
 						</div>
@@ -48,8 +92,9 @@ const SingleNewPage: PageType = () => {
 			</section>
 			<section>
 				<Container className="pt-[155px] sm:pt-[305px] lg:pt-[405px] flex flex-col items-center">
-					<div
+					<article
 						className={cn(
+							'prose w-full max-w-none',
 							'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 text-secondary',
 							'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
 							'[&>p]:text-base [&>p]:pb-6',
@@ -59,7 +104,16 @@ const SingleNewPage: PageType = () => {
 							'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
 						)}
 					>
-						<p>
+						{/* TODO: need to test this */}
+						<Markdown>
+							{singleNewsPageData.data?.newsDescription || ''}
+						</Markdown>
+						{/* TODO: need to test this */}
+						<Markdown
+						>
+							{singleNewsPageData.data?.newsDescriptionFull || ''}
+						</Markdown>
+						{/* <p>
 							In 2022, Enersok FE LLC was established as a result of a
 							collaboration between four international corporations. The
 							consortium that founded Enersok FE LLC consists of Electricite De
@@ -113,8 +167,8 @@ const SingleNewPage: PageType = () => {
 							brings extensive experience and influence in the energy sector,
 							providing a strong foundation for the development of the new
 							company.
-						</p>
-					</div>
+						</p> */}
+					</article>
 					<div className="w-full xl:w-3/4 flex flex-row items-center gap-x-3 pt-[54px] pb-20 lg:pt-[65px] lg:pb-[148px] border-t-[1px] border-solid border-secondaryOpacity3">
 						<Paragraph className="pr-3 text-xl text-secondary">Share</Paragraph>
 						<SocialIcon
@@ -134,92 +188,9 @@ const SingleNewPage: PageType = () => {
 			</section>
 			<section className='bg-backgroundImage1'>
 				<Container className='py-12 lg:py-[169px]'>
-					<EmblaCarousel
-						autoLoopInterval={100000}
-						className='[&>div>div>div]:!flex-[0_0_100%] [&>div>div>div]:sm:!flex-[0_0_50%] [&>div>div>div]:lg:!flex-[0_0_33.3333%] [&>div:nth-of-type(1)]:mb-8 [&>div:nth-of-type(1)>div]:lg:flex [&>div:nth-of-type(1)>div]:hidden [&>a]:sm:hidden [&>a]:block'
-						showCounter={false}
-						slidesToShow={3}
-						controlsPosition='above'
-						controlsTitle='More news'
-						controlsButton={{
-							link: '/news',
-							text: 'All news',
-						}}
-						slides={[
-							<NewCard
-								title="Enersok FE LLC was formed in 2022"
-								date="05.08. 2024"
-								image={{
-									width: News.width,
-									height: News.height,
-									url: News.src,
-									name: 'News',
-								}}
-								time="5 min"
-								url=''
-							/>,
-							<NewCard
-								title="Enersok FE LLC was formed in 2022"
-								date="05.08. 2024"
-								image={{
-									width: News.width,
-									height: News.height,
-									url: News.src,
-									name: 'News',
-								}}
-								time="5 min"
-								url=''
-							/>,
-							<NewCard
-								title="Enersok FE LLC was formed in 2022"
-								date="05.08. 2024"
-								image={{
-									width: News.width,
-									height: News.height,
-									url: News.src,
-									name: 'News',
-								}}
-								time="5 min"
-								url=''
-							/>,
-							<NewCard
-								title="Enersok FE LLC was formed in 2022"
-								date="05.08. 2024"
-								image={{
-									width: News.width,
-									height: News.height,
-									url: News.src,
-									name: 'News',
-								}}
-								time="5 min"
-								url=''
-							/>,
-							<NewCard
-								title="Enersok FE LLC was formed in 2022"
-								date="05.08. 2024"
-								image={{
-									width: News.width,
-									height: News.height,
-									url: News.src,
-									name: 'News',
-								}}
-								time="5 min"
-								url=''
-							/>,
-							<NewCard
-								title="Enersok FE LLC was formed in 2022"
-								date="05.08. 2024"
-								image={{
-									width: News.width,
-									height: News.height,
-									url: News.src,
-									name: 'News',
-								}}
-								time="5 min"
-								url=''
-							/>,
-						]}
-					/>
+					<Suspense>
+						<MoreNews locale={locale} />
+					</Suspense>
 				</Container>
 			</section>
 		</>
