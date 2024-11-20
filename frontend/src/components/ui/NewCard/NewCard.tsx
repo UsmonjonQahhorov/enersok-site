@@ -1,11 +1,12 @@
+import type { Image } from '@/types/shared.types';
 import { cn } from '@/utils/cn';
+import { Time } from '@/utils/time';
+import TimeIcon from '@public/time.svg';
 import NextImage from 'next/image';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
-import Time from '@public/time.svg';
-import type { Image } from '@/types/shared.types';
-import Link from 'next/link';
 
 export const NewCard: FC<NewCardProps> = ({
 	date,
@@ -37,9 +38,11 @@ export const NewCard: FC<NewCardProps> = ({
 				</Heading>
 			</Link>
 			<div className="flex flex-row gap-x-5 items-center">
-				<Paragraph className="text-xs sm:text-base !leading-[normal]">{date}</Paragraph>
+				<Paragraph className="text-xs sm:text-base !leading-[normal]">
+					{Time(date).format('DD.MM.YYYY')}
+				</Paragraph>
 				<div className="flex flex-row items-center gap-x-1">
-					<NextImage src={Time} alt="Time Enersok News" className="w-4 h-4 mb-[2px] sm:mb-0" />
+					<NextImage src={TimeIcon} alt="Time Enersok News" className="w-4 h-4 mb-[2px] sm:mb-0" />
 					<Paragraph className="!leading-[normal] text-xs sm:text-base">{time}</Paragraph>
 				</div>
 			</div>
@@ -50,7 +53,7 @@ export const NewCard: FC<NewCardProps> = ({
 interface NewCardProps {
 	className?: string;
 	title: string;
-	date: string;
+	date: Date;
 	time: string;
 	image: Image;
 	url: string;

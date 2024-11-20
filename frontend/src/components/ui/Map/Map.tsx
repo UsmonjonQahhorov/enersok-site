@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn';
-import { type ComponentPropsWithoutRef, type RefObject } from 'react';
+import type { ComponentPropsWithoutRef, RefObject } from 'react';
 
 export const Map = ({
 	ref,

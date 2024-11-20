@@ -2,10 +2,15 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
-import Factory from '@public/facroty.png';
-import Factory2 from '@public/factory2.png';
+import { getProjectDetailPage } from '@/api/pages/getProjectDetailPage.api';
+import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
+import { RouterConfig } from '@/configs/router.config';
+import { getBackendImage } from '@/utils/getBackendImage';
+import Location from '@public/location-green.svg';
+import Afs1 from '@public/project-icons/afs1.svg';
+import Afs2 from '@public/project-icons/afs2.svg';
 import Project1 from '@public/project-icons/project1.svg';
 import Project2 from '@public/project-icons/project2.svg';
 import Project3 from '@public/project-icons/project3.svg';
@@ -14,53 +19,79 @@ import Project5 from '@public/project-icons/project5.svg';
 import Project6 from '@public/project-icons/project6.svg';
 import Project7 from '@public/project-icons/project7.svg';
 import Project8 from '@public/project-icons/project8.svg';
-import Afs1 from '@public/project-icons/afs1.svg';
-import Afs2 from '@public/project-icons/afs2.svg';
-import Banner from '@public/project.png';
 import Banner2 from '@public/project2.png';
-import Location from '@public/location-green.svg';
-import { RouterConfig } from '@/configs/router.config';
-import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
 import { CarouselItem } from './_components/CarouselItem';
+import { getCarousel } from '@/api/carousel/getCarousel.api';
+import type { Metadata } from 'next';
+// import Factory from '@public/facroty.png';
+// import Factory2 from '@public/factory2.png';
+// import Banner from '@public/project.png';
 
-const ProjectDetailsPage: PageType = () => {
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale } = await params;
+	const projectDetailPageData = await getProjectDetailPage(locale);
+
+	return {
+		title: projectDetailPageData.data?.data.attributes.page_title,
+		description: projectDetailPageData.data?.data.attributes.about_section_text,
+	}
+}
+
+const ProjectDetailsPage: PageType = async ({ params }) => {
+	const { locale } = await params;
+
+	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumPageLocale = locale === 'en' ? 'Project Details' : 'Loyiha tafsilotlari';
+	const projectPeriodLocale = locale === 'en' ? 'Project Period:' : 'Loyiha davri:';
+	const projectFirstPhaseLocale = locale === 'en' ? 'Phase 1' : '1-faza';
+	const projectSecondPhaseLocale = locale === 'en' ? 'Phase 2' : '2-faza';
+	const projectLocationLocale = locale === 'en' ? 'Project Location:' : 'Loyiha joylashuvi:';
+
+	const projectDetailPageData = await getProjectDetailPage(locale);
+	const carouselData = await getCarousel(locale);
+
+	const carouselItems = carouselData.data?.data || [];
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid xl:grid-cols-2">
 					<div>
 						<Breadcrumbs
-							textHome={'Main'}
-							textPage={'Project Details'}
+							textHome={breadcrumHomeLocale}
+							textPage={breadcrumPageLocale}
 							urlHome={RouterConfig.Home}
 							urlPage={RouterConfig.ProjectDetails}
 						/>
 						<Image
-							src={Banner}
-							alt="Careers Banner Enersok"
+							src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
+							width={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
+							height={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
+							alt={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name || ''}
 							className="object-cover my-8 xl:my-0 max-h-[250px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase pb-8 xl:pt-[75px] xl:pb-[50px] text-5xl lg:text-[100px]">
-							Syrdarya 2
+							{projectDetailPageData.data?.data.attributes.heading_section_title}
 						</Heading>
 						<div className="pb-8 lg:pb-12 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Heading
 								as="h4"
 								className="text-base lg:text-lg text-secondary font-semibold pb-8 lg:pb-11"
 							>
-								Project Period:
+								{projectPeriodLocale}
 							</Heading>
 							<div className="flex flex-col gap-y-4">
 								<div className="flex flex-row items-center justify-start gap-x-[18px] lg:gap-x-6">
 									<div className="flex flex-row items-center w-fit py-[10px] pl-3 pr-3 lg:pr-6 gap-x-3 bg-button1 rounded-[38px]">
 										<span className="w-[6px] h-[6px] bg-white rounded-full" />
 										<Paragraph className="text-sm !text-nowrap lg:text-lg text-white tracking-[2px]">
-											Phase 1
+											{projectFirstPhaseLocale}
 										</Paragraph>
 									</div>
 									<Paragraph className="text-sm lg:text-2xl text-secondary">
-										Construction period : 2023 – 2026
+										{projectDetailPageData.data?.data.attributes.heading_first_phase}
 									</Paragraph>
 								</div>
 								<div className="pl-3 flex">
@@ -70,11 +101,11 @@ const ProjectDetailsPage: PageType = () => {
 									<div className="flex flex-row items-center w-fit py-[10px] pl-3 pr-3 lg:pr-6 gap-x-3 bg-primary rounded-[38px]">
 										<span className="w-[6px] h-[6px] bg-white rounded-full" />
 										<Paragraph className="text-sm !text-nowrap lg:text-lg text-white tracking-[2px]">
-											Phase 2
+											{projectSecondPhaseLocale}
 										</Paragraph>
 									</div>
 									<Paragraph className="text-sm lg:text-2xl text-secondary">
-										Opearating period : 2026-2051
+										{projectDetailPageData.data?.data.attributes.heading_second_phase}
 									</Paragraph>
 								</div>
 							</div>
@@ -84,7 +115,7 @@ const ProjectDetailsPage: PageType = () => {
 								as="h4"
 								className="text-base lg:text-lg text-secondary font-semibold pb-9"
 							>
-								Project Location:
+								{projectLocationLocale}
 							</Heading>
 							<div className="flex flex-row gap-x-6 items-center lg:pb-20">
 								<div className="bg-white rounded-full min-w-[60px] h-[60px] flex items-center justify-center">
@@ -95,24 +126,27 @@ const ProjectDetailsPage: PageType = () => {
 									/>
 								</div>
 								<Paragraph className="text-sm lg:text-lg text-secondary hover:text-button1 duration-200">
-									So called Syrdarya 2 will be located in Bayaut district,
-									Syrdarya region, approximately 150 km south of Tashkent.
+									{projectDetailPageData.data?.data.attributes.heading_location_address}
 								</Paragraph>
 							</div>
 						</div>
 					</div>
 					<div className="relative z-10 pl-14 hidden xl:block">
 						<Image
-							src={Banner}
-							alt="Careers Banner Enersok"
+							src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
+							width={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
+							height={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
+							alt={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name || ''}
 							className="object-cover object-center rounded-xl h-full"
 							priority={true}
 						/>
 					</div>
 				</Container>
 				<Image
-					src={Factory}
-					alt="Banner Enersok"
+					src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.url)}
+					width={projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.width}
+					height={projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.height}
+					alt={projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.name || ''}
 					className="absolute hidden lg:block bottom-0 right-[-200px] z-[1]"
 					priority={true}
 				/>
@@ -120,36 +154,28 @@ const ProjectDetailsPage: PageType = () => {
 			<section>
 				<Container className="py-20 lg:py-40">
 					<Heading as="h3" className="text-secondary text-[32px] lg:text-6xl uppercase pb-3 lg:pb-11">
-						About Project
+						{projectDetailPageData.data?.data.attributes.info_section_title}
 					</Heading>
 					<Paragraph className="text-sm lg:text-2xl text-secondary lg:pr-[20%] pb-20 lg:pb-[95px]">
-						Construction period started in March 2023 and the COD (Commercial
-						Operating Date) should be reach in June 2026. That means the plant
-						will be fully operational with two gas turbines and one steam
-						turbine in combined cycle configuration. ENERSOK has selected an EPC
-						contractor (Harbin Electric International Company Limited) to
-						deliver the engineering design of the facility, to procure all
-						equipment and to build all temporary and permanent facilities of the
-						project. The EPC contractor was selected through a competitive
-						tender process from five international EPC Contractors considering
-						financial, technical and E&S qualifications.
+						{projectDetailPageData.data?.data.attributes.about_section_text}
 					</Paragraph>
 					<EmblaCarousel
 						className='[&>div>div>div]:!flex-[0_0_100%] [&>div>div>div]:sm:!flex-[0_0_50%] [&>div>div>div]:lg:!flex-[0_0_33.3333%] [&>div:nth-last-of-type(1)]:hidden [&>div:nth-last-of-type(1)]:lg:flex'
 						showCounter={false}
 						slidesToShow={3}
-						slides={[
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-						]}
+						slides={
+							carouselItems.map((carousel) => (
+								<CarouselItem
+									key={carousel.id}
+									picture={{
+										url: getBackendImage(carousel.attributes.picture.data.attributes.url),
+										width: carousel.attributes.picture.data.attributes.width,
+										height: carousel.attributes.picture.data.attributes.height,
+										name: carousel.attributes.picture.data.attributes.name,
+									}}
+								/>
+							))
+						}
 					/>
 				</Container>
 			</section>
@@ -157,68 +183,65 @@ const ProjectDetailsPage: PageType = () => {
 				<Container className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-32 py-12 lg:pt-[150] lg:pb-[83px]">
 					<div>
 						<Paragraph className="text-secondary text-[32px] lg:text-6xl pb-10 lg:pb-0 uppercase">
-							The main project facilities will include:
+							{projectDetailPageData.data?.data.attributes.info_section_title}
 						</Paragraph>
 					</div>
 					<div className="flex flex-col">
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start pb-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project1} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Power block and stacks including two Gas Turbines (GT), two Heat
-								Recovery Steam Generators (HRSG) and one Steam Turbine (ST)
+								{projectDetailPageData.data?.data.attributes.info_section_first_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project2} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Closed Loop Cooling Water system, with mechanical draft air
-								cooling tower blocks
+								{projectDetailPageData.data?.data.attributes.info_section_second_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project3} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Gas receiving terminal
+								{projectDetailPageData.data?.data.attributes.info_section_third_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project4} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Access road
+								{projectDetailPageData.data?.data.attributes.info_section_fourth_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project5} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Intake and outfall corridor to a surface water canal, known as
-								the YG Canal
+								{projectDetailPageData.data?.data.attributes.info_section_five_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project6} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Wastewater treatment plants (industrial and sanitary)
+								{projectDetailPageData.data?.data.attributes.info_section_six_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project7} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								Ancillary/support facilities (i.e. electrical system, site
-								entrance and security building)
+								{projectDetailPageData.data?.data.attributes.info_section_seven_text}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project8} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								500/220kv switchgear station shared with and being constructed
-								by the adjacent ACWA Power Syrdarya 1,500MW CCGT Power Plant{' '}
+								{projectDetailPageData.data?.data.attributes.info_section_eight_text}
 							</Paragraph>
 						</div>
 					</div>
 				</Container>
 				<Image
-					src={Factory2}
-					alt="Factory2 Enersok"
+					src={getBackendImage(projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.url)}
+					width={projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.width}
+					height={projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.height}
+					alt={projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.name || ''}
 					className="left-[0] hidden lg:block bottom-0 absolute"
 				/>
 			</section>
@@ -229,7 +252,7 @@ const ProjectDetailsPage: PageType = () => {
 							as="h3"
 							className="text-[32px] lg:text-[64px] text-secondary uppercase !leading-[normal] pb-8 lg:pb-[60px]"
 						>
-							Associated Facilities (AFs) will be limited to the following:
+							{projectDetailPageData.data?.data.attributes.follow_section_title}
 						</Heading>
 						<div className="w-full h-full lg:hidden rounded-xl max-h-[250px] sm:max-h-[350px] mb-8 lg:mb-0">
 							<Image
@@ -244,9 +267,7 @@ const ProjectDetailsPage: PageType = () => {
 									<Image src={Afs1} alt="AFs1 Enersok" className="" />
 								</div>
 								<Paragraph className="text-sm lg:text-2xl text-secondary">
-									1 km gas pipeline connection to an existing gas supply system
-									to be constructed by NEGU (or its appointed contractor) and
-									operated by the gas supplier, JSC Uztransgaz.
+									{projectDetailPageData.data?.data.attributes.follow_section_first_text}
 								</Paragraph>
 							</div>
 							<div className="flex flex-row gap-x-3 lg:gap-x-7 pt-7">
@@ -254,17 +275,17 @@ const ProjectDetailsPage: PageType = () => {
 									<Image src={Afs2} alt="AFs1 Enersok" className="" />
 								</div>
 								<Paragraph className="text-sm lg:text-2xl text-secondary">
-									1 km gas pipeline connection to an existing gas supply system
-									to be constructed by NEGU (or its appointed contractor) and
-									operated by the gas supplier, JSC Uztransgaz.
+									{projectDetailPageData.data?.data.attributes.follow_section_second_text}
 								</Paragraph>
 							</div>
 						</div>
 					</div>
 					<div className="w-full h-full hidden lg:block rounded-xl">
 						<Image
-							src={Banner2}
-							alt="Project Banner2 Eneksok"
+							src={getBackendImage(projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.url)}
+							width={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.width}
+							height={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.height}
+							alt={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.name || ''}
 							className="object-cover object-center w-full h-full rounded-xl"
 						/>
 					</div>

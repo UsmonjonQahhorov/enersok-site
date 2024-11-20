@@ -1,24 +1,28 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import Logo from '@public/logo-white.png';
-import Telegram from '@public/socials/telegram.svg';
-import LinkedIn from '@public/socials/linked-in.svg';
+// import Logo from '@public/logo-white.png';
+import { getFooter } from '@/api/layout/getFooter.api';
+import { Container } from '@/components/ui/Container';
+import { Paragraph } from '@/components/ui/Paragraph';
+import { SocialIcon } from '@/components/ui/SocialIcon';
+import type { Locale } from '@/configs/i18n.config';
+import { RouterConfig } from '@/configs/router.config';
+import { Link as NavigationLink } from '@/i18n/routing';
+import { mobileNavigation } from '@/locales/navigations';
+import { cn } from '@/utils/cn';
+import { getBackendImage } from '@/utils/getBackendImage';
 import Email from '@public/footer-icons/email.svg';
+import Location from '@public/footer-icons/location.svg';
 import Phone from '@public/footer-icons/phone.svg';
 import Time from '@public/footer-icons/time.svg';
-import Location from '@public/footer-icons/location.svg';
-import { cn } from '@/utils/cn';
+import LinkedIn from '@public/socials/linked-in.svg';
+import Telegram from '@public/socials/telegram.svg';
 import Link from 'next/link';
-import { Paragraph } from '@/components/ui/Paragraph';
-import { Container } from '@/components/ui/Container';
-import { RouterConfig } from '@/configs/router.config';
-import { SocialIcon } from '@/components/ui/SocialIcon';
-import { mobileNavigation } from '@/locales/navigations';
-import { getLocale } from '@/utils/getLocale.util';
-import { Link as NavigationLink } from '@/i18n/routing';
 
-export const Footer: FC<FooterProps> = ({ className }) => {
-	const locale = getLocale();
+export const Footer: FC<FooterProps> = async ({ locale, className }) => {
+
+	const footerData = await getFooter();
+	const year = new Date().getFullYear();
 
 	return (
 		<footer className={cn(className, 'bg-footer')}>
@@ -30,8 +34,10 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 				>
 					<Link className='pb-8 md:pb-0' href={RouterConfig.Home}>
 						<Image
-							src={Logo}
-							alt="Enersok Footer Logo"
+							src={getBackendImage(footerData.data?.data.attributes.logo.data.attributes.url)}
+							width={footerData.data?.data.attributes.logo.data.attributes.width}
+							height={footerData.data?.data.attributes.logo.data.attributes.height}
+							alt="Enersok Logo"
 							priority={true}
 							className="w-[195px] h-fit"
 						/>
@@ -56,7 +62,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 						<li>
 							<Link
 								className={'flex flex-row items-start gap-x-1'}
-								href={'tel:+998770004594'}
+								href={`tel:${footerData.data?.data.attributes.phone}`}
 							>
 								<Image
 									alt="Phone Enersok"
@@ -66,14 +72,14 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									className="w-4 h-4"
 								/>
 								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
-									+998 77 000 45 94
+									{footerData.data?.data.attributes.phone}
 								</span>
 							</Link>
 						</li>
 						<li>
 							<Link
 								className={'flex flex-row items-start gap-x-1'}
-								href={'mailto:info@enersok.uz'}
+								href={`mailto:${footerData.data?.data.attributes.email}`}
 							>
 								<Image
 									alt="Email Enersok"
@@ -83,14 +89,14 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									className="w-4 h-4"
 								/>
 								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
-									info@enersok.uz
+									{footerData.data?.data.attributes.email}
 								</span>
 							</Link>
 						</li>
 						<li className="w-full">
 							<Link
 								className={'flex flex-row items-start gap-x-1'}
-								href={'https://yandex.uz/maps/-/CDXJyC1C'}
+								href={footerData.data?.data.attributes.address_link || ''}
 							>
 								<Image
 									alt="Adress Enersok"
@@ -98,8 +104,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									className="w-4 h-4"
 								/>
 								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
-									8A Afrosiyob St., Mirabad District, Tashkent city, Uzbekistan,
-									Dmaar Business Center
+									{footerData.data?.data.attributes.address_text}
 								</span>
 							</Link>
 						</li>
@@ -113,7 +118,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 									className="w-4 h-4"
 								/>
 								<span className="w-full text-white text-base leading-5">
-									Office hours: Monday - Friday From 9:00 to 18:00
+									{footerData.data?.data.attributes.work_hours_text}
 								</span>
 							</Paragraph>
 						</li>
@@ -121,19 +126,19 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 				</div>
 				<div className="pb-6 md:pt-4 md:pb-[100px] flex flex-col-reverse md:flex-row justify-between items-start md:items-center">
 					<Paragraph size="sm" className="text-white hover:text-button1 duration-200 tracking-widest md:tracking-normal">
-						© 2024 Enersok
+						© {year} Enersok
 					</Paragraph>
 					<ul className="flex gap-x-3 pb-8 md:pb-0">
 						<li>
 							<SocialIcon
-								url={'https://t.me/SYRDARYA_CCGT_2'}
+								url={footerData.data?.data.attributes.telegram_link || ''}
 								src={Telegram}
 								alt={'Enersok Telegram'}
 							/>
 						</li>
 						<li>
 							<SocialIcon
-								url={'http://www.linkedin.com/company/enersok-fe-llc'}
+								url={footerData.data?.data.attributes.linkedIn_link || ''}
 								src={LinkedIn}
 								alt={'Enersok LinkedIn'}
 							/>
@@ -147,4 +152,5 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 
 interface FooterProps {
 	className?: string;
+	locale: Locale;
 }

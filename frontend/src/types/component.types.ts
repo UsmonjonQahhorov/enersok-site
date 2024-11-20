@@ -5,6 +5,7 @@ import type { FC, ReactNode } from 'react';
 type searchParams = { [key: string]: string | string[] | undefined };
 export interface ParamsWithLocale {
 	locale: (typeof locales)[number];
+	slug?: string;
 }
 
 export type PageType<
@@ -37,8 +38,8 @@ export type DynamicMetadata<
 	SearchParams extends object = object,
 > = (
 	params: {
-		params: Params;
-		searchParams: SearchParams;
+		params: Promise<Params>;
+		searchParams: Promise<SearchParams>;
 	},
-	parent: ResolvingMetadata,
+	parent: ResolvingMetadata
 ) => Promise<Metadata> | Metadata;

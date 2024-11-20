@@ -3,8 +3,8 @@ import type { Vacancy } from '@/types/vacancy.types';
 import { http } from '@/utils/http';
 
 export const getVacancy = async (
-	locale: Locale = 'en',
 	slug: string,
+	locale: Locale = 'en',
 ): Promise<GetVacancyReturnType> => {
 	const response = await http<InitialResponse>(
 		`/vacancies?filters[slug]=${slug}&populate=localizations`,

@@ -1,12 +1,20 @@
-import Image from 'next/image'
-import Banner from '@public/project.png'
+import NextImage from 'next/image'
+import type { Image } from '@/types/shared.types'
+import { cn } from '@/utils/cn'
 
-export const CarouselItem = () => {
+export const CarouselItem = ({ picture, className }: CarouselItemProps) => {
      return (
-          <Image
-               src={Banner}
-               alt="Slide Enersok"
-               className="max-h-[321px] w-full rounded-xl"
+          <NextImage
+               src={picture.url}
+               width={picture.width}
+               height={picture.height}
+               alt={picture.name}
+               className={cn("max-h-[321px] w-full rounded-xl h-full", className)}
           />
      )
+}
+
+interface CarouselItemProps {
+     picture: Image;
+     className?: string;
 }

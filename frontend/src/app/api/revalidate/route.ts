@@ -15,9 +15,22 @@ export async function POST(req: NextRequest) {
 		return Response.json({ message: 'Invalid token' });
 	}
 
-	// revalidatePath('/', 'layout');
-	// revalidateTag('header');
-	// revalidateTag('footer');
+	revalidatePath('/', 'layout');
+	revalidateTag('header');
+	revalidateTag('footer');
+	revalidateTag('carousel');
+	revalidateTag('managers');
+	revalidateTag('documents');
+	revalidateTag('developments');
+	revalidateTag('sponsors');
+	revalidatePath('/about', 'page');
+	revalidatePath('/contact', 'page');
+	revalidatePath('/project', 'page');
+	revalidatePath('/documents', 'page');
+	revalidatePath('/structure', 'page');
+	revalidatePath('/sponsors', 'page');
+	revalidatePath('/submissions', 'page');
+	revalidatePath('/contacts', 'page');
 
 	return Response.json({
 		revalidated: true,

@@ -5,7 +5,7 @@ import { http } from '@/utils/http';
 export const getNews = async (
 	locale: Locale = 'en',
 	page = 1,
-	limit = PaginationConfig.perPage,
+	limit: number = PaginationConfig.perPage,
 ) => {
 	const response = await http<GetNews>(
 		`/new?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&locale=${locale}&populate=preview_picture&populate=localizations`,
@@ -31,12 +31,12 @@ interface DatumAttributes {
 	preview_date: Date;
 	createdAt: Date;
 	updatedAt: Date;
-	locale: string;
 	news_description: string;
 	news_description_full: string | null;
-	slug: string;
 	preview_picture: PreviewPicture;
-	localizations?: Localizations;
+	locale: string;
+	slug: string;
+	localizations: Localizations;
 }
 
 interface Datum {
