@@ -4,9 +4,10 @@ import { http } from "@/utils/http";
 export const getDGPage = async (locale: Locale = 'en') => {
 
      const response = await http<GetDocumentsGuidlinesResponse>(
-          `/documents-guidlines-page?populate=heading_image?locale=${locale}`, {
+          `/documents-guidlines-page?populate=heading_image&locale=${locale}`, {
           method: "GET",
-          cache: 'force-cache'
+          // TODO: in the future, use the cache
+          // cache: 'force-cache'
      })
 
      return response

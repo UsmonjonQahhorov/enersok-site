@@ -3,6 +3,10 @@ import { http } from '@/utils/http';
 export const getHeader = async () => {
 	const response = await http<GetHeader>('/header?populate=logo', {
 		method: 'GET',
+		cache: 'force-cache',
+		next: {
+			tags: ['header'],
+		},
 	});
 
 	return response;

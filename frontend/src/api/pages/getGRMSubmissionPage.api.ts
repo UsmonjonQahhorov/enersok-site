@@ -6,7 +6,8 @@ export const getGRMSubmissionPage = async (locale: Locale = 'en') => {
      const response = await http<GetGrmSubmissionPageResponse>(
           `/grm-submission-page?populate=background_image,form_picture&locale=${locale}`, {
           method: "GET",
-          cache: 'force-cache'
+          // TODO: in the future, use the cache
+          // cache: 'force-cache'
      })
 
      return response
@@ -25,6 +26,7 @@ interface GetGrmSubmissionPageResponseData {
 interface PurpleAttributes {
      page_title: string;
      about_text: string;
+     heading_title: string;
      createdAt: Date;
      updatedAt: Date;
      locale: string;

@@ -6,7 +6,8 @@ export const getOrganizationPage = async (locale: Locale = 'en') => {
           `/organization-page?populate=heading_section_picture&locale=${locale}`,
           {
                method: "GET",
-               cache: 'force-cache'
+               // TODO: in the future, use the cache
+               // cache: 'force-cache'
           })
 
      return response

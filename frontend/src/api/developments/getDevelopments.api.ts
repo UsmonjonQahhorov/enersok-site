@@ -5,7 +5,11 @@ export const getDevelopments = async (locale: Locale = 'en') => {
 
      const response = await http<GetDevelopmentsResponse>(
           `/developments?populate=features,development_picture&locale=${locale}`, {
-          method: 'GET'
+          method: 'GET',
+          cache: 'force-cache',
+          next: {
+               tags: ['developments'],
+          },
      })
 
      return response

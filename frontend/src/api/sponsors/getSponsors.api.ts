@@ -6,6 +6,10 @@ export const getSponsors = async (locale: Locale = 'en') => {
      const response = await http<GetSponsorsResponse>(
           `/sponsors?populate=sponsor_logo&locale=${locale}`, {
           method: 'GET',
+          cache: 'force-cache',
+          next: {
+               tags: ['sponsors'],
+          },
      })
 
      return response

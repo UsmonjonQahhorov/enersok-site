@@ -1,3 +1,3 @@
 export const PaginationConfig = {
-	perPage: 7,
+	perPage: 8,
 } as const;

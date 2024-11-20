@@ -4,12 +4,15 @@ import type { FC } from 'react';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import type { Image } from '@/types/shared.types';
+import Email from '@public/footer-icons/email2.svg';
+import Link from 'next/link';
 
 export const EmployeeCard: FC<EmployeeCardProps> = ({
 	image,
 	job,
 	name,
 	className,
+	email
 }) => {
 	return (
 		<article className={cn(className, 'flex flex-col gap-y-3')}>
@@ -28,9 +31,17 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 			>
 				{name}
 			</Heading>
-			<Paragraph className="text-sm md:text-base leading-[18px] font-normal text-secondary hover:text-primary duration-300">
+			<Paragraph className="text-sm md:text-base leading-[18px] font-normal text-secondary">
 				{job}
 			</Paragraph>
+			<Link className='flex items-end gap-x-1' href={`mailto:${email}`}>
+				<NextImage
+					src={Email}
+					alt='Email Icon'
+					className='w-4 h-4'
+				/>
+				<Paragraph className='text-secondary text-sm !leading-[normal] hover:text-primary duration-300'>{email}</Paragraph>
+			</Link>
 		</article>
 	);
 };
@@ -40,4 +51,5 @@ interface EmployeeCardProps {
 	image: Image;
 	name: string;
 	job: string;
+	email: string;
 }

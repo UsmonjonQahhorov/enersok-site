@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import Link from 'next/link';
+import { Time } from '@/utils/time';
 
 export const CareerCard: FC<CareerCardProps> = ({
 	endDate,
@@ -33,13 +34,17 @@ export const CareerCard: FC<CareerCardProps> = ({
 					<Paragraph className="text-sm text-secondaryOpacity4 pb-2">
 						Posting Date
 					</Paragraph>
-					<Paragraph className="text-xl">{startDate}</Paragraph>
+					<Paragraph className="text-xl">
+						{Time(startDate).format('DD.MM.YYYY')}
+					</Paragraph>
 				</div>
 				<div className="flex flex-col items-start justify-center">
 					<Paragraph className="text-sm text-secondaryOpacity4 pb-2">
 						Closing Date
 					</Paragraph>
-					<Paragraph className="text-xl">{endDate}</Paragraph>
+					<Paragraph className="text-xl">
+						{Time(endDate).format('DD.MM.YYYY')}
+					</Paragraph>
 				</div>
 			</div>
 			<Link
@@ -56,7 +61,7 @@ interface CareerCardProps {
 	className?: string;
 	title: string;
 	location: string;
-	startDate: string;
-	endDate: string;
+	startDate: Date;
+	endDate: Date;
 	url: string;
 }

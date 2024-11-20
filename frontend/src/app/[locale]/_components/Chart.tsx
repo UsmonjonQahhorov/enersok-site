@@ -1,38 +1,32 @@
 "use client"
 
-import * as React from "react"
-import { Pie, PieChart, Cell, Sector, Label } from "recharts"
+import type { ChartConfig } from "@/components/ui/Chart"
 import {
      ChartContainer,
      ChartTooltip,
 } from "@/components/ui/Chart"
-import { type ChartConfig } from "@/components/ui/Chart"
-import type { PieSectorDataItem } from "recharts/types/polar/Pie";
-import NextImage from 'next/image';
-import EDF from '@public/sponsors/sponsor1.png';
-import NebrasPower from "@public/sponsors/sponsor2.png";
-import Sojitz from '@public/sponsors/sponsor3.png';
-import Kyuden from '@public/sponsors/sponsor4.png';
+import NextImage from 'next/image'
+import * as React from "react"
+import { Cell, Label, Pie, PieChart, Sector } from "recharts"
+import type { PieSectorDataItem } from "recharts/types/polar/Pie"
+// import EDF from '@public/sponsors/sponsor1.png';
+// import NebrasPower from "@public/sponsors/sponsor2.png";
+// import Sojitz from '@public/sponsors/sponsor3.png';
+// import Kyuden from '@public/sponsors/sponsor4.png';
+import type { Image } from "@/types/shared.types"
 
 // Simulated API data
-const sponsorData = [
-     { name: "Kyuden", value: 14.3, color: "#93DCFF", img: Kyuden },
-     { name: "Sojitz", value: 19, color: "#00479D", img: Sojitz },
-     { name: "EDF", value: 33.3, color: "#FF5E11", img: EDF },
-     { name: "NebrasPower", value: 33.3, color: "#1AAD21", img: NebrasPower },
-];
+// const sponsorData = [
+//      { name: "Kyuden", value: 14.3, color: "#93DCFF", img: Kyuden },
+//      { name: "Sojitz", value: 19, color: "#00479D", img: Sojitz },
+//      { name: "EDF", value: 33.3, color: "#FF5E11", img: EDF },
+//      { name: "NebrasPower", value: 33.3, color: "#1AAD21", img: NebrasPower },
+// ];
 
-const Config: ChartConfig = sponsorData.reduce((acc: Record<string, { color: string; value: number }>, curr) => {
-     acc[curr.name] = {
-          color: curr.color,
-          value: curr.value,
-     }
-     return acc
-}, {})
 
 const renderActiveShape = (props: PieSectorDataItem) => {
      const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } = props
-
+     
      return (
           <g>
                <Sector
@@ -48,33 +42,41 @@ const renderActiveShape = (props: PieSectorDataItem) => {
      )
 }
 
-export const SponsorDonutChart = () => {
+export const SponsorDonutChart = ({ data }: SponsorDonutChartProps) => {
+     const Config: ChartConfig = data.reduce((acc: Record<string, { color: string; value: number }>, curr) => {
+          acc[curr.name] = {
+               color: curr.color,
+               value: curr.value,
+          }
+          return acc
+     }, {})
+
      const [activeIndex, setActiveIndex] = React.useState(0)
 
-     const onPieEnter = (_: any, index: number) => {
+     const onPieEnter = (_: unknown, index: number) => {
           setActiveIndex(index)
      }
 
-     const activeSponsor = activeIndex !== -1 ? sponsorData[activeIndex] : null
+     const activeSponsor = activeIndex !== -1 ? data[activeIndex] : null
 
      return (
           <>
                {activeSponsor && (
                     <NextImage
-                         src={activeSponsor.img}
+                         src={activeSponsor.image.url}
                          alt={`Sponsor ${activeSponsor.name}`}
                          width={115}
                          height={115}
-                         className="w-[115px] h-auto absolute -translate-y-1/2 top-[240px]"
+                         className="w-[85px] md:w-[115px] h-auto absolute -translate-y-1/2 top-[130px] md:top-[240px]"
                     />
                )}
                <ChartContainer
                     config={Config}
-                    className="h-[613px]"
+                    className="h-[350px] md:h-[613px]"
                >
-                    <PieChart>
+                    <PieChart className='flex justify-center [&>svg]:!w-[60%] [&>svg]:md:!w-full'>
                          <Pie
-                              data={sponsorData}
+                              data={data}
                               dataKey="value"
                               nameKey="name"
                               cx="50%"
@@ -123,7 +125,7 @@ export const SponsorDonutChart = () => {
                                         }
                                    }}
                               />
-                              {sponsorData.map((entry) => (
+                              {data.map((entry) => (
                                    <Cell key={`cell-${entry.name}`} fill={entry.color} />
                               ))}
                          </Pie>
@@ -135,4 +137,15 @@ export const SponsorDonutChart = () => {
                </ChartContainer>
           </>
      )
+}
+
+interface SponsorDonutChartProps {
+     data: Sponsor[];
+}
+
+interface Sponsor {
+     name: string;
+     value: number;
+     color: string;
+     image: Image;
 }

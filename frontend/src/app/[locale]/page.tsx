@@ -1,95 +1,135 @@
+import { getCarousel } from '@/api/carousel/getCarousel.api';
+import { getHomePage } from '@/api/pages/getHomePage.api';
+import { getSponsors } from '@/api/sponsors/getSponsors.api';
 import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Link } from '@/i18n/routing';
-import type { PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { cn } from '@/utils/cn';
+import { getBackendImage } from '@/utils/getBackendImage';
 import EcoFriendlyImage from '@public/ecoFriendly.svg';
 import EnergyIcon from '@public/energy-icon.svg';
 import EnergyImage from '@public/energy.svg';
-import Factory from '@public/facroty.png';
-import Factory2 from '@public/factory2.png';
-import PeopelsImage from '@public/image (1).png';
-import Image1 from '@public/image (4).png';
-import Image2 from '@public/image (5).png';
-import Image3 from '@public/image (6).png';
-import Image4 from '@public/image (7).png';
 import LinkImage from '@public/link.svg';
-import StationImage from '@public/Rectangle 6.png';
 import ReliabilityImage from '@public/reliability.svg';
 import NextImage from 'next/image';
 import { CarouselItem } from './_components/CarouselItem';
 import { SponsorDonutChart } from './_components/Chart';
-import { NewsCarouselItem } from './_components/NewsCarouselItem';
 import { LocationSection } from './_components/LocationSection';
+import { NewsCarouselItem, } from './_components/NewsCarouselItem';
+import { getNews } from '@/api/news/getNews.api';
+import { getOriginSlug } from '@/utils/getOriginSlug.util';
+import type { Metadata } from 'next';
+// import Factory from '@public/facroty.png';
+// import Factory2 from '@public/factory2.png';
+// import PeopelsImage from '@public/image (1).png';
+// import Image1 from '@public/image (4).png';
+// import Image2 from '@public/image (5).png';
+// import Image3 from '@public/image (6).png';
+// import Image4 from '@public/image (7).png';
+// import StationImage from '@public/Rectangle 6.png';
 
-const HomePage: PageType = async () => {
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale } = await params;
+	const aboutPageData = await getHomePage(locale);
+
+	return {
+		title: aboutPageData.data?.data.attributes.page_title,
+		description: aboutPageData.data?.data.attributes.about_section_text,
+	}
+}
+
+const HomePage: PageType = async ({ params }) => {
+	const { locale } = await params;
+
+	const homePageData = await getHomePage(locale);
+	const carousel = await getCarousel(locale);
+	const sponsors = await getSponsors(locale);
+	const newsData = await getNews(locale, 1, 10);
+
+	const readMoreLocale = locale === 'en' ? 'Read more' : 'Читать далее';
+	const carouselButtonsText = locale === 'en' ? 'All News' : 'Новости';
+
+	// i need array, but every array item should contain 4 carousel items
+	const carouselItems = newsData.data?.data || [];
+	const carouselItemsArray = [];
+	for (let i = 0; i < carouselItems.length; i += 4) {
+		carouselItemsArray.push(carouselItems.slice(i, i + 4));
+	}
 
 	return (
 		<>
 			{/* Heading */}
-			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-[80px]">
+			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-8 md:pb-[80px]">
 				<Container>
 					<EmblaCarousel
-						autoLoopInterval={100000}
-						slides={[
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-							<CarouselItem />,
-						]}
+						className='[&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:md:flex'
+						autoLoopInterval={7000}
+						slides={
+							carousel.data?.data ? carousel.data?.data.map((item) => (
+								<CarouselItem
+									key={item.id}
+									image={{
+										url: getBackendImage(item.attributes.picture.data.attributes.url),
+										width: item.attributes.picture.data.attributes.width,
+										height: item.attributes.picture.data.attributes.height,
+										name: item.attributes.picture.data.attributes.name,
+									}}
+									title={item.attributes.title}
+									description={item.attributes.text}
+								/>
+							)) : []
+						}
 						showCounter={true}
 						controlsPosition="below"
 					/>
 				</Container>
 				<NextImage
-					src={Factory}
-					alt="Banner Enersok"
-					className="absolute bottom-0 right-[-100px] z-[1]"
+					src={getBackendImage(homePageData.data?.data.attributes.heading_background_picture.data.attributes.url)}
+					width={homePageData.data?.data.attributes.heading_background_picture.data.attributes.width}
+					height={homePageData.data?.data.attributes.heading_background_picture.data.attributes.height}
+					alt={homePageData.data?.data.attributes.heading_background_picture.data.attributes.name as string}
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>
 			</section>
 
 			{/* Feature section */}
-			<section className="pt-32 pb-64">
-				<Container className="flex flex-wrap gap-16 justify-evenly *:text-secondary">
+			<section className="py-20 lg:pt-32 lg:pb-64">
+				<Container className="grid xl:grid-cols-2 2xl:grid-cols-3 gap-y-4 gap-x-16 justify-evenly *:text-secondary">
 					<div className="flex gap-7 items-center">
 						<NextImage src={EcoFriendlyImage} alt="Eco-friendly" />
 						<div>
-							<Heading size="base" as="h3" className="mb-3 md:text-4xl">
-								Eco-Friendly
+							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
+								{homePageData.data?.data.attributes.feature_section_1_title}
 							</Heading>
-							<Paragraph size="sm" className="max-w-80 md:text-lg">
-								Steam energy can utilize renewable resources like biomass
+							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
+								{homePageData.data?.data.attributes.feature_section_1_text}
 							</Paragraph>
 						</div>
 					</div>
 					<div className="flex gap-7 items-center">
 						<NextImage src={EnergyImage} alt="Energy" />
 						<div>
-							<Heading size="base" as="h3" className="mb-3 md:text-4xl">
-								Reliability
+							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
+								{homePageData.data?.data.attributes.feature_section_2_title}
 							</Heading>
-							<Paragraph size="sm" className="max-w-80  md:text-lg">
-								Steam turbines have long lifespans and can operate continuously
+							<Paragraph size="sm" className="2xl:max-w-80  md:text-lg">
+								{homePageData.data?.data.attributes.feature_section_2_text}
 							</Paragraph>
 						</div>
 					</div>
 					<div className="flex gap-7 items-center">
 						<NextImage src={ReliabilityImage} alt="Reliability" />
 						<div>
-							<Heading size="base" as="h3" className="mb-3 md:text-4xl">
-								Energy Efficiency
+							<Heading size="base" as="h3" className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl">
+								{homePageData.data?.data.attributes.feature_section_3_title}
 							</Heading>
-							<Paragraph size="sm" className="max-w-80 md:text-lg">
-								Steam allows for high energy conversion efficiency with minimal
-								losses
+							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
+								{homePageData.data?.data.attributes.feature_section_3_text}
 							</Paragraph>
 						</div>
 					</div>
@@ -99,29 +139,26 @@ const HomePage: PageType = async () => {
 			{/* About section */}
 			<section>
 				<Container className="flex flex-col lg:flex-row justify-between *:text-secondary gap-y-16 lg:gap-x-36 lg:gap-y-0">
-					<div className="flex flex-col md:flex-col-reverse gap-8 md:gap-20">
+					<div className="flex flex-col lg:flex-col-reverse gap-8 md:gap-20">
 						<NextImage
-							className="rounded-xl w-full"
-							src={StationImage}
-							alt="Link"
+							className="rounded-xl w-full lg:max-w-[450px] xl:max-w-[650px] h-full object-cover "
+							src={getBackendImage(homePageData.data?.data.attributes.about_section_second_image.data.attributes.url)}
+							width={homePageData.data?.data.attributes.about_section_second_image.data.attributes.width}
+							height={homePageData.data?.data.attributes.about_section_second_image.data.attributes.height}
+							alt={homePageData.data?.data.attributes.about_section_second_image.data.attributes.name || 'station'}
 						/>
-						<div>
-							<Heading size="3xl" as="h3" className="md:text-[64px] uppercase">
-								Enersok FE LLC
+						<div className='mb-auto'>
+							<Heading as="h3" className="text-[32px] md:text-5xl 2xl:text-[64px] uppercase">
+								{homePageData.data?.data.attributes.about_section_title}
 							</Heading>
 							<Paragraph
 								size="sm"
-								className="md:text-lg leading-7 mt-6 mb-12 max-w-[590px]"
+								className="md:text-lg leading-7 mt-4 md:mt-6 mb-8 md:mb-12 max-w-[590px]"
 							>
-								Enersok FE LLC was formed in 2022 by the Consortium of
-								Electricite De France (EDF), Nebras Power (Qatar), Sojitz
-								Corporation and Kyuden International (Japan), Enersok FE LLC was
-								formed in 2022 by the Consortium of Electricite De France (EDF),
-								Nebras Power (Qatar), Sojitz Corporation and Kyuden
-								International (Japan)
+								{homePageData.data?.data.attributes.about_section_text}
 							</Paragraph>
-							<Link className="flex gap-3 items-center" href={'#'}>
-								Read more
+							<Link className="text-xl flex gap-3 items-center" href={'#'}>
+								{readMoreLocale}
 								<span>
 									<NextImage src={LinkImage} alt="Link" />
 								</span>
@@ -129,26 +166,33 @@ const HomePage: PageType = async () => {
 						</div>
 					</div>
 					<div>
-						<NextImage src={PeopelsImage} alt="Peopels" />
+						<NextImage
+							src={getBackendImage(homePageData.data?.data.attributes.about_section_first_image.data.attributes.url)}
+							width={homePageData.data?.data.attributes.about_section_first_image.data.attributes.width}
+							height={homePageData.data?.data.attributes.about_section_first_image.data.attributes.height}
+							alt={homePageData.data?.data.attributes.about_section_first_image.data.attributes.name || 'people'}
+							className='rounded-xl max-h-[360px] object-cover w-full'
+						/>
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
 							<Heading
 								size="lg"
 								as="h3"
-								className="md:text-2xl border-b border-black md:pb-6 md:mb-6"
+								className="md:text-2xl border-b border-black pb-6 mb-6"
 							>
-								Power Plant with capacity
+								{homePageData.data?.data.attributes.about_section_second_title}
 							</Heading>
-							<span className="text-6xl flex items-center justify-between">
-								1,6 GW
-								<NextImage src={EnergyIcon} alt="Energy" />
+							<span className="text-[64px] md:text-6xl flex items-center justify-between">
+								{homePageData.data?.data.attributes.about_section_info}
+								<NextImage
+									src={EnergyIcon}
+									alt="Energy Icon"
+								/>
 							</span>
 							<Paragraph
 								size="sm"
 								className="md:text-lg leading-5 mt-12 max-w-[590px]"
 							>
-								Entered into public-private partnership agreement for
-								construction of a Gas Combined Cycle Power Plant with capacity
-								of 1,6 GW in Syrdarya region, Uzbekistan (On March 25, 2022)
+								{homePageData.data?.data.attributes.about_section_second_text}
 							</Paragraph>
 						</div>
 					</div>
@@ -156,125 +200,153 @@ const HomePage: PageType = async () => {
 			</section>
 
 			{/* Sponsors */}
-			<section className="py-72 relative overflow-hidden">
+			<section className="pt-20 pb-14 md:py-20 xl:py-72 relative overflow-hidden">
 				<Container
 					className={cn(
-						'flex flex-col items-center gap-12 *:text-secondary z-10 relative',
-						'md:grid md:grid-cols-[1.3fr,1.7fr]',
+						'flex flex-col items-center md:gap-12 *:text-secondary z-10 relative',
+						'lg:grid lg:grid-cols-[1.3fr,1.7fr]',
 					)}
 				>
 					<div className="*:text-secondary">
-						<Heading as="h3" size="3xl" className={cn('md:text-[64px]')}>
-							SPONSORS
+						<Heading as="h3" className={cn('text-[32px] md:text-[64px]')}>
+							{homePageData.data?.data.attributes.sponsors_section_title}
 						</Heading>
 						<Paragraph
 							size="sm"
-							className={cn('max-w-[590px] mt-5', 'md:text-lg')}
+							className={cn('max-w-[590px] mt-2 md:mt-5', 'text-sm md:text-lg')}
 						>
-							Enersok FE LLC was formed in 2022 by the Consortium of Electricite
-							De France (EDF), Nebras Power (Qatar), Sojitz Corporation and
-							Kyuden International (Japan), Enersok FE LLC
+							{homePageData.data?.data.attributes.sponsors_section_text}
 						</Paragraph>
 						<div>
-							<Heading as="h3" size="xs" className="mt-16 uppercase">
-								owned by
+							<Heading as="h3" size="xs" className="mt-8 md:mt-16 uppercase">
+								{homePageData.data?.data.attributes.sponsors_section_sponsors_title}
 							</Heading>
 							<ul className="flex flex-col gap-y-6 mt-11">
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#FF5E11] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
-											EDF
-										</Paragraph>
-									</div>
-									<span className='text-2xl !leading-[normal]'>33.3%</span>
-								</li>
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#1AAD21] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
-											Nebras Power
-										</Paragraph>
-									</div>
-									<span className='text-2xl !leading-[normal]'>33.3%</span>
-								</li>
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#00479D] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
-											Sojitz
-										</Paragraph>
-									</div>
-									<span className='text-2xl !leading-[normal]'>19%</span>
-								</li>
-								<li className="border-b border-borderColor pb-3 flex justify-between">
-									<div className="flex gap-4 items-start">
-										<span className="size-[22px] rounded-[50%] bg-[#93DCFF] inline-block" />
-										<Paragraph size="sm" className={cn('md:text-2xl !leading-[normal]')}>
-											Kyuden
-										</Paragraph>
-									</div>
-									<span className='text-2xl !leading-[normal]'>14.3%</span>
-								</li>
+								{
+									sponsors.data?.data.map((sponsor) => (
+										<li key={sponsor.id} className="border-b border-borderColor pb-3 flex justify-between">
+											<div className="flex gap-4 items-start">
+												<span
+													style={{
+														backgroundColor: sponsor.attributes.sponsor_color
+													}}
+													className={cn("size-[22px] rounded-[50%] inline-block")}
+												/>
+												<Paragraph size="sm" className={cn('text-lg md:text-2xl !leading-[normal]')}>
+													{sponsor.attributes.sponsor_name}
+												</Paragraph>
+											</div>
+											<span className='text-lg md:text-2xl !leading-[normal]'>{sponsor.attributes.sponsor_value}%</span>
+										</li>
+									))
+								}
 							</ul>
 						</div>
 					</div>
 					{/* Chart */}
-					<div className='flex justify-center overflow-hidden relative'>
-						<SponsorDonutChart />
+					<div className='flex justify-center overflow-hidden relative mt-6 md:mt-0'>
+						<SponsorDonutChart
+							data={
+								sponsors.data?.data ? sponsors.data?.data.map((sponsor) => ({
+									color: sponsor.attributes.sponsor_color,
+									name: sponsor.attributes.sponsor_name,
+									value: sponsor.attributes.sponsor_value,
+									image: {
+										url: getBackendImage(sponsor.attributes.sponsor_logo.data.attributes.url),
+										width: sponsor.attributes.sponsor_logo.data.attributes.width,
+										height: sponsor.attributes.sponsor_logo.data.attributes.height,
+										name: sponsor.attributes.sponsor_logo.data.attributes.name as string,
+									}
+								})) : []
+							}
+						/>
 					</div>
 				</Container>
 				<NextImage
-					src={Factory2}
-					alt="Banner Enersok"
-					className="absolute bottom-0 right-[50px] z-[1]"
+					src={getBackendImage(homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.url)}
+					width={homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.width}
+					height={homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.height}
+					alt={homePageData.data?.data.attributes.sponsors_section_background_picture.data.attributes.name as string}
+					className="absolute hidden lg:block bottom-0 right-[50px] z-[1]"
 					priority={true}
 				/>
 			</section>
 
 			{/* Location section */}
-			<section className='py-60 bg-[#1375A4]'>
-				<LocationSection />
+			<section className='py-16 lg:py-60 bg-[#1375A4]'>
+				<LocationSection
+					title={homePageData.data?.data.attributes.localtion_section_title || ''}
+					description={homePageData.data?.data.attributes.location_section_text || ''}
+					firstLocation={homePageData.data?.data.attributes.location_section_first_location || ''}
+					secondLocation={homePageData.data?.data.attributes.location_section_second_location || ''}
+					firstLocationImage={{
+						url: getBackendImage(homePageData.data?.data.attributes.location_section_first_picture.data.attributes.url),
+						width: homePageData.data?.data.attributes.location_section_first_picture.data.attributes.width || 0,
+						height: homePageData.data?.data.attributes.location_section_first_picture.data.attributes.height || 0,
+						name: homePageData.data?.data.attributes.location_section_first_picture.data.attributes.name || '',
+					}}
+					secondLocationImage={{
+						url: getBackendImage(homePageData.data?.data.attributes.location_section_second_picture.data.attributes.url),
+						width: homePageData.data?.data.attributes.location_section_second_picture.data.attributes.width || 0,
+						height: homePageData.data?.data.attributes.location_section_second_picture.data.attributes.height || 0,
+						name: homePageData.data?.data.attributes.location_section_second_picture.data.attributes.name || '',
+					}}
+					firstLocationCompanyName={homePageData.data?.data.attributes.location_section_first_company_name || ''}
+					secondLocationCompanyName={homePageData.data?.data.attributes.location_section_second_company_name || ''}
+				/>
 			</section>
 
 			{/* News Carousel section */}
-			<section className='py-48'>
+			<section className='py-24 xl:py-48'>
 				<Container>
 					<EmblaCarousel
-						autoLoopInterval={100000}
+						className='[&>a]:mt-10 [&>a]:block [&>a]:md:hidden [&>div:nth-of-type(1)]:mb-8 [&>div:nth-of-type(1)]:md:mb-16 [&>div:nth-of-type(1)>div]:hidden [&>div:nth-of-type(1)>div]:md:flex'
+						autoLoopInterval={7000}
 						showCounter={false}
 						slidesToShow={1}
 						controlsPosition='above'
 						controlsTitle='News'
 						controlsButton={{
 							link: '/news',
-							text: 'All news',
+							text: carouselButtonsText,
 						}}
-						slides={[
-							<NewsCarouselItem />,
-							<NewsCarouselItem />,
-							<NewsCarouselItem />,
-							<NewsCarouselItem />,
-							<NewsCarouselItem />,
-						]}
+						slides={
+							carouselItemsArray?.map((carouselItems, index) => (
+								<NewsCarouselItem
+									key={index}
+									data={carouselItems.map((item) => ({
+										date: item.attributes.preview_date,
+										time: item.attributes.preview_time,
+										title: item.attributes.preview_title,
+										image: {
+											url: getBackendImage(item.attributes.preview_picture.data.attributes.url),
+											width: item.attributes.preview_picture.data.attributes.width,
+											height: item.attributes.preview_picture.data.attributes.height,
+											name: item.attributes.preview_picture.data.attributes.name as string,
+										},
+										slug: locale === 'en' ? item.attributes.slug : getOriginSlug(item.attributes.localizations),
+									}))}
+								/>
+							))
+						}
 					/>
 				</Container>
 			</section>
 
 			{/* Community */}
-			<section className='bg-backgroundImage1 pt-[150px] pb-[120px] relative overflow-hidden'>
-				<Container className='grid grid-cols-[1fr,0.8fr]'>
+			<section className='bg-backgroundImage1 pt-16 md:pt-[150px] pb-[120px] relative overflow-hidden'>
+				<Container className='flex flex-col-reverse md:grid md:grid-cols-[1fr,0.8fr]'>
 					<div className='*:text-secondary z-10'>
-						<Heading as='h3' size='3xl' className='md:text-[64px] !leading-[normal] max-w-[780px] uppercase'>
-							Join Our Community by Following Us on Social Media
+						<Heading as='h3' className='mt-6 md:mt-0 text-[32px] text-wrap md:text-4xl xl:text-[64px] !leading-[normal] max-w-[780px] uppercase'>
+							{homePageData.data?.data.attributes.community_section_title}
 						</Heading>
 						<div>
-							<Heading as='h3' size='xl' className='mt-16'>
-								Follow us
+							<Heading as='h3' className='text-xs md:text-xl mt-10 md:mt-16'>
+								{homePageData.data?.data.attributes.community_section_social_title}
 							</Heading>
 							<ul className='flex gap-3 mt-6 items-center'>
 								<li>
-									<a href="https://t.me/SYRDARYA_CCGT_2"
+									<a href={homePageData.data?.data.attributes.community_section_telegram_link}
 										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
 
 									>
@@ -286,41 +358,62 @@ const HomePage: PageType = async () => {
 									</a>
 								</li>
 								<li>
-									<a href="https://t.me/SYRDARYA_CCGT_2"
+									<a href={homePageData.data?.data.attributes.community_section_linkedIn_link}
 										className='w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out'
 
 									>
 										<svg
-											className='fill-[#198ABF] group-hover:fill-white'
-											width="24" height="25" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
-											<path d="M0.312899 2.16413L0.751222 2.37866C0.299058 3.30251 0.467184 4.38167 1.17559 5.11957C2.1043 6.08692 3.64806 6.08596 4.57304 5.11935L4.93429 5.46504L4.57305 5.11935C5.28432 4.37607 5.44929 3.30719 4.99584 2.38601L4.99584 2.38601C4.79265 1.97321 4.32708 1.51011 3.93992 1.32507L0.312899 2.16413ZM0.312899 2.16413L0.751223 2.37866M0.312899 2.16413L0.751223 2.37866M23.5 24.0708H24L23.9998 19.7532C23.9997 16.9928 23.9795 14.6553 23.9524 14.2791C23.794 12.0721 23.3103 10.6619 22.3657 9.65223M23.5 24.0708L23.4998 19.7532C23.4997 16.9797 23.4791 14.6679 23.4537 14.315L23.4537 14.3149C23.2988 12.158 22.8322 10.8827 22.0006 9.99383L22.3657 9.65223M23.5 24.0708L23.5 24.5708M23.5 24.0708H21.5147H19.5293M22.3657 9.65223L22.0006 9.99382C21.4489 9.40421 20.6978 9.00372 19.6344 8.78265C19.3769 8.72913 18.8549 8.68879 18.3052 8.67692C17.7509 8.66496 17.2541 8.68393 17.0396 8.7243L16.9471 8.23292L17.0395 8.7243C15.7116 8.97408 14.5994 9.69286 13.9198 10.7118C13.9198 10.7118 13.9198 10.7118 13.9198 10.7118M22.3657 9.65223L13.9198 10.7118M13.9198 10.7118L13.7009 11.04L12.8032 12.386L12.7849 10.7682L12.7724 9.65469L12.7654 9.03548H10.869H8.97834V16.5531V24.0708H10.9637H12.949L12.9492 20.3627C12.9493 17.7623 12.9676 15.9363 13.0016 15.5733L13.9198 10.7118ZM23.5 24.5708L13.0016 15.5732C13.0862 14.6708 13.3006 13.9137 13.6931 13.3274C14.0947 12.7276 14.6597 12.3416 15.3685 12.1533C15.632 12.0833 15.9602 12.046 16.267 12.0358C16.5722 12.0256 16.8985 12.0407 17.1561 12.0957C17.5897 12.1882 17.9665 12.3364 18.2881 12.5827C18.6111 12.8302 18.8457 13.1518 19.0332 13.5404M23.5 24.5708H21.5147H19.5293V24.0708M23.5 24.5708L19.0293 24.0708H19.5293M19.5293 24.0708V20.2153C19.5293 17.591 19.5243 16.1747 19.4643 15.3071C19.434 14.8683 19.3885 14.5481 19.3156 14.2707C19.2416 13.9891 19.1443 13.7706 19.0332 13.5404M19.0332 13.5404L18.5829 13.7577L19.0332 13.5405C19.0332 13.5405 19.0332 13.5404 19.0332 13.5404ZM0.751223 2.37866C1.03721 1.79433 1.71618 1.26255 2.34687 1.12663L0.751223 2.37866ZM4.8718 16.5656L4.88293 24.0708H2.87474H0.865808V16.5844C0.865808 14.3886 0.869372 12.3891 0.875107 10.9367C0.877975 10.2103 0.881384 9.62143 0.885155 9.21341C0.885693 9.15515 0.886238 9.10068 0.886788 9.05012C0.965343 9.04912 1.05271 9.04825 1.14796 9.0475C1.59786 9.04398 2.21555 9.04345 2.89206 9.04677L4.86068 9.05647L4.8718 16.5656ZM2.34688 1.12662C2.88402 1.01087 3.41505 1.07429 3.93989 1.32505L2.34688 1.12662Z" />
+											className='fill-[#198ABF] group-hover:fill-white w-[25] h-[25]' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 310 310" xmlSpace="preserve">
+											<g id="XMLID_801_"
+											>
+												<path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73 C77.16,101.969,74.922,99.73,72.16,99.73z" />
+												<path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4 c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z" />
+												<path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599 c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319 c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995 C310,145.43,300.549,94.761,230.454,94.761z" />
+											</g>
 										</svg>
 									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
-					{/* TODO: Fix position of the images */}
 					<div className='grid gap-2 p-4 z-10 grid-cols-3 grid-rows-2'>
 						<NextImage
-							className="col-start-2 col-span-2 row-start-1 h-full"
-							src={Image1} alt="Peoples" />
+							className="col-start-2 col-span-2 row-start-1 h-full rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_first_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_first_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_first_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_first_picture.data.attributes.name as string}
+						/>
 						<NextImage
-							className="col-start-1 row-span-2 place-self-center w-full"
-							src={Image2} alt="Peoples" />
+							className="col-start-1 row-span-2 place-self-center w-full rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_second_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_second_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_second_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_second_picture.data.attributes.name as string}
+						/>
 						<NextImage
-							className="col-start-2 row-start-2 w-full"
-							src={Image4} alt="Peoples" />
+							className="col-start-2 row-start-2 w-full rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_third_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_third_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_third_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_third_picture.data.attributes.name as string}
+						/>
 						<NextImage
-							className="col-start-3 row-start-2"
-							src={Image3} alt="Peoples" />
+							className="col-start-3 row-start-2 rounded-lg"
+							src={getBackendImage(homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.url)}
+							width={homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.width}
+							height={homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.height}
+							alt={homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.name as string}
+						/>
 					</div>
 
 				</Container>
 				<NextImage
-					src={Factory2}
-					alt="Banner Enersok"
-					className="absolute bottom-0 right-[-100px] z-[1]"
+					src={getBackendImage(homePageData.data?.data.attributes.community_section_background_picture.data.attributes.url)}
+					width={homePageData.data?.data.attributes.community_section_background_picture.data.attributes.width}
+					height={homePageData.data?.data.attributes.community_section_background_picture.data.attributes.height}
+					alt={homePageData.data?.data.attributes.community_section_background_picture.data.attributes.name as string}
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
 					priority={true}
 				/>
 			</section>

@@ -1,51 +1,99 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import type { PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
 import Factory from '@public/facroty.png';
 import { RouterConfig } from '@/configs/router.config';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { CareerForm } from '@/components/form/CareerForm';
+import { getVacancy } from '@/api/vacancies/getVanacy.api';
+import { redirect } from '@/i18n/routing';
+import { Time } from '@/utils/time';
+import Markdown from 'markdown-to-jsx';
+import type { Metadata } from 'next';
 
-const SingleCareerPage: PageType = () => {
+export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
+
+	const { locale, slug } = await params;
+
+	const aboutPageData = await getVacancy(slug ?? '', locale);
+
+	return {
+		title: aboutPageData.data?.vacancyName,
+		description: aboutPageData.data?.vacancyDescription,
+	}
+}
+
+const SingleCareerPage: PageType = async ({ params }) => {
+	const { locale, slug } = await params;
+	if (!slug) {
+		redirect({
+			href: RouterConfig.Careers,
+			locale,
+		});
+		return
+	}
+	const vacancyPageData = await getVacancy(slug, locale);
+
+	if (!vacancyPageData.ok || !vacancyPageData.data) {
+		redirect({
+			href: RouterConfig.Careers,
+			locale,
+		});
+	}
+
+	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumbsPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
+	const locationLocale = locale === 'en' ? 'Location' : 'Joylashuv';
+	const postingDateLocale = locale === 'en' ? 'Posting Date' : 'E’lon qilingan sana';
+	const closingDateLocale = locale === 'en' ? 'Closing Date' : 'Yopilish sanasi';
+	const formTitle = locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
+	const email = locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochtangiz';
+	const message = locale === 'en' ? 'Message' : 'Xabar';
+	const name = locale === 'en' ? 'Your full name' : 'To’liq ismingiz';
+	const phone = locale === 'en' ? 'Your phone' : 'Telefon raqamingiz';
+	const sumbmit = locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
+	const file = locale === 'en' ? 'File' : 'Fayl';
+
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-8 lg:pb-20 relative z-10">
 					<Breadcrumbs
-						textHome={'Main'}
-						textPage={'Careers'}
+						textHome={breadcrumbsHomeLocale}
+						textPage={breadcrumbsPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.Careers}
 					/>
 					<Heading className="!leading-[normal] text-secondary w-1/2 uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
-						Finance Controller
+						{vacancyPageData.data?.vacancyName}
 					</Heading>
 					<div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-16">
 						<div className="flex flex-col items-start gap-y-2">
 							<Paragraph className="text-secondaryOpacity4 text-sm">
-								Location
+								{locationLocale}
 							</Paragraph>
-							<Paragraph className="text-xl text-secondary">
-								Tashkent Headquarters
+							<Paragraph className="text-xl text-secondary max-w-96 text-pretty">
+								{vacancyPageData.data?.vacancyLocation}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-8">
 							<div className="flex flex-col items-start gap-y-2">
 								<Paragraph className="text-secondaryOpacity4 text-sm">
-									Posting Date
+									{postingDateLocale}
 								</Paragraph>
 								<Paragraph className="text-xl text-secondary">
-									01.05.2024
+									{Time(vacancyPageData.data?.vacancyPublishedDate).format('DD.MM.YYYY')}
 								</Paragraph>
 							</div>
 							<div className="flex flex-col items-start gap-y-2">
 								<Paragraph className="text-secondaryOpacity4 text-sm">
-									Location
+									{closingDateLocale}
 								</Paragraph>
 								<Paragraph className="text-xl text-secondary">
-									30.08.2024
+									{Time(vacancyPageData.data?.vacancyClosingDate).format('DD.MM.YYYY')}
 								</Paragraph>
 							</div>
 						</div>
@@ -60,8 +108,11 @@ const SingleCareerPage: PageType = () => {
 			</section>
 			<section className='[&>form]:flex [&>form]:lg:hidden'>
 				<Container className="py-[80px] lg:pt-[100px] lg:pb-[170px] grid lg:grid-cols-2 lg:gap-x-40 [&>form]:hidden [&>form]:lg:flex">
-					<div className="flex flex-col gap-y-11">
-						<div className="flex flex-col">
+					<article className="flex flex-col gap-y-11 prose *:text-secondary prose-p:text-secondary prose-headings:text-secondary">
+						<Markdown>
+							{vacancyPageData.data?.vacancyDescription || ''}
+						</Markdown>
+						{/* <div className="flex flex-col">
 							<Heading as="h4" className="text-2xl md:text-4xl text-secondary pb-6">
 								Responsibilities:
 							</Heading>
@@ -136,26 +187,26 @@ const SingleCareerPage: PageType = () => {
 									work, Quality control
 								</li>
 							</ul>
-						</div>
-					</div>
+						</div> */}
+					</article>
 					<CareerForm
-						text='Send your resume'
-						email="Your e-mail"
-						message="Message"
-						name="Your full name"
-						phone="Your phone"
-						sumbmit="Send your resume"
-						file="File"
+						text={formTitle}
+						email={email}
+						message={message}
+						name={name}
+						phone={phone}
+						sumbmit={sumbmit}
+						file={file}
 					/>
 				</Container>
 				<CareerForm
-					text='Send your resume'
-					email="Your e-mail"
-					message="Message"
-					name="Your full name"
-					phone="Your phone"
-					sumbmit="Send your resume"
-					file="File"
+					text={formTitle}
+					email={email}
+					message={message}
+					name={name}
+					phone={phone}
+					sumbmit={sumbmit}
+					file={file}
 				/>
 			</section>
 		</>

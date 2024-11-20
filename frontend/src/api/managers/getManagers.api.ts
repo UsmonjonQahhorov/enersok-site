@@ -5,7 +5,11 @@ export const getManagers = async (locale: Locale = 'en') => {
 
      const response = await http<GetManagersResponse>(
           `/managers?populate=manager_picture&locale=${locale}`, {
-          method: 'GET'
+          method: 'GET',
+          cache: 'force-cache',
+          next: {
+               tags: ['managers'],
+          },
      })
 
      return response
@@ -25,6 +29,7 @@ interface Datum {
 interface DatumAttributes {
      manger_name: string;
      manager_position: string;
+     manager_email: string;
      createdAt: Date;
      updatedAt: Date;
      locale: string;

@@ -1205,6 +1205,14 @@ export interface ApiGrmSubmissionPageGrmSubmissionPage
           localized: false;
         };
       }>;
+    heading_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'GRM SUBMISSION'>;
     locale: Attribute.String;
     localizations: Attribute.Relation<
       'api::grm-submission-page.grm-submission-page',
