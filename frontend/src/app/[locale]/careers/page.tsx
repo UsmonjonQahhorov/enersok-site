@@ -70,13 +70,13 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 							</Paragraph>
 						</div>
 					</div>
-					<div className="relative z-10 pl-14 hidden lg:block">
+					<div className="relative z-10 pl-14 hidden lg:block h-full min-h-[664px] max-h-[664px]">
 						<Image
 							src={getBackendImage(careersPageData.data?.data.attributes.heading_picture.data.attributes.url)}
 							width={careersPageData.data?.data.attributes.heading_picture.data.attributes.width}
 							height={careersPageData.data?.data.attributes.heading_picture.data.attributes.height}
 							alt={careersPageData.data?.data.attributes.heading_picture.data.attributes.name || 'Careers Banner Enersok'}
-							className="object-cover object-center rounded-xl h-full"
+							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							quality={100}
 							priority={true}
 						/>
@@ -92,7 +92,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 				/>
 			</section>
 			{/* Careers Section */}
-			<section>
+			<section className='pb-8'>
 				<Container>
 					<Paragraph
 						className="text-sm md:text-2xl w-full border-b-[1px] lg:border-0 border-secondaryOpacity3 pb-7 whitespace-[10px] py-[50px] text-secondary"
@@ -118,7 +118,6 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 								/>
 							))
 						}
-
 					</div>
 					<PagePagination
 						page={page}

@@ -68,14 +68,14 @@ export const LocationSection = ({
           onMouseLeave={() => setShow1(false)}
           src={LocationPosition}
           alt='map'
-          className='absolute top-[49%] lg:top-[50%] xl:top-[42%] 2xl:top-[45%] left-[80%] transform -translate-x-1/2 -translate-y-1/2'
+          className='absolute top-[49%] lg:top-[50%] xl:top-[45%] 2xl:top-[47%] left-[80%] transform -translate-x-1/2 -translate-y-1/2'
         />
         <NextImage
           onMouseEnter={() => setShow2(true)}
           onMouseLeave={() => setShow2(false)}
           src={LocationPosition}
           alt='map'
-          className='absolute top-[63%] lg:top-[60%] xl:top-[53%] 2xl:top-[57%] left-[75%] transform -translate-x-1/2 -translate-y-1/2'
+          className='absolute top-[63%] lg:top-[60%] xl:top-[58%] 2xl:top-[62%] left-[75%] transform -translate-x-1/2 -translate-y-1/2'
         />
         {/* TODO: Fix Position */}
         {

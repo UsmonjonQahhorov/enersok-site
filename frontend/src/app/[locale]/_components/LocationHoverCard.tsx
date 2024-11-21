@@ -2,7 +2,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import type { Image } from "@/types/shared.types";
 import NextImage from "next/image"
-import LocationPosition from '@public/location-position-black.svg';
+// import LocationPosition from '@public/location-position-black.svg';
 import { cn } from "@/utils/cn";
 // import Factory from '@public/about.png';
 
@@ -21,7 +21,7 @@ export const LocationHoverCard = ({ className, companyName, image, location }: L
                          {companyName}
                     </Heading>
                     <Paragraph className="text-xs sm:text-sm flex flex-row items-center gap-3">
-                         <NextImage src={LocationPosition} alt="Location Position" />
+                         {/* <NextImage src={LocationPosition} alt="Location Position" /> */}
                          {location}
                     </Paragraph>
                </div>

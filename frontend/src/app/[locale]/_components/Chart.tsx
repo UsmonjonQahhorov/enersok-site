@@ -26,7 +26,7 @@ import type { Image } from "@/types/shared.types"
 
 const renderActiveShape = (props: PieSectorDataItem) => {
      const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } = props
-     
+
      return (
           <g>
                <Sector
@@ -51,6 +51,17 @@ export const SponsorDonutChart = ({ data }: SponsorDonutChartProps) => {
           return acc
      }, {})
 
+     const modifiedArray = data.map(item => {
+          if (item.name.length > 20) {
+               const abbreviation = item.name.split(' ').map(word => word[0]).join('');
+               return {
+                    ...item,
+                    name: abbreviation
+               };
+          }
+          return item;
+     });
+
      const [activeIndex, setActiveIndex] = React.useState(0)
 
      const onPieEnter = (_: unknown, index: number) => {
@@ -67,16 +78,16 @@ export const SponsorDonutChart = ({ data }: SponsorDonutChartProps) => {
                          alt={`Sponsor ${activeSponsor.name}`}
                          width={115}
                          height={115}
-                         className="w-[85px] md:w-[115px] h-auto absolute -translate-y-1/2 top-[130px] md:top-[240px]"
+                         className="w-[65px] md:w-[100px] h-auto absolute -translate-y-1/2 top-[130px] md:top-[240px]"
                     />
                )}
                <ChartContainer
                     config={Config}
                     className="h-[350px] md:h-[613px]"
                >
-                    <PieChart className='flex justify-center [&>svg]:!w-[60%] [&>svg]:md:!w-full'>
+                    <PieChart className='flex justify-center [&>svg]:!w-[60%] [&>svg]:md:!w-full [&>div]:hidden [&>div]:md:block'>
                          <Pie
-                              data={data}
+                              data={modifiedArray}
                               dataKey="value"
                               nameKey="name"
                               cx="50%"

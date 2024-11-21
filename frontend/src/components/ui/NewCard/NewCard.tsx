@@ -20,24 +20,27 @@ export const NewCard: FC<NewCardProps> = ({
 		<article
 			className={cn(
 				className,
-				'flex flex-col gap-y-3 sm:gap-y-8 items-start text-secondary',
+				'flex flex-col gap-y-3 justify-between sm:gap-y-8 items-start text-secondary',
+				// 'flex gap-y-3 justify-start sm:gap-y-8 items-start text-secondary',
 			)}
 		>
-			<Link href={url} className="w-full h-full">
-				<NextImage
-					src={image.url}
-					width={image.width}
-					height={image.height}
-					alt="Enersok News Image"
-					className="max-h-[200px] sm:max-h-[287px] w-full h-full object-cover object-center rounded-xl"
-				/>
-			</Link>
-			<Link href={url}>
-				<Heading as="h4" className="text-2xl lg:text-[32px] pt-3 md:pt-0 hover:text-primary duration-300">
-					{title}
-				</Heading>
-			</Link>
-			<div className="flex flex-row gap-x-5 items-center">
+			<div className='flex flex-col items-start gap-y-3 lg:gap-y-4 w-full min-w-full'>
+				<Link href={url} className="w-full h-full max-w-[767px] min-h-[200px] sm:min-h-[287px] max-h-[200px] sm:max-h-[287px]">
+					<NextImage
+						src={image.url}
+						width={image.width}
+						height={image.height}
+						alt="Enersok News Image"
+						className="min-h-[200px] sm:min-h-[287px] max-h-[200px] sm:max-h-[287px] w-full h-full object-cover object-center rounded-xl"
+					/>
+				</Link>
+				<Link href={url}>
+					<Heading as="h4" className="text-2xl lg:text-[24px] pt-3 md:pt-0 hover:text-primary duration-300 text-wrap break-all">
+						{title}
+					</Heading>
+				</Link>
+			</div>
+			<div className="flex flex-row gap-x-5 items-center self-start">
 				<Paragraph className="text-xs sm:text-base !leading-[normal]">
 					{Time(date).format('DD.MM.YYYY')}
 				</Paragraph>

@@ -75,12 +75,8 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-12 md:gap-y-14">
 							{
 								managers.data?.data.map((manager) => (
-									<Link
-										target='_blank'
-										href={`mailto:${manager.attributes.manager_email}`}
-										key={manager.id}
-									>
 										<EmployeeCard
+											key={manager.id}
 											image={{
 												width: manager.attributes.manager_picture.data.attributes.width,
 												height: manager.attributes.manager_picture.data.attributes.height,
@@ -91,8 +87,6 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 											job={manager.attributes.manager_position}
 											email={manager.attributes.manager_email}
 										/>
-									</Link>
-
 								))
 							}
 						</div>

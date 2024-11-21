@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '@/utils/cn';
 import NextImage from 'next/image';
 import type { FC } from 'react';
@@ -16,13 +17,13 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 }) => {
 	return (
 		<article className={cn(className, 'flex flex-col gap-y-3')}>
-			<div className="rounded-xl w-full h-full">
+			<div className="rounded-xl w-full h-full max-h-[348px] md:max-h-[371px] min-h-[348px] md:min-h-[371px]">
 				<NextImage
 					src={image.url}
 					alt={image.name}
 					width={image.width}
 					height={image.height}
-					className="object-cover object-center rounded-xl min-h-[348px] md:min-h-[371px] w-full h-full"
+					className="object-cover object-center rounded-xl max-h-[348px] md:max-h-[371px] min-h-[348px] md:min-h-[371px] w-full h-full"
 				/>
 			</div>
 			<Heading
@@ -34,7 +35,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 			<Paragraph className="text-sm md:text-base leading-[18px] font-normal text-secondary">
 				{job}
 			</Paragraph>
-			<Link className='flex items-end gap-x-1' href={`mailto:${email}`}>
+			<Link className='flex items-end gap-x-1' target='_blank' href={`mailto:${email}`}>
 				<NextImage
 					src={Email}
 					alt='Email Icon'

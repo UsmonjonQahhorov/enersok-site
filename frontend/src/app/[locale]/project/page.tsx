@@ -56,7 +56,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid xl:grid-cols-2">
+				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid xl:grid-cols-2 items-center">
 					<div>
 						<Breadcrumbs
 							textHome={breadcrumHomeLocale}
@@ -131,13 +131,13 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							</div>
 						</div>
 					</div>
-					<div className="relative z-10 pl-14 hidden xl:block">
+					<div className="relative z-10 pl-14 hidden xl:block min-h-[664px] max-h-[664px]">
 						<Image
 							src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
 							width={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
 							height={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
 							alt={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name || ''}
-							className="object-cover object-center rounded-xl h-full"
+							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
 						/>
 					</div>
@@ -246,7 +246,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 				/>
 			</section>
 			<section>
-				<Container className="py-20 lg:py-[220px] grid grid-cols-1 lg:grid-cols-2 lg:gap-x-20">
+				<Container className="py-20 lg:py-[220px] grid grid-cols-1 lg:grid-cols-2 lg:gap-x-20 items-center">
 					<div>
 						<Heading
 							as="h3"
@@ -254,11 +254,11 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						>
 							{projectDetailPageData.data?.data.attributes.follow_section_title}
 						</Heading>
-						<div className="w-full h-full lg:hidden rounded-xl max-h-[250px] sm:max-h-[350px] mb-8 lg:mb-0">
+						<div className="w-full h-full lg:hidden rounded-xl min-h-[250px] sm:min-h-[350px] max-h-[250px] sm:max-h-[350px] mb-8 lg:mb-0">
 							<Image
 								src={Banner2}
 								alt="Project Banner2 Eneksok"
-								className="object-cover object-center w-full h-full rounded-xl"
+								className="object-cover object-center w-full h-full rounded-xl min-h-[250px] sm:min-h-[350px] max-h-[250px] sm:max-h-[350px]"
 							/>
 						</div>
 						<div>
@@ -280,13 +280,13 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							</div>
 						</div>
 					</div>
-					<div className="w-full h-full hidden lg:block rounded-xl">
+					<div className="w-full h-full hidden lg:block rounded-xl min-h-[687px] max-h-[687px]">
 						<Image
 							src={getBackendImage(projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.url)}
 							width={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.width}
 							height={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.height}
 							alt={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.name || ''}
-							className="object-cover object-center w-full h-full rounded-xl"
+							className="object-cover object-center w-full min-h-[687px] max-h-[687px] h-full rounded-xl"
 						/>
 					</div>
 				</Container>

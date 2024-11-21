@@ -48,7 +48,7 @@ const HomePage: PageType = async ({ params }) => {
 	const homePageData = await getHomePage(locale);
 	const carousel = await getCarousel(locale);
 	const sponsors = await getSponsors(locale);
-	const newsData = await getNews(locale, 1, 10);
+	const newsData = await getNews(locale, 1, 8);
 
 	const readMoreLocale = locale === 'en' ? 'Read more' : 'Читать далее';
 	const carouselButtonsText = locale === 'en' ? 'All News' : 'Новости';
@@ -63,10 +63,10 @@ const HomePage: PageType = async ({ params }) => {
 	return (
 		<>
 			{/* Heading */}
-			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-8 md:pb-[80px]">
+			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-8 lg:pb-[80px]">
 				<Container>
 					<EmblaCarousel
-						className='[&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:md:flex'
+						className='[&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:lg:flex'
 						autoLoopInterval={7000}
 						slides={
 							carousel.data?.data ? carousel.data?.data.map((item) => (

@@ -65,7 +65,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 						urlPage={RouterConfig.News}
 						className="self-start"
 					/>
-					<Heading className="!leading-[normal] text-wrap text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
+					<Heading className="!leading-[normal] w-full text-wrap text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
 						{singleNewsPageData.data?.previewTitle}
 					</Heading>
 					<div className="w-full xl:w-3/4 flex flex-row gap-x-6 relative pb-[137px] lg:pb-[253px]">
@@ -78,13 +78,13 @@ const SingleNewPage: PageType = async ({ params }) => {
 								{singleNewsPageData.data?.previewTime}
 							</Paragraph>
 						</div>
-						<div className="absolute top-14 w-full h-full min-h-[200px] sm:min-h-[350px] lg:min-h-[525px] rounded-xl">
+						<div className="absolute top-14 w-full h-full max-h-[200px] sm:max-h-[350px] lg:max-h-[525px] min-h-[200px] sm:min-h-[350px] lg:min-h-[525px] rounded-xl">
 							<Image
 								src={getBackendImage(singleNewsPageData.data?.previewPicture.url)}
 								width={singleNewsPageData.data?.previewPicture.width}
 								height={singleNewsPageData.data?.previewPicture.height}
 								alt={singleNewsPageData.data?.previewPicture.name || 'Enersok'}
-								className="w-full h-full object-cover object-center rounded-xl"
+								className="w-full h-full max-h-[200px] sm:max-h-[350px] lg:max-h-[525px] min-h-[200px] sm:min-h-[350px] object-cover object-center rounded-xl"
 							/>
 						</div>
 					</div>

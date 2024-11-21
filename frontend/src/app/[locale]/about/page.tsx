@@ -6,6 +6,7 @@ import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
+import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
 import About1 from '@public/about-icons/about1.svg';
 import About2 from '@public/about-icons/about2.svg';
@@ -41,7 +42,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 		<>
 			{/* Hero Section */}
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid grid-cols-1 xl:grid-cols-2 relative z-10">
+				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid grid-cols-1 xl:grid-cols-2 items-center relative z-10">
 					<div>
 						<Breadcrumbs
 							textHome={breadcrumHomeLocale}
@@ -65,14 +66,14 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							{aboutPageData.data?.data.attributes.heading_section_text}
 						</Paragraph>
 					</div>
-					<div className="relative hidden xl:block z-10 pl-14">
+					<div className="relative hidden xl:block z-10 pl-14 min-h-[664px] max-h-[664px] h-full">
 						<Image
 							quality={100}
 							src={getBackendImage(aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
 							width={aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
 							height={aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
 							alt="Careers Banner Enersok"
-							className="object-cover object-center rounded-xl h-full"
+							className="object-cover object-center rounded-xl min-h-[664px] max-h-[664px] h-full"
 							priority={true}
 						/>
 					</div>
@@ -158,8 +159,16 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							</div>
 						</div> */}
 						{
-							aboutPageDevelopmentData.data?.data.map((development) => (
-								<div key={development.id} className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
+							aboutPageDevelopmentData.data?.data.map((development, index) => (
+								<div
+									key={development.id}
+									className={cn(
+										"flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit",
+										{
+											'mt-0 lg:mt-[100px]': index % 2 !== 0
+										}
+									)}
+								>
 									<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
 										{development.attributes.development_year}
 									</Heading>
@@ -170,13 +179,13 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 											</Paragraph>
 										))
 									}
-									<div className="w-full h-full rounded-xl">
+									<div className="w-full h-full min-h-[208px] max-h-[208px] rounded-xl">
 										<Image
 											src={getBackendImage(development.attributes.development_picture.data.attributes.url)}
 											width={development.attributes.development_picture.data.attributes.width}
 											height={development.attributes.development_picture.data.attributes.height}
 											alt="Development 1 Eneksok"
-											className="rounded-xl w-full max-h-[208px] object-cover object-center"
+											className="rounded-xl w-full h-full min-h-[208px] max-h-[208px] object-cover object-center"
 										/>
 									</div>
 								</div>
@@ -208,7 +217,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 								{aboutPageData.data?.data.attributes.info_section_first_text}
 							</Paragraph>
 						</div>
-						<div className="w-full h-fit rounded-xl">
+						<div className="w-full h-fit rounded-xl max-h-[150px] sm:max-h-[200px] lg:max-h-[283px]">
 							<Image
 								src={getBackendImage(aboutPageData.data?.data.attributes.info_section_first_picture.data.attributes.url)}
 								quality={100}
@@ -236,14 +245,14 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 								{aboutPageData.data?.data.attributes.info_section_second_text}
 							</Paragraph>
 						</div>
-						<div className="w-full h-fit rounded-xl">
+						<div className="w-full h-fit rounded-xl max-h-[150px] sm:max-h-[200px] lg:max-h-[283px]">
 							<Image
 								src={getBackendImage(aboutPageData.data?.data.attributes.info_section_second_picture.data.attributes.url)}
 								quality={100}
 								width={aboutPageData.data?.data.attributes.info_section_second_picture.data.attributes.width}
 								height={aboutPageData.data?.data.attributes.info_section_second_picture.data.attributes.height}
 								alt="Banner2 Eneksok"
-								className="w-full max-h-[283px] object-center rounded-xl"
+								className="w-full max-h-[150px] sm:max-h-[200px] lg:max-h-[283px] object-center rounded-xl"
 							/>
 						</div>
 					</div>

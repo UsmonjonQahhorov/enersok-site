@@ -39,7 +39,7 @@ const ContactsPage: PageType = async ({ params }) => {
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
-				<Container className="pt-[104px] sm:pt-[164px] md:pb-5">
+				<Container className="pt-[104px] sm:pt-[164px] md:pb-5 relative z-10">
 					<Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}

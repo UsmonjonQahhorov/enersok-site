@@ -10,9 +10,17 @@ import { Time } from "@/utils/time";
 import { RouterConfig } from "@/configs/router.config";
 
 export const NewsCarouselItem = ({ data }: NewsCarouselItemProps) => {
+     function truncateString(str: string, maxLength: number) {
+          if (str.length <= maxLength) {
+               return str;
+          }
+
+          return str.slice(0, maxLength) + '...';
+     }
+
      return (
           <div
-               className="xl:flex gap-8 md:gap-10"
+               className="xl:flex gap-8 md:gap-10 h-full"
           >
                <article className='mb-[52px] md:mb-10 xl:mb-0'>
                     <Link href={RouterConfig.SingleNew(data?.[0]?.slug ?? '')} className={cn("flex flex-col items-center text-secondary h-full")}>
@@ -21,10 +29,10 @@ export const NewsCarouselItem = ({ data }: NewsCarouselItemProps) => {
                               width={data?.[0]?.image?.width ?? News.width}
                               height={data?.[0]?.image?.height ?? News.height}
                               alt={data?.[0]?.image?.name ?? 'News Image'}
-                              className="max-h-[200px] md:max-h-[370px] lg:min-w-[716px] w-full h-full object-cover object-center rounded-t-xl"
+                              className="min-h-[200px] max-h-[200px] md:max-h-[370px] md:min-h-[370px] lg:min-w-[716px] w-full h-full object-cover object-center rounded-t-xl"
                          />
                          <div className="flex flex-col bg-backgroundImage1 w-full h-full rounded-b-xl px-6 pt-6 md:pt-8">
-                              <Heading as="h4" className="text-2xl md:text-[32px]">
+                              <Heading as="h4" className="text-2xl text-wrap md:text-[32px] overflow-hidden">
                                    {data?.[0]?.title}
                               </Heading>
                               <div className="flex flex-row gap-x-5 items-center my-4 md:my-6 xl:mb-0 xl:mt-6">
@@ -56,11 +64,11 @@ export const NewsCarouselItem = ({ data }: NewsCarouselItemProps) => {
                                              width={item.image.width}
                                              height={item.image.height}
                                              alt="Enersok News Image"
-                                             className="hidden md:block max-h-[287px] max-w-60 w-full h-full object-cover object-center rounded-xl"
+                                             className="hidden md:block min-h-[140px] max-h-[140px] max-w-60 w-full h-full object-cover object-center rounded-xl"
                                         />
                                         <div className="flex flex-col">
-                                             <Heading as="h4" className="text-2xl md:text-[32px] text-wrap xl:max-w-[400px]">
-                                                  {item.title}
+                                             <Heading as="h4" className="text-2xl md:text-[28px] text-wrap xl:max-w-[400px]">
+                                                  {truncateString(item.title, 30)}
                                              </Heading>
                                              <div className="flex flex-row gap-x-5 items-center mt-3 md:mt-6">
                                                   <Paragraph className="text-base !leading-[normal]">

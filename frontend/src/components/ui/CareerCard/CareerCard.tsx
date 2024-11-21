@@ -17,7 +17,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 		<article
 			className={cn(
 				className,
-				'flex flex-col lg:grid lg:grid-cols-[3.5fr,3.5fr,3.5fr,1fr] py-8 text-secondary border-t-[1px] border-solid border-secondaryOpacity3 items-start lg:items-center',
+				'flex flex-col h-full lg:h-fit lg:grid lg:grid-cols-[3.5fr,3.5fr,3.5fr,1fr] py-8 text-secondary border-t-[1px] border-solid border-secondaryOpacity3 justify-start items-start lg:items-center',
 			)}
 		>
 			<Heading as="h4" className="font-normal text-2xl md:text-[32px] pb-3 lg:pb-0">

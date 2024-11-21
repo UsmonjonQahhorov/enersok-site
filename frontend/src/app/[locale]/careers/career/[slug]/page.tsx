@@ -56,7 +56,6 @@ const SingleCareerPage: PageType = async ({ params }) => {
 	const sumbmit = locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
 	const file = locale === 'en' ? 'File' : 'Fayl';
 
-
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
@@ -67,7 +66,7 @@ const SingleCareerPage: PageType = async ({ params }) => {
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.Careers}
 					/>
-					<Heading className="!leading-[normal] text-secondary w-1/2 uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
+					<Heading className="!leading-[normal] text-secondary w-full uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
 						{vacancyPageData.data?.vacancyName}
 					</Heading>
 					<div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-16">
@@ -109,7 +108,7 @@ const SingleCareerPage: PageType = async ({ params }) => {
 			<section className='[&>form]:flex [&>form]:lg:hidden'>
 				<Container className="py-[80px] lg:pt-[100px] lg:pb-[170px] grid lg:grid-cols-2 lg:gap-x-40 [&>form]:hidden [&>form]:lg:flex">
 					<article className="flex flex-col gap-y-11 prose *:text-secondary prose-p:text-secondary prose-headings:text-secondary">
-						<Markdown>
+						<Markdown className='prose text-wrap'>
 							{vacancyPageData.data?.vacancyDescription || ''}
 						</Markdown>
 						{/* <div className="flex flex-col">

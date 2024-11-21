@@ -60,7 +60,7 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 				/>
 			</section>
 			<section>
-				<Container className="flex flex-col gap-y-20 py-12 sm:py-16">
+				<Container className="flex flex-col gap-y-10 lg:gap-y-20 py-12 sm:py-16">
 					<div className="hidden lg:grid lg:grid-cols-3 gap-x-5">
 						{
 							newsData.data?.data.slice(0, 3).map((news) => (
@@ -85,6 +85,7 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 							newsData.data?.data.slice(3, 5).map((news) => (
 								<NewCard
 									key={news.id}
+									className='[&>div>a>img]:min-h-[353px] [&>div>a>img]:max-h-[353px] [&>div>a:nth-of-type(1)]:min-h-[353px] [&>div>a:nth-of-type(1)]:max-h-[353px]'
 									title={news.attributes.preview_title}
 									date={news.attributes.preview_date}
 									image={{

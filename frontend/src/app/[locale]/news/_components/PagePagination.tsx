@@ -19,7 +19,7 @@ export const PagePagination = ({ page, total }: PagePaginationProps) => {
 
      return (
           <Pagination
-               className='py-14'
+               className='py-8 lg:py-14'
                position='left'
                onPaginate={onPaginate}
                page={page}
