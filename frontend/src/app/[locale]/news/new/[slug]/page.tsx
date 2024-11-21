@@ -54,6 +54,11 @@ const SingleNewPage: PageType = async ({ params }) => {
 	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	const breadcrumbsPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
 
+	const hasFullDescription = (singleNewsPageData.data?.newsDescriptionFull?.trim().length ?? 0) > 0;
+	const hasDescription = (singleNewsPageData.data?.newsDescription?.trim().length ?? 0) > 0;
+
+	const fullContent = { __html: singleNewsPageData.data?.newsDescriptionFull || '' };
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative">
@@ -92,28 +97,36 @@ const SingleNewPage: PageType = async ({ params }) => {
 			</section>
 			<section>
 				<Container className="pt-[155px] sm:pt-[305px] lg:pt-[405px] flex flex-col items-center">
-					<article
-						className={cn(
-							'prose w-full max-w-none',
-							'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 text-secondary',
-							'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
-							'[&>p]:text-base [&>p]:pb-6',
-							'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
-							'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
-							'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:whitespace-pre-line [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
-							'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
-						)}
-					>
-						{/* TODO: need to test this */}
-						<Markdown>
-							{singleNewsPageData.data?.newsDescription || ''}
-						</Markdown>
-						{/* TODO: need to test this */}
-						<Markdown
-						>
-							{singleNewsPageData.data?.newsDescriptionFull || ''}
-						</Markdown>
-						{/* <p>
+					{/* Full Description */}
+					{
+						hasFullDescription && (
+							<article
+								className={cn(
+									'prose w-full max-w-none',
+									'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 text-secondary',
+									'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
+									'[&>p]:text-base [&>p]:pb-6',
+									'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
+									'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
+									'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:whitespace-pre-line [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
+									'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
+								)}
+								dangerouslySetInnerHTML={hasFullDescription ? fullContent : undefined}
+							/>
+						)
+					}
+					{/* Short Description */}
+					{
+						hasDescription && (
+							<Markdown
+								className='prose w-full max-w-[1200px] text-pretty'
+							>
+								{singleNewsPageData.data?.newsDescription || ''}
+							</Markdown>)
+					}
+
+
+					{/* <p>
 							In 2022, Enersok FE LLC was established as a result of a
 							collaboration between four international corporations. The
 							consortium that founded Enersok FE LLC consists of Electricite De
@@ -168,7 +181,6 @@ const SingleNewPage: PageType = async ({ params }) => {
 							providing a strong foundation for the development of the new
 							company.
 						</p> */}
-					</article>
 					<div className="w-full xl:w-3/4 flex flex-row items-center gap-x-3 pt-[54px] pb-20 lg:pt-[65px] lg:pb-[148px] border-t-[1px] border-solid border-secondaryOpacity3">
 						<Paragraph className="pr-3 text-xl text-secondary">Share</Paragraph>
 						<SocialIcon
