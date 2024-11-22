@@ -6,7 +6,8 @@ export const getCarousel = async (locale: Locale = 'en') => {
 		`/carousels?populate=picture&locale=${locale}`,
 		{
 			method: 'GET',
-			cache: 'force-cache',
+			// TODO: in future, use cache
+			// cache: 'force-cache',
 			next: {
 				tags: ['carousel'],
 			},
