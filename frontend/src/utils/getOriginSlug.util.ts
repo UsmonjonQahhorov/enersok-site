@@ -7,7 +7,7 @@ export const getOriginSlug = (locales: Localizations) => {
 	let slug = '';
 
 	for (const locale of locales.data || []) {
-		if (locale.attributes.locale === 'uz') {
+		if (locale.attributes.locale === 'en') {
 			slug += locale.attributes.slug;
 		}
 	}
