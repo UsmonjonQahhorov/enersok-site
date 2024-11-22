@@ -21,7 +21,7 @@ import Link from 'next/link';
 
 export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 
-	const footerData = await getFooter();
+	const footerData = await getFooter(locale);
 	const year = new Date().getFullYear();
 
 	return (

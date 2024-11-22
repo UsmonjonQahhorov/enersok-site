@@ -50,8 +50,9 @@ const HomePage: PageType = async ({ params }) => {
 	const sponsors = await getSponsors(locale);
 	const newsData = await getNews(locale, 1, 8);
 
-	const readMoreLocale = locale === 'en' ? 'Read more' : 'Читать далее';
+	const readMoreLocale = locale === 'en' ? 'Read more' : 'Batafsil';
 	const carouselButtonsText = locale === 'en' ? 'All News' : 'Новости';
+	const readMoreLink = '/about';
 
 	// i need array, but every array item should contain 4 carousel items
 	const carouselItems = newsData.data?.data || [];
@@ -157,7 +158,7 @@ const HomePage: PageType = async ({ params }) => {
 							>
 								{homePageData.data?.data.attributes.about_section_text}
 							</Paragraph>
-							<Link className="text-xl flex gap-3 items-center" href={'#'}>
+							<Link className="text-xl flex gap-3 items-center" href={readMoreLink}>
 								{readMoreLocale}
 								<span>
 									<NextImage src={LinkImage} alt="Link" />

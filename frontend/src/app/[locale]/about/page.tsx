@@ -32,8 +32,8 @@ export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Met
 
 const AboutCompanyPage: PageType = async ({ params }) => {
 	const { locale } = await params;
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Главная';
-	const breadcrumAboutCompanyLocale = locale === 'en' ? 'About Company' : 'О Компании';
+	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	const breadcrumAboutCompanyLocale = locale === 'en' ? 'About Company' : 'Kompaniya haqida';
 
 	const aboutPageData = await getAboutPage(locale);
 	const aboutPageDevelopmentData = await getDevelopments(locale);

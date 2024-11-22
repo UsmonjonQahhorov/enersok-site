@@ -70,7 +70,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 						urlPage={RouterConfig.News}
 						className="self-start"
 					/>
-					<Heading className="!leading-[normal] w-full text-wrap text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
+					<Heading className="!leading-[normal] w-full text-wrap break-all text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
 						{singleNewsPageData.data?.previewTitle}
 					</Heading>
 					<div className="w-full xl:w-3/4 flex flex-row gap-x-6 relative pb-[137px] lg:pb-[253px]">
@@ -102,14 +102,13 @@ const SingleNewPage: PageType = async ({ params }) => {
 						hasFullDescription && (
 							<article
 								className={cn(
-									'prose w-full max-w-none',
-									'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 text-secondary',
-									'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
-									'[&>p]:text-base [&>p]:pb-6',
-									'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
-									'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
-									'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:whitespace-pre-line [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
-									'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
+									'xl:w-3/4 [&>div]:pb-[26px] [&>div]:flex [&>div]:flex-col [&>div]:gap-y-6 [&>div]:text-secondary',
+									'[&>div>p]:lg:text-xl [&>div>p]:lg:pb-6 [&>div>p]:text-wrap',
+									'[&>div>p]:text-base [&>div>p]:pb-6',
+									'[&>div>h1]:lg:text-7xl [&>div>h2]:lg:text-6xl [&>div>h3]:lg:text-5xl [&>div>h4]:lg:text-4xl [&>div>h5]:lg:text-3xl [&>div>h6]:lg:text-2xl',
+									'[&>div>h1]:text-5xl [&>div>h2]:text-4xl [&>div>h3]:text-[32px] [&>div>h4]:text-2xl [&>div>h5]:text-xl [&>div>h6]:text-lg',
+									'[&>div>ul>li]:relative [&>div>ul>li]:lg:text-xl [&>div>ul>li]:text-base [&>div>ul>li]:pb-3 [&>div>ul>li]:pl-[18px] [&>div>ul>li]:before:absolute [&>div>ul>li]:before:w-[9px] [&>div>ul>li]:before:h-[9px] [&>div>ul>li]:before:left-0 [&>div>ul>li]:before:top-[7px] [&>div>ul>li]:before:rounded-full [&>div>ul>li]:before:bg-button1 [&>div>ul>li]:text-wrap',
+									'[&>div>blockquote]:p-12 [&>div>blockquote]:rounded-xl [&>div>blockquote]:bg-[#F2F7FA] [&>div>blockquote]:lg:text-3xl [&>div>blockquote]:text-2xl [&>div>blockquote]:text-wrap',
 								)}
 								dangerouslySetInnerHTML={hasFullDescription ? fullContent : undefined}
 							/>
@@ -119,13 +118,19 @@ const SingleNewPage: PageType = async ({ params }) => {
 					{
 						hasDescription && (
 							<Markdown
-								className='prose w-full max-w-[1200px] text-pretty'
+								className={cn(
+									'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 *:text-secondary',
+									'[&>p>img]:object-cover [&>p>img]:object-center [&>p>img]:rounded-xl [&>p>img]:max-h-[500px] [&>p>img]:min-h-[500px] [&>p>img]:w-full [&>p>img]:h-full',
+									'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
+									'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
+									'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
+									'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
+									'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
+								)}
 							>
 								{singleNewsPageData.data?.newsDescription || ''}
 							</Markdown>)
 					}
-
-
 					{/* <p>
 							In 2022, Enersok FE LLC was established as a result of a
 							collaboration between four international corporations. The

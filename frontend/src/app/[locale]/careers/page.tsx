@@ -35,7 +35,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 	const breadcrumPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
 
 	const careersPageData = await getVacanciesPage(locale);
-	const vacancies = await getVacancies(locale);
+	const vacancies = await getVacancies(locale, page);
 
 	return (
 		<>

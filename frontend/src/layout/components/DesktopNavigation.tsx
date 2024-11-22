@@ -27,6 +27,9 @@ export const DesktopNavigation = () => {
 	const pathName = usePathname();
 	const locale = getLocale();
 
+	const searchText = locale === 'en' ? 'Search' : 'Qidirish';
+	const contactText = locale === 'en' ? 'Contact us': 'Aloqa';
+
 	return (
 		<div className="hidden items-center sm:gap-x-4 md:gap-x-8 xl:flex 2xl:gap-x-20">
 			<Root aria-label="navigation">
@@ -81,7 +84,7 @@ export const DesktopNavigation = () => {
 
 			<div className="flex items-center gap-x-6 2xl:gap-x-8">
 				<div className="flex items-center gap-x-24 pb-2 border-b border-black">
-					<span className='text-sm 2xl:text-base text-secondary'>Search</span>
+					<span className='text-sm 2xl:text-base text-secondary'>{searchText}</span>
 					<Image src={Search} alt="Search Enersok" className="w-4 h-4" />
 				</div>
 				{/* Select language */}
@@ -120,7 +123,7 @@ export const DesktopNavigation = () => {
 					href="/contacts"
 					locale={locale}
 				>
-					Contact us
+					{contactText}
 				</NavigationLink>
 			</div>
 		</div>
