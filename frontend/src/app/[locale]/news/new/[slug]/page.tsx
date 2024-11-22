@@ -97,6 +97,23 @@ const SingleNewPage: PageType = async ({ params }) => {
 			</section>
 			<section>
 				<Container className="pt-[155px] sm:pt-[305px] lg:pt-[405px] flex flex-col items-center">
+					{/* Short Description */}
+					{
+						hasDescription && (
+							<Markdown
+								className={cn(
+									'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 *:text-secondary *:text-wrap',
+									'[&>p>img]:object-cover [&>p>img]:object-center [&>p>img]:rounded-xl [&>p>img]:max-h-[500px] [&>p>img]:min-h-[500px] [&>p>img]:w-full [&>p>img]:h-full',
+									'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
+									'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
+									'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
+									'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
+									'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
+								)}
+							>
+								{singleNewsPageData.data?.newsDescription || ''}
+							</Markdown>)
+					}
 					{/* Full Description */}
 					{
 						hasFullDescription && (
@@ -113,23 +130,6 @@ const SingleNewPage: PageType = async ({ params }) => {
 								dangerouslySetInnerHTML={hasFullDescription ? fullContent : undefined}
 							/>
 						)
-					}
-					{/* Short Description */}
-					{
-						hasDescription && (
-							<Markdown
-								className={cn(
-									'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 *:text-secondary',
-									'[&>p>img]:object-cover [&>p>img]:object-center [&>p>img]:rounded-xl [&>p>img]:max-h-[500px] [&>p>img]:min-h-[500px] [&>p>img]:w-full [&>p>img]:h-full',
-									'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
-									'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
-									'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
-									'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
-									'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
-								)}
-							>
-								{singleNewsPageData.data?.newsDescription || ''}
-							</Markdown>)
 					}
 					{/* <p>
 							In 2022, Enersok FE LLC was established as a result of a

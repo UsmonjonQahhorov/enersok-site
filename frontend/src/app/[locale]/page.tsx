@@ -51,7 +51,8 @@ const HomePage: PageType = async ({ params }) => {
 	const newsData = await getNews(locale, 1, 8);
 
 	const readMoreLocale = locale === 'en' ? 'Read more' : 'Batafsil';
-	const carouselButtonsText = locale === 'en' ? 'All News' : 'Новости';
+	const carouselButtonsText = locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
+	const newsText = locale === 'en' ? 'News' : 'Yangiliklar';
 	const readMoreLink = '/about';
 
 	// i need array, but every array item should contain 4 carousel items
@@ -306,7 +307,7 @@ const HomePage: PageType = async ({ params }) => {
 						showCounter={false}
 						slidesToShow={1}
 						controlsPosition='above'
-						controlsTitle='News'
+						controlsTitle={newsText}
 						controlsButton={{
 							link: '/news',
 							text: carouselButtonsText,

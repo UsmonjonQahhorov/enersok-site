@@ -10,6 +10,9 @@ export const MoreNews = async ({ locale }: MoreNewsProps) => {
 
      const moreNews = await getNews(locale)
 
+     const moreNewsLocale = locale === 'en' ? 'More News': 'Yangiliklar';
+	const allNewsLocale = locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
+
      return (
           <EmblaCarousel
                autoLoopInterval={7000}
@@ -17,10 +20,10 @@ export const MoreNews = async ({ locale }: MoreNewsProps) => {
                showCounter={false}
                slidesToShow={3}
                controlsPosition='above'
-               controlsTitle='More news'
+               controlsTitle={moreNewsLocale}
                controlsButton={{
                     link: '/news',
-                    text: 'All news',
+                    text: allNewsLocale,
                }}
                slides={
                     moreNews.data?.data.map((news) => (
