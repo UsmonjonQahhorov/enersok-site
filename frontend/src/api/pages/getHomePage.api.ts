@@ -6,8 +6,7 @@ export const getHomePage = async (locale: Locale = 'en') => {
           `/home-page?populate=about_section_first_image,about_section_second_image,community_section_first_picture,community_section_second_picture,community_section_third_picture,community_section_fourth_picture,heading_background_picture,location_section_first_picture,location_section_second_picture,sponsors_section_background_picture,community_section_background_picture&locale=${locale}`,
           {
                method: "GET",
-               // TODO: in the future, use cache to improve performance
-               // cache: 'force-cache'
+               cache: 'force-cache'
           })
 
      return response

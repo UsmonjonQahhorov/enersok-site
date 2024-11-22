@@ -5,8 +5,7 @@ export const getAboutSponsors = async (locale: Locale = 'en') => {
      const response = await http<GetAboutSponsorsPageResponse>(
           `/about-sponsor?populate=heading_picture&locale=${locale}`, {
           method: "GET",
-          // TODO: in the future, we will use cache
-          // cache: 'force-cache'
+          cache: 'force-cache'
      })
 
      return response

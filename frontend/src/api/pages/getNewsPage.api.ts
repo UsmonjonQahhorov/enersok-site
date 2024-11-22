@@ -6,6 +6,7 @@ export const getNewsPage = async (locale: Locale = 'en') => {
      const response = await http<GetNewsPageResponse>(
           `/news-page?populate=heading_picture&locale=${locale}`, {
           method: 'GET',
+          cache: 'force-cache',
      })
 
      return response

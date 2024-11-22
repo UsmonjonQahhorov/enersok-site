@@ -6,8 +6,7 @@ export const getContactPage = async (locale: Locale = 'en') => {
      const response = await http<GetContactPageResponse>(
           `/contact-page?populate=heading_section_picture&locale=${locale}`, {
           method: "GET",
-          // TODO: in the future, use the cache
-          // cache: 'force-cache'
+          cache: 'force-cache'
      })
 
      return response

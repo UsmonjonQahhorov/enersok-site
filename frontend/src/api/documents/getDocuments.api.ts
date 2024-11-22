@@ -8,8 +8,7 @@ export const getDocuments = async (locale: Locale = 'en') => {
           headers: {
                'Content-Type': 'application/json',
           },
-          // TODO: in the future, use the cache
-          // cache: 'force-cache',
+          cache: 'force-cache',
           next: {
                tags: ['documents'],
           },

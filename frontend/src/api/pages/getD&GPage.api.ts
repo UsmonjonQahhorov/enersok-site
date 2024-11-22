@@ -6,8 +6,7 @@ export const getDGPage = async (locale: Locale = 'en') => {
      const response = await http<GetDocumentsGuidlinesResponse>(
           `/documents-guidlines-page?populate=heading_image&locale=${locale}`, {
           method: "GET",
-          // TODO: in the future, use the cache
-          // cache: 'force-cache'
+          cache: 'force-cache'
      })
 
      return response

@@ -6,7 +6,6 @@ export const getVacanciesPage = async (locale: Locale = 'en') => {
      const response = await http<GetVacanciesPageResponse>(
           `/vacancies-page?populate=heading_picture,heading_background_picture&locale=${locale}`,{
           method: 'GET',
-          // TODO: in the future, we will need to remove this line
           cache: 'force-cache'
      });
 

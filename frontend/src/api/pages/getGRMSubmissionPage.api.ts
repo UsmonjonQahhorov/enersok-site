@@ -6,8 +6,7 @@ export const getGRMSubmissionPage = async (locale: Locale = 'en') => {
      const response = await http<GetGrmSubmissionPageResponse>(
           `/grm-submission-page?populate=background_image,form_picture&locale=${locale}`, {
           method: "GET",
-          // TODO: in the future, use the cache
-          // cache: 'force-cache'
+          cache: 'force-cache'
      })
 
      return response

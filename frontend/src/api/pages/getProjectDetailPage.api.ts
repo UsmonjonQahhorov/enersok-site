@@ -6,8 +6,7 @@ export const getProjectDetailPage = async (locale: Locale = 'en') => {
      const response = await http<GetProjectDetailPageResponse>(
           `/project-detail?populate=heading_background_picture,heading_section_picture,follow_section_picture,info_section_background_picture&locale=${locale}`, {
           method: 'GET',
-          // TODO: in the future, use the cache 
-          // cache: 'force-cache',
+          cache: 'force-cache',
      });
 
      return response

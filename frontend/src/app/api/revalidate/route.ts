@@ -15,14 +15,8 @@ export async function POST(req: NextRequest) {
 		return Response.json({ message: 'Invalid token' });
 	}
 
+	// TODO: check on strapi frontend production url is right
 	revalidatePath('/', 'layout');
-	revalidateTag('header');
-	revalidateTag('footer');
-	revalidateTag('carousel');
-	revalidateTag('managers');
-	revalidateTag('documents');
-	revalidateTag('developments');
-	revalidateTag('sponsors');
 	revalidatePath('/about', 'page');
 	revalidatePath('/contact', 'page');
 	revalidatePath('/project', 'page');
@@ -31,6 +25,13 @@ export async function POST(req: NextRequest) {
 	revalidatePath('/sponsors', 'page');
 	revalidatePath('/submissions', 'page');
 	revalidatePath('/contacts', 'page');
+	revalidateTag('header');
+	revalidateTag('footer');
+	revalidateTag('carousel');
+	revalidateTag('managers');
+	revalidateTag('documents');
+	revalidateTag('developments');
+	revalidateTag('sponsors');
 
 	return Response.json({
 		revalidated: true,
