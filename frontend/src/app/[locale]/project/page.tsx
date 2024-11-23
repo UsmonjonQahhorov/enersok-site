@@ -5,7 +5,7 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
 import { getProjectDetailPage } from '@/api/pages/getProjectDetailPage.api';
-import EmblaCarousel from '@/components/navigation/EmblaSlider/EmblaSlider';
+import EmblaCarousel from '@/components/navigation/EmblaSlider';
 import { RouterConfig } from '@/configs/router.config';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Location from '@public/location-green.svg';
@@ -27,26 +27,30 @@ import type { Metadata } from 'next';
 // import Factory2 from '@public/factory2.png';
 // import Banner from '@public/project.png';
 
-export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
-
+export const generateMetadata: DynamicMetadata = async ({
+	params,
+}): Promise<Metadata> => {
 	const { locale } = await params;
 	const projectDetailPageData = await getProjectDetailPage(locale);
 
 	return {
 		title: projectDetailPageData.data?.data.attributes.page_title,
 		description: projectDetailPageData.data?.data.attributes.about_section_text,
-	}
-}
+	};
+};
 
 const ProjectDetailsPage: PageType = async ({ params }) => {
 	const { locale } = await params;
 
 	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale = locale === 'en' ? 'Project Details' : 'Loyiha tafsilotlari';
-	const projectPeriodLocale = locale === 'en' ? 'Project Period:' : 'Loyiha davri:';
+	const breadcrumPageLocale =
+		locale === 'en' ? 'Project Details' : 'Loyiha tafsilotlari';
+	const projectPeriodLocale =
+		locale === 'en' ? 'Project Period:' : 'Loyiha davri:';
 	const projectFirstPhaseLocale = locale === 'en' ? 'Phase 1' : '1-faza';
 	const projectSecondPhaseLocale = locale === 'en' ? 'Phase 2' : '2-faza';
-	const projectLocationLocale = locale === 'en' ? 'Project Location:' : 'Loyiha joylashuvi:';
+	const projectLocationLocale =
+		locale === 'en' ? 'Project Location:' : 'Loyiha joylashuvi:';
 
 	const projectDetailPageData = await getProjectDetailPage(locale);
 	const carouselData = await getCarousel(locale);
@@ -65,15 +69,30 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							urlPage={RouterConfig.ProjectDetails}
 						/>
 						<Image
-							src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
-							width={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
-							height={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
-							alt={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name || ''}
+							src={getBackendImage(
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.url,
+							)}
+							width={
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.width
+							}
+							height={
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.height
+							}
+							alt={
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.name || ''
+							}
 							className="object-cover my-8 xl:my-0 max-h-[250px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase pb-8 xl:pt-[75px] xl:pb-[50px] text-5xl lg:text-[100px]">
-							{projectDetailPageData.data?.data.attributes.heading_section_title}
+							{
+								projectDetailPageData.data?.data.attributes
+									.heading_section_title
+							}
 						</Heading>
 						<div className="pb-8 lg:pb-12 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Heading
@@ -91,7 +110,10 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 										</Paragraph>
 									</div>
 									<Paragraph className="text-sm lg:text-2xl text-secondary">
-										{projectDetailPageData.data?.data.attributes.heading_first_phase}
+										{
+											projectDetailPageData.data?.data.attributes
+												.heading_first_phase
+										}
 									</Paragraph>
 								</div>
 								<div className="pl-3 flex">
@@ -105,7 +127,10 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 										</Paragraph>
 									</div>
 									<Paragraph className="text-sm lg:text-2xl text-secondary">
-										{projectDetailPageData.data?.data.attributes.heading_second_phase}
+										{
+											projectDetailPageData.data?.data.attributes
+												.heading_second_phase
+										}
 									</Paragraph>
 								</div>
 							</div>
@@ -126,56 +151,86 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 									/>
 								</div>
 								<Paragraph className="text-sm lg:text-lg text-secondary hover:text-button1 duration-200">
-									{projectDetailPageData.data?.data.attributes.heading_location_address}
+									{
+										projectDetailPageData.data?.data.attributes
+											.heading_location_address
+									}
 								</Paragraph>
 							</div>
 						</div>
 					</div>
 					<div className="relative z-10 pl-14 hidden xl:block min-h-[664px] max-h-[664px]">
 						<Image
-							src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
-							width={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
-							height={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
-							alt={projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name || ''}
+							src={getBackendImage(
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.url,
+							)}
+							width={
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.width
+							}
+							height={
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.height
+							}
+							alt={
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.name || ''
+							}
 							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
 						/>
 					</div>
 				</Container>
 				<Image
-					src={getBackendImage(projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.url)}
-					width={projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.width}
-					height={projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.height}
-					alt={projectDetailPageData.data?.data.attributes.heading_background_picture.data.attributes.name || ''}
+					src={getBackendImage(
+						projectDetailPageData.data?.data.attributes
+							.heading_background_picture.data.attributes.url,
+					)}
+					width={
+						projectDetailPageData.data?.data.attributes
+							.heading_background_picture.data.attributes.width
+					}
+					height={
+						projectDetailPageData.data?.data.attributes
+							.heading_background_picture.data.attributes.height
+					}
+					alt={
+						projectDetailPageData.data?.data.attributes
+							.heading_background_picture.data.attributes.name || ''
+					}
 					className="absolute hidden lg:block bottom-0 right-[-200px] z-[1]"
 					priority={true}
 				/>
 			</section>
 			<section>
 				<Container className="py-20 lg:py-40">
-					<Heading as="h3" className="text-secondary text-[32px] lg:text-6xl uppercase pb-3 lg:pb-11">
+					<Heading
+						as="h3"
+						className="text-secondary text-[32px] lg:text-6xl uppercase pb-3 lg:pb-11"
+					>
 						{projectDetailPageData.data?.data.attributes.info_section_title}
 					</Heading>
 					<Paragraph className="text-sm lg:text-2xl text-secondary lg:pr-[20%] pb-20 lg:pb-[95px]">
 						{projectDetailPageData.data?.data.attributes.about_section_text}
 					</Paragraph>
 					<EmblaCarousel
-						className='[&>div>div>div]:!flex-[0_0_100%] [&>div>div>div]:sm:!flex-[0_0_50%] [&>div>div>div]:lg:!flex-[0_0_33.3333%] [&>div:nth-last-of-type(1)]:hidden [&>div:nth-last-of-type(1)]:lg:flex'
+						className="[&>div>div>div]:!flex-[0_0_100%] [&>div>div>div]:sm:!flex-[0_0_50%] [&>div>div>div]:lg:!flex-[0_0_33.3333%] [&>div:nth-last-of-type(1)]:hidden [&>div:nth-last-of-type(1)]:lg:flex"
 						showCounter={false}
 						slidesToShow={3}
-						slides={
-							carouselItems.map((carousel) => (
-								<CarouselItem
-									key={carousel.id}
-									picture={{
-										url: getBackendImage(carousel.attributes.picture.data.attributes.url),
-										width: carousel.attributes.picture.data.attributes.width,
-										height: carousel.attributes.picture.data.attributes.height,
-										name: carousel.attributes.picture.data.attributes.name,
-									}}
-								/>
-							))
-						}
+						slides={carouselItems.map((carousel) => (
+							<CarouselItem
+								key={carousel.id}
+								picture={{
+									url: getBackendImage(
+										carousel.attributes.picture.data.attributes.url,
+									),
+									width: carousel.attributes.picture.data.attributes.width,
+									height: carousel.attributes.picture.data.attributes.height,
+									name: carousel.attributes.picture.data.attributes.name,
+								}}
+							/>
+						))}
 					/>
 				</Container>
 			</section>
@@ -190,58 +245,94 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start pb-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project1} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_first_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_first_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project2} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_second_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_second_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project3} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_third_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_third_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project4} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_fourth_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_fourth_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project5} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_five_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_five_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project6} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_six_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_six_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project7} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_seven_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_seven_text
+								}
 							</Paragraph>
 						</div>
 						<div className="flex flex-row gap-x-3 lg:gap-x-14 items-center lg:items-start py-6 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Image src={Project8} alt="Project1 Enersok" />
 							<Paragraph className="text-secondary text-sm lg:text-2xl">
-								{projectDetailPageData.data?.data.attributes.info_section_eight_text}
+								{
+									projectDetailPageData.data?.data.attributes
+										.info_section_eight_text
+								}
 							</Paragraph>
 						</div>
 					</div>
 				</Container>
 				<Image
-					src={getBackendImage(projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.url)}
-					width={projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.width}
-					height={projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.height}
-					alt={projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.name || ''}
+					src={getBackendImage(
+						projectDetailPageData.data?.data.attributes
+							.info_section_background_picture.data.attributes.url,
+					)}
+					width={
+						projectDetailPageData.data?.data.attributes
+							.info_section_background_picture.data.attributes.width
+					}
+					height={
+						projectDetailPageData.data?.data.attributes
+							.info_section_background_picture.data.attributes.height
+					}
+					alt={
+						projectDetailPageData.data?.data.attributes
+							.info_section_background_picture.data.attributes.name || ''
+					}
 					className="left-[0] hidden lg:block bottom-0 absolute"
 				/>
 			</section>
@@ -267,7 +358,10 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 									<Image src={Afs1} alt="AFs1 Enersok" className="" />
 								</div>
 								<Paragraph className="text-sm lg:text-2xl text-secondary">
-									{projectDetailPageData.data?.data.attributes.follow_section_first_text}
+									{
+										projectDetailPageData.data?.data.attributes
+											.follow_section_first_text
+									}
 								</Paragraph>
 							</div>
 							<div className="flex flex-row gap-x-3 lg:gap-x-7 pt-7">
@@ -275,17 +369,32 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 									<Image src={Afs2} alt="AFs1 Enersok" className="" />
 								</div>
 								<Paragraph className="text-sm lg:text-2xl text-secondary">
-									{projectDetailPageData.data?.data.attributes.follow_section_second_text}
+									{
+										projectDetailPageData.data?.data.attributes
+											.follow_section_second_text
+									}
 								</Paragraph>
 							</div>
 						</div>
 					</div>
 					<div className="w-full h-full hidden lg:block rounded-xl min-h-[687px] max-h-[687px]">
 						<Image
-							src={getBackendImage(projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.url)}
-							width={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.width}
-							height={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.height}
-							alt={projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.name || ''}
+							src={getBackendImage(
+								projectDetailPageData.data?.data.attributes
+									.follow_section_picture.data.attributes.url,
+							)}
+							width={
+								projectDetailPageData.data?.data.attributes
+									.follow_section_picture.data.attributes.width
+							}
+							height={
+								projectDetailPageData.data?.data.attributes
+									.follow_section_picture.data.attributes.height
+							}
+							alt={
+								projectDetailPageData.data?.data.attributes
+									.follow_section_picture.data.attributes.name || ''
+							}
 							className="object-cover object-center w-full min-h-[687px] max-h-[687px] h-full rounded-xl"
 						/>
 					</div>

@@ -4,8 +4,8 @@ import IconLink from '@public/sponsors/link.svg';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { Heading } from '../Heading';
-import { Paragraph } from '../Paragraph';
+import { Heading } from './Heading';
+import { Paragraph } from './Paragraph';
 
 export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 	image,
@@ -35,9 +35,15 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				<Heading as="h4" className="text-2xl lg:text-5xl text-secondary">
 					{title}
 				</Heading>
-				<Paragraph className="text-sm lg:text-lg text-secondary">{text}</Paragraph>
+				<Paragraph className="text-sm lg:text-lg text-secondary">
+					{text}
+				</Paragraph>
 				<div className="flex flex-row gap-x-2 items-center">
-					<NextImage src={IconLink} alt="Link Icon Enersok" className="w-6 h-6" />
+					<NextImage
+						src={IconLink}
+						alt="Link Icon Enersok"
+						className="w-6 h-6"
+					/>
 					<Link
 						className="text-base lg:text-2xl text-secondary hover:text-primary duration-200 !leading-[normal]"
 						href={url}

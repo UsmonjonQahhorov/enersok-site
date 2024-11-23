@@ -8,25 +8,25 @@ import { NextResponse, type NextRequest } from 'next/server';
 export type HttpUrl = RequestInfo | URL;
 export type HttpOptions =
 	| (RequestInit & {
-		method?: 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT';
-		isAuth?: boolean;
-		isJson?: boolean;
-		cookies?: ReadonlyRequestCookies;
-	})
+			method?: 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT';
+			isAuth?: boolean;
+			isJson?: boolean;
+			cookies?: ReadonlyRequestCookies;
+	  })
 	| undefined;
 export type HttpResult<ResponseT, ErrorT> =
 	| {
-		ok: true;
-		data: ResponseT;
-		error: null;
-		code: number;
-	}
+			ok: true;
+			data: ResponseT;
+			error: null;
+			code: number;
+	  }
 	| {
-		ok: false;
-		data: null;
-		error: ErrorT;
-		code: number;
-	};
+			ok: false;
+			data: null;
+			error: ErrorT;
+			code: number;
+	  };
 /**
  * Makes an HTTP request to the specified URL with the given options.
  * @param url The URL to send the request to.

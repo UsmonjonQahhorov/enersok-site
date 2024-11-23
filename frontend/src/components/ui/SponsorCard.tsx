@@ -2,8 +2,8 @@ import type { Image } from '@/types/shared.types';
 import { cn } from '@/utils/cn';
 import NextImage from 'next/image';
 import type { FC } from 'react';
-import { Heading } from '../Heading';
-import { Paragraph } from '../Paragraph';
+import { Heading } from './Heading';
+import { Paragraph } from './Paragraph';
 
 export const SponsorCard: FC<SponsorCardProps> = ({
 	image,
@@ -25,8 +25,11 @@ export const SponsorCard: FC<SponsorCardProps> = ({
 				alt="Sponsor 1 Enersok"
 				className="max-w-[62px] md:max-w-[102px] lg:max-w-full lg:max-h-[40px] w-full lg:w-auto h-auto lg:h-full"
 			/>
-			<div className='ml-3 md:ml-0 pl-3 md:pl-0 border-l-[1px] md:border-l-0 border-secondaryOpacity3 flex flex-col md:block'>
-				<Heading as="h5" className="text-sm lg:text-xl text-secondary md:pt-8 md:pb-3 text-left md:text-center">
+			<div className="ml-3 md:ml-0 pl-3 md:pl-0 border-l-[1px] md:border-l-0 border-secondaryOpacity3 flex flex-col md:block">
+				<Heading
+					as="h5"
+					className="text-sm lg:text-xl text-secondary md:pt-8 md:pb-3 text-left md:text-center"
+				>
 					{title}
 				</Heading>
 				<Paragraph className="text-base lg:text-2xl font-semibold text-secondary text-left md:text-center">

@@ -101,4 +101,4 @@ export const mobileNavigation = [
 		name_uz: 'Kontaktlar',
 		href: RouterConfig.ContactUs,
 	},
-]
+];

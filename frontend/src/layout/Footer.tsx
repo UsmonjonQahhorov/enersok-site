@@ -20,7 +20,6 @@ import Telegram from '@public/socials/telegram.svg';
 import Link from 'next/link';
 
 export const Footer: FC<FooterProps> = async ({ locale, className }) => {
-
 	const footerData = await getFooter(locale);
 	const year = new Date().getFullYear();
 
@@ -32,31 +31,35 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 						'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr,1fr,1.5fr] md:gap-x-14 xl:gap-x-28 2xl:gap-x-56 pt-12 pb-8 md:py-24 md:border-b border-[rgba(255,_255,_255,_0.12)]'
 					}
 				>
-					<Link className='pb-8 md:pb-0' href={RouterConfig.Home}>
+					<Link className="pb-8 md:pb-0" href={RouterConfig.Home}>
 						<Image
-							src={getBackendImage(footerData.data?.data.attributes.logo.data.attributes.url)}
-							width={footerData.data?.data.attributes.logo.data.attributes.width}
-							height={footerData.data?.data.attributes.logo.data.attributes.height}
+							src={getBackendImage(
+								footerData.data?.data.attributes.logo.data.attributes.url,
+							)}
+							width={
+								footerData.data?.data.attributes.logo.data.attributes.width
+							}
+							height={
+								footerData.data?.data.attributes.logo.data.attributes.height
+							}
 							alt="Enersok Logo"
 							priority={true}
 							className="w-[195px] h-fit"
 						/>
 					</Link>
 					<ul className="flex flex-col text-left gap-y-1">
-						{
-							mobileNavigation.map((menu) => (
-								<li key={menu.href}>
-									<NavigationLink
-										locale={locale}
-										className="text-2xl text-white font-normal hover:text-button1 duration-200"
-										href={menu.href}
-									>
-										{locale === 'en' && menu.name_en}
-										{locale === 'uz' && menu.name_uz}
-									</NavigationLink>
-								</li>
-							))
-						}
+						{mobileNavigation.map((menu) => (
+							<li key={menu.href}>
+								<NavigationLink
+									locale={locale}
+									className="text-2xl text-white font-normal hover:text-button1 duration-200"
+									href={menu.href}
+								>
+									{locale === 'en' && menu.name_en}
+									{locale === 'uz' && menu.name_uz}
+								</NavigationLink>
+							</li>
+						))}
 					</ul>
 					<ul className="hidden lg:flex flex-col gap-y-4">
 						<li>
@@ -125,7 +128,10 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 					</ul>
 				</div>
 				<div className="pb-6 md:pt-4 md:pb-[100px] flex flex-col-reverse md:flex-row justify-between items-start md:items-center">
-					<Paragraph size="sm" className="text-white hover:text-button1 duration-200 tracking-widest md:tracking-normal">
+					<Paragraph
+						size="sm"
+						className="text-white hover:text-button1 duration-200 tracking-widest md:tracking-normal"
+					>
 						© {year} Enersok
 					</Paragraph>
 					<ul className="flex gap-x-3 pb-8 md:pb-0">

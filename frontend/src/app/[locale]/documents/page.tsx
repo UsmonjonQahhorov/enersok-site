@@ -11,21 +11,23 @@ import { getBackendImage } from '@/utils/getBackendImage';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 
-export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
-
+export const generateMetadata: DynamicMetadata = async ({
+	params,
+}): Promise<Metadata> => {
 	const { locale } = await params;
 	const DGPageData = await getDGPage(locale);
 
 	return {
 		title: DGPageData.data?.data.attributes.page_title,
 		description: DGPageData.data?.data.attributes.about_text,
-	}
-}
+	};
+};
 
 const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 	const { locale } = await params;
 	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale = locale === 'en' ? 'Documents and guidelines' : 'Hujjatlar va qo\'llanmalar';
+	const breadcrumPageLocale =
+		locale === 'en' ? 'Documents and guidelines' : "Hujjatlar va qo'llanmalar";
 
 	const DGPageData = await getDGPage(locale);
 	const documents = await getDocuments(locale);
@@ -45,31 +47,37 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 					</Heading>
 				</Container>
 				<Image
-					src={getBackendImage(DGPageData.data?.data.attributes.heading_image.data.attributes.url)}
-					width={DGPageData.data?.data.attributes.heading_image.data.attributes.width}
-					height={DGPageData.data?.data.attributes.heading_image.data.attributes.height}
-					alt={DGPageData.data?.data.attributes.heading_image.data.attributes.name || ''}
+					src={getBackendImage(
+						DGPageData.data?.data.attributes.heading_image.data.attributes.url,
+					)}
+					width={
+						DGPageData.data?.data.attributes.heading_image.data.attributes.width
+					}
+					height={
+						DGPageData.data?.data.attributes.heading_image.data.attributes
+							.height
+					}
+					alt={
+						DGPageData.data?.data.attributes.heading_image.data.attributes
+							.name || ''
+					}
 					className="absolute hidden lg:block bottom-0 right-[122px]"
 					priority={true}
 				/>
 			</section>
 			<section>
 				<Container className="pb-[84px]">
-					<Paragraph
-						className="w-full text-sm md:text-2xl whitespace-[10px] pt-[50px] pb-[24px] md:py-[50px] text-secondary border-b-[1px] border-secondaryOpacity3 md:border-[0]"
-					>
+					<Paragraph className="w-full text-sm md:text-2xl whitespace-[10px] pt-[50px] pb-[24px] md:py-[50px] text-secondary border-b-[1px] border-secondaryOpacity3 md:border-[0]">
 						{DGPageData.data?.data.attributes.about_text}
 					</Paragraph>
 					<div className="flex flex-col lg:grid lg:grid-cols-2 gap-5 pt-8 md:pt-0">
-						{
-							documents.data?.data.map((document) => (
-								<DownloadFile
-									key={document.id}
-									text={document.attributes.document_name}
-									url={document.attributes.document.data.attributes.url}
-								/>
-							))
-						}
+						{documents.data?.data.map((document) => (
+							<DownloadFile
+								key={document.id}
+								text={document.attributes.document_name}
+								url={document.attributes.document.data.attributes.url}
+							/>
+						))}
 					</div>
 				</Container>
 			</section>

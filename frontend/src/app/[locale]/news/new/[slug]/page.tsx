@@ -21,8 +21,9 @@ import type { Metadata } from 'next';
 // import Banner from '@public/image (1).png';
 // import News from '@public/news.png';
 
-export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
-
+export const generateMetadata: DynamicMetadata = async ({
+	params,
+}): Promise<Metadata> => {
 	const { locale, slug } = await params;
 
 	const singleNewsPageData = await getSingleNews(slug ?? '', locale);
@@ -30,8 +31,8 @@ export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Met
 	return {
 		title: singleNewsPageData.data?.previewTitle,
 		description: singleNewsPageData.data?.newsDescription,
-	}
-}
+	};
+};
 
 const SingleNewPage: PageType = async ({ params }) => {
 	const { locale, slug } = await params;
@@ -40,7 +41,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 			href: RouterConfig.Careers,
 			locale,
 		});
-		return
+		return;
 	}
 	const singleNewsPageData = await getSingleNews(slug, locale);
 
@@ -54,10 +55,14 @@ const SingleNewPage: PageType = async ({ params }) => {
 	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	const breadcrumbsPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
 
-	const hasFullDescription = (singleNewsPageData.data?.newsDescriptionFull?.trim().length ?? 0) > 0;
-	const hasDescription = (singleNewsPageData.data?.newsDescription?.trim().length ?? 0) > 0;
+	const hasFullDescription =
+		(singleNewsPageData.data?.newsDescriptionFull?.trim().length ?? 0) > 0;
+	const hasDescription =
+		(singleNewsPageData.data?.newsDescription?.trim().length ?? 0) > 0;
 
-	const fullContent = { __html: singleNewsPageData.data?.newsDescriptionFull || '' };
+	const fullContent = {
+		__html: singleNewsPageData.data?.newsDescriptionFull || '',
+	};
 
 	return (
 		<>
@@ -78,14 +83,20 @@ const SingleNewPage: PageType = async ({ params }) => {
 							{Time(singleNewsPageData.data?.previewDate).format('DD.MM.YYYY')}
 						</Paragraph>
 						<div className="flex flex-row gap-x-2 items-center">
-							<Image src={TimeIcon} alt="Time Icon Enersok" className="w-4 h-4" />
+							<Image
+								src={TimeIcon}
+								alt="Time Icon Enersok"
+								className="w-4 h-4"
+							/>
 							<Paragraph className="!leading-[normal]">
 								{singleNewsPageData.data?.previewTime}
 							</Paragraph>
 						</div>
 						<div className="absolute top-14 w-full h-full max-h-[200px] sm:max-h-[350px] lg:max-h-[525px] min-h-[200px] sm:min-h-[350px] lg:min-h-[525px] rounded-xl">
 							<Image
-								src={getBackendImage(singleNewsPageData.data?.previewPicture.url)}
+								src={getBackendImage(
+									singleNewsPageData.data?.previewPicture.url,
+								)}
 								width={singleNewsPageData.data?.previewPicture.width}
 								height={singleNewsPageData.data?.previewPicture.height}
 								alt={singleNewsPageData.data?.previewPicture.name || 'Enersok'}
@@ -98,39 +109,39 @@ const SingleNewPage: PageType = async ({ params }) => {
 			<section>
 				<Container className="pt-[155px] sm:pt-[305px] lg:pt-[405px] flex flex-col items-center">
 					{/* Short Description */}
-					{
-						hasDescription && (
-							<Markdown
-								className={cn(
-									'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 *:text-secondary *:text-wrap',
-									'[&>p>img]:object-cover [&>p>img]:object-center [&>p>img]:rounded-xl [&>p>img]:max-h-[500px] [&>p>img]:min-h-[500px] [&>p>img]:w-full [&>p>img]:h-full',
-									'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
-									'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
-									'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
-									'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
-									'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
-								)}
-							>
-								{singleNewsPageData.data?.newsDescription || ''}
-							</Markdown>)
-					}
+					{hasDescription && (
+						<Markdown
+							className={cn(
+								'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 *:text-secondary *:text-wrap',
+								'[&>p>img]:object-cover [&>p>img]:object-center [&>p>img]:rounded-xl [&>p>img]:max-h-[500px] [&>p>img]:min-h-[500px] [&>p>img]:w-full [&>p>img]:h-full',
+								'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
+								'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
+								'[&>h1]:text-5xl [&>h2]:text-4xl [&>h3]:text-[32px] [&>h4]:text-2xl [&>h5]:text-xl [&>h6]:text-lg',
+								'[&>ul>li]:relative [&>ul>li]:lg:text-xl [&>ul>li]:text-base [&>ul>li]:pb-3 [&>ul>li]:pl-[18px] [&>ul>li]:before:absolute [&>ul>li]:before:w-[9px] [&>ul>li]:before:h-[9px] [&>ul>li]:before:left-0 [&>ul>li]:before:top-[7px] [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-button1 [&>ul>li]:text-wrap',
+								'[&>blockquote]:p-12 [&>blockquote]:rounded-xl [&>blockquote]:bg-[#F2F7FA] [&>blockquote]:lg:text-3xl [&>blockquote]:text-2xl [&>blockquote]:text-wrap',
+							)}
+						>
+							{singleNewsPageData.data?.newsDescription || ''}
+						</Markdown>
+					)}
 					{/* Full Description */}
-					{
-						hasFullDescription && (
-							<article
-								className={cn(
-									'xl:w-3/4 [&>div]:pb-[26px] [&>div]:flex [&>div]:flex-col [&>div]:gap-y-6 [&>div]:text-secondary',
-									'[&>div>p]:lg:text-xl [&>div>p]:lg:pb-6 [&>div>p]:text-wrap',
-									'[&>div>p]:text-base [&>div>p]:pb-6',
-									'[&>div>h1]:lg:text-7xl [&>div>h2]:lg:text-6xl [&>div>h3]:lg:text-5xl [&>div>h4]:lg:text-4xl [&>div>h5]:lg:text-3xl [&>div>h6]:lg:text-2xl',
-									'[&>div>h1]:text-5xl [&>div>h2]:text-4xl [&>div>h3]:text-[32px] [&>div>h4]:text-2xl [&>div>h5]:text-xl [&>div>h6]:text-lg',
-									'[&>div>ul>li]:relative [&>div>ul>li]:lg:text-xl [&>div>ul>li]:text-base [&>div>ul>li]:pb-3 [&>div>ul>li]:pl-[18px] [&>div>ul>li]:before:absolute [&>div>ul>li]:before:w-[9px] [&>div>ul>li]:before:h-[9px] [&>div>ul>li]:before:left-0 [&>div>ul>li]:before:top-[7px] [&>div>ul>li]:before:rounded-full [&>div>ul>li]:before:bg-button1 [&>div>ul>li]:text-wrap',
-									'[&>div>blockquote]:p-12 [&>div>blockquote]:rounded-xl [&>div>blockquote]:bg-[#F2F7FA] [&>div>blockquote]:lg:text-3xl [&>div>blockquote]:text-2xl [&>div>blockquote]:text-wrap',
-								)}
-								dangerouslySetInnerHTML={hasFullDescription ? fullContent : undefined}
-							/>
-						)
-					}
+					{hasFullDescription && (
+						<article
+							className={cn(
+								'xl:w-3/4 [&>div]:pb-[26px] [&>div]:flex [&>div]:flex-col [&>div]:gap-y-6 [&>div]:text-secondary',
+								'[&>div>p]:lg:text-xl [&>div>p]:lg:pb-6 [&>div>p]:text-wrap',
+								'[&>div>p]:text-base [&>div>p]:pb-6',
+								'[&>div>h1]:lg:text-7xl [&>div>h2]:lg:text-6xl [&>div>h3]:lg:text-5xl [&>div>h4]:lg:text-4xl [&>div>h5]:lg:text-3xl [&>div>h6]:lg:text-2xl',
+								'[&>div>h1]:text-5xl [&>div>h2]:text-4xl [&>div>h3]:text-[32px] [&>div>h4]:text-2xl [&>div>h5]:text-xl [&>div>h6]:text-lg',
+								'[&>div>ul>li]:relative [&>div>ul>li]:lg:text-xl [&>div>ul>li]:text-base [&>div>ul>li]:pb-3 [&>div>ul>li]:pl-[18px] [&>div>ul>li]:before:absolute [&>div>ul>li]:before:w-[9px] [&>div>ul>li]:before:h-[9px] [&>div>ul>li]:before:left-0 [&>div>ul>li]:before:top-[7px] [&>div>ul>li]:before:rounded-full [&>div>ul>li]:before:bg-button1 [&>div>ul>li]:text-wrap',
+								'[&>div>blockquote]:p-12 [&>div>blockquote]:rounded-xl [&>div>blockquote]:bg-[#F2F7FA] [&>div>blockquote]:lg:text-3xl [&>div>blockquote]:text-2xl [&>div>blockquote]:text-wrap',
+							)}
+							// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+							dangerouslySetInnerHTML={
+								hasFullDescription ? fullContent : undefined
+							}
+						/>
+					)}
 					{/* <p>
 							In 2022, Enersok FE LLC was established as a result of a
 							collaboration between four international corporations. The
@@ -203,8 +214,8 @@ const SingleNewPage: PageType = async ({ params }) => {
 					</div>
 				</Container>
 			</section>
-			<section className='bg-backgroundImage1'>
-				<Container className='py-12 lg:py-[169px]'>
+			<section className="bg-backgroundImage1">
+				<Container className="py-12 lg:py-[169px]">
 					<Suspense>
 						<MoreNews locale={locale} />
 					</Suspense>

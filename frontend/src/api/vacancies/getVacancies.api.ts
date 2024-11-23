@@ -12,9 +12,9 @@ export const getVacancies = async (
 		{
 			method: 'GET',
 			cache: 'force-cache',
-			next:{
+			next: {
 				tags: ['vacancies'],
-			}
+			},
 		},
 	);
 	return response;

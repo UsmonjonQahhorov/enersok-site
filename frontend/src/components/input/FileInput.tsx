@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithRef, ReactNode, ChangeEvent } from 'react';
 import { forwardRef, useRef, useState } from 'react';
-import { FieldErrorText } from '../FieldErrorText';
+import { FieldErrorText } from './FieldErrorText';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import FileImage from '@public/file.svg';

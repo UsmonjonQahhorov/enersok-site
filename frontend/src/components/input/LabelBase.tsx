@@ -16,6 +16,7 @@ export const LabelBase = forwardRef<HTMLLabelElement, LabelBaseProps>(
 	) => {
 		return (
 			<label
+				htmlFor={props.htmlFor}
 				ref={ref}
 				className={cn(
 					'inline-block text-[15px] text-stone-900',

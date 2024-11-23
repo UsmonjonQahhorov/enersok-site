@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { TextInput } from '@/components/input/TextInput/TextInput';
+import { TextInput } from '@/components/input/TextInput';
 import { InputBase } from '@/components/input/InputBase';
 import { Textarea } from '@/components/input/TextArea';
 import { Button } from '@/components/ui/Button';

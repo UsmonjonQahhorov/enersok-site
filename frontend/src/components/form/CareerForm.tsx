@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { TextInput } from '@/components/input/TextInput/TextInput';
+import { TextInput } from '@/components/input/TextInput';
 import { InputBase } from '@/components/input/InputBase';
 import { Textarea } from '@/components/input/TextArea';
 import { Button } from '@/components/ui/Button';
@@ -15,7 +15,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 	sumbmit,
 	className,
 	file,
-	text
+	text,
 }) => {
 	return (
 		<form
@@ -24,7 +24,10 @@ export const CareerForm: FC<CareerFormProps> = ({
 				'px-6 py-12 md:p-12 h-fit bg-backgroundImage2 [&>div:nth-last-of-type(1)]:w-[70%] md:[&>div:nth-last-of-type(1)]:w-[40%] flex flex-col gap-y-12 lg:rounded-xl',
 			)}
 		>
-			<Heading as='h4' className='uppercase text-secondary text-[32px] lg:text-5xl'>
+			<Heading
+				as="h4"
+				className="uppercase text-secondary text-[32px] lg:text-5xl"
+			>
 				{text}
 			</Heading>
 			<TextInput
@@ -51,7 +54,10 @@ export const CareerForm: FC<CareerFormProps> = ({
 				className="bg-transparent"
 			/>
 			<FileInput placeholder={file} className="bg-transparent" />
-			<Button type="submit" className="w-full md:w-fit hover:bg-button1/80 duration-300">
+			<Button
+				type="submit"
+				className="w-full md:w-fit hover:bg-button1/80 duration-300"
+			>
 				{sumbmit}
 			</Button>
 		</form>

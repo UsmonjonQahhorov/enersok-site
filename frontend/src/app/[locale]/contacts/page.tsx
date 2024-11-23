@@ -2,7 +2,7 @@ import { getContactPage } from '@/api/pages/getContactPage.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import { Map as Gmap } from '@/components/ui/Map';
+import { GMap } from '@/components/ui/Map';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 import { RouterConfig } from '@/configs/router.config';
@@ -15,20 +15,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 // import Factory from '@public/facroty.png';
 
-export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
-
+export const generateMetadata: DynamicMetadata = async ({
+	params,
+}): Promise<Metadata> => {
 	const { locale } = await params;
 	const contactPageData = await getContactPage(locale);
 
 	return {
 		title: contactPageData.data?.data.attributes.page_title,
-	}
-}
+	};
+};
 
 const ContactsPage: PageType = async ({ params }) => {
 	const { locale } = await params;
 	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale = locale === 'en' ? 'Contact us' : 'Biz bilan bog\'lanish';
+	const breadcrumPageLocale =
+		locale === 'en' ? 'Contact us' : "Biz bilan bog'lanish";
 	const phoneLocale = locale === 'en' ? 'Phone:' : 'Telefon:';
 	const emailLocale = locale === 'en' ? 'Email:' : 'Elektron pochta:';
 	const addressLocale = locale === 'en' ? 'Address:' : 'Manzil:';
@@ -51,9 +53,18 @@ const ContactsPage: PageType = async ({ params }) => {
 					</Heading>
 				</Container>
 				<Image
-					src={getBackendImage(contactPageData.data?.data.attributes.heading_section_picture.data.attributes.url)}
-					width={contactPageData.data?.data.attributes.heading_section_picture.data.attributes.width}
-					height={contactPageData.data?.data.attributes.heading_section_picture.data.attributes.height}
+					src={getBackendImage(
+						contactPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.url,
+					)}
+					width={
+						contactPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.width
+					}
+					height={
+						contactPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.height
+					}
 					alt="Banner Enersok"
 					className="absolute hidden lg:block bottom-0 right-[122px] z-[1]"
 					priority={true}
@@ -62,7 +73,10 @@ const ContactsPage: PageType = async ({ params }) => {
 			<section>
 				<Container className="py-[50px] lg:pt-[95px] lg:pb-[142px] flex flex-col lg:grid lg:grid-cols-[4.5fr,5.5fr] gap-y-[50px] lg:gap-x-[100px] items-center">
 					<div className="flex flex-col gap-y-8 py-5 w-full">
-						<Heading as="h3" className="text-secondary text-[32px] lg:text-5xl pb-6">
+						<Heading
+							as="h3"
+							className="text-secondary text-[32px] lg:text-5xl pb-6"
+						>
 							{contactPageData.data?.data.attributes.social_section_title}
 						</Heading>
 						<ul className="flex flex-col gap-y-8">
@@ -108,7 +122,9 @@ const ContactsPage: PageType = async ({ params }) => {
 						<ul className="flex gap-x-3">
 							<li>
 								<SocialIcon
-									url={contactPageData.data?.data.attributes.telegram_link || ''}
+									url={
+										contactPageData.data?.data.attributes.telegram_link || ''
+									}
 									src={Telegram}
 									alt={'Enersok Telegram'}
 									black={true}
@@ -116,7 +132,9 @@ const ContactsPage: PageType = async ({ params }) => {
 							</li>
 							<li>
 								<SocialIcon
-									url={contactPageData.data?.data.attributes.linkedIn_link || ''}
+									url={
+										contactPageData.data?.data.attributes.linkedIn_link || ''
+									}
 									src={LinkedIn}
 									alt={'Enersok LinkedIn'}
 									black={true}
@@ -124,7 +142,7 @@ const ContactsPage: PageType = async ({ params }) => {
 							</li>
 						</ul>
 					</div>
-					<Gmap mapUrl={contactPageData.data?.data.attributes.map_link || ''} />
+					<GMap mapUrl={contactPageData.data?.data.attributes.map_link || ''} />
 				</Container>
 			</section>
 		</>

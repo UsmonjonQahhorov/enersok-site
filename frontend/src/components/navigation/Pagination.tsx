@@ -1,8 +1,8 @@
-'use client';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import { Pagination as HeadlessPagination } from 'react-headless-pagination';
 import Arrow from './../../../../public/arrow-left-line.svg';
+import type { RefObject } from 'react';
 
 export const Pagination = ({
 	ref,
@@ -13,7 +13,7 @@ export const Pagination = ({
 	position = 'center',
 	className,
 }: PaginationProps & {
-	ref?: React.RefObject<PaginationRef>;
+	ref?: RefObject<PaginationRef>;
 }) => {
 	if (total <= 1) {
 		return null;
@@ -54,7 +54,7 @@ export const Pagination = ({
 	return (
 		<div ref={ref}>
 			<HeadlessPagination
-				className={cn(paginationStyles.container,className, {
+				className={cn(paginationStyles.container, className, {
 					[paginationStyles.containerCenter]: position === 'center',
 					[paginationStyles.containerLeft]: position === 'left',
 					[paginationStyles.containerRight]: position === 'right',

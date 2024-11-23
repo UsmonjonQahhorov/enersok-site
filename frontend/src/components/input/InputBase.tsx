@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react';
 import { forwardRef, Fragment } from 'react';
-import { FieldErrorText } from '../FieldErrorText';
+import { FieldErrorText } from './FieldErrorText';
 import { cn } from '@/utils/cn';
 
 type InputBaseRef = HTMLInputElement;

@@ -5,8 +5,8 @@ import TimeIcon from '@public/time.svg';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { Heading } from '../Heading';
-import { Paragraph } from '../Paragraph';
+import { Heading } from './Heading';
+import { Paragraph } from './Paragraph';
 
 export const NewCard: FC<NewCardProps> = ({
 	date,
@@ -14,7 +14,7 @@ export const NewCard: FC<NewCardProps> = ({
 	title,
 	className,
 	image,
-	url
+	url,
 }) => {
 	return (
 		<article
@@ -24,8 +24,11 @@ export const NewCard: FC<NewCardProps> = ({
 				// 'flex gap-y-3 justify-start sm:gap-y-8 items-start text-secondary',
 			)}
 		>
-			<div className='flex flex-col items-start gap-y-3 lg:gap-y-4 w-full min-w-full'>
-				<Link href={url} className="w-full h-full max-w-[767px] min-h-[200px] sm:min-h-[287px] max-h-[200px] sm:max-h-[287px]">
+			<div className="flex flex-col items-start gap-y-3 lg:gap-y-4 w-full min-w-full">
+				<Link
+					href={url}
+					className="w-full h-full max-w-[767px] min-h-[200px] sm:min-h-[287px] max-h-[200px] sm:max-h-[287px]"
+				>
 					<NextImage
 						src={image.url}
 						width={image.width}
@@ -35,7 +38,10 @@ export const NewCard: FC<NewCardProps> = ({
 					/>
 				</Link>
 				<Link href={url}>
-					<Heading as="h4" className="text-2xl lg:text-[24px] pt-3 md:pt-0 hover:text-primary duration-300 text-wrap break-all">
+					<Heading
+						as="h4"
+						className="text-2xl lg:text-[24px] pt-3 md:pt-0 hover:text-primary duration-300 text-wrap break-all"
+					>
 						{title}
 					</Heading>
 				</Link>
@@ -45,8 +51,14 @@ export const NewCard: FC<NewCardProps> = ({
 					{Time(date).format('DD.MM.YYYY')}
 				</Paragraph>
 				<div className="flex flex-row items-center gap-x-1">
-					<NextImage src={TimeIcon} alt="Time Enersok News" className="w-4 h-4 mb-[2px] sm:mb-0" />
-					<Paragraph className="!leading-[normal] text-xs sm:text-base">{time}</Paragraph>
+					<NextImage
+						src={TimeIcon}
+						alt="Time Enersok News"
+						className="w-4 h-4 mb-[2px] sm:mb-0"
+					/>
+					<Paragraph className="!leading-[normal] text-xs sm:text-base">
+						{time}
+					</Paragraph>
 				</div>
 			</div>
 		</article>

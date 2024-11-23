@@ -1,5 +1,5 @@
 'use client';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 import {
 	Dialog,
@@ -112,6 +112,6 @@ export const UseDialogProvider: FC<DialogProviderProps> = ({
 };
 
 interface DialogProviderProps {
-	children: React.ReactNode;
+	children: ReactNode;
 	locale: string;
 }

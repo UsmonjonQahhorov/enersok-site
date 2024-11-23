@@ -1,5 +1,11 @@
 'use client';
-import { useState, useCallback, useEffect, type ReactNode } from 'react';
+import {
+	useState,
+	useCallback,
+	useEffect,
+	type ReactNode,
+	type FC,
+} from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '@/utils/cn';
 
@@ -14,7 +20,7 @@ interface EmblaCarouselProps {
 	className?: string;
 }
 
-const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
+const EmblaCarousel: FC<EmblaCarouselProps> = ({
 	slides,
 	showCounter = true,
 	controlsPosition = 'below',
@@ -22,18 +28,18 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 	controlsButton,
 	autoLoopInterval = 4000,
 	slidesToShow = 1,
-	className
+	className,
 }) => {
 	const [viewportRef, embla] = useEmblaCarousel({ loop: true });
 	const [selectedIndex, setSelectedIndex] = useState(0);
 
-	const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-	const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+	const scrollPrev = useCallback(() => embla?.scrollPrev(), [embla]);
+	const scrollNext = useCallback(() => embla?.scrollNext(), [embla]);
 
 	const onSelect = useCallback(() => {
 		if (!embla) return;
 		setSelectedIndex(embla.selectedScrollSnap());
-	}, [embla, setSelectedIndex]);
+	}, [embla]);
 
 	useEffect(() => {
 		if (!embla) return;
@@ -73,6 +79,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 			>
 				<div className="flex items-center gap-x-[6px]">
 					<button
+						type="button"
 						className="embla__button-prev p-[14.5px] rounded-full border-[1px] border-solid border-secondary bg-transparent hover:border-button1 [&:hover>svg>path]:fill-button1 duration-300"
 						onClick={scrollPrev}
 						aria-label="Previous slide"
@@ -81,6 +88,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 							className="embla__button__svg w-[13px] h-[13px] [&>path]:fill-secondary"
 							viewBox="0 0 532 532"
 						>
+							<title>Previous</title>
 							<path
 								className="duration-300"
 								fill="currentColor"
@@ -89,6 +97,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 						</svg>
 					</button>
 					<button
+						type="button"
 						className="embla__button-next p-[14.5px] rounded-full border-[1px] border-solid border-secondary bg-transparent hover:border-button1 [&:hover>svg>path]:fill-button1 duration-300"
 						onClick={scrollNext}
 						aria-label="Next slide"
@@ -97,6 +106,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 							className="embla__button__svg w-[13px] h-[13px] [&>path]:fill-secondary"
 							viewBox="0 0 532 532"
 						>
+							<title>Next</title>
 							<path
 								className="duration-300"
 								fill="currentColor"
@@ -127,11 +137,11 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
 			{controlsPosition === 'above' && Controls}
 			<div className="embla__viewport w-full overflow-hidden" ref={viewportRef}>
 				<div className="embla__container flex">
-					{slides.map((slide, index) => (
+					{slides.map((slide) => (
 						<div
 							className="embla__slide relative"
 							style={{ flex: `0 0 ${slideWidthPercentage}%` }}
-							key={index}
+							key={`${slide?.toString()}`}
 						>
 							{slide}
 						</div>

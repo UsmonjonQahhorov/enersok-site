@@ -41,5 +41,5 @@ export type DynamicMetadata<
 		params: Promise<Params>;
 		searchParams: Promise<SearchParams>;
 	},
-	parent: ResolvingMetadata
+	parent: ResolvingMetadata,
 ) => Promise<Metadata> | Metadata;
