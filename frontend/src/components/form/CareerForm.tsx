@@ -19,33 +19,49 @@ export const CareerForm: FC<CareerFormProps> = ({
 	file,
 	text,
 }) => {
-	const { register, handleSubmit, formState: { errors } } = useForm<CareerFormData>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset, // метод для сброса формы
+	} = useForm<CareerFormData>();
 
 	const onSubmit = async (data: CareerFormData) => {
 		try {
-			const response = await fetch('/api/send-email', {
+			const formData = new FormData();
+			formData.append('name', data.name);
+			formData.append('email', data.email);
+			formData.append('phone', data.phone);
+			formData.append('message', data.message);
+
+			// Проверяем наличие файла
+			const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]');
+			if (fileInput && fileInput.files && fileInput.files[0]) {
+				formData.append('file', fileInput.files[0]);
+			}
+
+			const response = await fetch('/api/send-career', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(data),
+				body: formData,
 			});
 
 			if (response.ok) {
-				alert('Форма успешно отправлена');
+				console.log('Форма успешно отправлена');
+				reset(); // Сбрасываем данные формы
 			} else {
 				console.error('Ошибка при отправке формы:', await response.text());
-				alert('Произошла ошибка при отправке формы');
+				console.log('Произошла ошибка при отправке формы');
 			}
 		} catch (error) {
 			console.error('Неизвестная ошибка при отправке формы:', error);
-			alert('Произошла неизвестная ошибка при отправке формы');
+			console.log('Произошла неизвестная ошибка при отправке формы');
 		}
 	};
 
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
+			encType="multipart/form-data"
 			className={cn(
 				className,
 				'px-6 py-12 md:p-12 h-fit bg-backgroundImage2 [&>div:nth-last-of-type(1)]:w-[70%] md:[&>div:nth-last-of-type(1)]:w-[40%] flex flex-col gap-y-12 lg:rounded-xl',
@@ -59,28 +75,39 @@ export const CareerForm: FC<CareerFormProps> = ({
 			</Heading>
 			<TextInput
 				placeholder={name}
-				{...register('name', { required: true })}
+				{...register('name', { required: 'Имя обязательно' })}
 				required={true}
 				className="bg-transparent"
 			/>
 			<InputBase
 				type="email"
 				placeholder={email}
-				{...register('email', { required: true })}
+				{...register('email', {
+					required: 'Email обязателен',
+					pattern: {
+						value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+						message: 'Введите корректный email',
+					},
+				})}
 				required={true}
 				className="bg-transparent"
 			/>
 			<InputBase
 				type="tel"
 				placeholder={phone}
-				{...register('phone', { required: true })}
+				{...register('phone', {
+					required: 'Телефон обязателен',
+					pattern: {
+						value: /^[+]{1}[0-9]{7,15}$/,
+						message: 'Введите корректный номер телефона',
+					},
+				})}
 				required={true}
-				pattern="[+]{1}[0-9]{7,15}"
 				className="bg-transparent"
 			/>
 			<Textarea
 				placeholder={message}
-				{...register('message', { required: true })}
+				{...register('message', { required: 'Сообщение обязательно' })}
 				required={true}
 				className="bg-transparent"
 			/>
@@ -115,6 +142,5 @@ interface CareerFormData {
 	email: string;
 	phone: string;
 	message: string;
-	file?: string;
+	file?: File;
 }
-
