@@ -110,7 +110,7 @@ const SingleCareerPage: PageType = async ({ params }) => {
 				<Image
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute hidden lg:block bottom-[26px] right-[122px]"
+					className="absolute hidden lg:block bottom-[26px] right-[122px] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>

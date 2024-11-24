@@ -199,7 +199,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						projectDetailPageData.data?.data.attributes
 							.heading_background_picture.data.attributes.name || ''
 					}
-					className="absolute hidden lg:block bottom-0 right-[-200px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-200px] z-[1] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>
@@ -333,7 +333,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						projectDetailPageData.data?.data.attributes
 							.info_section_background_picture.data.attributes.name || ''
 					}
-					className="left-[0] hidden lg:block bottom-0 absolute"
+					className="left-[0] hidden lg:block bottom-0 absolute bg-blend-darken opacity-80"
 				/>
 			</section>
 			<section>

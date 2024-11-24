@@ -68,7 +68,7 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 						newsPageData.data?.data.attributes.heading_picture.data.attributes
 							.name || 'News Banner Enersok'
 					}
-					className="absolute hidden lg:block bottom-0 right-[122px]"
+					className="absolute hidden lg:block bottom-0 right-[122px] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>

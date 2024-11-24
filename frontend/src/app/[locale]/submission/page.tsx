@@ -106,7 +106,7 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 						grmSubmissionPageData.data?.data.attributes.background_image.data
 							.attributes.name || ''
 					}
-					className="absolute bottom-[-100px] right-[-100px] rotate-x-180 z-[1]"
+					className="absolute bottom-[-100px] right-[-100px] rotate-x-180 z-[1] bg-blend-darken opacity-80"
 					priority={true}
 				/>
 				<Image
@@ -123,7 +123,7 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 							.attributes.height
 					}
 					alt="Banner Enersok"
-					className="absolute bottom-[-20px] left-[-100px] z-[1]"
+					className="absolute bottom-[-20px] left-[-100px] z-[1] bg-blend-darken opacity-80"
 					priority={true}
 				/>
 			</section>

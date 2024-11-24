@@ -61,7 +61,7 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 						DGPageData.data?.data.attributes.heading_image.data.attributes
 							.name || ''
 					}
-					className="absolute hidden lg:block bottom-0 right-[122px]"
+					className="absolute hidden lg:block bottom-0 right-[122px] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>

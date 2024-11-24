@@ -124,7 +124,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 						careersPageData.data?.data.attributes.heading_background_picture
 							.data.attributes.name || 'Careers Banner Enersok'
 					}
-					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>

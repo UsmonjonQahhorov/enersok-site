@@ -66,7 +66,7 @@ const ContactsPage: PageType = async ({ params }) => {
 							.attributes.height
 					}
 					alt="Banner Enersok"
-					className="absolute hidden lg:block bottom-0 right-[122px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[122px] z-[1] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>

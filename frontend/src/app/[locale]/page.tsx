@@ -116,7 +116,7 @@ const HomePage: PageType = async ({ params }) => {
 						homePageData.data?.data.attributes.heading_background_picture.data
 							.attributes.name as string
 					}
-					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>
@@ -645,7 +645,7 @@ const HomePage: PageType = async ({ params }) => {
 							.community_section_background_picture.data.attributes
 							.name as string
 					}
-					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1]"
+					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-darken opacity-40"
 					priority={true}
 				/>
 			</section>

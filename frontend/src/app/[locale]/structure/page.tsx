@@ -65,7 +65,7 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 							.data.attributes.height
 					}
 					alt="Banner Enersok"
-					className="absolute hidden lg:block bottom-0 right-[122px]"
+					className="absolute hidden lg:block bottom-0 right-[122px] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>
