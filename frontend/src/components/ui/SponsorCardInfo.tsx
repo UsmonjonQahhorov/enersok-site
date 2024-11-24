@@ -47,6 +47,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 					<Link
 						className="text-base lg:text-2xl text-secondary hover:text-primary duration-200 !leading-[normal]"
 						href={url}
+						target='_blank'
 					>
 						{linkText}
 					</Link>

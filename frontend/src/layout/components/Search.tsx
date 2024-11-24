@@ -56,7 +56,7 @@ export const SearchContent = () => {
                     <form >
                          <InputBase
                               value={searchQuery}
-                              className='bg-transparent pb-0 max-w-[200px]'
+                              className='bg-transparent pb-0 max-w-[200px] text-xs font-normal xl:text-sm 2xl:text-lg'
                               placeholder={searchText}
                               endIcon={
                                    <Image src={Search}

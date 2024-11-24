@@ -6,6 +6,7 @@ import { FieldErrorText } from './FieldErrorText';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import FileImage from '@public/file.svg';
+import { getLocale } from '@/utils/getLocale.util';
 
 type FileInputRef = HTMLInputElement;
 type FileInputProps = ComponentPropsWithRef<'input'> & {
@@ -24,7 +25,7 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
 			hasError,
 			error,
 			placeholder = 'File',
-			fileSize = 'The maximum file size is 3.00mb',
+			fileSize,
 			...props
 		},
 		ref,
@@ -43,6 +44,9 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
 				setFileName(event.target.files?.[0]?.name ?? '');
 			}
 		};
+
+		const locale = getLocale();
+		const fileSizeText = locale === 'en' ? 'The maximum file size is 3.00mb' : 'Maksimal fayl hajmi 3,00 Mb';
 
 		return (
 			<div className="relative" onClick={handleClick}>
@@ -93,7 +97,7 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
 				{hasError === true && error ? (
 					<FieldErrorText error={hasError}>{error}</FieldErrorText>
 				) : null}
-				<div className="text-sm text-secondaryOpacity2 mt-3">{fileSize}</div>
+				<div className="text-sm text-secondaryOpacity2 mt-3">{fileSize ? fileSize : fileSizeText}</div>
 			</div>
 		);
 	},

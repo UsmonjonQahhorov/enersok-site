@@ -11,7 +11,7 @@ export const CarouselItem = ({
 }: CarouselItemProps) => {
 	const [firstWord, ...remainingWords] = title.split(' ');
 	const firstPart = firstWord;
-	const remainingPart = remainingWords;
+	const remainingPart = remainingWords.join(' ');
 
 	return (
 		<div className="flex flex-col-reverse gap-y-8 lg:grid lg:grid-cols-[0.5fr,0.5fr] gap-x-4 lg:gap-x-0 justify-between items-start lg:items-center *:text-secondary min-h-96 cursor-pointer">
