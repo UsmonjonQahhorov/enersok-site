@@ -47,9 +47,6 @@ importers:
       strapi-plugin-fuzzy-search:
         specifier: ^3.0.0
         version: 3.0.0(@strapi/strapi@4.25.17(@babel/runtime@7.26.0)(@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.34.1)(@lezer/common@1.2.3))(@codemirror/language@6.10.3)(@codemirror/lint@6.8.2)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.34.1)(@swc/helpers@0.5.13)(@types/hoist-non-react-statics@3.3.5)(@types/node@22.8.1)(@types/react@18.3.12)(better-sqlite3@11.5.0)(codemirror@5.65.18)(react-dom@18.3.1(react@18.3.1))(react-router-dom@5.3.4(react@18.3.1))(react@18.3.1)(redux@4.2.1)(styled-components@5.3.3(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(terser@5.36.0)(type-fest@2.19.0))(@strapi/utils@4.25.17)(yup@0.32.9)
-      strapi-plugin-meilisearch:
-        specifier: ^0.12.0
-        version: 0.12.0(ffhwbymuwyvmzjen2bhntefzpi)
       styled-components:
         specifier: 5.3.3
         version: 5.3.3(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1)
@@ -1716,10 +1713,6 @@ packages:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
 
-  '@strapi/utils@4.25.16':
-    resolution: {integrity: sha512-bx0Oc36zzDRzmSpE5N11HpnRnyaFQbHnWTbdGb0Kwmcr4xiZI1fGG4BR18s1oytavrHm5RLeJa0Jtt7SPR3bDA==}
-    engines: {node: '>=18.0.0 <=20.x.x', npm: '>=6.0.0'}
-
   '@strapi/utils@4.25.17':
     resolution: {integrity: sha512-IzQQYmj3ojLGs3sP8WahG79T9p9EeMZHICAEQKs3ldV+eE+1jhzTeknNMcTzI9Wcb66OtjhoBLA44zXxqtZzgw==}
     engines: {node: '>=18.0.0 <=20.x.x', npm: '>=6.0.0'}
@@ -2664,9 +2657,6 @@ packages:
     resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
     engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
     hasBin: true
-
-  cross-fetch@3.1.8:
-    resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -4248,9 +4238,6 @@ packages:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
-  meilisearch@0.38.0:
-    resolution: {integrity: sha512-bHaq8nYxSKw9/Qslq1Zes5g9tHgFkxy/I9o8942wv2PqlNOT0CzptIkh/x98N52GikoSZOXSQkgt6oMjtf5uZw==}
-
   memfs@3.5.3:
     resolution: {integrity: sha512-UERzLsxzllchadvbPs5aolHh65ISpKpM+ccLbOJ8/vvpBKmAWf+la7dXFy7Mr0ySHbdHrFv5kGFCUHHe6GFEmw==}
     engines: {node: '>= 4.0.0'}
@@ -5535,12 +5522,6 @@ packages:
       '@strapi/strapi': ^4.25.0
       '@strapi/utils': ^4.25.0
       yup: ^0.32.9
-
-  strapi-plugin-meilisearch@0.12.0:
-    resolution: {integrity: sha512-86VFljXhfwtQL8AvBXpvM/IMVgRDPWXZCh3Eg6G/ybSxlbcbODi7/R9XrXoSkC/sSQqscPtradY3XYoTE4QbKg==}
-    engines: {node: '>=18', npm: '>=6.0.0'}
-    peerDependencies:
-      '@strapi/strapi': ^4.0.0
 
   stream-chain@2.2.5:
     resolution: {integrity: sha512-1TJmBx6aSWqZ4tx7aTpBDXK0/e2hhcNSTV8+CbFJtDjbb+I1mZ8lHit0Grw9GRT+6JbIrrDd8esncgBi8aBXGA==}
@@ -8833,15 +8814,6 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  '@strapi/utils@4.25.16':
-    dependencies:
-      '@sindresorhus/slugify': 1.1.0
-      date-fns: 2.30.0
-      http-errors: 1.8.1
-      lodash: 4.17.21
-      p-map: 4.0.0
-      yup: 0.32.9
-
   '@strapi/utils@4.25.17':
     dependencies:
       '@sindresorhus/slugify': 1.1.0
@@ -9995,12 +9967,6 @@ snapshots:
   cross-env@7.0.3:
     dependencies:
       cross-spawn: 7.0.3
-
-  cross-fetch@3.1.8:
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
 
   cross-spawn@7.0.3:
     dependencies:
@@ -11718,12 +11684,6 @@ snapshots:
 
   media-typer@0.3.0: {}
 
-  meilisearch@0.38.0:
-    dependencies:
-      cross-fetch: 3.1.8
-    transitivePeerDependencies:
-      - encoding
-
   memfs@3.5.3:
     dependencies:
       fs-monkey: 1.0.6
@@ -13107,31 +13067,6 @@ snapshots:
       fuzzysort: 3.0.2
       transliteration: 2.3.5
       yup: 0.32.9
-
-  strapi-plugin-meilisearch@0.12.0(ffhwbymuwyvmzjen2bhntefzpi):
-    dependencies:
-      '@strapi/design-system': 1.19.0(@babel/runtime@7.26.0)(@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.34.1)(@lezer/common@1.2.3))(@codemirror/language@6.10.3)(@codemirror/lint@6.8.2)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.34.1)(@strapi/icons@1.19.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.12)(codemirror@5.65.18)(react-dom@18.3.1(react@18.3.1))(react-router-dom@5.3.4(react@18.3.1))(react@18.3.1)(styled-components@5.3.3(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))
-      '@strapi/icons': 1.19.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@strapi/strapi': 4.25.17(@babel/runtime@7.26.0)(@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.34.1)(@lezer/common@1.2.3))(@codemirror/language@6.10.3)(@codemirror/lint@6.8.2)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.34.1)(@swc/helpers@0.5.13)(@types/hoist-non-react-statics@3.3.5)(@types/node@22.8.1)(@types/react@18.3.12)(better-sqlite3@11.5.0)(codemirror@5.65.18)(react-dom@18.3.1(react@18.3.1))(react-router-dom@5.3.4(react@18.3.1))(react@18.3.1)(redux@4.2.1)(styled-components@5.3.3(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(terser@5.36.0)(type-fest@2.19.0)
-      '@strapi/utils': 4.25.16
-      meilisearch: 0.38.0
-    transitivePeerDependencies:
-      - '@babel/runtime'
-      - '@codemirror/autocomplete'
-      - '@codemirror/language'
-      - '@codemirror/lint'
-      - '@codemirror/search'
-      - '@codemirror/state'
-      - '@codemirror/theme-one-dark'
-      - '@codemirror/view'
-      - '@types/react'
-      - '@types/react-dom'
-      - codemirror
-      - encoding
-      - react
-      - react-dom
-      - react-router-dom
-      - styled-components
 
   stream-chain@2.2.5: {}
 
