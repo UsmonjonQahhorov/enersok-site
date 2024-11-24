@@ -9,7 +9,7 @@ export type HttpUrl = RequestInfo | URL;
 export type HttpOptions =
 	| (RequestInit & {
 			method?: 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT';
-			isAuth?: boolean;
+			withAuth?: boolean;
 			isJson?: boolean;
 			cookies?: ReadonlyRequestCookies;
 	  })
@@ -95,6 +95,7 @@ export const http = async <ResponseType = unknown, ErrorType = unknown>(
 function getRequestOptions(options: HttpOptions) {
 	let optionsObject: RequestInit = {};
 	const isJson = options?.isJson ?? true;
+	const withAuth = options?.withAuth ?? true;
 
 	if (isJson) {
 		if (options) {
@@ -104,7 +105,7 @@ function getRequestOptions(options: HttpOptions) {
 				headers: {
 					...headerOptions,
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${TOKEN}`,
+					...(withAuth && { Authorization: `Bearer ${TOKEN}` }),
 				},
 				...otherOptions,
 			};
@@ -112,13 +113,17 @@ function getRequestOptions(options: HttpOptions) {
 			optionsObject = {
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${TOKEN}`,
+					...(withAuth && { Authorization: `Bearer ${TOKEN}` }),
 				},
 			};
 		}
 	} else {
 		optionsObject = {
 			...options,
+			headers: {
+				...(options?.headers || {}),
+				...(withAuth && { Authorization: `Bearer ${TOKEN}` }),
+			},
 		};
 	}
 
