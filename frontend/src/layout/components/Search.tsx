@@ -1,22 +1,22 @@
 'use client';
 
-import { useState } from 'react'
 import { search } from '@/api/search/search.api';
-import { getLocale } from '@/utils/getLocale.util';
 import { InputBase } from '@/components/input/InputBase';
-import Image from 'next/image';
-import Search from '@public/search.svg';
-import { useQuery } from '@tanstack/react-query';
-import { useDebounce } from "@uidotdev/usehooks";
-import { Link } from '@/i18n/routing';
-import { RouterConfig } from '@/configs/router.config';
 import { Heading } from '@/components/ui/Heading';
-import { BriefcaseBusiness, Calendar, FileText, Newspaper } from 'lucide-react';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { RouterConfig } from '@/configs/router.config';
+import { Link } from '@/i18n/routing';
+import { getLocale } from '@/utils/getLocale.util';
 import { Time } from '@/utils/time';
+import Search from '@public/search.svg';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useDebounce } from "@uidotdev/usehooks";
+import { BriefcaseBusiness, Calendar, FileText, Newspaper } from 'lucide-react';
+import Image from 'next/image';
+import { useCallback, useState } from 'react';
 
 export const SearchContent = () => {
-
+     const queryClient = useQueryClient();
      const locale = getLocale();
      const searchText = locale === 'en' ? 'Search' : 'Qidirish';
      const moreText = locale === 'en' ? 'More' : 'Ko\'proq';
@@ -24,14 +24,25 @@ export const SearchContent = () => {
      const debouncedSearchTerm = useDebounce(searchQuery, 300);
 
      const { data, status, isLoading } = useQuery({
-          queryKey: ['search', debouncedSearchTerm], queryFn: async () => {
+          queryKey: ['search', debouncedSearchTerm], queryFn: async ({ signal }) => {
                if (debouncedSearchTerm.length > 0) {
-                    return await search(debouncedSearchTerm, locale);
+                    return await search(debouncedSearchTerm, locale, signal);
                }
                return { data: null };
           },
           enabled: searchQuery.length > 0,
+          staleTime: 0, // Don't cache results
+          gcTime: 0, // Immediately garbage collect
+          retry: false,
+          retryOnMount: false,
+          refetchOnWindowFocus: false,
+          refetchOnReconnect: false
      });
+
+     const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+          setSearchQuery(e.target.value);
+          queryClient.cancelQueries({ queryKey: ['search',searchQuery] });
+     }, [queryClient]);
 
      const hasData = (data?.data?.new?.length ?? 0) > 0
           || (data?.data?.vacancies?.length ?? 0) > 0
@@ -53,7 +64,7 @@ export const SearchContent = () => {
                                         className="w-4 h-4"
                                    />
                               }
-                              onChange={(e) => setSearchQuery(e.target.value)}
+                              onChange={handleSearchChange}
                          />
                     </form>
                </search>

@@ -1,11 +1,12 @@
 import type { Locale } from "@/configs/i18n.config"
 import { http } from "@/utils/http"
 
-export const search = async (query = '', locale: Locale = 'en') => {
+export const search = async (query = '', locale: Locale = 'en',signal?: AbortSignal) => {
      const response = await http<GetSearchResponse>(`/fuzzy-search/search?query=${query}&locale=${locale}`,
           {
                method: 'GET',
                withAuth: false,
+               signal
           }
      )
 
