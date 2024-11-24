@@ -208,7 +208,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							>
 								<Heading
 									as="h4"
-									className="text-[32px] lg:text-[80px] text-button1 uppercase"
+									className="text-[32px] break-all lg:text-[80px] text-button1 uppercase"
 								>
 									{development.attributes.development_year}
 								</Heading>

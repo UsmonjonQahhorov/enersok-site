@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import { Pagination as HeadlessPagination } from 'react-headless-pagination';
-import Arrow from './../../../../public/arrow-left-line.svg';
+import Arrow from '@public/arrow-left-line.svg';
 import type { RefObject } from 'react';
 
 export const Pagination = ({
