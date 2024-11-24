@@ -17,17 +17,20 @@ import {
 } from '@radix-ui/react-popover';
 import { cn } from '@/utils/cn';
 import { navigation } from '@/locales/navigations';
-import Image from 'next/image';
-import Search from '@public/search.svg';
 import { locales } from '@/configs/i18n.config';
 import { Link as NavigationLink, usePathname } from '@/i18n/routing';
 import { getLocale } from '@/utils/getLocale.util';
+import {
+	QueryClient,
+	QueryClientProvider,
+} from '@tanstack/react-query'
+import { SearchContent } from './Search';
 
+const queryClient = new QueryClient()
 export const DesktopNavigation = () => {
 	const pathName = usePathname();
 	const locale = getLocale();
 
-	const searchText = locale === 'en' ? 'Search' : 'Qidirish';
 	const contactText = locale === 'en' ? 'Contact us' : 'Aloqa';
 
 	return (
@@ -83,11 +86,11 @@ export const DesktopNavigation = () => {
 			</Root>
 
 			<div className="flex items-center gap-x-6 2xl:gap-x-8">
-				<div className="flex items-center gap-x-24 pb-2 border-b border-black">
-					<span className="text-sm 2xl:text-base text-secondary">
-						{searchText}
-					</span>
-					<Image src={Search} alt="Search Enersok" className="w-4 h-4" />
+				{/* Search */}
+				<div className="flex items-center gap-x-24 pb-2">
+					<QueryClientProvider client={queryClient}>
+						<SearchContent />
+					</QueryClientProvider>
 				</div>
 				{/* Select language */}
 				<PopopverRoot aria-label="languages">

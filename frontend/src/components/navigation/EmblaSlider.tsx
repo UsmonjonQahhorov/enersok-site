@@ -137,11 +137,12 @@ const EmblaCarousel: FC<EmblaCarouselProps> = ({
 			{controlsPosition === 'above' && Controls}
 			<div className="embla__viewport w-full overflow-hidden" ref={viewportRef}>
 				<div className="embla__container flex">
-					{slides.map((slide) => (
+					{slides.map((slide, index) => (
 						<div
 							className="embla__slide relative"
 							style={{ flex: `0 0 ${slideWidthPercentage}%` }}
-							key={`${slide?.toString()}`}
+							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+							key={index}
 						>
 							{slide}
 						</div>
