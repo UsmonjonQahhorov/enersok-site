@@ -29,6 +29,29 @@ export const generateMetadata: DynamicMetadata = async ({
 
 	return {
 		title: sponsorsPageData.data?.data.attributes.page_title,
+		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok sponsors'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok sponsorlar'],
+		robots: 'index, follow',
+		openGraph:{
+			title: sponsorsPageData.data?.data.attributes.page_title,
+			locale: locale,
+			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok sponsors'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok sponsorlar'],
+			images: [
+				{
+					url: getBackendImage(
+						sponsorsPageData.data?.data.attributes.heading_picture.data
+							.attributes.url,
+					),
+					width:
+						sponsorsPageData.data?.data.attributes.heading_picture.data
+							.attributes.width,
+					height:
+						sponsorsPageData.data?.data.attributes.heading_picture.data
+							.attributes.height,
+					alt: sponsorsPageData.data?.data.attributes.heading_picture.data
+						.attributes.name,
+				},
+			],
+		}
 	};
 };
 

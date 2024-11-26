@@ -31,6 +31,22 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: singleNewsPageData.data?.previewTitle,
 		description: singleNewsPageData.data?.newsDescription,
+		robots: 'index, follow',
+		openGraph: {
+			title: singleNewsPageData.data?.previewTitle,
+			type: 'article',
+			description: singleNewsPageData.data?.newsDescription,
+			images: [
+				{
+					url: getBackendImage(singleNewsPageData.data?.previewPicture.url),
+					width: singleNewsPageData.data?.previewPicture.width,
+					height: singleNewsPageData.data?.previewPicture.height,
+					alt: singleNewsPageData.data?.previewPicture.name,
+				},
+			],
+			locale: locale,
+			tags: ['news', 'enersok'],
+		}
 	};
 };
 

@@ -22,6 +22,7 @@ export const generateMetadata: DynamicMetadata = async ({
 
 	return {
 		title: newsPageData.data?.data.attributes.page_title,
+		robots: 'index, follow',
 	};
 };
 

@@ -36,6 +36,20 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: projectDetailPageData.data?.data.attributes.page_title,
 		description: projectDetailPageData.data?.data.attributes.about_section_text,
+		openGraph: {
+			title: projectDetailPageData.data?.data.attributes.page_title,
+			description: projectDetailPageData.data?.data.attributes.about_section_text,
+			images: [
+				{
+					url: getBackendImage(
+						projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url,
+					),
+					width: projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width,
+					height: projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height,
+					alt: projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name,
+				}
+			]
+		}
 	};
 };
 

@@ -28,6 +28,18 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: aboutPageData.data?.data.attributes.page_title,
 		description: aboutPageData.data?.data.attributes.heading_section_text,
+		openGraph: {
+			title: aboutPageData.data?.data.attributes.page_title,
+			description: aboutPageData.data?.data.attributes.heading_section_text,
+			images: [
+				{
+					url: getBackendImage(aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.url),
+					width: aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.width,
+					height: aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.height,
+					alt: aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.name,
+				},
+			]
+		}
 	};
 };
 
