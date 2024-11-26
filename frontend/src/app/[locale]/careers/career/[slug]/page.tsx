@@ -1,28 +1,38 @@
+import { getVacancy } from '@/api/vacancies/getVanacy.api';
+import { CareerForm } from '@/components/form/CareerForm';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
-import Image from 'next/image';
-import Factory from '@public/facroty.png';
-import { RouterConfig } from '@/configs/router.config';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { CareerForm } from '@/components/form/CareerForm';
-import { getVacancy } from '@/api/vacancies/getVanacy.api';
+import { RouterConfig } from '@/configs/router.config';
 import { redirect } from '@/i18n/routing';
+import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { Time } from '@/utils/time';
+import Factory from '@public/facroty.png';
 import Markdown from 'markdown-to-jsx';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
 }): Promise<Metadata> => {
 	const { locale, slug } = await params;
 
-	const aboutPageData = await getVacancy(slug ?? '', locale);
+	const vacancyPage = await getVacancy(slug ?? '', locale);
 
 	return {
-		title: aboutPageData.data?.vacancyName,
-		description: aboutPageData.data?.vacancyDescription,
+		title: vacancyPage.data?.vacancyName,
+		description: vacancyPage.data?.vacancyDescription,
+		robots: 'index, follow',
+		openGraph: {
+			title: vacancyPage.data?.vacancyName,
+			description: vacancyPage.data?.vacancyDescription,
+			locale: locale,
+			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok career'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok karyera'],
+			type: 'article',
+			publishedTime: Time(vacancyPage.data?.vacancyPublishedDate).format(),
+			expirationTime: Time(vacancyPage.data?.vacancyClosingDate).format(),
+		}
 	};
 };
 

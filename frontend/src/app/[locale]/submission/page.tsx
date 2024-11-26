@@ -21,6 +21,30 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: grmSubmissionPageData.data?.data.attributes.page_title,
 		description: grmSubmissionPageData.data?.data.attributes.about_text,
+		robots: 'index, follow',
+		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok GRM submission'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok GRM jo\'natish'],
+		openGraph: {
+			title: grmSubmissionPageData.data?.data.attributes.page_title,
+			description: grmSubmissionPageData.data?.data.attributes.about_text,
+			locale: locale,
+			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok GRM submission'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok GRM jo\'natish'],
+			images: [
+				{
+					url: getBackendImage(
+						grmSubmissionPageData.data?.data.attributes.form_picture.data
+							.attributes.url,
+					),
+					width:
+						grmSubmissionPageData.data?.data.attributes.form_picture.data
+							.attributes.width,
+					height:
+						grmSubmissionPageData.data?.data.attributes.form_picture.data
+							.attributes.height,
+					alt: grmSubmissionPageData.data?.data.attributes.form_picture.data
+						.attributes.name,
+				},
+			]
+		}
 	};
 };
 

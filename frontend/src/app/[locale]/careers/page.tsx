@@ -24,6 +24,26 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: aboutPageData.data?.data.attributes.page_title,
 		description: aboutPageData.data?.data.attributes.heading_about_text,
+		robots: 'index, follow',
+		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok vacancies'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok vakansiyalar'],
+		openGraph: {
+			title: aboutPageData.data?.data.attributes.page_title,
+			description: aboutPageData.data?.data.attributes.heading_about_text,
+			locale: locale,
+			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok vacancies'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok vakansiyalar'],
+			images: [
+				{
+					url: getBackendImage(
+						aboutPageData.data?.data.attributes.heading_picture.data.attributes.url,
+					),
+					width:
+						aboutPageData.data?.data.attributes.heading_picture.data.attributes.width,
+					height:
+						aboutPageData.data?.data.attributes.heading_picture.data.attributes.height,
+					alt: aboutPageData.data?.data.attributes.heading_picture.data.attributes.name,
+				},
+			],
+		}
 	};
 };
 

@@ -24,6 +24,29 @@ export const generateMetadata: DynamicMetadata = async ({
 		title: organizationPageData.data?.data.attributes.page_title,
 		description:
 			organizationPageData.data?.data.attributes.managers_section_text,
+		robots: 'index, follow',
+		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok managers'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok boshqaruv organlari'],
+		openGraph: {
+			title: organizationPageData.data?.data.attributes.page_title,
+			description:
+				organizationPageData.data?.data.attributes.managers_section_text,
+			images: [
+				{
+					url: getBackendImage(
+						organizationPageData.data?.data.attributes.heading_section_picture
+							.data.attributes.url,
+					),
+					width:
+						organizationPageData.data?.data.attributes.heading_section_picture
+							.data.attributes.width,
+					height:
+						organizationPageData.data?.data.attributes.heading_section_picture
+							.data.attributes.height,
+					alt: organizationPageData.data?.data.attributes.heading_section_picture
+						.data.attributes.name,
+				},
+			]
+		}
 	};
 };
 

@@ -23,6 +23,33 @@ export const generateMetadata: DynamicMetadata = async ({
 
 	return {
 		title: contactPageData.data?.data.attributes.page_title,
+		description: contactPageData.data?.data.attributes.heading_title,
+		robots: 'index, follow',
+		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok contact us'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok biz bilan bog\'lanish'],
+		openGraph: {
+			title: contactPageData.data?.data.attributes.page_title,
+			description: contactPageData.data?.data.attributes.heading_title,
+			locale: locale,
+			images: [
+				{
+					url: getBackendImage(
+						contactPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.url,
+					),
+					width:
+						contactPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.width,
+					height:
+						contactPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.height,
+					alt: contactPageData.data?.data.attributes.heading_section_picture.data
+						.attributes.name,
+				},
+			],
+			type: 'website',
+			emails: contactPageData.data?.data.attributes.email,
+			phoneNumbers: contactPageData.data?.data.attributes.phone,
+		}
 	};
 };
 

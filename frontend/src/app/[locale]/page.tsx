@@ -40,6 +40,26 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: aboutPageData.data?.data.attributes.page_title,
 		description: aboutPageData.data?.data.attributes.about_section_text,
+		robots: 'index, follow',
+		openGraph: {
+			title: aboutPageData.data?.data.attributes.page_title,
+			description: aboutPageData.data?.data.attributes.about_section_text,
+			type: 'website',
+			locale: locale,
+			images: [
+				{
+					url: getBackendImage(
+						aboutPageData.data?.data.attributes.about_section_first_image
+							.data.attributes.url,
+					),
+					width: aboutPageData.data?.data.attributes.about_section_first_image
+						.data.attributes.width,
+					height: aboutPageData.data?.data.attributes.about_section_first_image.data.attributes.height,
+					alt: aboutPageData.data?.data.attributes.about_section_first_image
+						.data.attributes.name,
+				},
+			],
+		}
 	};
 };
 
@@ -79,20 +99,20 @@ const HomePage: PageType = async ({ params }) => {
 						slides={
 							carousel.data?.data
 								? carousel.data?.data.map((item) => (
-										<CarouselItem
-											key={item.id}
-											image={{
-												url: getBackendImage(
-													item.attributes.picture.data.attributes.url,
-												),
-												width: item.attributes.picture.data.attributes.width,
-												height: item.attributes.picture.data.attributes.height,
-												name: item.attributes.picture.data.attributes.name,
-											}}
-											title={item.attributes.title}
-											description={item.attributes.text}
-										/>
-									))
+									<CarouselItem
+										key={item.id}
+										image={{
+											url: getBackendImage(
+												item.attributes.picture.data.attributes.url,
+											),
+											width: item.attributes.picture.data.attributes.width,
+											height: item.attributes.picture.data.attributes.height,
+											name: item.attributes.picture.data.attributes.name,
+										}}
+										title={item.attributes.title}
+										description={item.attributes.text}
+									/>
+								))
 								: []
 						}
 						showCounter={true}
@@ -321,22 +341,22 @@ const HomePage: PageType = async ({ params }) => {
 							data={
 								sponsors.data?.data
 									? sponsors.data?.data.map((sponsor) => ({
-											color: sponsor.attributes.sponsor_color,
-											name: sponsor.attributes.sponsor_name,
-											value: sponsor.attributes.sponsor_value,
-											image: {
-												url: getBackendImage(
-													sponsor.attributes.sponsor_logo.data.attributes.url,
-												),
-												width:
-													sponsor.attributes.sponsor_logo.data.attributes.width,
-												height:
-													sponsor.attributes.sponsor_logo.data.attributes
-														.height,
-												name: sponsor.attributes.sponsor_logo.data.attributes
-													.name as string,
-											},
-										}))
+										color: sponsor.attributes.sponsor_color,
+										name: sponsor.attributes.sponsor_name,
+										value: sponsor.attributes.sponsor_value,
+										image: {
+											url: getBackendImage(
+												sponsor.attributes.sponsor_logo.data.attributes.url,
+											),
+											width:
+												sponsor.attributes.sponsor_logo.data.attributes.width,
+											height:
+												sponsor.attributes.sponsor_logo.data.attributes
+													.height,
+											name: sponsor.attributes.sponsor_logo.data.attributes
+												.name as string,
+										},
+									}))
 									: []
 							}
 						/>

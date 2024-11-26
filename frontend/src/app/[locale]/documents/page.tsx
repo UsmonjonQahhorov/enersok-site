@@ -20,6 +20,25 @@ export const generateMetadata: DynamicMetadata = async ({
 	return {
 		title: DGPageData.data?.data.attributes.page_title,
 		description: DGPageData.data?.data.attributes.about_text,
+		robots: 'index, follow',
+		openGraph: {
+			title: DGPageData.data?.data.attributes.page_title,
+			description: DGPageData.data?.data.attributes.about_text,
+			locale: locale,
+			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok documents and guidelines'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok hujjatlar va qo\'llanmalar'],
+			images: [
+				{
+					url: getBackendImage(
+						DGPageData.data?.data.attributes.heading_image.data.attributes.url,
+					),
+					width:
+						DGPageData.data?.data.attributes.heading_image.data.attributes.width,
+					height:
+						DGPageData.data?.data.attributes.heading_image.data.attributes.height,
+					alt: DGPageData.data?.data.attributes.heading_image.data.attributes.name,
+				},
+			],
+		}
 	};
 };
 
