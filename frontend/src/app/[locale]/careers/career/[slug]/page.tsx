@@ -13,8 +13,9 @@ import { Time } from '@/utils/time';
 import Markdown from 'markdown-to-jsx';
 import type { Metadata } from 'next';
 
-export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
-
+export const generateMetadata: DynamicMetadata = async ({
+	params,
+}): Promise<Metadata> => {
 	const { locale, slug } = await params;
 
 	const aboutPageData = await getVacancy(slug ?? '', locale);
@@ -22,8 +23,8 @@ export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Met
 	return {
 		title: aboutPageData.data?.vacancyName,
 		description: aboutPageData.data?.vacancyDescription,
-	}
-}
+	};
+};
 
 const SingleCareerPage: PageType = async ({ params }) => {
 	const { locale, slug } = await params;
@@ -32,7 +33,7 @@ const SingleCareerPage: PageType = async ({ params }) => {
 			href: RouterConfig.Careers,
 			locale,
 		});
-		return
+		return;
 	}
 	const vacancyPageData = await getVacancy(slug, locale);
 
@@ -46,16 +47,19 @@ const SingleCareerPage: PageType = async ({ params }) => {
 	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	const breadcrumbsPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
 	const locationLocale = locale === 'en' ? 'Location' : 'Joylashuv';
-	const postingDateLocale = locale === 'en' ? 'Posting Date' : 'E’lon qilingan sana';
-	const closingDateLocale = locale === 'en' ? 'Closing Date' : 'Yopilish sanasi';
-	const formTitle = locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
+	const postingDateLocale =
+		locale === 'en' ? 'Posting Date' : 'E’lon qilingan sana';
+	const closingDateLocale =
+		locale === 'en' ? 'Closing Date' : 'Yopilish sanasi';
+	const formTitle =
+		locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
 	const email = locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochtangiz';
 	const message = locale === 'en' ? 'Message' : 'Xabar';
 	const name = locale === 'en' ? 'Your full name' : 'To’liq ismingiz';
 	const phone = locale === 'en' ? 'Your phone' : 'Telefon raqamingiz';
-	const sumbmit = locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
+	const sumbmit =
+		locale === 'en' ? 'Send your resume' : 'Sizning rezumeingizni yuboring';
 	const file = locale === 'en' ? 'File' : 'Fayl';
-
 
 	return (
 		<>
@@ -67,7 +71,7 @@ const SingleCareerPage: PageType = async ({ params }) => {
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.Careers}
 					/>
-					<Heading className="!leading-[normal] text-secondary w-1/2 uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
+					<Heading className="!leading-[normal] text-secondary w-full uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
 						{vacancyPageData.data?.vacancyName}
 					</Heading>
 					<div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-16">
@@ -85,7 +89,9 @@ const SingleCareerPage: PageType = async ({ params }) => {
 									{postingDateLocale}
 								</Paragraph>
 								<Paragraph className="text-xl text-secondary">
-									{Time(vacancyPageData.data?.vacancyPublishedDate).format('DD.MM.YYYY')}
+									{Time(vacancyPageData.data?.vacancyPublishedDate).format(
+										'DD.MM.YYYY',
+									)}
 								</Paragraph>
 							</div>
 							<div className="flex flex-col items-start gap-y-2">
@@ -93,7 +99,9 @@ const SingleCareerPage: PageType = async ({ params }) => {
 									{closingDateLocale}
 								</Paragraph>
 								<Paragraph className="text-xl text-secondary">
-									{Time(vacancyPageData.data?.vacancyClosingDate).format('DD.MM.YYYY')}
+									{Time(vacancyPageData.data?.vacancyClosingDate).format(
+										'DD.MM.YYYY',
+									)}
 								</Paragraph>
 							</div>
 						</div>
@@ -102,14 +110,14 @@ const SingleCareerPage: PageType = async ({ params }) => {
 				<Image
 					src={Factory}
 					alt="Banner Enersok"
-					className="absolute hidden lg:block bottom-[26px] right-[122px]"
+					className="absolute hidden lg:block bottom-[26px] right-[122px] bg-blend-multiply opacity-40"
 					priority={true}
 				/>
 			</section>
-			<section className='[&>form]:flex [&>form]:lg:hidden'>
+			<section className="[&>form]:flex [&>form]:lg:hidden">
 				<Container className="py-[80px] lg:pt-[100px] lg:pb-[170px] grid lg:grid-cols-2 lg:gap-x-40 [&>form]:hidden [&>form]:lg:flex">
 					<article className="flex flex-col gap-y-11 prose *:text-secondary prose-p:text-secondary prose-headings:text-secondary">
-						<Markdown>
+						<Markdown className="prose text-wrap">
 							{vacancyPageData.data?.vacancyDescription || ''}
 						</Markdown>
 						{/* <div className="flex flex-col">

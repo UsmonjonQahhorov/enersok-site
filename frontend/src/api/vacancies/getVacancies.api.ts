@@ -11,6 +11,10 @@ export const getVacancies = async (
 		`/vacancies?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&populate=localizations&locale=${locale}`,
 		{
 			method: 'GET',
+			cache: 'force-cache',
+			next: {
+				tags: ['vacancies'],
+			},
 		},
 	);
 	return response;

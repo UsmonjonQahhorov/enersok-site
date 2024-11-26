@@ -12,26 +12,32 @@ import Image from 'next/image';
 // import Factory from '@public/factory2.png';
 // import Banner from '@public/submission-banner.png';
 
-export const generateMetadata: DynamicMetadata = async ({ params }): Promise<Metadata> => {
-
+export const generateMetadata: DynamicMetadata = async ({
+	params,
+}): Promise<Metadata> => {
 	const { locale } = await params;
 	const grmSubmissionPageData = await getGRMSubmissionPage(locale);
 
 	return {
 		title: grmSubmissionPageData.data?.data.attributes.page_title,
 		description: grmSubmissionPageData.data?.data.attributes.about_text,
-	}
-}
+	};
+};
 
 const GRMSubmissionPage: PageType = async ({ params }) => {
 	const { locale } = await params;
 	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale = locale === 'en' ? 'GRM Submission' : 'GRM Jo\'natish';
-	const formNameLocale = locale === 'en' ? 'Your full name' : 'Sizning to\'liq ismingiz';
-	const formEmailLocale = locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
-	const formPhoneLocale = locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
+	const breadcrumPageLocale =
+		locale === 'en' ? 'GRM Submission' : "GRM Jo'natish";
+	const formNameLocale =
+		locale === 'en' ? 'Your full name' : "Sizning to'liq ismingiz";
+	const formEmailLocale =
+		locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
+	const formPhoneLocale =
+		locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
 	const formMessageLocale = locale === 'en' ? 'Message' : 'Xabar';
-	const formSubmitLocale = locale === 'en' ? 'Submit the form' : 'Formani jo\'natish';
+	const formSubmitLocale =
+		locale === 'en' ? 'Submit the form' : "Formani jo'natish";
 
 	const grmSubmissionPageData = await getGRMSubmissionPage(locale);
 
@@ -48,9 +54,7 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 					<Heading className="!leading-[normal] text-secondary uppercase pt-[32px] lg:pt-[75px] text-5xl lg:text-[100px]">
 						{grmSubmissionPageData.data?.data.attributes.heading_title}
 					</Heading>
-					<Paragraph
-						className="w-full text-sm lg:text-2xl pb-7 py-[30px] text-secondary"
-					>
+					<Paragraph className="w-full text-sm lg:text-2xl pb-7 py-[30px] text-secondary">
 						{grmSubmissionPageData.data?.data.attributes.about_text}
 					</Paragraph>
 					<div className="lg:grid lg:grid-cols-[6fr,4fr] gap-x-7 pb-8 md:pb-[80px]">
@@ -63,10 +67,22 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 						/>
 						<div className="rounded-xl hidden lg:block">
 							<Image
-								src={getBackendImage(grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.url)}
-								width={grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.width}
-								height={grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.height}
-								alt={grmSubmissionPageData.data?.data.attributes.form_picture.data.attributes.name || ''}
+								src={getBackendImage(
+									grmSubmissionPageData.data?.data.attributes.form_picture.data
+										.attributes.url,
+								)}
+								width={
+									grmSubmissionPageData.data?.data.attributes.form_picture.data
+										.attributes.width
+								}
+								height={
+									grmSubmissionPageData.data?.data.attributes.form_picture.data
+										.attributes.height
+								}
+								alt={
+									grmSubmissionPageData.data?.data.attributes.form_picture.data
+										.attributes.name || ''
+								}
 								quality={100}
 								className="w-full h-full object-cover object-center rounded-xl"
 							/>
@@ -74,19 +90,40 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 					</div>
 				</Container>
 				<Image
-					src={getBackendImage(grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.url)}
-					width={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.width}
-					height={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.height}
-					alt={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.name || ''}
-					className="absolute bottom-[-100px] right-[-100px] rotate-x-180 z-[1]"
+					src={getBackendImage(
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.url,
+					)}
+					width={
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.width
+					}
+					height={
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.height
+					}
+					alt={
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.name || ''
+					}
+					className="absolute bottom-[-100px] right-[-100px] rotate-x-180 z-[1] bg-blend-darken opacity-80"
 					priority={true}
 				/>
 				<Image
-					src={getBackendImage(grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.url)}
-					width={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.width}
-					height={grmSubmissionPageData.data?.data.attributes.background_image.data.attributes.height}
+					src={getBackendImage(
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.url,
+					)}
+					width={
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.width
+					}
+					height={
+						grmSubmissionPageData.data?.data.attributes.background_image.data
+							.attributes.height
+					}
 					alt="Banner Enersok"
-					className="absolute bottom-[-20px] left-[-100px] z-[1]"
+					className="absolute bottom-[-20px] left-[-100px] z-[1] bg-blend-darken opacity-80"
 					priority={true}
 				/>
 			</section>

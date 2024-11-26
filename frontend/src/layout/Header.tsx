@@ -6,22 +6,30 @@ import { Container } from '@/components/ui/Container';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
-import { DesktopNavigation, MobileNavigation } from './components';
+import { DesktopNavigation } from './components/DesktopNavigation';
+import { MobileNavigation } from './components/MobileNavigation';
 
 export const Header: FC<HeaderProps> = async ({ className }) => {
-
 	const headerData = await getHeader();
 
 	return (
 		<header
-			className={cn(className, 'py-3 sm:py-6 xl:py-12 absolute top-0 left-0 w-full z-[40]')}
+			className={cn(
+				className,
+				'py-3 sm:py-6 xl:py-12 absolute top-0 left-0 w-full z-[40]',
+			)}
 		>
 			<Container className="flex justify-between items-center">
 				<Link href={'/'}>
 					<Image
-						src={getBackendImage(headerData.data?.data.attributes.logo.data.attributes.formats.thumbnail.url)}
+						src={getBackendImage(
+							headerData.data?.data.attributes.logo.data.attributes.formats
+								.thumbnail.url,
+						)}
 						width={headerData.data?.data.attributes.logo.data.attributes.width}
-						height={headerData.data?.data.attributes.logo.data.attributes.height}
+						height={
+							headerData.data?.data.attributes.logo.data.attributes.height
+						}
 						alt="Enersok Logo"
 						priority={true}
 						className="w-[159px] sm:w-[205px] h-fit"
