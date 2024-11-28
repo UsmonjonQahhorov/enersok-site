@@ -39,7 +39,7 @@ export const NewCard: FC<NewCardProps> = ({
 				</Link>
 				<Link href={url}>
 					<Heading
-						as="h4"
+						as="h2"
 						className="text-2xl lg:text-[24px] pt-3 md:pt-0 hover:text-primary duration-300 text-wrap break-all"
 					>
 						{title}

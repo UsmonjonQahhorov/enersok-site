@@ -27,7 +27,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 				/>
 			</div>
 			<Heading
-				as="h5"
+				as="h3"
 				className="pt-5 text-2xl md:text-[32px] leading-[34px] font-normal text-secondary hover:text-primary duration-300"
 			>
 				{name}

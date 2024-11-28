@@ -99,7 +99,7 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 					</Paragraph>
 					<div className="pt-20 pb-[50px] md:py-[100px]">
 						<Heading
-							as="h3"
+							as="h2"
 							className="!leading-[normal] text-secondary uppercase text-[32px] lg:text-[64px] lg:max-w-[50%] pb-8 md:pb-16"
 						>
 							{

@@ -22,6 +22,7 @@ import { NewsCarouselItem } from './_components/NewsCarouselItem';
 import { getNews } from '@/api/news/getNews.api';
 import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
+import { RouterConfig } from '@/configs/router.config';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import PeopelsImage from '@public/image (1).png';
@@ -71,7 +72,7 @@ const HomePage: PageType = async ({ params }) => {
 	const sponsors = await getSponsors(locale);
 	const newsData = await getNews(locale, 1, 8);
 
-	const readMoreLocale = locale === 'en' ? 'Read more' : 'Batafsil';
+	const readMoreLocale = locale === 'en' ? 'Read more about us' : 'Biz haqimizda ko\'proq o\'qing';
 	const carouselButtonsText =
 		locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
 	const newsText = locale === 'en' ? 'News' : 'Yangiliklar';
@@ -149,7 +150,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div>
 							<Heading
 								size="base"
-								as="h3"
+								as="h2"
 								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_1_title}
@@ -164,7 +165,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div>
 							<Heading
 								size="base"
-								as="h3"
+								as="h2"
 								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_2_title}
@@ -179,7 +180,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div>
 							<Heading
 								size="base"
-								as="h3"
+								as="h2"
 								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_3_title}
@@ -217,7 +218,7 @@ const HomePage: PageType = async ({ params }) => {
 						/>
 						<div className="mb-auto">
 							<Heading
-								as="h3"
+								as="h2"
 								className="text-[32px] md:text-5xl 2xl:text-[64px] uppercase"
 							>
 								{homePageData.data?.data.attributes.about_section_title}
@@ -230,7 +231,7 @@ const HomePage: PageType = async ({ params }) => {
 							</Paragraph>
 							<Link
 								className="text-xl flex gap-3 items-center"
-								href={readMoreLink}
+								href={RouterConfig.AboutCompany}
 							>
 								{readMoreLocale}
 								<span>
@@ -262,7 +263,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
 							<Heading
 								size="lg"
-								as="h3"
+								as="h2"
 								className="md:text-2xl border-b border-black pb-6 mb-6"
 							>
 								{homePageData.data?.data.attributes.about_section_second_title}
@@ -291,7 +292,7 @@ const HomePage: PageType = async ({ params }) => {
 					)}
 				>
 					<div className="*:text-secondary">
-						<Heading as="h3" className={cn('text-[32px] md:text-[64px]')}>
+						<Heading as="h2" className={cn('text-[32px] md:text-[64px]')}>
 							{homePageData.data?.data.attributes.sponsors_section_title}
 						</Heading>
 						<Paragraph
@@ -301,7 +302,7 @@ const HomePage: PageType = async ({ params }) => {
 							{homePageData.data?.data.attributes.sponsors_section_text}
 						</Paragraph>
 						<div>
-							<Heading as="h3" size="xs" className="mt-8 md:mt-16 uppercase">
+							<Heading as="h2" size="xs" className="mt-8 md:mt-16 uppercase">
 								{
 									homePageData.data?.data.attributes
 										.sponsors_section_sponsors_title
@@ -491,13 +492,13 @@ const HomePage: PageType = async ({ params }) => {
 				<Container className="flex flex-col-reverse md:grid md:grid-cols-[1fr,0.8fr]">
 					<div className="*:text-secondary z-10">
 						<Heading
-							as="h3"
+							as="h2"
 							className="mt-6 md:mt-0 text-[32px] text-wrap md:text-4xl xl:text-[64px] !leading-[normal] max-w-[780px] uppercase"
 						>
 							{homePageData.data?.data.attributes.community_section_title}
 						</Heading>
 						<div>
-							<Heading as="h3" className="text-xs md:text-xl mt-10 md:mt-16">
+							<Heading as="h2" className="text-xs md:text-xl mt-10 md:mt-16">
 								{
 									homePageData.data?.data.attributes
 										.community_section_social_title

@@ -101,6 +101,11 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							}
 							className="object-cover my-8 xl:my-0 max-h-[250px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
+							placeholder='blur'
+							blurDataURL={getBackendImage(
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.url,
+							)}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase pb-8 xl:pt-[75px] xl:pb-[50px] text-5xl lg:text-[100px]">
 							{
@@ -110,7 +115,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						</Heading>
 						<div className="pb-8 lg:pb-12 border-b-[1px] border-solid border-secondaryOpacity3">
 							<Heading
-								as="h4"
+								as="h2"
 								className="text-base lg:text-lg text-secondary font-semibold pb-8 lg:pb-11"
 							>
 								{projectPeriodLocale}
@@ -151,7 +156,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						</div>
 						<div className="pt-11">
 							<Heading
-								as="h4"
+								as="h2"
 								className="text-base lg:text-lg text-secondary font-semibold pb-9"
 							>
 								{projectLocationLocale}
@@ -193,6 +198,11 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							}
 							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
+							placeholder='blur'
+							blurDataURL={getBackendImage(
+								projectDetailPageData.data?.data.attributes
+									.heading_section_picture.data.attributes.url,
+							)}
 						/>
 					</div>
 				</Container>
@@ -220,7 +230,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 			<section>
 				<Container className="py-20 lg:py-40">
 					<Heading
-						as="h3"
+						as="h2"
 						className="text-secondary text-[32px] lg:text-6xl uppercase pb-3 lg:pb-11"
 					>
 						{projectDetailPageData.data?.data.attributes.info_section_title}
@@ -354,7 +364,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 				<Container className="py-20 lg:py-[220px] grid grid-cols-1 lg:grid-cols-2 lg:gap-x-20 items-center">
 					<div>
 						<Heading
-							as="h3"
+							as="h2"
 							className="text-[32px] lg:text-[64px] text-secondary uppercase !leading-[normal] pb-8 lg:pb-[60px]"
 						>
 							{projectDetailPageData.data?.data.attributes.follow_section_title}

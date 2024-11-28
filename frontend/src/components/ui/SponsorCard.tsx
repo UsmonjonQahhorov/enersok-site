@@ -27,7 +27,7 @@ export const SponsorCard: FC<SponsorCardProps> = ({
 			/>
 			<div className="ml-3 md:ml-0 pl-3 md:pl-0 border-l-[1px] md:border-l-0 border-secondaryOpacity3 flex flex-col md:block">
 				<Heading
-					as="h5"
+					as="h3"
 					className="text-sm lg:text-xl text-secondary md:pt-8 md:pb-3 text-left md:text-center"
 				>
 					{title}

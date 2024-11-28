@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
 				protocol: 'http',
 				hostname: 'localhost',
 			},
+			{
+				protocol: 'http',
+				hostname: 'site.enersok.uz',
+			}
 		],
 	},
 	headers: async () => {

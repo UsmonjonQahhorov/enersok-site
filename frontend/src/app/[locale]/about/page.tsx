@@ -65,7 +65,6 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							urlPage={RouterConfig.AboutCompany}
 						/>
 						<Image
-							quality={100}
 							src={getBackendImage(
 								aboutPageData.data?.data.attributes.heading_section_picture.data
 									.attributes.url,
@@ -91,7 +90,11 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 					</div>
 					<div className="relative hidden xl:block z-10 pl-14 min-h-[664px] max-h-[664px] h-full">
 						<Image
-							quality={100}
+							placeholder='blur'
+							blurDataURL={getBackendImage(
+								aboutPageData.data?.data.attributes.heading_section_picture.data
+									.attributes.url,
+							)}
 							src={getBackendImage(
 								aboutPageData.data?.data.attributes.heading_section_picture.data
 									.attributes.url,
@@ -111,7 +114,6 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 					</div>
 				</Container>
 				<Image
-					quality={100}
 					src={getBackendImage(
 						aboutPageData.data?.data.attributes
 							.heading_section_background_picture.data.attributes.url,
@@ -219,7 +221,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 								)}
 							>
 								<Heading
-									as="h4"
+									as="h3"
 									className="text-[32px] break-all lg:text-[80px] text-button1 uppercase"
 								>
 									{development.attributes.development_year}

@@ -1,3 +1,4 @@
+import 'server-only';
 import type { Locale } from '@/configs/i18n.config';
 import type { FullNews } from '@/types/news.types';
 import { http } from '@/utils/http';

@@ -111,7 +111,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 				<Container className="pt-12 pb-[110px] lg:pt-[133px] lg:pb-[160px]">
 					<div className="w-full lg:w-2/5">
 						<Heading
-							as="h3"
+							as="h2"
 							className="text-[32px] lg:text-[64px] pb-[18px] lg:pb-0 text-secondary uppercase"
 						>
 							{sponsorsPageData.data?.data.attributes.about_section_title}
@@ -123,7 +123,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 					<div className="pt-[136px] md:pt-20">
 						<div className="w-full grid grid-cols-[0.1fr,0.9fr] md:flex md:flex-col items-start md:items-center relative">
 							<Heading
-								as="h4"
+								as="h2"
 								className="text-2xl hidden md:block text-secondary absolute top-[-12px] px-4 bg-white -translate-x-1/2 left-[50%]"
 							>
 								{sponsorsPageData.data?.data.attributes.sponsors_section_title}
@@ -140,7 +140,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							/>
 							<div className="grid md:grid-cols-4 gap-y-[10px] md:gap-x-3">
 								<Heading
-									as="h4"
+									as="h2"
 									className="text-2xl absolute -top-[48px] text-secondary md:hidden"
 								>
 									{
@@ -169,7 +169,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 
 								<div className="flex md:hidden flex-col md:items-center">
 									<Heading
-										as="h5"
+										as="h2"
 										className="text-base lg:text-2xl text-left md:text-center pt-6 pb-3 md:py-3"
 									>
 										{holdingCompanyLocale}
@@ -183,7 +183,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 								</div>
 								<div className="flex md:hidden flex-col md:items-center">
 									<Heading
-										as="h5"
+										as="h2"
 										className="text-base lg:text-2xl text-left md:text-center pt-8 pb-3 md:py-3"
 									>
 										{projectCompanyLocale}
@@ -204,7 +204,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							/>
 							<div className="hidden md:flex flex-col items-center">
 								<Heading
-									as="h5"
+									as="h2"
 									className="text-base lg:text-2xl text-center py-3"
 								>
 									Holding Сompany
@@ -218,7 +218,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							</div>
 							<div className="hidden md:flex flex-col items-center">
 								<Heading
-									as="h5"
+									as="h2"
 									className="text-base lg:text-2xl text-center py-3"
 								>
 									Project Сompany
