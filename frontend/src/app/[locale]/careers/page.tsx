@@ -12,6 +12,7 @@ import Image from 'next/image';
 import { PagePagination } from './_components/PagePagination';
 import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
+import { getBlurImage } from '@/utils/getBlurImage';
 // import Factory from '@public/facroty.png';
 // import Banner from '@public/vacancy-banner.png';
 
@@ -58,6 +59,9 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 	const careersPageData = await getVacanciesPage(locale);
 	const vacancies = await getVacancies(locale, page);
 
+	const headingBlurImage = await getBlurImage(getBackendImage(
+		careersPageData.data?.data.attributes.heading_picture.data.attributes.url));
+
 	return (
 		<>
 			{/* Hero Section */}
@@ -83,7 +87,6 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 								careersPageData.data?.data.attributes.heading_picture.data
 									.attributes.height
 							}
-							quality={100}
 							alt={
 								careersPageData.data?.data.attributes.heading_picture.data
 									.attributes.name || 'Careers Banner Enersok'
@@ -91,10 +94,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 							className="object-cover object-center mt-8 max-h-[250px] md:max-h-[350px] block lg:hidden rounded-xl h-full"
 							priority={true}
 							placeholder='blur'
-							blurDataURL={getBackendImage(
-								careersPageData.data?.data.attributes.heading_picture.data
-									.attributes.url,
-							)}
+							blurDataURL={headingBlurImage}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px]">
 							{careersPageData.data?.data.attributes.heading_title}
@@ -129,10 +129,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
 							placeholder='blur'
-							blurDataURL={getBackendImage(
-								careersPageData.data?.data.attributes.heading_picture.data
-									.attributes.url,
-							)}
+							blurDataURL={headingBlurImage}
 						/>
 					</div>
 				</Container>

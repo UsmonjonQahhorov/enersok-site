@@ -6,13 +6,15 @@ import { EmployeeCard } from '@/components/ui/EmployeeCard';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 // import { Link } from '@/i18n/routing';
 // import Factory from '@public/facroty.png';
 // import Employee from '@public/employee.png';
+
+export const dynamic: RenderBehavior = 'force-static'
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,

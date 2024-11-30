@@ -7,7 +7,7 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { SponsorCard } from '@/components/ui/SponsorCard';
 import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Sponsor5 from '@public/logo.png';
 import Line1 from '@public/sponsors/line1.png';
@@ -20,6 +20,8 @@ import Image from 'next/image';
 // import Sponsor2 from '@public/sponsors/sponsor2.png';
 // import Sponsor3 from '@public/sponsors/sponsor3.png';
 // import Sponsor4 from '@public/sponsors/sponsor4.png';
+
+export const dynamic: RenderBehavior = 'force-static'
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,

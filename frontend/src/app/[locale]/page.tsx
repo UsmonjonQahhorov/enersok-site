@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Link } from '@/i18n/routing';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
 import EcoFriendlyImage from '@public/ecoFriendly.svg';
@@ -23,6 +23,8 @@ import { getNews } from '@/api/news/getNews.api';
 import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
 import { RouterConfig } from '@/configs/router.config';
+import { getBlurImage } from '@/utils/getBlurImage';
+import { Suspense } from 'react';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import PeopelsImage from '@public/image (1).png';
@@ -31,6 +33,8 @@ import { RouterConfig } from '@/configs/router.config';
 // import Image3 from '@public/image (6).png';
 // import Image4 from '@public/image (7).png';
 // import StationImage from '@public/Rectangle 6.png';
+
+export const dynamic: RenderBehavior = 'force-static'
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -72,11 +76,10 @@ const HomePage: PageType = async ({ params }) => {
 	const sponsors = await getSponsors(locale);
 	const newsData = await getNews(locale, 1, 8);
 
-	const readMoreLocale = locale === 'en' ? 'Read more about us' : 'Biz haqimizda ko\'proq o\'qing';
+	const readMoreLinkLocale = locale === 'en' ? 'Read more about us' : 'Biz haqimizda ko\'proq o\'qing';
 	const carouselButtonsText =
 		locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
 	const newsText = locale === 'en' ? 'News' : 'Yangiliklar';
-	const readMoreLink = '/about';
 
 	// i need array, but every array item should contain 4 carousel items
 	const carouselItems = newsData.data?.data || [];
@@ -88,6 +91,21 @@ const HomePage: PageType = async ({ params }) => {
 		key: `carousel-group-${index}`,
 		items,
 	}));
+
+	const aboutFirstImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.about_section_first_image.data.attributes.url));
+	const aboutSecondImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.about_section_second_image.data.attributes.url));
+	const communityFirstImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_first_picture.data.attributes.url));
+	const communitySecondImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_second_picture.data.attributes.url));
+	const communityThirdImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_third_picture.data.attributes.url));
+	const communityFourthImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.url));
+	const communityBackgroundImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_background_picture.data.attributes.url));
 
 	return (
 		<>
@@ -215,6 +233,8 @@ const HomePage: PageType = async ({ params }) => {
 								homePageData.data?.data.attributes.about_section_second_image
 									.data.attributes.name || 'station'
 							}
+							placeholder='blur'
+							blurDataURL={aboutSecondImageBlur}
 						/>
 						<div className="mb-auto">
 							<Heading
@@ -233,7 +253,7 @@ const HomePage: PageType = async ({ params }) => {
 								className="text-xl flex gap-3 items-center"
 								href={RouterConfig.AboutCompany}
 							>
-								{readMoreLocale}
+								{readMoreLinkLocale}
 								<span>
 									<NextImage src={LinkImage} alt="Link" />
 								</span>
@@ -259,6 +279,8 @@ const HomePage: PageType = async ({ params }) => {
 									.data.attributes.name || 'people'
 							}
 							className="rounded-xl max-h-[360px] object-cover w-full"
+							placeholder='blur'
+							blurDataURL={aboutFirstImageBlur}
 						/>
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
 							<Heading
@@ -382,7 +404,7 @@ const HomePage: PageType = async ({ params }) => {
 							.name as string
 					}
 					className="absolute hidden lg:block bottom-0 right-[50px] z-[1]"
-					priority={true}
+
 				/>
 			</section>
 
@@ -585,6 +607,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_first_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communityFirstImageBlur}
 						/>
 						<NextImage
 							className="col-start-1 row-span-2 place-self-center w-full rounded-lg"
@@ -605,6 +629,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_second_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communitySecondImageBlur}
 						/>
 						<NextImage
 							className="col-start-2 row-start-2 w-full rounded-lg"
@@ -625,6 +651,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_third_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communityThirdImageBlur}
 						/>
 						<NextImage
 							className="col-start-3 row-start-2 rounded-lg"
@@ -645,6 +673,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_fourth_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communityFourthImageBlur}
 						/>
 					</div>
 				</Container>
@@ -666,8 +696,9 @@ const HomePage: PageType = async ({ params }) => {
 							.community_section_background_picture.data.attributes
 							.name as string
 					}
+					placeholder='blur'
+					blurDataURL={communityBackgroundImageBlur}
 					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-darken opacity-40"
-					priority={true}
 				/>
 			</section>
 		</>

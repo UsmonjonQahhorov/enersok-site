@@ -7,14 +7,18 @@ import { Paragraph } from './Paragraph';
 import type { Image } from '@/types/shared.types';
 import Email from '@public/footer-icons/email2.svg';
 import Link from 'next/link';
+import { getBlurImage } from '@/utils/getBlurImage';
 
-export const EmployeeCard: FC<EmployeeCardProps> = ({
+export const EmployeeCard: FC<EmployeeCardProps> = async ({
 	image,
 	job,
 	name,
 	className,
 	email,
 }) => {
+
+	const blurImage = await getBlurImage(image.url);
+
 	return (
 		<article className={cn(className, 'flex flex-col gap-y-3')}>
 			<div className="rounded-xl w-full h-full max-h-[348px] md:max-h-[371px] min-h-[348px] md:min-h-[371px]">
@@ -24,6 +28,8 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({
 					width={image.width}
 					height={image.height}
 					className="object-cover object-center rounded-xl max-h-[348px] md:max-h-[371px] min-h-[348px] md:min-h-[371px] w-full h-full"
+					placeholder="blur"
+					blurDataURL={blurImage}
 				/>
 			</div>
 			<Heading
