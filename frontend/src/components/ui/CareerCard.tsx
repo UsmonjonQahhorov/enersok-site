@@ -28,7 +28,7 @@ export const CareerCard: FC<CareerCardProps> = ({
 			)}
 		>
 			<Heading
-				as="h4"
+				as="h3"
 				className="font-normal text-2xl md:text-[32px] pb-3 lg:pb-0"
 			>
 				{title}

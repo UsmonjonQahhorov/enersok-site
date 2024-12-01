@@ -7,8 +7,9 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
+import { getBlurImage } from '@/utils/getBlurImage';
 
-export const NewCard: FC<NewCardProps> = ({
+export const NewCard: FC<NewCardProps> = async ({
 	date,
 	time,
 	title,
@@ -16,6 +17,9 @@ export const NewCard: FC<NewCardProps> = ({
 	image,
 	url,
 }) => {
+
+	const blurImage = await getBlurImage(image.url);
+
 	return (
 		<article
 			className={cn(
@@ -35,11 +39,13 @@ export const NewCard: FC<NewCardProps> = ({
 						height={image.height}
 						alt="Enersok News Image"
 						className="min-h-[200px] sm:min-h-[287px] max-h-[200px] sm:max-h-[287px] w-full h-full object-cover object-center rounded-xl"
+						placeholder="blur"
+						blurDataURL={blurImage}
 					/>
 				</Link>
 				<Link href={url}>
 					<Heading
-						as="h4"
+						as="h2"
 						className="text-2xl lg:text-[24px] pt-3 md:pt-0 hover:text-primary duration-300 text-wrap break-all"
 					>
 						{title}

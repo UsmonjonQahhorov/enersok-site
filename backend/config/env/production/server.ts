@@ -4,7 +4,7 @@
 export default ({ env }) => ({
      host: env('HOST', '0.0.0.0'),
      port: env.int('PORT', 3014), // TODO: add right port
-     url: '', // TODO: add url here
+     url: 'http://api.enersok.uz',
      app: {
        keys: env.array('APP_KEYS'),
      },
