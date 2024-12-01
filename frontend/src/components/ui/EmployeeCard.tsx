@@ -1,4 +1,3 @@
-'use client';
 import { cn } from '@/utils/cn';
 import NextImage from 'next/image';
 import type { FC } from 'react';
