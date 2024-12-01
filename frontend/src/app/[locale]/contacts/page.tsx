@@ -6,13 +6,13 @@ import { GMap } from '@/components/ui/Map';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 import { RouterConfig } from '@/configs/router.config';
+import { Link } from '@/i18n/routing';
 import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import LinkedIn from '@public/socials/linked-in.svg';
 import Telegram from '@public/socials/telegram.svg';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 // import Factory from '@public/facroty.png';
 
 export const dynamic: RenderBehavior = 'force-static'

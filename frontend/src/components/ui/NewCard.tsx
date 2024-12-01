@@ -3,11 +3,11 @@ import { cn } from '@/utils/cn';
 import { Time } from '@/utils/time';
 import TimeIcon from '@public/time.svg';
 import NextImage from 'next/image';
-import Link from 'next/link';
 import type { FC } from 'react';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
 import { getBlurImage } from '@/utils/getBlurImage';
+import { Link } from '@/i18n/routing';
 
 export const NewCard: FC<NewCardProps> = async ({
 	date,

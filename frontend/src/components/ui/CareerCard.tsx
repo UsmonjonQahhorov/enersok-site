@@ -2,9 +2,9 @@ import { cn } from '@/utils/cn';
 import type { FC } from 'react';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
-import Link from 'next/link';
 import { Time } from '@/utils/time';
 import { getLocale } from '@/utils/getLocale.util';
+import { Link } from '@/i18n/routing';
 
 export const CareerCard: FC<CareerCardProps> = ({
 	endDate,

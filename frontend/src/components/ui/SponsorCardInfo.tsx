@@ -2,10 +2,10 @@ import type { Image } from '@/types/shared.types';
 import { cn } from '@/utils/cn';
 import IconLink from '@public/sponsors/link.svg';
 import NextImage from 'next/image';
-import Link from 'next/link';
 import type { FC } from 'react';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
+import { Link } from '@/i18n/routing';
 
 export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 	image,

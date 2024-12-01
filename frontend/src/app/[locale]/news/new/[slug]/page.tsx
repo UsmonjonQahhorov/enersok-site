@@ -54,7 +54,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 	const { locale, slug } = await params;
 	if (!slug) {
 		redirect({
-			href: RouterConfig.Careers,
+			href: RouterConfig.News,
 			locale,
 		});
 		return;
@@ -63,7 +63,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 
 	if (!singleNewsPageData.ok || !singleNewsPageData.data) {
 		redirect({
-			href: RouterConfig.Careers,
+			href: RouterConfig.News,
 			locale,
 		});
 	}

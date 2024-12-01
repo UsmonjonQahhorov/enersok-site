@@ -1,6 +1,6 @@
+import { Link } from '@/i18n/routing';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import Link from 'next/link';
 import type { FC } from 'react';
 
 export const SocialIcon: FC<SocialIconProps> = ({

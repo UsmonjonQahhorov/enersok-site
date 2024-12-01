@@ -7,7 +7,7 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 import type { Locale } from '@/configs/i18n.config';
 import { RouterConfig } from '@/configs/router.config';
-import { Link as NavigationLink } from '@/i18n/routing';
+import { Link } from '@/i18n/routing';
 import { mobileNavigation } from '@/locales/navigations';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
@@ -17,7 +17,6 @@ import Phone from '@public/footer-icons/phone.svg';
 import Time from '@public/footer-icons/time.svg';
 import LinkedIn from '@public/socials/linked-in.svg';
 import Telegram from '@public/socials/telegram.svg';
-import Link from 'next/link';
 
 export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 	const footerData = await getFooter(locale);
@@ -50,14 +49,14 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 					<ul className="flex flex-col text-left gap-y-1">
 						{mobileNavigation.map((menu) => (
 							<li key={menu.href}>
-								<NavigationLink
+								<Link
 									locale={locale}
 									className="text-2xl text-white font-normal hover:text-button1 duration-200"
 									href={menu.href}
 								>
 									{locale === 'en' && menu.name_en}
 									{locale === 'uz' && menu.name_uz}
-								</NavigationLink>
+								</Link>
 							</li>
 						))}
 					</ul>

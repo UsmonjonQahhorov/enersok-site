@@ -5,8 +5,8 @@ import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
 import type { Image } from '@/types/shared.types';
 import Email from '@public/footer-icons/email2.svg';
-import Link from 'next/link';
 import { getBlurImage } from '@/utils/getBlurImage';
+import { Link } from '@/i18n/routing';
 
 export const EmployeeCard: FC<EmployeeCardProps> = async ({
 	image,

@@ -1,11 +1,11 @@
 import { cn } from '@/utils/cn';
-import Link from 'next/link';
 import type { FC } from 'react';
 import { Paragraph } from './Paragraph';
 import Document from '@public/document.svg';
 import Download from '@public/download.svg';
 import Image from 'next/image';
 import { BASE_URL } from '@/configs/env.config';
+import { Link } from '@/i18n/routing';
 
 export const DownloadFile: FC<DownloadFileProps> = ({
 	className,

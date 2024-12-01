@@ -8,7 +8,7 @@ export const getVacancy = async (
 	locale: Locale = 'en',
 ): Promise<GetVacancyReturnType> => {
 	const response = await http<InitialResponse>(
-		`/vacancies?filters[slug]=${slug}&populate=localizations`,
+		`/vacancies?populate=localizations&filters[slug]=${slug}&`,
 	);
 
 	let vacancy: VacancyResponse | null = null;
