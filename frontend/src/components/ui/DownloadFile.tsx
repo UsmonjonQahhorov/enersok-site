@@ -5,6 +5,7 @@ import { Paragraph } from './Paragraph';
 import Document from '@public/document.svg';
 import Download from '@public/download.svg';
 import Image from 'next/image';
+import { BASE_URL } from '@/configs/env.config';
 
 export const DownloadFile: FC<DownloadFileProps> = ({
 	className,
@@ -24,7 +25,7 @@ export const DownloadFile: FC<DownloadFileProps> = ({
 			</div>
 			<Link
 				className="p-6 rounded-full md:bg-download"
-				href={url}
+				href={`${BASE_URL}${url}`}
 				target="_blank"
 			>
 				<Image src={Download} alt={'Enersok Download File'} />

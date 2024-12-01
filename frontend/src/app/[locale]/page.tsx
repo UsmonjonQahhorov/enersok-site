@@ -533,7 +533,7 @@ const HomePage: PageType = async ({ params }) => {
 										className="w-20 h-20 flex items-center justify-center rounded-full bg-white group hover:bg-[#198ABF] transition-all duration-200 ease-in-out"
 									>
 										<svg
-											className="fill-[#198ABF] group-hover:fill-white w-[25] h-[25]"
+											className="fill-[#198ABF] group-hover:fill-white w-[25px] h-[25px]"
 											version="1.1"
 											id="Layer_1"
 											xmlns="http://www.w3.org/2000/svg"
