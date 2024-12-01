@@ -32,7 +32,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				/>
 			</div>
 			<div className="flex flex-col gap-y-3 lg:gap-y-8">
-				<Heading as="h4" className="text-2xl lg:text-5xl text-secondary">
+				<Heading as="h3" className="text-2xl lg:text-5xl text-secondary">
 					{title}
 				</Heading>
 				<Paragraph className="text-sm lg:text-lg text-secondary">

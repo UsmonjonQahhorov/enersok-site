@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Link } from '@/i18n/routing';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
 import EcoFriendlyImage from '@public/ecoFriendly.svg';
@@ -22,6 +22,9 @@ import { NewsCarouselItem } from './_components/NewsCarouselItem';
 import { getNews } from '@/api/news/getNews.api';
 import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
+import { RouterConfig } from '@/configs/router.config';
+import { getBlurImage } from '@/utils/getBlurImage';
+import { Suspense } from 'react';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import PeopelsImage from '@public/image (1).png';
@@ -30,6 +33,8 @@ import type { Metadata } from 'next';
 // import Image3 from '@public/image (6).png';
 // import Image4 from '@public/image (7).png';
 // import StationImage from '@public/Rectangle 6.png';
+
+export const dynamic: RenderBehavior = 'force-static'
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -71,11 +76,10 @@ const HomePage: PageType = async ({ params }) => {
 	const sponsors = await getSponsors(locale);
 	const newsData = await getNews(locale, 1, 8);
 
-	const readMoreLocale = locale === 'en' ? 'Read more' : 'Batafsil';
+	const readMoreLinkLocale = locale === 'en' ? 'Read more about us' : 'Biz haqimizda ko\'proq o\'qing';
 	const carouselButtonsText =
 		locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
 	const newsText = locale === 'en' ? 'News' : 'Yangiliklar';
-	const readMoreLink = '/about';
 
 	// i need array, but every array item should contain 4 carousel items
 	const carouselItems = newsData.data?.data || [];
@@ -87,6 +91,21 @@ const HomePage: PageType = async ({ params }) => {
 		key: `carousel-group-${index}`,
 		items,
 	}));
+
+	const aboutFirstImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.about_section_first_image.data.attributes.url));
+	const aboutSecondImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.about_section_second_image.data.attributes.url));
+	const communityFirstImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_first_picture.data.attributes.url));
+	const communitySecondImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_second_picture.data.attributes.url));
+	const communityThirdImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_third_picture.data.attributes.url));
+	const communityFourthImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.url));
+	const communityBackgroundImageBlur = await getBlurImage(getBackendImage
+		(homePageData.data?.data.attributes.community_section_background_picture.data.attributes.url));
 
 	return (
 		<>
@@ -149,7 +168,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div>
 							<Heading
 								size="base"
-								as="h3"
+								as="h2"
 								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_1_title}
@@ -164,7 +183,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div>
 							<Heading
 								size="base"
-								as="h3"
+								as="h2"
 								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_2_title}
@@ -179,7 +198,7 @@ const HomePage: PageType = async ({ params }) => {
 						<div>
 							<Heading
 								size="base"
-								as="h3"
+								as="h2"
 								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_3_title}
@@ -214,10 +233,12 @@ const HomePage: PageType = async ({ params }) => {
 								homePageData.data?.data.attributes.about_section_second_image
 									.data.attributes.name || 'station'
 							}
+							placeholder='blur'
+							blurDataURL={aboutSecondImageBlur}
 						/>
 						<div className="mb-auto">
 							<Heading
-								as="h3"
+								as="h2"
 								className="text-[32px] md:text-5xl 2xl:text-[64px] uppercase"
 							>
 								{homePageData.data?.data.attributes.about_section_title}
@@ -230,9 +251,9 @@ const HomePage: PageType = async ({ params }) => {
 							</Paragraph>
 							<Link
 								className="text-xl flex gap-3 items-center"
-								href={readMoreLink}
+								href={RouterConfig.AboutCompany}
 							>
-								{readMoreLocale}
+								{readMoreLinkLocale}
 								<span>
 									<NextImage src={LinkImage} alt="Link" />
 								</span>
@@ -258,11 +279,13 @@ const HomePage: PageType = async ({ params }) => {
 									.data.attributes.name || 'people'
 							}
 							className="rounded-xl max-h-[360px] object-cover w-full"
+							placeholder='blur'
+							blurDataURL={aboutFirstImageBlur}
 						/>
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
 							<Heading
 								size="lg"
-								as="h3"
+								as="h2"
 								className="md:text-2xl border-b border-black pb-6 mb-6"
 							>
 								{homePageData.data?.data.attributes.about_section_second_title}
@@ -291,7 +314,7 @@ const HomePage: PageType = async ({ params }) => {
 					)}
 				>
 					<div className="*:text-secondary">
-						<Heading as="h3" className={cn('text-[32px] md:text-[64px]')}>
+						<Heading as="h2" className={cn('text-[32px] md:text-[64px]')}>
 							{homePageData.data?.data.attributes.sponsors_section_title}
 						</Heading>
 						<Paragraph
@@ -301,7 +324,7 @@ const HomePage: PageType = async ({ params }) => {
 							{homePageData.data?.data.attributes.sponsors_section_text}
 						</Paragraph>
 						<div>
-							<Heading as="h3" size="xs" className="mt-8 md:mt-16 uppercase">
+							<Heading as="h2" size="xs" className="mt-8 md:mt-16 uppercase">
 								{
 									homePageData.data?.data.attributes
 										.sponsors_section_sponsors_title
@@ -381,7 +404,7 @@ const HomePage: PageType = async ({ params }) => {
 							.name as string
 					}
 					className="absolute hidden lg:block bottom-0 right-[50px] z-[1]"
-					priority={true}
+
 				/>
 			</section>
 
@@ -491,13 +514,13 @@ const HomePage: PageType = async ({ params }) => {
 				<Container className="flex flex-col-reverse md:grid md:grid-cols-[1fr,0.8fr]">
 					<div className="*:text-secondary z-10">
 						<Heading
-							as="h3"
+							as="h2"
 							className="mt-6 md:mt-0 text-[32px] text-wrap md:text-4xl xl:text-[64px] !leading-[normal] max-w-[780px] uppercase"
 						>
 							{homePageData.data?.data.attributes.community_section_title}
 						</Heading>
 						<div>
-							<Heading as="h3" className="text-xs md:text-xl mt-10 md:mt-16">
+							<Heading as="h2" className="text-xs md:text-xl mt-10 md:mt-16">
 								{
 									homePageData.data?.data.attributes
 										.community_section_social_title
@@ -584,6 +607,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_first_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communityFirstImageBlur}
 						/>
 						<NextImage
 							className="col-start-1 row-span-2 place-self-center w-full rounded-lg"
@@ -604,6 +629,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_second_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communitySecondImageBlur}
 						/>
 						<NextImage
 							className="col-start-2 row-start-2 w-full rounded-lg"
@@ -624,6 +651,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_third_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communityThirdImageBlur}
 						/>
 						<NextImage
 							className="col-start-3 row-start-2 rounded-lg"
@@ -644,6 +673,8 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_fourth_picture.data.attributes
 									.name as string
 							}
+							placeholder='blur'
+							blurDataURL={communityFourthImageBlur}
 						/>
 					</div>
 				</Container>
@@ -665,8 +696,9 @@ const HomePage: PageType = async ({ params }) => {
 							.community_section_background_picture.data.attributes
 							.name as string
 					}
+					placeholder='blur'
+					blurDataURL={communityBackgroundImageBlur}
 					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-darken opacity-40"
-					priority={true}
 				/>
 			</section>
 		</>

@@ -6,10 +6,12 @@ import { DownloadFile } from '@/components/ui/DownloadFile';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const dynamic: RenderBehavior = 'force-static'
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,

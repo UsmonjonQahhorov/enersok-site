@@ -6,7 +6,7 @@ import { GMap } from '@/components/ui/Map';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType } from '@/types/component.types';
+import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import LinkedIn from '@public/socials/linked-in.svg';
 import Telegram from '@public/socials/telegram.svg';
@@ -14,6 +14,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 // import Factory from '@public/facroty.png';
+
+export const dynamic: RenderBehavior = 'force-static'
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -101,7 +103,7 @@ const ContactsPage: PageType = async ({ params }) => {
 				<Container className="py-[50px] lg:pt-[95px] lg:pb-[142px] flex flex-col lg:grid lg:grid-cols-[4.5fr,5.5fr] gap-y-[50px] lg:gap-x-[100px] items-center">
 					<div className="flex flex-col gap-y-8 py-5 w-full">
 						<Heading
-							as="h3"
+							as="h2"
 							className="text-secondary text-[32px] lg:text-5xl pb-6"
 						>
 							{contactPageData.data?.data.attributes.social_section_title}

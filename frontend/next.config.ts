@@ -1,6 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 import type { NextConfig } from 'next';
+import withPlaiceholder from "@plaiceholder/next";
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
@@ -16,6 +17,10 @@ const nextConfig: NextConfig = {
 				protocol: 'http',
 				hostname: 'localhost',
 			},
+			{
+				protocol: 'http',
+				hostname: 'site.enersok.uz',
+			}
 		],
 	},
 	headers: async () => {
@@ -41,4 +46,4 @@ const nextConfig: NextConfig = {
 	},
 };
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(withPlaiceholder(nextConfig));

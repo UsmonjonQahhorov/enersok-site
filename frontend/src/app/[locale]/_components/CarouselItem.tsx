@@ -38,6 +38,7 @@ export const CarouselItem = ({
 					width={image.width}
 					height={image.height}
 					alt={image.name}
+					priority={true}
 					className="object-cover max-h-[250px] sm:max-h-[350px] lg:max-h-[600px] min-h-[250px] sm:min-h-[350px] lg:min-h-[600px] w-full h-full object-center rounded-xl"
 				/>
 			</div>
