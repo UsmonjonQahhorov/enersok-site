@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
 			{
 				protocol: 'http',
 				hostname: 'site.enersok.uz',
+			},
+			{
+				protocol: 'http',
+				hostname: 'api.enersok.uz',
 			}
 		],
 	},
