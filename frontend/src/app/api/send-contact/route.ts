@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'smokeemoo@yandex.ru',
+      to: 'info@enersok.uz',
       subject: 'Новая заявка с формы GRM Submission',
       html: `
         <h3>Информация о заявке:</h3>

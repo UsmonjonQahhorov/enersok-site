@@ -68,7 +68,7 @@ export async function POST(req: Request) {
 
     const mailOptions: any = {
       from: process.env.EMAIL_USER,
-      to: 'smokeemoo@yandex.ru',
+      to: 'info@enersok.uz',
       subject: 'Новая заявка с формы карьеры',
       html: `
         <h3>Информация о заявке:</h3>

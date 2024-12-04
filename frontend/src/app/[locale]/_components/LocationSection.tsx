@@ -77,7 +77,6 @@ export const LocationSection = ({
 					alt="map"
 					className="absolute top-[63%] lg:top-[60%] xl:top-[58%] 2xl:top-[62%] left-[75%] transform -translate-x-1/2 -translate-y-1/2"
 				/>
-				{/* TODO: Fix Position */}
 				{show1 && (
 					<LocationHoverCard
 						companyName={firstLocationCompanyName}

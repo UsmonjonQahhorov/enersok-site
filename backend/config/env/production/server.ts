@@ -3,8 +3,8 @@
  */
 export default ({ env }) => ({
      host: env('HOST', '0.0.0.0'),
-     port: env.int('PORT', 3014), // TODO: add right port
-     url: 'http://api.enersok.uz',
+     port: env.int('PORT', 3014),
+     url: 'https://api.enersok.uz',
      app: {
        keys: env.array('APP_KEYS'),
      },

@@ -13,7 +13,8 @@
     "fmt": "npx @biomejs/biome format ./src",
     "fmt:fix": "npx @biomejs/biome format --write ./src",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "serve": "next start -p 3001"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

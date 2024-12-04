@@ -11,18 +11,17 @@ const nextConfig: NextConfig = {
 		},
 	},
 	images: {
-		// TODO: Add production backend URL
 		remotePatterns: [
 			{
 				protocol: 'http',
 				hostname: 'localhost',
 			},
 			{
-				protocol: 'http',
-				hostname: 'site.enersok.uz',
+				protocol: 'https',
+				hostname: 'enersok.uz',
 			},
 			{
-				protocol: 'http',
+				protocol: 'https',
 				hostname: 'api.enersok.uz',
 			}
 		],
