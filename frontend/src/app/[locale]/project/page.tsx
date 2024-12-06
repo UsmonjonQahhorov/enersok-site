@@ -2,7 +2,11 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
+import type {
+	DynamicMetadata,
+	PageType,
+	RenderBehavior,
+} from '@/types/component.types';
 import Image from 'next/image';
 import { getProjectDetailPage } from '@/api/pages/getProjectDetailPage.api';
 import EmblaCarousel from '@/components/navigation/EmblaSlider';
@@ -28,7 +32,7 @@ import { getBlurImage } from '@/utils/getBlurImage';
 // import Factory2 from '@public/factory2.png';
 // import Banner from '@public/project.png';
 
-export const dynamic: RenderBehavior = 'force-static'
+export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -41,18 +45,25 @@ export const generateMetadata: DynamicMetadata = async ({
 		description: projectDetailPageData.data?.data.attributes.about_section_text,
 		openGraph: {
 			title: projectDetailPageData.data?.data.attributes.page_title,
-			description: projectDetailPageData.data?.data.attributes.about_section_text,
+			description:
+				projectDetailPageData.data?.data.attributes.about_section_text,
 			images: [
 				{
 					url: getBackendImage(
-						projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url,
+						projectDetailPageData.data?.data.attributes.heading_section_picture
+							.data.attributes.url,
 					),
-					width: projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.width,
-					height: projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.height,
-					alt: projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.name,
-				}
-			]
-		}
+					width:
+						projectDetailPageData.data?.data.attributes.heading_section_picture
+							.data.attributes.width,
+					height:
+						projectDetailPageData.data?.data.attributes.heading_section_picture
+							.data.attributes.height,
+					alt: projectDetailPageData.data?.data.attributes
+						.heading_section_picture.data.attributes.name,
+				},
+			],
+		},
 	};
 };
 
@@ -76,17 +87,20 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 
 	const headingBLurImage = await getBlurImage(
 		getBackendImage(
-			projectDetailPageData.data?.data.attributes.heading_section_picture.data.attributes.url,
+			projectDetailPageData.data?.data.attributes.heading_section_picture.data
+				.attributes.url,
 		),
 	);
 	const infoSectionBlurImage = await getBlurImage(
 		getBackendImage(
-			projectDetailPageData.data?.data.attributes.info_section_background_picture.data.attributes.url,
+			projectDetailPageData.data?.data.attributes
+				.info_section_background_picture.data.attributes.url,
 		),
 	);
 	const followSectionBlurImage = await getBlurImage(
 		getBackendImage(
-			projectDetailPageData.data?.data.attributes.follow_section_picture.data.attributes.url,
+			projectDetailPageData.data?.data.attributes.follow_section_picture.data
+				.attributes.url,
 		),
 	);
 
@@ -120,7 +134,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							}
 							className="object-cover my-8 xl:my-0 max-h-[250px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={headingBLurImage}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase pb-8 xl:pt-[75px] xl:pb-[50px] text-5xl lg:text-[100px]">
@@ -214,7 +228,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							}
 							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={headingBLurImage}
 						/>
 					</div>
@@ -371,7 +385,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							.info_section_background_picture.data.attributes.name || ''
 					}
 					className="left-[0] hidden lg:block bottom-0 absolute bg-blend-darken opacity-80"
-					placeholder='blur'
+					placeholder="blur"
 					blurDataURL={infoSectionBlurImage}
 				/>
 			</section>
@@ -435,7 +449,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 									.follow_section_picture.data.attributes.name || ''
 							}
 							className="object-cover object-center w-full min-h-[687px] max-h-[687px] h-full rounded-xl"
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={followSectionBlurImage}
 						/>
 					</div>

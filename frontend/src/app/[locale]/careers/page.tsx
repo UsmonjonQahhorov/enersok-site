@@ -26,25 +26,35 @@ export const generateMetadata: DynamicMetadata = async ({
 		title: aboutPageData.data?.data.attributes.page_title,
 		description: aboutPageData.data?.data.attributes.heading_about_text,
 		robots: 'index, follow',
-		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok vacancies'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok vakansiyalar'],
+		keywords:
+			locale === 'en'
+				? ['Enersok', 'Enersok company', 'Enersok vacancies']
+				: ['Enersok', 'Enersok kompaniyasi', 'Enersok vakansiyalar'],
 		openGraph: {
 			title: aboutPageData.data?.data.attributes.page_title,
 			description: aboutPageData.data?.data.attributes.heading_about_text,
 			locale: locale,
-			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok vacancies'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok vakansiyalar'],
+			tags:
+				locale === 'en'
+					? ['Enersok', 'Enersok company', 'Enersok vacancies']
+					: ['Enersok', 'Enersok kompaniyasi', 'Enersok vakansiyalar'],
 			images: [
 				{
 					url: getBackendImage(
-						aboutPageData.data?.data.attributes.heading_picture.data.attributes.url,
+						aboutPageData.data?.data.attributes.heading_picture.data.attributes
+							.url,
 					),
 					width:
-						aboutPageData.data?.data.attributes.heading_picture.data.attributes.width,
+						aboutPageData.data?.data.attributes.heading_picture.data.attributes
+							.width,
 					height:
-						aboutPageData.data?.data.attributes.heading_picture.data.attributes.height,
-					alt: aboutPageData.data?.data.attributes.heading_picture.data.attributes.name,
+						aboutPageData.data?.data.attributes.heading_picture.data.attributes
+							.height,
+					alt: aboutPageData.data?.data.attributes.heading_picture.data
+						.attributes.name,
 				},
 			],
-		}
+		},
 	};
 };
 
@@ -59,8 +69,11 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 	const careersPageData = await getVacanciesPage(locale);
 	const vacancies = await getVacancies(locale, page);
 
-	const headingBlurImage = await getBlurImage(getBackendImage(
-		careersPageData.data?.data.attributes.heading_picture.data.attributes.url));
+	const headingBlurImage = await getBlurImage(
+		getBackendImage(
+			careersPageData.data?.data.attributes.heading_picture.data.attributes.url,
+		),
+	);
 
 	return (
 		<>
@@ -93,14 +106,17 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 							}
 							className="object-cover object-center mt-8 max-h-[250px] md:max-h-[350px] block lg:hidden rounded-xl h-full"
 							priority={true}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={headingBlurImage}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px]">
 							{careersPageData.data?.data.attributes.heading_title}
 						</Heading>
 						<div className="pt-10 border-t-[1px] border-solid border-secondaryOpacity3 pb-4 lg:pb-40">
-							<Heading as='h2' className="text-base md:text-3xl font-semibold text-secondary mb-3">
+							<Heading
+								as="h2"
+								className="text-base md:text-3xl font-semibold text-secondary mb-3"
+							>
 								{careersPageData.data?.data.attributes.heading_about_title}
 							</Heading>
 							<Paragraph className="text-sm md:text-xl font-normal text-secondary">
@@ -128,7 +144,7 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 							}
 							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={headingBlurImage}
 						/>
 					</div>

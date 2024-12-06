@@ -9,6 +9,9 @@ import { FileInput } from '@/components/input/FileInput';
 import { Heading } from '@/components/ui/Heading';
 import { useForm } from 'react-hook-form';
 
+const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const phonePattern = /^[+]{1}[0-9]{7,15}$/;
+
 export const CareerForm: FC<CareerFormProps> = ({
 	email,
 	message,
@@ -22,7 +25,6 @@ export const CareerForm: FC<CareerFormProps> = ({
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
 		reset, // метод для сброса формы
 	} = useForm<CareerFormData>();
 
@@ -35,8 +37,9 @@ export const CareerForm: FC<CareerFormProps> = ({
 			formData.append('message', data.message);
 
 			// Проверяем наличие файла
-			const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]');
-			if (fileInput && fileInput.files && fileInput.files[0]) {
+			const fileInput =
+				document.querySelector<HTMLInputElement>('input[type="file"]');
+			if (fileInput?.files?.[0]) {
 				formData.append('file', fileInput.files[0]);
 			}
 
@@ -85,7 +88,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 				{...register('email', {
 					required: 'Email обязателен',
 					pattern: {
-						value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+						value: emailPattern,
 						message: 'Введите корректный email',
 					},
 				})}
@@ -98,7 +101,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 				{...register('phone', {
 					required: 'Телефон обязателен',
 					pattern: {
-						value: /^[+]{1}[0-9]{7,15}$/,
+						value: phonePattern,
 						message: 'Введите корректный номер телефона',
 					},
 				})}

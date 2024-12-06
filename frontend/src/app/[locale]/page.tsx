@@ -6,7 +6,11 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { Link } from '@/i18n/routing';
-import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
+import type {
+	DynamicMetadata,
+	PageType,
+	RenderBehavior,
+} from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
 import EcoFriendlyImage from '@public/ecoFriendly.svg';
@@ -24,7 +28,6 @@ import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
 import { RouterConfig } from '@/configs/router.config';
 import { getBlurImage } from '@/utils/getBlurImage';
-import { Suspense } from 'react';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import PeopelsImage from '@public/image (1).png';
@@ -34,7 +37,7 @@ import { Suspense } from 'react';
 // import Image4 from '@public/image (7).png';
 // import StationImage from '@public/Rectangle 6.png';
 
-export const dynamic: RenderBehavior = 'force-static'
+export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -54,17 +57,20 @@ export const generateMetadata: DynamicMetadata = async ({
 			images: [
 				{
 					url: getBackendImage(
-						aboutPageData.data?.data.attributes.about_section_first_image
-							.data.attributes.url,
+						aboutPageData.data?.data.attributes.about_section_first_image.data
+							.attributes.url,
 					),
-					width: aboutPageData.data?.data.attributes.about_section_first_image
-						.data.attributes.width,
-					height: aboutPageData.data?.data.attributes.about_section_first_image.data.attributes.height,
+					width:
+						aboutPageData.data?.data.attributes.about_section_first_image.data
+							.attributes.width,
+					height:
+						aboutPageData.data?.data.attributes.about_section_first_image.data
+							.attributes.height,
 					alt: aboutPageData.data?.data.attributes.about_section_first_image
 						.data.attributes.name,
 				},
 			],
-		}
+		},
 	};
 };
 
@@ -76,7 +82,8 @@ const HomePage: PageType = async ({ params }) => {
 	const sponsors = await getSponsors(locale);
 	const newsData = await getNews(locale, 1, 8);
 
-	const readMoreLinkLocale = locale === 'en' ? 'Read more about us' : 'Biz haqimizda ko\'proq o\'qing';
+	const readMoreLinkLocale =
+		locale === 'en' ? 'Read more about us' : "Biz haqimizda ko'proq o'qing";
 	const carouselButtonsText =
 		locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
 	const newsText = locale === 'en' ? 'News' : 'Yangiliklar';
@@ -92,20 +99,48 @@ const HomePage: PageType = async ({ params }) => {
 		items,
 	}));
 
-	const aboutFirstImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.about_section_first_image.data.attributes.url));
-	const aboutSecondImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.about_section_second_image.data.attributes.url));
-	const communityFirstImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.community_section_first_picture.data.attributes.url));
-	const communitySecondImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.community_section_second_picture.data.attributes.url));
-	const communityThirdImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.community_section_third_picture.data.attributes.url));
-	const communityFourthImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.community_section_fourth_picture.data.attributes.url));
-	const communityBackgroundImageBlur = await getBlurImage(getBackendImage
-		(homePageData.data?.data.attributes.community_section_background_picture.data.attributes.url));
+	const aboutFirstImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.about_section_first_image.data
+				.attributes.url,
+		),
+	);
+	const aboutSecondImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.about_section_second_image.data
+				.attributes.url,
+		),
+	);
+	const communityFirstImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.community_section_first_picture.data
+				.attributes.url,
+		),
+	);
+	const communitySecondImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.community_section_second_picture.data
+				.attributes.url,
+		),
+	);
+	const communityThirdImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.community_section_third_picture.data
+				.attributes.url,
+		),
+	);
+	const communityFourthImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.community_section_fourth_picture.data
+				.attributes.url,
+		),
+	);
+	const communityBackgroundImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.community_section_background_picture
+				.data.attributes.url,
+		),
+	);
 
 	return (
 		<>
@@ -118,20 +153,20 @@ const HomePage: PageType = async ({ params }) => {
 						slides={
 							carousel.data?.data
 								? carousel.data?.data.map((item) => (
-									<CarouselItem
-										key={item.id}
-										image={{
-											url: getBackendImage(
-												item.attributes.picture.data.attributes.url,
-											),
-											width: item.attributes.picture.data.attributes.width,
-											height: item.attributes.picture.data.attributes.height,
-											name: item.attributes.picture.data.attributes.name,
-										}}
-										title={item.attributes.title}
-										description={item.attributes.text}
-									/>
-								))
+										<CarouselItem
+											key={item.id}
+											image={{
+												url: getBackendImage(
+													item.attributes.picture.data.attributes.url,
+												),
+												width: item.attributes.picture.data.attributes.width,
+												height: item.attributes.picture.data.attributes.height,
+												name: item.attributes.picture.data.attributes.name,
+											}}
+											title={item.attributes.title}
+											description={item.attributes.text}
+										/>
+									))
 								: []
 						}
 						showCounter={true}
@@ -233,7 +268,7 @@ const HomePage: PageType = async ({ params }) => {
 								homePageData.data?.data.attributes.about_section_second_image
 									.data.attributes.name || 'station'
 							}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={aboutSecondImageBlur}
 						/>
 						<div className="mb-auto">
@@ -279,7 +314,7 @@ const HomePage: PageType = async ({ params }) => {
 									.data.attributes.name || 'people'
 							}
 							className="rounded-xl max-h-[360px] object-cover w-full"
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={aboutFirstImageBlur}
 						/>
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
@@ -364,22 +399,22 @@ const HomePage: PageType = async ({ params }) => {
 							data={
 								sponsors.data?.data
 									? sponsors.data?.data.map((sponsor) => ({
-										color: sponsor.attributes.sponsor_color,
-										name: sponsor.attributes.sponsor_name,
-										value: sponsor.attributes.sponsor_value,
-										image: {
-											url: getBackendImage(
-												sponsor.attributes.sponsor_logo.data.attributes.url,
-											),
-											width:
-												sponsor.attributes.sponsor_logo.data.attributes.width,
-											height:
-												sponsor.attributes.sponsor_logo.data.attributes
-													.height,
-											name: sponsor.attributes.sponsor_logo.data.attributes
-												.name as string,
-										},
-									}))
+											color: sponsor.attributes.sponsor_color,
+											name: sponsor.attributes.sponsor_name,
+											value: sponsor.attributes.sponsor_value,
+											image: {
+												url: getBackendImage(
+													sponsor.attributes.sponsor_logo.data.attributes.url,
+												),
+												width:
+													sponsor.attributes.sponsor_logo.data.attributes.width,
+												height:
+													sponsor.attributes.sponsor_logo.data.attributes
+														.height,
+												name: sponsor.attributes.sponsor_logo.data.attributes
+													.name as string,
+											},
+										}))
 									: []
 							}
 						/>
@@ -404,7 +439,6 @@ const HomePage: PageType = async ({ params }) => {
 							.name as string
 					}
 					className="absolute hidden lg:block bottom-0 right-[50px] z-[1]"
-
 				/>
 			</section>
 
@@ -607,7 +641,7 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_first_picture.data.attributes
 									.name as string
 							}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={communityFirstImageBlur}
 						/>
 						<NextImage
@@ -629,7 +663,7 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_second_picture.data.attributes
 									.name as string
 							}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={communitySecondImageBlur}
 						/>
 						<NextImage
@@ -651,7 +685,7 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_third_picture.data.attributes
 									.name as string
 							}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={communityThirdImageBlur}
 						/>
 						<NextImage
@@ -673,7 +707,7 @@ const HomePage: PageType = async ({ params }) => {
 									.community_section_fourth_picture.data.attributes
 									.name as string
 							}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={communityFourthImageBlur}
 						/>
 					</div>
@@ -696,7 +730,7 @@ const HomePage: PageType = async ({ params }) => {
 							.community_section_background_picture.data.attributes
 							.name as string
 					}
-					placeholder='blur'
+					placeholder="blur"
 					blurDataURL={communityBackgroundImageBlur}
 					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-darken opacity-40"
 				/>

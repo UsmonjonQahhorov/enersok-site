@@ -46,7 +46,7 @@ export const generateMetadata: DynamicMetadata = async ({
 			],
 			locale: locale,
 			tags: ['news', 'enersok'],
-		}
+		},
 	};
 };
 

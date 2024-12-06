@@ -17,7 +17,6 @@ export const NewCard: FC<NewCardProps> = async ({
 	image,
 	url,
 }) => {
-
 	const blurImage = await getBlurImage(image.url);
 
 	return (

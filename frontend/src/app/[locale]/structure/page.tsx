@@ -6,7 +6,11 @@ import { EmployeeCard } from '@/components/ui/EmployeeCard';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
+import type {
+	DynamicMetadata,
+	PageType,
+	RenderBehavior,
+} from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -14,7 +18,7 @@ import Image from 'next/image';
 // import Factory from '@public/facroty.png';
 // import Employee from '@public/employee.png';
 
-export const dynamic: RenderBehavior = 'force-static'
+export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -27,7 +31,10 @@ export const generateMetadata: DynamicMetadata = async ({
 		description:
 			organizationPageData.data?.data.attributes.managers_section_text,
 		robots: 'index, follow',
-		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok managers'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok boshqaruv organlari'],
+		keywords:
+			locale === 'en'
+				? ['Enersok', 'Enersok company', 'Enersok managers']
+				: ['Enersok', 'Enersok kompaniyasi', 'Enersok boshqaruv organlari'],
 		openGraph: {
 			title: organizationPageData.data?.data.attributes.page_title,
 			description:
@@ -44,11 +51,11 @@ export const generateMetadata: DynamicMetadata = async ({
 					height:
 						organizationPageData.data?.data.attributes.heading_section_picture
 							.data.attributes.height,
-					alt: organizationPageData.data?.data.attributes.heading_section_picture
-						.data.attributes.name,
+					alt: organizationPageData.data?.data.attributes
+						.heading_section_picture.data.attributes.name,
 				},
-			]
-		}
+			],
+		},
 	};
 };
 

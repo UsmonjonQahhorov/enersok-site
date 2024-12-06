@@ -28,11 +28,14 @@ export const generateMetadata: DynamicMetadata = async ({
 			title: vacancyPage.data?.vacancyName,
 			description: vacancyPage.data?.vacancyDescription,
 			locale: locale,
-			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok career'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok karyera'],
+			tags:
+				locale === 'en'
+					? ['Enersok', 'Enersok company', 'Enersok career']
+					: ['Enersok', 'Enersok kompaniyasi', 'Enersok karyera'],
 			type: 'article',
 			publishedTime: Time(vacancyPage.data?.vacancyPublishedDate).format(),
 			expirationTime: Time(vacancyPage.data?.vacancyClosingDate).format(),
-		}
+		},
 	};
 };
 

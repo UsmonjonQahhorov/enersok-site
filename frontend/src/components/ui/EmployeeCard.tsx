@@ -15,7 +15,6 @@ export const EmployeeCard: FC<EmployeeCardProps> = async ({
 	className,
 	email,
 }) => {
-
 	const blurImage = await getBlurImage(image.url);
 
 	return (

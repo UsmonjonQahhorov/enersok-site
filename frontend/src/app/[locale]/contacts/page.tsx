@@ -7,7 +7,11 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 import { RouterConfig } from '@/configs/router.config';
 import { Link } from '@/i18n/routing';
-import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
+import type {
+	DynamicMetadata,
+	PageType,
+	RenderBehavior,
+} from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import LinkedIn from '@public/socials/linked-in.svg';
 import Telegram from '@public/socials/telegram.svg';
@@ -15,7 +19,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 // import Factory from '@public/facroty.png';
 
-export const dynamic: RenderBehavior = 'force-static'
+export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -27,7 +31,10 @@ export const generateMetadata: DynamicMetadata = async ({
 		title: contactPageData.data?.data.attributes.page_title,
 		description: contactPageData.data?.data.attributes.heading_title,
 		robots: 'index, follow',
-		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok contact us'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok biz bilan bog\'lanish'],
+		keywords:
+			locale === 'en'
+				? ['Enersok', 'Enersok company', 'Enersok contact us']
+				: ['Enersok', 'Enersok kompaniyasi', "Enersok biz bilan bog'lanish"],
 		openGraph: {
 			title: contactPageData.data?.data.attributes.page_title,
 			description: contactPageData.data?.data.attributes.heading_title,
@@ -44,14 +51,14 @@ export const generateMetadata: DynamicMetadata = async ({
 					height:
 						contactPageData.data?.data.attributes.heading_section_picture.data
 							.attributes.height,
-					alt: contactPageData.data?.data.attributes.heading_section_picture.data
-						.attributes.name,
+					alt: contactPageData.data?.data.attributes.heading_section_picture
+						.data.attributes.name,
 				},
 			],
 			type: 'website',
 			emails: contactPageData.data?.data.attributes.email,
 			phoneNumbers: contactPageData.data?.data.attributes.phone,
-		}
+		},
 	};
 };
 

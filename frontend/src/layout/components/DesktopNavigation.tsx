@@ -20,13 +20,10 @@ import { navigation } from '@/locales/navigations';
 import { locales } from '@/configs/i18n.config';
 import { Link as NavigationLink, usePathname } from '@/i18n/routing';
 import { getLocale } from '@/utils/getLocale.util';
-import {
-	QueryClient,
-	QueryClientProvider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SearchContent } from './Search';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 export const DesktopNavigation = () => {
 	const pathName = usePathname();
 	const locale = getLocale();

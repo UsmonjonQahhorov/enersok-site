@@ -7,7 +7,11 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { SponsorCard } from '@/components/ui/SponsorCard';
 import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
+import type {
+	DynamicMetadata,
+	PageType,
+	RenderBehavior,
+} from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Sponsor5 from '@public/logo.png';
 import Line1 from '@public/sponsors/line1.png';
@@ -21,7 +25,7 @@ import Image from 'next/image';
 // import Sponsor3 from '@public/sponsors/sponsor3.png';
 // import Sponsor4 from '@public/sponsors/sponsor4.png';
 
-export const dynamic: RenderBehavior = 'force-static'
+export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -31,12 +35,18 @@ export const generateMetadata: DynamicMetadata = async ({
 
 	return {
 		title: sponsorsPageData.data?.data.attributes.page_title,
-		keywords: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok sponsors'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok sponsorlar'],
+		keywords:
+			locale === 'en'
+				? ['Enersok', 'Enersok company', 'Enersok sponsors']
+				: ['Enersok', 'Enersok kompaniyasi', 'Enersok sponsorlar'],
 		robots: 'index, follow',
-		openGraph:{
+		openGraph: {
 			title: sponsorsPageData.data?.data.attributes.page_title,
 			locale: locale,
-			tags: locale === 'en' ? ['Enersok', 'Enersok company', 'Enersok sponsors'] : ['Enersok', 'Enersok kompaniyasi', 'Enersok sponsorlar'],
+			tags:
+				locale === 'en'
+					? ['Enersok', 'Enersok company', 'Enersok sponsors']
+					: ['Enersok', 'Enersok kompaniyasi', 'Enersok sponsorlar'],
 			images: [
 				{
 					url: getBackendImage(
@@ -53,7 +63,7 @@ export const generateMetadata: DynamicMetadata = async ({
 						.attributes.name,
 				},
 			],
-		}
+		},
 	};
 };
 

@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 	}
 
 	// TODO: check on strapi frontend production url is right
-	revalidatePath('/', 'layout');
+	revalidatePath('/', 'page');
 	revalidatePath('/about', 'page');
 	revalidatePath('/contact', 'page');
 	revalidatePath('/project', 'page');

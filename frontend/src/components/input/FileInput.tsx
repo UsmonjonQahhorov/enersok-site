@@ -46,7 +46,10 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
 		};
 
 		const locale = getLocale();
-		const fileSizeText = locale === 'en' ? 'The maximum file size is 3.00mb' : 'Maksimal fayl hajmi 3,00 Mb';
+		const fileSizeText =
+			locale === 'en'
+				? 'The maximum file size is 3.00mb'
+				: 'Maksimal fayl hajmi 3,00 Mb';
 
 		return (
 			<div className="relative" onClick={handleClick}>
@@ -97,7 +100,9 @@ export const FileInput = forwardRef<FileInputRef, FileInputProps>(
 				{hasError === true && error ? (
 					<FieldErrorText error={hasError}>{error}</FieldErrorText>
 				) : null}
-				<div className="text-sm text-secondaryOpacity2 mt-3">{fileSize ? fileSize : fileSizeText}</div>
+				<div className="text-sm text-secondaryOpacity2 mt-3">
+					{fileSize ? fileSize : fileSizeText}
+				</div>
 			</div>
 		);
 	},

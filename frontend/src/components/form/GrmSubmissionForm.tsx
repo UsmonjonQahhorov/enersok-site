@@ -7,6 +7,9 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 import { useForm } from 'react-hook-form';
 
+const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const phonePattern = /^[+]{1}[0-9]{7,15}$/;
+
 export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 	email,
 	message,
@@ -15,8 +18,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 	sumbmit,
 	className,
 }) => {
-
-	const { register, handleSubmit, formState: { errors }, reset } = useForm<GrmSubmissionFormData>();
+	const { register, handleSubmit, reset } = useForm<GrmSubmissionFormData>();
 	const onSubmit = async (data: GrmSubmissionFormData) => {
 		try {
 			const response = await fetch('/api/send-contact', {
@@ -59,7 +61,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 				{...register('email', {
 					required: 'Email обязателен',
 					pattern: {
-						value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+						value: emailPattern,
 						message: 'Введите корректный email',
 					},
 				})}
@@ -72,7 +74,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 				{...register('phone', {
 					required: 'Телефон обязателен',
 					pattern: {
-						value: /^[+]{1}[0-9]{7,15}$/,
+						value: phonePattern,
 						message: 'Введите корректный номер телефона',
 					},
 				})}

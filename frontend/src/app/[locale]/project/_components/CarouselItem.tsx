@@ -9,7 +9,10 @@ export const CarouselItem = ({ picture, className }: CarouselItemProps) => {
 			width={picture.width}
 			height={picture.height}
 			alt={picture.name}
-			className={cn('max-h-[320px] w-full rounded-xl h-full aspect-auto', className)}
+			className={cn(
+				'max-h-[320px] w-full rounded-xl h-full aspect-auto',
+				className,
+			)}
 		/>
 	);
 };

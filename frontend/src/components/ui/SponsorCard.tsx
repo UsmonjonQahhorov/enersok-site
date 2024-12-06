@@ -12,7 +12,6 @@ export const SponsorCard: FC<SponsorCardProps> = async ({
 	title,
 	className,
 }) => {
-
 	const blurImage = await getBlurImage(image.url);
 
 	return (

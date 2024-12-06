@@ -5,7 +5,11 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { RouterConfig } from '@/configs/router.config';
-import type { DynamicMetadata, PageType, RenderBehavior } from '@/types/component.types';
+import type {
+	DynamicMetadata,
+	PageType,
+	RenderBehavior,
+} from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
 import { getBlurImage } from '@/utils/getBlurImage';
@@ -20,7 +24,7 @@ import Image from 'next/image';
 // import AboutBanner2 from '@public/about2.jpg';
 // import Development from '@public/development.png';
 
-export const dynamic: RenderBehavior = 'force-static'
+export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -36,13 +40,21 @@ export const generateMetadata: DynamicMetadata = async ({
 			description: aboutPageData.data?.data.attributes.heading_section_text,
 			images: [
 				{
-					url: getBackendImage(aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.url),
-					width: aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.width,
-					height: aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.height,
-					alt: aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.name,
+					url: getBackendImage(
+						aboutPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.url,
+					),
+					width:
+						aboutPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.width,
+					height:
+						aboutPageData.data?.data.attributes.heading_section_picture.data
+							.attributes.height,
+					alt: aboutPageData.data?.data.attributes.heading_section_picture.data
+						.attributes.name,
 				},
-			]
-		}
+			],
+		},
 	};
 };
 
@@ -56,16 +68,32 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 	const aboutPageDevelopmentData = await getDevelopments(locale);
 
 	const headingBlurImage = await getBlurImage(
-		getBackendImage(aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.url))
+		getBackendImage(
+			aboutPageData.data?.data.attributes.heading_section_picture.data
+				.attributes.url,
+		),
+	);
 
 	const infoBlurImage = await getBlurImage(
-		getBackendImage(aboutPageData.data?.data.attributes.info_section_picture.data.attributes.url))
-	
+		getBackendImage(
+			aboutPageData.data?.data.attributes.info_section_picture.data.attributes
+				.url,
+		),
+	);
+
 	const infoFirstBlurImage = await getBlurImage(
-		getBackendImage(aboutPageData.data?.data.attributes.info_section_first_picture.data.attributes.url))
+		getBackendImage(
+			aboutPageData.data?.data.attributes.info_section_first_picture.data
+				.attributes.url,
+		),
+	);
 
 	const infoSecondBlurImage = await getBlurImage(
-		getBackendImage(aboutPageData.data?.data.attributes.info_section_second_picture.data.attributes.url))
+		getBackendImage(
+			aboutPageData.data?.data.attributes.info_section_second_picture.data
+				.attributes.url,
+		),
+	);
 
 	return (
 		<>
@@ -80,11 +108,10 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							urlPage={RouterConfig.AboutCompany}
 						/>
 						<Image
-							src={
-								getBackendImage(
-									aboutPageData.data?.data.attributes.heading_section_picture.data.attributes.url,
-								)
-							}
+							src={getBackendImage(
+								aboutPageData.data?.data.attributes.heading_section_picture.data
+									.attributes.url,
+							)}
 							alt="Careers Banner Enersok"
 							width={
 								aboutPageData.data?.data.attributes.heading_section_picture.data
@@ -94,7 +121,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 								aboutPageData.data?.data.attributes.heading_section_picture.data
 									.attributes.height
 							}
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={headingBlurImage}
 							className="object-cover block my-8 xl:my-0 max-h-[250px] lg:max-h-[350px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
@@ -108,7 +135,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 					</div>
 					<div className="relative hidden xl:block z-10 pl-14 min-h-[664px] max-h-[664px] h-full">
 						<Image
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={headingBlurImage}
 							src={getBackendImage(
 								aboutPageData.data?.data.attributes.heading_section_picture.data
@@ -166,7 +193,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							}
 							alt="About Enersok"
 							className="object-cover object-center w-full h-full rounded-xl"
-							placeholder='blur'
+							placeholder="blur"
 							blurDataURL={infoBlurImage}
 						/>
 					</div>
@@ -310,9 +337,12 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 									aboutPageData.data?.data.attributes.info_section_first_picture
 										.data.attributes.height
 								}
-								placeholder='blur'
+								placeholder="blur"
 								blurDataURL={infoFirstBlurImage}
-								alt={aboutPageData.data?.data.attributes.info_section_first_picture.data.attributes.name || ''}
+								alt={
+									aboutPageData.data?.data.attributes.info_section_first_picture
+										.data.attributes.name || ''
+								}
 								className="w-full max-h-[150px] sm:max-h-[200px] lg:max-h-[283px] object-cover object-center rounded-xl"
 							/>
 						</div>
@@ -348,7 +378,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 									aboutPageData.data?.data.attributes
 										.info_section_second_picture.data.attributes.height
 								}
-								placeholder='blur'
+								placeholder="blur"
 								blurDataURL={infoSecondBlurImage}
 								alt="Banner2 Eneksok"
 								className="w-full max-h-[150px] sm:max-h-[200px] lg:max-h-[283px] object-center rounded-xl"
