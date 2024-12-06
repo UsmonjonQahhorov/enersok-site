@@ -5,7 +5,6 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import type {
 	DynamicMetadata,
 	PageType,
-	RenderBehavior,
 } from '@/types/component.types';
 import Image from 'next/image';
 import { getProjectDetailPage } from '@/api/pages/getProjectDetailPage.api';
@@ -31,8 +30,6 @@ import { getBlurImage } from '@/utils/getBlurImage';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import Banner from '@public/project.png';
-
-export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,

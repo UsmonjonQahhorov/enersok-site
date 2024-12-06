@@ -8,15 +8,12 @@ import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
 	PageType,
-	RenderBehavior,
 } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 // import Factory from '@public/factory2.png';
 // import Banner from '@public/submission-banner.png';
-
-export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,

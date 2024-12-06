@@ -9,7 +9,6 @@ import { Link } from '@/i18n/routing';
 import type {
 	DynamicMetadata,
 	PageType,
-	RenderBehavior,
 } from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
@@ -36,8 +35,6 @@ import { getBlurImage } from '@/utils/getBlurImage';
 // import Image3 from '@public/image (6).png';
 // import Image4 from '@public/image (7).png';
 // import StationImage from '@public/Rectangle 6.png';
-
-export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,

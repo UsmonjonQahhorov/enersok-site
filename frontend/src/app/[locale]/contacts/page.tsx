@@ -10,7 +10,6 @@ import { Link } from '@/i18n/routing';
 import type {
 	DynamicMetadata,
 	PageType,
-	RenderBehavior,
 } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import LinkedIn from '@public/socials/linked-in.svg';
@@ -18,8 +17,6 @@ import Telegram from '@public/socials/telegram.svg';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 // import Factory from '@public/facroty.png';
-
-export const dynamic: RenderBehavior = 'force-static';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
