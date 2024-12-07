@@ -74,7 +74,7 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 				<Container className="flex flex-col gap-y-10 lg:gap-y-20 py-12 sm:py-16">
 					<Suspense
 						fallback={
-							<Skeleton className="w-full h-[300px] sm:h-[400px]" />
+							<Skeleton className="w-full h-[300px] sm:h-[400px] bg-slate-300" />
 						}
 					>
 						<Newses locale={locale} page={page} />

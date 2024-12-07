@@ -501,7 +501,7 @@ const HomePage: PageType = async ({ params }) => {
 					<Suspense
 						fallback={
 							<Skeleton
-								className="h-[500px] md:h-[600px] lg:h-[700px] w-full"
+								className="h-[500px] md:h-[600px] lg:h-[700px] w-full bg-slate-300"
 							/>
 						}
 					>

@@ -235,7 +235,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 				<Container className="py-12 lg:py-[169px]">
 					<Suspense
 						fallback={
-							<Skeleton className="w-full h-[300px] sm:h-[400px]" />
+							<Skeleton className="w-full h-[300px] sm:h-[400px] bg-slate-300" />
 						}
 					>
 						<MoreNews locale={locale} />

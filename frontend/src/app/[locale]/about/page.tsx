@@ -298,7 +298,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 
 						<Suspense
 							fallback={
-								<Skeleton className="w-full h-[300px] sm:h-[400px]" />
+								<Skeleton className="w-full h-[300px] sm:h-[400px] bg-slate-300" />
 							}
 						>
 							<Developments locale={locale} />
