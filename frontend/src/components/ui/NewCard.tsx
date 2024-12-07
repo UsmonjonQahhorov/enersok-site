@@ -6,7 +6,7 @@ import NextImage from 'next/image';
 import type { FC } from 'react';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
-import { getBlurImage } from '@/utils/getBlurImage';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 import { Link } from '@/i18n/routing';
 
 export const NewCard: FC<NewCardProps> = async ({
@@ -17,7 +17,6 @@ export const NewCard: FC<NewCardProps> = async ({
 	image,
 	url,
 }) => {
-	const blurImage = await getBlurImage(image.url);
 
 	return (
 		<article
@@ -39,7 +38,7 @@ export const NewCard: FC<NewCardProps> = async ({
 						alt="Enersok News Image"
 						className="min-h-[200px] sm:min-h-[287px] max-h-[200px] sm:max-h-[287px] w-full h-full object-cover object-center rounded-xl"
 						placeholder="blur"
-						blurDataURL={blurImage}
+						blurDataURL={getDefaultBlurImage}
 					/>
 				</Link>
 				<Link href={url}>

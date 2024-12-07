@@ -3,6 +3,7 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import NextImage from 'next/image';
 import { cn } from '@/utils/cn';
 import type { Image } from '@/types/shared.types';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 
 export const HeadingCarouselItem = ({
 	description,
@@ -40,6 +41,8 @@ export const HeadingCarouselItem = ({
 					alt={image.name}
 					priority={true}
 					className="object-cover max-h-[250px] sm:max-h-[350px] lg:max-h-[600px] min-h-[250px] sm:min-h-[350px] lg:min-h-[600px] w-full h-full object-center rounded-xl"
+					placeholder='blur'
+					blurDataURL={getDefaultBlurImage}
 				/>
 			</div>
 		</div>

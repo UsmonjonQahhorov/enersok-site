@@ -1,11 +1,1 @@
-import { getPlaiceholder } from 'plaiceholder';
-
-export const getBlurImage = async (src: string) => {
-	const buffer = await fetch(src).then(async (res) =>
-		Buffer.from(await res.arrayBuffer()),
-	);
-
-	const { base64 } = await getPlaiceholder(buffer);
-
-	return base64;
-};
+export const getDefaultBlurImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYyIiBoZWlnaHQ9IjM2MiIgdmlld0JveD0iMCAwIDM2MiAzNjIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGZpbHRlciBpZD0iYiI+PGZlVGxvZCBpZD0iYSIgLz48ZmVHYXVzc2lhbkJsdXIgaW49ImEiIHN0ZGREZXZpYXRpb249IjUwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0NDQ0NDQyIgZmlsdGVyPSJ1cmwoI2IpIi8+PC9zdmc+';

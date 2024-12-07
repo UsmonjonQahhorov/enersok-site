@@ -13,7 +13,7 @@ import type {
 } from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
-import { getBlurImage } from '@/utils/getBlurImage';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 import EcoFriendlyImage from '@public/ecoFriendly.svg';
 import EnergyIcon from '@public/energy-icon.svg';
 import EnergyImage from '@public/energy.svg';
@@ -80,60 +80,6 @@ const HomePage: PageType = async ({ params }) => {
 
 	const readMoreLinkLocale =
 		locale === 'en' ? 'Read more about us' : "Biz haqimizda ko'proq o'qing";
-
-	const aboutFirstImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.about_section_first_image.data
-				.attributes.url,
-		),
-	);
-	const aboutSecondImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.about_section_second_image.data
-				.attributes.url,
-		),
-	);
-	const communityFirstImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.community_section_first_picture.data
-				.attributes.url,
-		),
-	);
-	const communitySecondImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.community_section_second_picture.data
-				.attributes.url,
-		),
-	);
-	const communityThirdImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.community_section_third_picture.data
-				.attributes.url,
-		),
-	);
-	const communityFourthImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.community_section_fourth_picture.data
-				.attributes.url,
-		),
-	);
-	const communityBackgroundImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.community_section_background_picture
-				.data.attributes.url,
-		),
-	);
-	const locationFirstImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.location_section_first_picture.data.attributes.url,
-		)
-	);
-	const locationSecondImageBlur = await getBlurImage(
-		getBackendImage(
-			homePageData.data?.data.attributes.location_section_second_picture.data.attributes.url,
-		)
-	)
-	
 
 	return (
 		<>
@@ -262,7 +208,7 @@ const HomePage: PageType = async ({ params }) => {
 									.data.attributes.name || 'station'
 							}
 							placeholder="blur"
-							blurDataURL={aboutSecondImageBlur}
+							blurDataURL={getDefaultBlurImage}
 						/>
 						<div className="mb-auto">
 							<Heading
@@ -308,7 +254,7 @@ const HomePage: PageType = async ({ params }) => {
 							}
 							className="rounded-xl max-h-[360px] object-cover w-full"
 							placeholder="blur"
-							blurDataURL={aboutFirstImageBlur}
+							blurDataURL={getDefaultBlurImage}
 						/>
 						<div className="bg-backgroundImage1 py-8 px-4 rounded-xl md:px-12 md:py-20">
 							<Heading
@@ -467,6 +413,7 @@ const HomePage: PageType = async ({ params }) => {
 							homePageData.data?.data.attributes.location_section_first_picture
 								.data.attributes.name || '',
 					}}
+					secondLocationImageBlur={getDefaultBlurImage}
 					secondLocationImage={{
 						url: getBackendImage(
 							homePageData.data?.data.attributes.location_section_second_picture
@@ -490,8 +437,7 @@ const HomePage: PageType = async ({ params }) => {
 						homePageData.data?.data.attributes
 							.location_section_second_company_name || ''
 					}
-					firstLocationImageBlur={locationFirstImageBlur}
-					secondLocationImageBlur={locationSecondImageBlur}
+					firstLocationImageBlur={getDefaultBlurImage}
 				/>
 			</section>
 
@@ -501,7 +447,7 @@ const HomePage: PageType = async ({ params }) => {
 					<Suspense
 						fallback={
 							<Skeleton
-								className="h-[500px] md:h-[600px] lg:h-[700px] w-full bg-slate-300"
+								className="h-[500px] md:h-[600px] lg:h-[700px] w-full"
 							/>
 						}
 					>
@@ -609,7 +555,7 @@ const HomePage: PageType = async ({ params }) => {
 									.name as string
 							}
 							placeholder="blur"
-							blurDataURL={communityFirstImageBlur}
+							blurDataURL={getDefaultBlurImage}
 						/>
 						<NextImage
 							className="col-start-1 row-span-2 place-self-center w-full rounded-lg"
@@ -631,7 +577,7 @@ const HomePage: PageType = async ({ params }) => {
 									.name as string
 							}
 							placeholder="blur"
-							blurDataURL={communitySecondImageBlur}
+							blurDataURL={getDefaultBlurImage}
 						/>
 						<NextImage
 							className="col-start-2 row-start-2 w-full rounded-lg"
@@ -653,7 +599,7 @@ const HomePage: PageType = async ({ params }) => {
 									.name as string
 							}
 							placeholder="blur"
-							blurDataURL={communityThirdImageBlur}
+							blurDataURL={getDefaultBlurImage}
 						/>
 						<NextImage
 							className="col-start-3 row-start-2 rounded-lg"
@@ -675,7 +621,7 @@ const HomePage: PageType = async ({ params }) => {
 									.name as string
 							}
 							placeholder="blur"
-							blurDataURL={communityFourthImageBlur}
+							blurDataURL={getDefaultBlurImage}
 						/>
 					</div>
 				</Container>
@@ -698,7 +644,7 @@ const HomePage: PageType = async ({ params }) => {
 							.name as string
 					}
 					placeholder="blur"
-					blurDataURL={communityBackgroundImageBlur}
+					blurDataURL={getDefaultBlurImage}
 					className="absolute hidden lg:block bottom-0 right-[-100px] z-[1] bg-blend-darken opacity-40"
 				/>
 			</section>

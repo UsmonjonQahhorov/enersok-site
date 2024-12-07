@@ -4,7 +4,7 @@ import NextImage from 'next/image';
 import type { FC } from 'react';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
-import { getBlurImage } from '@/utils/getBlurImage';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 
 export const SponsorCard: FC<SponsorCardProps> = async ({
 	image,
@@ -12,7 +12,6 @@ export const SponsorCard: FC<SponsorCardProps> = async ({
 	title,
 	className,
 }) => {
-	const blurImage = await getBlurImage(image.url);
 
 	return (
 		<article
@@ -28,7 +27,7 @@ export const SponsorCard: FC<SponsorCardProps> = async ({
 				alt="Sponsor 1 Enersok"
 				className="max-w-[62px] md:max-w-[102px] lg:max-w-full lg:max-h-[40px] w-full lg:w-auto h-auto lg:h-full"
 				placeholder="blur"
-				blurDataURL={blurImage}
+				blurDataURL={getDefaultBlurImage}
 			/>
 			<div className="ml-3 md:ml-0 pl-3 md:pl-0 border-l-[1px] md:border-l-0 border-secondaryOpacity3 flex flex-col md:block">
 				<Heading

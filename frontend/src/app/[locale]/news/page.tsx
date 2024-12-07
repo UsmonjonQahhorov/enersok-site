@@ -4,7 +4,6 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
-// import News from '@public/news.png';
 import { getNewsPage } from '@/api/pages/getNewsPage.api';
 import { getBackendImage } from '@/utils/getBackendImage';
 import type { Metadata } from 'next';

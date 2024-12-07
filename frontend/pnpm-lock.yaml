@@ -68,9 +68,6 @@ importers:
       nodemailer:
         specifier: ^6.9.16
         version: 6.9.16
-      plaiceholder:
-        specifier: ^3.0.0
-        version: 3.0.0(sharp@0.33.5)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -89,9 +86,6 @@ importers:
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
       zod:
         specifier: ^3.23.8
         version: 3.23.8

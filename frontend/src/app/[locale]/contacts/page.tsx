@@ -12,6 +12,7 @@ import type {
 	PageType,
 } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 import LinkedIn from '@public/socials/linked-in.svg';
 import Telegram from '@public/socials/telegram.svg';
 import type { Metadata } from 'next';
@@ -101,6 +102,8 @@ const ContactsPage: PageType = async ({ params }) => {
 					alt="Banner Enersok"
 					className="absolute hidden lg:block bottom-0 right-[122px] z-[1] bg-blend-multiply opacity-40"
 					priority={true}
+					placeholder='blur'
+					blurDataURL={getDefaultBlurImage}
 				/>
 			</section>
 			<section>

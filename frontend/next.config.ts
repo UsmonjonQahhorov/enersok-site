@@ -1,7 +1,6 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 import type { NextConfig } from 'next';
-import withPlaiceholder from "@plaiceholder/next";
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
@@ -49,4 +48,4 @@ const nextConfig: NextConfig = {
 	},
 };
 
-export default withNextIntl(withPlaiceholder(nextConfig));
+export default withNextIntl(nextConfig);

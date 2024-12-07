@@ -8,7 +8,7 @@ import News from '@public/news.png';
 import { Link } from '@/i18n/routing';
 import { Time } from '@/utils/time';
 import { RouterConfig } from '@/configs/router.config';
-import { getBlurImage } from '@/utils/getBlurImage';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 
 export const NewsCarouselItem = async ({ data }: NewsCarouselItemProps) => {
 	function truncateString(str: string, maxLength: number) {
@@ -18,12 +18,6 @@ export const NewsCarouselItem = async ({ data }: NewsCarouselItemProps) => {
 
 		return `${str.slice(0, maxLength)}...`;
 	}
-
-	const firstBlurImage = await getBlurImage(data?.[0]?.image?.url ?? News.src);
-
-	const blurImages = await Promise.all(
-		data.slice(1).map((item) => getBlurImage(item.image.url)),
-	);
 
 	return (
 		<div className="xl:flex gap-8 md:gap-10 h-full">
@@ -39,7 +33,7 @@ export const NewsCarouselItem = async ({ data }: NewsCarouselItemProps) => {
 						alt={data?.[0]?.image?.name ?? 'News Image'}
 						className="min-h-[200px] max-h-[200px] md:max-h-[370px] md:min-h-[370px] lg:min-w-[716px] w-full h-full object-cover object-center rounded-t-xl"
 						placeholder="blur"
-						blurDataURL={firstBlurImage}
+						blurDataURL={getDefaultBlurImage}
 					/>
 					<div className="flex flex-col bg-backgroundImage1 w-full h-full rounded-b-xl px-6 pt-6 md:pt-8">
 						<Heading
@@ -81,7 +75,7 @@ export const NewsCarouselItem = async ({ data }: NewsCarouselItemProps) => {
 								alt="Enersok News Image"
 								className="hidden md:block min-h-[140px] max-h-[140px] max-w-60 w-full h-full object-cover object-center rounded-xl"
 								placeholder="blur"
-								blurDataURL={blurImages[data.indexOf(item) - 1]}
+								blurDataURL={getDefaultBlurImage}
 							/>
 							<div className="flex flex-col">
 								<Heading

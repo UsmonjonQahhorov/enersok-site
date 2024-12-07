@@ -26,7 +26,7 @@ import Banner2 from '@public/project2.png';
 import { CarouselItem } from './_components/CarouselItem';
 import { getCarousel } from '@/api/carousel/getCarousel.api';
 import type { Metadata } from 'next';
-import { getBlurImage } from '@/utils/getBlurImage';
+import { getDefaultBlurImage } from '@/utils/getBlurImage';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import Banner from '@public/project.png';
@@ -82,25 +82,6 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 
 	const carouselItems = carouselData.data?.data || [];
 
-	const headingBLurImage = await getBlurImage(
-		getBackendImage(
-			projectDetailPageData.data?.data.attributes.heading_section_picture.data
-				.attributes.url,
-		),
-	);
-	const infoSectionBlurImage = await getBlurImage(
-		getBackendImage(
-			projectDetailPageData.data?.data.attributes
-				.info_section_background_picture.data.attributes.url,
-		),
-	);
-	const followSectionBlurImage = await getBlurImage(
-		getBackendImage(
-			projectDetailPageData.data?.data.attributes.follow_section_picture.data
-				.attributes.url,
-		),
-	);
-
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
@@ -132,7 +113,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							className="object-cover my-8 xl:my-0 max-h-[250px] sm:max-h-[350px] xl:hidden object-center rounded-xl h-full"
 							priority={true}
 							placeholder="blur"
-							blurDataURL={headingBLurImage}
+							blurDataURL={getDefaultBlurImage}
 						/>
 						<Heading className="!leading-[normal] text-secondary uppercase pb-8 xl:pt-[75px] xl:pb-[50px] text-5xl lg:text-[100px]">
 							{
@@ -226,7 +207,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							className="object-cover object-center min-h-[664px] max-h-[664px] rounded-xl h-full"
 							priority={true}
 							placeholder="blur"
-							blurDataURL={headingBLurImage}
+							blurDataURL={getDefaultBlurImage}
 						/>
 					</div>
 				</Container>
@@ -383,7 +364,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 					}
 					className="left-[0] hidden lg:block bottom-0 absolute bg-blend-darken opacity-80"
 					placeholder="blur"
-					blurDataURL={infoSectionBlurImage}
+					blurDataURL={getDefaultBlurImage}
 				/>
 			</section>
 			<section>
@@ -447,7 +428,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 							}
 							className="object-cover object-center w-full min-h-[687px] max-h-[687px] h-full rounded-xl"
 							placeholder="blur"
-							blurDataURL={followSectionBlurImage}
+							blurDataURL={getDefaultBlurImage}
 						/>
 					</div>
 				</Container>
