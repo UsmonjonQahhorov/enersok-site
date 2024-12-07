@@ -4,7 +4,7 @@ import NextImage from 'next/image';
 import { cn } from '@/utils/cn';
 import type { Image } from '@/types/shared.types';
 
-export const CarouselItem = ({
+export const HeadingCarouselItem = ({
 	description,
 	image,
 	title,

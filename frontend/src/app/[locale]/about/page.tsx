@@ -1,4 +1,3 @@
-import { getDevelopments } from '@/api/developments/getDevelopments.api';
 import { getAboutPage } from '@/api/pages/getAboutPage.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
@@ -9,7 +8,6 @@ import type {
 	DynamicMetadata,
 	PageType,
 } from '@/types/component.types';
-import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
 import { getBlurImage } from '@/utils/getBlurImage';
 import About1 from '@public/about-icons/about1.svg';
@@ -17,6 +15,9 @@ import About2 from '@public/about-icons/about2.svg';
 import Markdown from 'markdown-to-jsx';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Suspense } from 'react';
+import { Developments } from './_components/Developments';
+import { Skeleton } from '@/components/ui/Skeleton';
 // import Factory from '@public/facroty.png';
 // import Banner from '@public/vacancy-banner.png';
 // import AboutBanner1 from '@public/about.png';
@@ -62,7 +63,6 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 		locale === 'en' ? 'About Company' : 'Kompaniya haqida';
 
 	const aboutPageData = await getAboutPage(locale);
-	const aboutPageDevelopmentData = await getDevelopments(locale);
 
 	const headingBlurImage = await getBlurImage(
 		getBackendImage(
@@ -251,7 +251,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 								/>
 							</div>
 						</div> */}
-						{aboutPageDevelopmentData.data?.data.map((development, index) => (
+						{/* {aboutPageDevelopmentData.data?.data.map((development, index) => (
 							<div
 								key={development.id}
 								className={cn(
@@ -294,7 +294,16 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 									/>
 								</div>
 							</div>
-						))}
+						))} */}
+
+						<Suspense
+							fallback={
+								<Skeleton className="w-full h-[300px] sm:h-[400px]" />
+							}
+						>
+							<Developments locale={locale} />
+						</Suspense>
+
 					</div>
 				</Container>
 			</section>

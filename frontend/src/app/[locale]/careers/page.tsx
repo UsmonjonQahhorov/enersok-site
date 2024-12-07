@@ -1,7 +1,5 @@
 import { getVacanciesPage } from '@/api/pages/getVacanciesPage.api';
-import { getVacancies } from '@/api/vacancies/getVacancies.api';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { CareerCard } from '@/components/ui/CareerCard';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
@@ -10,9 +8,11 @@ import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Image from 'next/image';
 import { PagePagination } from './_components/PagePagination';
-import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
 import { getBlurImage } from '@/utils/getBlurImage';
+import { Suspense } from 'react';
+import { Vacancies } from './_components/Vacancies';
+import { Skeleton } from '@/components/ui/Skeleton';
 // import Factory from '@public/facroty.png';
 // import Banner from '@public/vacancy-banner.png';
 
@@ -67,7 +67,6 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 	const breadcrumPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
 
 	const careersPageData = await getVacanciesPage(locale);
-	const vacancies = await getVacancies(locale, page);
 
 	const headingBlurImage = await getBlurImage(
 		getBackendImage(
@@ -182,22 +181,13 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 					>
 						{careersPageData.data?.data.attributes.about_vacancies_title}
 					</Heading>
-					<div className="grid sm:grid-cols-2 sm:gap-x-4 lg:gap-x-0 lg:grid-cols-1">
-						{vacancies.data?.data.map((vacancy) => (
-							<CareerCard
-								key={vacancy.id}
-								title={vacancy.attributes.vacancy_name}
-								location={vacancy.attributes.vacancy_location}
-								startDate={vacancy.attributes.createdAt}
-								endDate={vacancy.attributes.vacancy_closing_date}
-								url={`${RouterConfig.SingleCareer(locale === 'en' ? vacancy.attributes.slug : getOriginSlug(vacancy.attributes.localizations))}`}
-							/>
-						))}
-					</div>
-					<PagePagination
-						page={page}
-						total={vacancies.data?.meta.pagination.pageCount ?? 0}
-					/>
+					<Suspense
+						fallback={
+							<Skeleton className="w-full h-[300px] sm:h-[400px]" />
+						}
+					>
+						<Vacancies locale={locale} page={page} />
+					</Suspense>
 				</Container>
 			</section>
 		</>

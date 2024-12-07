@@ -18,6 +18,7 @@ import { Suspense } from 'react';
 import { MoreNews } from './_components/MoreNews';
 import Markdown from 'markdown-to-jsx';
 import type { Metadata } from 'next';
+import { Skeleton } from '@/components/ui/Skeleton';
 // import Banner from '@public/image (1).png';
 // import News from '@public/news.png';
 
@@ -232,7 +233,11 @@ const SingleNewPage: PageType = async ({ params }) => {
 			</section>
 			<section className="bg-backgroundImage1">
 				<Container className="py-12 lg:py-[169px]">
-					<Suspense>
+					<Suspense
+						fallback={
+							<Skeleton className="w-full h-[300px] sm:h-[400px]" />
+						}
+					>
 						<MoreNews locale={locale} />
 					</Suspense>
 				</Container>

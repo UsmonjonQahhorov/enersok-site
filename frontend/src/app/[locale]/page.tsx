@@ -5,6 +5,7 @@ import EmblaCarousel from '@/components/navigation/EmblaSlider';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { RouterConfig } from '@/configs/router.config';
 import { Link } from '@/i18n/routing';
 import type {
 	DynamicMetadata,
@@ -12,21 +13,20 @@ import type {
 } from '@/types/component.types';
 import { cn } from '@/utils/cn';
 import { getBackendImage } from '@/utils/getBackendImage';
+import { getBlurImage } from '@/utils/getBlurImage';
 import EcoFriendlyImage from '@public/ecoFriendly.svg';
 import EnergyIcon from '@public/energy-icon.svg';
 import EnergyImage from '@public/energy.svg';
 import LinkImage from '@public/link.svg';
 import ReliabilityImage from '@public/reliability.svg';
-import NextImage from 'next/image';
-import { CarouselItem } from './_components/CarouselItem';
-import { SponsorDonutChart } from './_components/Chart';
-import { LocationSection } from './_components/LocationSection';
-import { NewsCarouselItem } from './_components/NewsCarouselItem';
-import { getNews } from '@/api/news/getNews.api';
-import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
-import { RouterConfig } from '@/configs/router.config';
-import { getBlurImage } from '@/utils/getBlurImage';
+import NextImage from 'next/image';
+import { Suspense } from 'react';
+import { SponsorDonutChart } from './_components/Chart';
+import { HeadingCarouselItem } from './_components/HeadingCarouselItem';
+import { LocationSection } from './_components/LocationSection';
+import { NewsCarousel } from './_components/newsSection/NewsCarousel';
+import { Skeleton } from '@/components/ui/Skeleton';
 // import Factory from '@public/facroty.png';
 // import Factory2 from '@public/factory2.png';
 // import PeopelsImage from '@public/image (1).png';
@@ -77,24 +77,9 @@ const HomePage: PageType = async ({ params }) => {
 	const homePageData = await getHomePage(locale);
 	const carousel = await getCarousel(locale);
 	const sponsors = await getSponsors(locale);
-	const newsData = await getNews(locale, 1, 8);
 
 	const readMoreLinkLocale =
 		locale === 'en' ? 'Read more about us' : "Biz haqimizda ko'proq o'qing";
-	const carouselButtonsText =
-		locale === 'en' ? 'All News' : 'Barcha Yangiliklar';
-	const newsText = locale === 'en' ? 'News' : 'Yangiliklar';
-
-	// i need array, but every array item should contain 4 carousel items
-	const carouselItems = newsData.data?.data || [];
-	const carouselItemsArray = [];
-	for (let i = 0; i < carouselItems.length; i += 4) {
-		carouselItemsArray.push(carouselItems.slice(i, i + 4));
-	}
-	const carouselItemsArrayWithKeys = carouselItemsArray.map((items, index) => ({
-		key: `carousel-group-${index}`,
-		items,
-	}));
 
 	const aboutFirstImageBlur = await getBlurImage(
 		getBackendImage(
@@ -150,20 +135,20 @@ const HomePage: PageType = async ({ params }) => {
 						slides={
 							carousel.data?.data
 								? carousel.data?.data.map((item) => (
-										<CarouselItem
-											key={item.id}
-											image={{
-												url: getBackendImage(
-													item.attributes.picture.data.attributes.url,
-												),
-												width: item.attributes.picture.data.attributes.width,
-												height: item.attributes.picture.data.attributes.height,
-												name: item.attributes.picture.data.attributes.name,
-											}}
-											title={item.attributes.title}
-											description={item.attributes.text}
-										/>
-									))
+									<HeadingCarouselItem
+										key={item.id}
+										image={{
+											url: getBackendImage(
+												item.attributes.picture.data.attributes.url,
+											),
+											width: item.attributes.picture.data.attributes.width,
+											height: item.attributes.picture.data.attributes.height,
+											name: item.attributes.picture.data.attributes.name,
+										}}
+										title={item.attributes.title}
+										description={item.attributes.text}
+									/>
+								))
 								: []
 						}
 						showCounter={true}
@@ -396,22 +381,22 @@ const HomePage: PageType = async ({ params }) => {
 							data={
 								sponsors.data?.data
 									? sponsors.data?.data.map((sponsor) => ({
-											color: sponsor.attributes.sponsor_color,
-											name: sponsor.attributes.sponsor_name,
-											value: sponsor.attributes.sponsor_value,
-											image: {
-												url: getBackendImage(
-													sponsor.attributes.sponsor_logo.data.attributes.url,
-												),
-												width:
-													sponsor.attributes.sponsor_logo.data.attributes.width,
-												height:
-													sponsor.attributes.sponsor_logo.data.attributes
-														.height,
-												name: sponsor.attributes.sponsor_logo.data.attributes
-													.name as string,
-											},
-										}))
+										color: sponsor.attributes.sponsor_color,
+										name: sponsor.attributes.sponsor_name,
+										value: sponsor.attributes.sponsor_value,
+										image: {
+											url: getBackendImage(
+												sponsor.attributes.sponsor_logo.data.attributes.url,
+											),
+											width:
+												sponsor.attributes.sponsor_logo.data.attributes.width,
+											height:
+												sponsor.attributes.sponsor_logo.data.attributes
+													.height,
+											name: sponsor.attributes.sponsor_logo.data.attributes
+												.name as string,
+										},
+									}))
 									: []
 							}
 						/>
@@ -500,43 +485,15 @@ const HomePage: PageType = async ({ params }) => {
 			{/* News Carousel section */}
 			<section className="py-24 xl:py-48">
 				<Container>
-					<EmblaCarousel
-						className="[&>a]:mt-10 [&>a]:block [&>a]:md:hidden [&>div:nth-of-type(1)]:mb-8 [&>div:nth-of-type(1)]:md:mb-16 [&>div:nth-of-type(1)>div]:hidden [&>div:nth-of-type(1)>div]:md:flex"
-						autoLoopInterval={7000}
-						showCounter={false}
-						slidesToShow={1}
-						controlsPosition="above"
-						controlsTitle={newsText}
-						controlsButton={{
-							link: '/news',
-							text: carouselButtonsText,
-						}}
-						slides={carouselItemsArrayWithKeys?.map((carouselItems) => (
-							<NewsCarouselItem
-								key={`${carouselItems.key}`}
-								data={carouselItems.items.map((item) => ({
-									date: item.attributes.preview_date,
-									time: item.attributes.preview_time,
-									title: item.attributes.preview_title,
-									image: {
-										url: getBackendImage(
-											item.attributes.preview_picture.data.attributes.url,
-										),
-										width:
-											item.attributes.preview_picture.data.attributes.width,
-										height:
-											item.attributes.preview_picture.data.attributes.height,
-										name: item.attributes.preview_picture.data.attributes
-											.name as string,
-									},
-									slug:
-										locale === 'en'
-											? item.attributes.slug
-											: getOriginSlug(item.attributes.localizations),
-								}))}
+					<Suspense
+						fallback={
+							<Skeleton
+								className="h-[500px] md:h-[600px] lg:h-[700px] w-full"
 							/>
-						))}
-					/>
+						}
+					>
+						<NewsCarousel locale={locale} />
+					</Suspense>
 				</Container>
 			</section>
 

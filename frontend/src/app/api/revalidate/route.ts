@@ -16,6 +16,13 @@ export async function POST(req: NextRequest) {
 	}
 
 	// TODO: check on strapi frontend production url is right
+	revalidateTag('header');
+	revalidateTag('footer');
+	revalidateTag('carousel');
+	revalidateTag('managers');
+	revalidateTag('documents');
+	revalidateTag('developments');
+	revalidateTag('sponsors');
 	revalidatePath('/', 'page');
 	revalidatePath('/about', 'page');
 	revalidatePath('/contact', 'page');
@@ -25,13 +32,6 @@ export async function POST(req: NextRequest) {
 	revalidatePath('/sponsors', 'page');
 	revalidatePath('/submissions', 'page');
 	revalidatePath('/contacts', 'page');
-	revalidateTag('header');
-	revalidateTag('footer');
-	revalidateTag('carousel');
-	revalidateTag('managers');
-	revalidateTag('documents');
-	revalidateTag('developments');
-	revalidateTag('sponsors');
 
 	return Response.json({
 		revalidated: true,
