@@ -7,7 +7,6 @@ import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Image from 'next/image';
-import { PagePagination } from './_components/PagePagination';
 import type { Metadata } from 'next';
 import { getBlurImage } from '@/utils/getBlurImage';
 import { Suspense } from 'react';

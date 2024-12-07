@@ -4,15 +4,10 @@ import { Heading } from '@/components/ui/Heading';
 import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
-// import Factory from '@public/facroty.png';
-import { NewCard } from '@/components/ui/NewCard';
 // import News from '@public/news.png';
-import { getNews } from '@/api/news/getNews.api';
 import { getNewsPage } from '@/api/pages/getNewsPage.api';
 import { getBackendImage } from '@/utils/getBackendImage';
-import { getOriginSlug } from '@/utils/getOriginSlug.util';
 import type { Metadata } from 'next';
-import { PagePagination } from './_components/PagePagination';
 import { Newses } from './_components/Newses';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -38,7 +33,6 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 	const breadcrumPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
 
 	const newsPageData = await getNewsPage(locale);
-	const newsData = await getNews(locale, page);
 
 	return (
 		<>

@@ -2,7 +2,6 @@ import EmblaCarousel from "@/components/navigation/EmblaSlider"
 import type { Locale } from "@/configs/i18n.config";
 import { getBackendImage } from "@/utils/getBackendImage";
 import { getOriginSlug } from "@/utils/getOriginSlug.util";
-import { locale } from "dayjs";
 import { NewsCarouselItem } from "./NewsCarouselItem";
 import { getNews } from "@/api/news/getNews.api";
 
