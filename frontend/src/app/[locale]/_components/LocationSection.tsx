@@ -21,6 +21,8 @@ export const LocationSection = ({
 	secondLocationImage,
 	firstLocationCompanyName,
 	secondLocationCompanyName,
+	firstLocationImageBlur,
+	secondLocationImageBlur,
 }: LocationSectionProps) => {
 	const [show1, setShow1] = useState(false);
 	const [show2, setShow2] = useState(false);
@@ -82,6 +84,7 @@ export const LocationSection = ({
 						companyName={firstLocationCompanyName}
 						location={firstLocation}
 						image={firstLocationImage}
+						imageBlur={firstLocationImageBlur}
 						className={cn(
 							'absolute top-[-30px] xl:top-[-120px] left-0 sm:left-[100px] md:left-[200px] lg:left-[120px]',
 						)}
@@ -92,6 +95,7 @@ export const LocationSection = ({
 						companyName={secondLocationCompanyName}
 						location={secondLocation}
 						image={secondLocationImage}
+						imageBlur={secondLocationImageBlur}
 						className={cn(
 							'absolute top-[-30px] xl:top-[-120px] left-0 sm:left-[100px] md:left-[200px] lg:left-[120px]',
 						)}
@@ -111,4 +115,6 @@ interface LocationSectionProps {
 	secondLocationCompanyName: string;
 	firstLocationImage: Image;
 	secondLocationImage: Image;
+	firstLocationImageBlur: string;
+	secondLocationImageBlur: string;
 }

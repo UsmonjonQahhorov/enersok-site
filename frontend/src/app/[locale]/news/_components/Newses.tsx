@@ -111,7 +111,7 @@ export const Newses = async ({ page, locale }: NewsesProps) => {
                </div>
                <PagePagination
                     page={page}
-                    total={newsData.data?.meta.pagination.total ?? 0}
+                    total={newsData.data?.meta.pagination.pageCount ?? 0}
                />
           </>
      )

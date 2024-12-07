@@ -123,6 +123,17 @@ const HomePage: PageType = async ({ params }) => {
 				.data.attributes.url,
 		),
 	);
+	const locationFirstImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.location_section_first_picture.data.attributes.url,
+		)
+	);
+	const locationSecondImageBlur = await getBlurImage(
+		getBackendImage(
+			homePageData.data?.data.attributes.location_section_second_picture.data.attributes.url,
+		)
+	)
+	
 
 	return (
 		<>
@@ -479,6 +490,8 @@ const HomePage: PageType = async ({ params }) => {
 						homePageData.data?.data.attributes
 							.location_section_second_company_name || ''
 					}
+					firstLocationImageBlur={locationFirstImageBlur}
+					secondLocationImageBlur={locationSecondImageBlur}
 				/>
 			</section>
 

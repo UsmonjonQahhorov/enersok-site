@@ -11,6 +11,7 @@ export const LocationHoverCard = ({
 	companyName,
 	image,
 	location,
+	imageBlur,
 }: LocationHoverCardProps) => {
 	return (
 		<article
@@ -25,6 +26,8 @@ export const LocationHoverCard = ({
 				height={image.height}
 				alt={image.name}
 				className="max-w-36 h-full rounded-xl"
+				placeholder='blur'
+				blurDataURL={imageBlur}
 			/>
 			<div className="*:text-secondary flex flex-col gap-4">
 				<Heading as="h4" className="text-lg sm:text-2xl uppercase">
@@ -44,4 +47,5 @@ interface LocationHoverCardProps {
 	location: string;
 	image: Image;
 	className?: string;
+	imageBlur: string;
 }
