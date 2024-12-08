@@ -11,11 +11,13 @@ export async function POST(req: NextRequest) {
 		return Response.json({ message: 'Token is null', status: 400 });
 	}
 	const token = requestToken.split(' ')[1];
+
 	if (token !== WEBHOOK_TOKEN) {
 		return Response.json({ message: 'Invalid token' });
 	}
 
 	// TODO: check on strapi frontend production url is right
+	console.log('Revalidating all pages');
 	revalidateTag('header');
 	revalidateTag('footer');
 	revalidateTag('carousel');
@@ -23,15 +25,7 @@ export async function POST(req: NextRequest) {
 	revalidateTag('documents');
 	revalidateTag('developments');
 	revalidateTag('sponsors');
-	revalidatePath('/', 'page');
-	revalidatePath('/about', 'page');
-	revalidatePath('/contact', 'page');
-	revalidatePath('/project', 'page');
-	revalidatePath('/documents', 'page');
-	revalidatePath('/structure', 'page');
-	revalidatePath('/sponsors', 'page');
-	revalidatePath('/submissions', 'page');
-	revalidatePath('/contacts', 'page');
+	revalidatePath('/', 'layout');
 
 	return Response.json({
 		revalidated: true,
