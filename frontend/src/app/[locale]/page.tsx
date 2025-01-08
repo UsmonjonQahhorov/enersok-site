@@ -143,13 +143,14 @@ const HomePage: PageType = async ({ params }) => {
 							<Heading
 								size="base"
 								as="h2"
-								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
+								// className="mb-1"
+								className='2xl:mb-3 text-2xl 2xl:text-4xl'
 							>
 								{homePageData.data?.data.attributes.feature_section_1_title}
 							</Heading>
-							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
+							{/* <Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
 								{homePageData.data?.data.attributes.feature_section_1_text}
-							</Paragraph>
+							</Paragraph> */}
 						</div>
 					</div>
 					<div className="flex gap-7 items-center">
@@ -158,13 +159,13 @@ const HomePage: PageType = async ({ params }) => {
 							<Heading
 								size="base"
 								as="h2"
-								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
+								className="2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_2_title}
 							</Heading>
-							<Paragraph size="sm" className="2xl:max-w-80  md:text-lg">
+							{/* <Paragraph size="sm" className="2xl:max-w-80  md:text-lg">
 								{homePageData.data?.data.attributes.feature_section_2_text}
-							</Paragraph>
+							</Paragraph> */}
 						</div>
 					</div>
 					<div className="flex gap-7 items-center">
@@ -173,13 +174,13 @@ const HomePage: PageType = async ({ params }) => {
 							<Heading
 								size="base"
 								as="h2"
-								className="mb-1 2xl:mb-3 text-2xl 2xl:text-4xl"
+								className="2xl:mb-3 text-2xl 2xl:text-4xl"
 							>
 								{homePageData.data?.data.attributes.feature_section_3_title}
 							</Heading>
-							<Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
+							{/* <Paragraph size="sm" className="2xl:max-w-80 md:text-lg">
 								{homePageData.data?.data.attributes.feature_section_3_text}
-							</Paragraph>
+							</Paragraph> */}
 						</div>
 					</div>
 				</Container>
