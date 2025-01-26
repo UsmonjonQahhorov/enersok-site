@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
 			await transporter.sendMail(mailOptions);
 			return NextResponse.json(
-				{ message: 'Email успешно отправлен' },
+				{ message: 'Email успешно отправлен',recaptchaResponse },
 				{ status: 200 },
 			);
 		}

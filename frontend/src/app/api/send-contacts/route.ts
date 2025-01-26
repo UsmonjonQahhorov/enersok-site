@@ -72,7 +72,10 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
         }
 
         return NextResponse.json(
-            { error: 'Ошибка при отправке email' },
+            {
+                error: 'Ошибка при отправке email',
+                recaptchaResponse,
+            },
             { status: 500 },
         );
 
