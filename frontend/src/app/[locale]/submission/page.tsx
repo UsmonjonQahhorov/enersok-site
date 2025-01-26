@@ -1,10 +1,10 @@
 import { getGRMSubmissionPage } from '@/api/pages/getGRMSubmissionPage.api';
 import { GrmSubmissionForm } from '@/components/form/GrmSubmissionForm';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
 	PageType,
@@ -59,9 +59,9 @@ export const generateMetadata: DynamicMetadata = async ({
 
 const GRMSubmissionPage: PageType = async ({ params }) => {
 	const { locale } = await params;
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale =
-		locale === 'en' ? 'GRM Submission' : "GRM Jo'natish";
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale =
+	// 	locale === 'en' ? 'GRM Submission' : "GRM Jo'natish";
 	const formNameLocale =
 		locale === 'en' ? 'Your full name' : "Sizning to'liq ismingiz";
 	const formEmailLocale =
@@ -78,12 +78,12 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.GRMSubmission}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] text-secondary uppercase pt-[32px] lg:pt-[75px] text-5xl lg:text-[100px]">
 						{grmSubmissionPageData.data?.data.attributes.heading_title}
 					</Heading>

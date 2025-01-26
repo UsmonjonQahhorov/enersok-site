@@ -1,11 +1,12 @@
 import { getContactPage } from '@/api/pages/getContactPage.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { ContactUsForm } from '@/components/form/ContactUsForm';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { GMap } from '@/components/ui/Map';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SocialIcon } from '@/components/ui/SocialIcon';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import { Link } from '@/i18n/routing';
 import type {
 	DynamicMetadata,
@@ -62,13 +63,22 @@ export const generateMetadata: DynamicMetadata = async ({
 
 const ContactsPage: PageType = async ({ params }) => {
 	const { locale } = await params;
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale =
-		locale === 'en' ? 'Contact us' : "Biz bilan bog'lanish";
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale =
+	// 	locale === 'en' ? 'Contact us' : "Biz bilan bog'lanish";
 	const phoneLocale = locale === 'en' ? 'Phone:' : 'Telefon:';
 	const emailLocale = locale === 'en' ? 'Email:' : 'Elektron pochta:';
 	const addressLocale = locale === 'en' ? 'Address:' : 'Manzil:';
 	const workHoursLocale = locale === 'en' ? 'Office hours:' : 'Ish vaqtlari:';
+	const formNameLocale =
+		locale === 'en' ? 'Your full name' : "Sizning to'liq ismingiz";
+	const formEmailLocale =
+		locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
+	const formPhoneLocale =
+		locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
+	const formMessageLocale = locale === 'en' ? 'Message' : 'Xabar';
+	const formSubmitLocale =
+		locale === 'en' ? 'Submit the form' : "Formani jo'natish";
 
 	const contactPageData = await getContactPage(locale);
 
@@ -76,12 +86,12 @@ const ContactsPage: PageType = async ({ params }) => {
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] md:pb-5 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.ContactUs}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] text-secondary uppercase py-8 md:py-[75px] text-5xl lg:text-[100px]">
 						{contactPageData.data?.data.attributes.heading_title}
 					</Heading>
@@ -107,7 +117,7 @@ const ContactsPage: PageType = async ({ params }) => {
 				/>
 			</section>
 			<section>
-				<Container className="py-[50px] lg:pt-[95px] lg:pb-[142px] flex flex-col lg:grid lg:grid-cols-[4.5fr,5.5fr] gap-y-[50px] lg:gap-x-[100px] items-center">
+				<Container className="py-[50px] lg:pt-[95px] lg:pb-[100px] flex flex-col lg:grid lg:grid-cols-[4.5fr,5.5fr] gap-y-[50px] lg:gap-x-[100px] items-center">
 					<div className="flex flex-col gap-y-8 py-5 w-full">
 						<Heading
 							as="h2"
@@ -179,6 +189,17 @@ const ContactsPage: PageType = async ({ params }) => {
 						</ul>
 					</div>
 					<GMap mapUrl={contactPageData.data?.data.attributes.map_link || ''} />
+				</Container>
+			</section>
+			<section>
+				<Container className='pb-[50px] lg:pt-[50px] lg:pb-[142px] flex justify-center'>
+					<ContactUsForm
+						email={formEmailLocale}
+						message={formMessageLocale}
+						name={formNameLocale}
+						phone={formPhoneLocale}
+						sumbmit={formSubmitLocale}
+					/>
 				</Container>
 			</section>
 		</>

@@ -1,9 +1,9 @@
 import { getVacanciesPage } from '@/api/pages/getVacanciesPage.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Image from 'next/image';
@@ -62,8 +62,8 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 	const query = await searchParams;
 	const page = Number.parseInt(query?.page as string) || 1;
 
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
 
 	const careersPageData = await getVacanciesPage(locale);
 
@@ -73,12 +73,12 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] pb-11 flex lg:grid lg:grid-cols-2">
 					<div>
-						<Breadcrumbs
+						{/* <Breadcrumbs
 							textHome={breadcrumHomeLocale}
 							textPage={breadcrumPageLocale}
 							urlHome={RouterConfig.Home}
 							urlPage={RouterConfig.Careers}
-						/>
+						/> */}
 						<Image
 							src={getBackendImage(
 								careersPageData.data?.data.attributes.heading_picture.data
@@ -107,13 +107,13 @@ const CareersPage: PageType = async ({ params, searchParams }) => {
 						<div className="pt-10 border-t-[1px] border-solid border-secondaryOpacity3 pb-4 lg:pb-40">
 							<Heading
 								as="h2"
-								className="text-base md:text-3xl font-semibold text-secondary mb-3"
+								className="text-base md:text-3xl font-medium text-secondary mb-3"
 							>
 								{careersPageData.data?.data.attributes.heading_about_title}
 							</Heading>
-							<Paragraph className="text-sm md:text-xl font-normal text-secondary">
+							{/* <Paragraph className="text-sm md:text-xl font-normal text-secondary">
 								{careersPageData.data?.data.attributes.heading_about_text}
-							</Paragraph>
+							</Paragraph> */}
 						</div>
 					</div>
 					<div className="relative z-10 pl-14 hidden lg:block h-full min-h-[664px] max-h-[664px]">

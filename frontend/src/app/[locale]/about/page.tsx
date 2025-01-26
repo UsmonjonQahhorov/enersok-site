@@ -1,9 +1,9 @@
 import { getAboutPage } from '@/api/pages/getAboutPage.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
 	PageType,
@@ -58,9 +58,9 @@ export const generateMetadata: DynamicMetadata = async ({
 
 const AboutCompanyPage: PageType = async ({ params }) => {
 	const { locale } = await params;
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumAboutCompanyLocale =
-		locale === 'en' ? 'About Company' : 'Kompaniya haqida';
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumAboutCompanyLocale =
+	// 	locale === 'en' ? 'About Company' : 'Kompaniya haqida';
 
 	const aboutPageData = await getAboutPage(locale);
 
@@ -70,12 +70,12 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid grid-cols-1 xl:grid-cols-2 items-center relative z-10">
 					<div>
-						<Breadcrumbs
+						{/* <Breadcrumbs
 							textHome={breadcrumHomeLocale}
 							textPage={breadcrumAboutCompanyLocale}
 							urlHome={RouterConfig.Home}
 							urlPage={RouterConfig.AboutCompany}
-						/>
+						/> */}
 						<Image
 							src={getBackendImage(
 								aboutPageData.data?.data.attributes.heading_section_picture.data
@@ -200,7 +200,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 				<Container className="pb-[140px]">
 					<Heading
 						as="h2"
-						className="lg:w-2/5 text-secondary text-[32px] lg:text-[64px] !leading-[normal] pb-8 lg:pb-[50px]"
+						className="text-secondary text-[32px] lg:text-[64px] !leading-[normal] pb-8 lg:pb-[50px]"
 					>
 						{aboutPageData.data?.data.attributes.development_section_title}
 					</Heading>

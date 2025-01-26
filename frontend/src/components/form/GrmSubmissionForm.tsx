@@ -21,7 +21,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 	const { register, handleSubmit, reset } = useForm<GrmSubmissionFormData>();
 	const onSubmit = async (data: GrmSubmissionFormData) => {
 		try {
-			const response = await fetch('/api/send-contact', {
+			const response = await fetch('/api/send-grm', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

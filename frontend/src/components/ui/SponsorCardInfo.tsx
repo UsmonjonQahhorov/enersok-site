@@ -22,7 +22,7 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				'grid lg:grid-cols-[1fr,3fr] lg:gap-x-[100px] lg:pb-12 lg:border-b-[1px] border-solid border-secondaryOpacity3',
 			)}
 		>
-			<div className="min-h-[150px] lg:max-h-[150px] w-full bg-[#F8F8F8] mb-3 lg:mb-0 rounded-xl flex items-center justify-center">
+			<div className="min-h-[150px] lg:max-h-[150px] w-full bg-[#badded] mb-3 lg:mb-0 rounded-xl flex items-center justify-center">
 				<NextImage
 					src={image.url}
 					width={image.width}

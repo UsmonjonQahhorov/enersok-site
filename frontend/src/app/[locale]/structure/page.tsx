@@ -1,11 +1,11 @@
 import { getManagers } from '@/api/managers/getManagers.api';
 import { getOrganizationPage } from '@/api/pages/getOrganizationPage.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { EmployeeCard } from '@/components/ui/EmployeeCard';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
 	PageType,
@@ -59,9 +59,9 @@ export const generateMetadata: DynamicMetadata = async ({
 const OrganizationalStructurePage: PageType = async ({ params }) => {
 	const { locale } = await params;
 
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale =
-		locale === 'en' ? 'Organizational structure' : 'Tashkiliy tuzilma';
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale =
+	// 	locale === 'en' ? 'Organizational structure' : 'Tashkiliy tuzilma';
 
 	const organizationPageData = await getOrganizationPage(locale);
 	const managers = await getManagers(locale);
@@ -70,12 +70,12 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] lg:pb-5 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.OrganizationalStructure}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:py-[75px] text-[32px] lg:text-[100px]">
 						{organizationPageData.data?.data.attributes.heading_section_title}
 					</Heading>
@@ -106,14 +106,14 @@ const OrganizationalStructurePage: PageType = async ({ params }) => {
 					<div className="pt-20 pb-[50px] md:py-[100px]">
 						<Heading
 							as="h2"
-							className="!leading-[normal] text-secondary uppercase text-[32px] lg:text-[64px] lg:max-w-[50%] pb-8 md:pb-16"
+							className="!leading-[normal] text-secondary uppercase text-[32px] lg:text-[64px] pb-8 md:pb-16"
 						>
 							{
 								organizationPageData.data?.data.attributes
 									.managers_section_title
 							}
 						</Heading>
-						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-12 md:gap-y-14">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-12 md:gap-y-14">
 							{managers.data?.data.map((manager) => (
 								<EmployeeCard
 									key={manager.id}

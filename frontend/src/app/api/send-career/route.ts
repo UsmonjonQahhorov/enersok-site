@@ -72,7 +72,7 @@ export async function POST(req: Request) {
 
 		const mailOptions: nodemailer.SendMailOptions = {
 			from: process.env.EMAIL_USER,
-			to: 'info@enersok.uz',
+			to: 'lola.tadjiyeva@enersok.uz ',
 			subject: 'Новая заявка с формы карьеры',
 			html: `
         <h3>Информация о заявке:</h3>

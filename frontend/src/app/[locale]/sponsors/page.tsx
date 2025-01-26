@@ -1,12 +1,12 @@
 import { getAboutSponsors } from '@/api/pages/getAboutSponsors.api';
 import { getSponsors } from '@/api/sponsors/getSponsors.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { SponsorCard } from '@/components/ui/SponsorCard';
 import { SponsorCardInfo } from '@/components/ui/SponsorCardInfo';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
 	PageType,
@@ -67,9 +67,9 @@ export const generateMetadata: DynamicMetadata = async ({
 const AboutSponsorsPage: PageType = async ({ params }) => {
 	const { locale } = await params;
 
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale =
-		locale === 'en' ? 'About Sponsors' : 'Sponsorlar haqida';
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale =
+	// 	locale === 'en' ? 'About Sponsors' : 'Sponsorlar haqida';
 	const holdingCompanyLocale =
 		locale === 'en' ? 'Holding Сompany' : 'Holding kompaniya';
 	const projectCompanyLocale =
@@ -83,12 +83,12 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 			{/* Hero Section */}
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] lg:pb-5 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.AboutSponsors}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] w-1/2 text-secondary uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px]">
 						{sponsorsPageData.data?.data.attributes.heading_title}
 					</Heading>
@@ -118,7 +118,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 			{/* About Sponsors Section */}
 			<section>
 				<Container className="pt-12 pb-[110px] lg:pt-[133px] lg:pb-[160px]">
-					<div className="w-full lg:w-2/5">
+					<div className="w-full">
 						<Heading
 							as="h2"
 							className="text-[32px] lg:text-[64px] pb-[18px] lg:pb-0 text-secondary uppercase"

@@ -1,6 +1,6 @@
 import { getVacancy } from '@/api/vacancies/getVanacy.api';
 import { CareerForm } from '@/components/form/CareerForm';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
@@ -57,8 +57,8 @@ const SingleCareerPage: PageType = async ({ params }) => {
 		});
 	}
 
-	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumbsPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
+	// const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumbsPageLocale = locale === 'en' ? 'Careers' : 'Karyera';
 	const locationLocale = locale === 'en' ? 'Location' : 'Joylashuv';
 	const postingDateLocale =
 		locale === 'en' ? 'Posting Date' : 'E’lon qilingan sana';
@@ -78,12 +78,12 @@ const SingleCareerPage: PageType = async ({ params }) => {
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-8 lg:pb-20 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumbsHomeLocale}
 						textPage={breadcrumbsPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.Careers}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] text-secondary w-full uppercase py-8 lg:py-[75px] text-5xl lg:text-[100px] lg:pb-16">
 						{vacancyPageData.data?.vacancyName}
 					</Heading>

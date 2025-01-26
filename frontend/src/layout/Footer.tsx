@@ -63,63 +63,63 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 					<ul className="hidden lg:flex flex-col gap-y-4">
 						<li>
 							<Link
-								className={'flex flex-row items-start gap-x-1'}
+								className={'flex flex-row items-start gap-x-2'}
 								href={`tel:${footerData.data?.data.attributes.phone}`}
 							>
 								<Image
 									alt="Phone Enersok"
 									src={Phone}
-									width={16}
-									height={16}
-									className="w-4 h-4"
+									width={30}
+									height={30}
+									className="w-[24px] h-[24px] -mt-[3px]"
 								/>
-								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
+								<span className="w-full text-white text-2xl leading-5 hover:text-button1 duration-200">
 									{footerData.data?.data.attributes.phone}
 								</span>
 							</Link>
 						</li>
 						<li>
 							<Link
-								className={'flex flex-row items-start gap-x-1'}
+								className={'flex flex-row items-start gap-x-2'}
 								href={`mailto:${footerData.data?.data.attributes.email}`}
 							>
 								<Image
 									alt="Email Enersok"
 									src={Email}
-									width={16}
-									height={16}
-									className="w-4 h-4"
+									width={30}
+									height={30}
+									className="w-[24px] h-[24px] -mt-[3px]"
 								/>
-								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
+								<span className="w-full text-white text-2xl leading-5 hover:text-button1 duration-200">
 									{footerData.data?.data.attributes.email}
 								</span>
 							</Link>
 						</li>
 						<li className="w-full">
 							<Link
-								className={'flex flex-row items-start gap-x-1'}
+								className={'flex flex-row items-start gap-x-2'}
 								href={footerData.data?.data.attributes.address_link || ''}
 							>
 								<Image
 									alt="Adress Enersok"
 									src={Location}
-									className="w-4 h-4"
+									className="w-[24px] h-[24px] -mt-[3px]"
 								/>
-								<span className="w-full text-white text-base leading-5 hover:text-button1 duration-200">
+								<span className="w-full text-white text-2xl leading-5 hover:text-button1 duration-200">
 									{footerData.data?.data.attributes.address_text}
 								</span>
 							</Link>
 						</li>
 						<li>
-							<Paragraph className={'flex flex-row items-start gap-x-1'}>
+							<Paragraph className={'flex flex-row items-start gap-x-2'}>
 								<Image
 									alt="Time Work Enersok"
 									src={Time}
-									width={16}
-									height={16}
-									className="w-4 h-4"
+									width={30}
+									height={30}
+									className="w-[24px] h-[24px] -mt-[3px]"
 								/>
-								<span className="w-full text-white text-base leading-5">
+								<span className="w-full text-white text-2xl leading-5">
 									{footerData.data?.data.attributes.work_hours_text}
 								</span>
 							</Paragraph>

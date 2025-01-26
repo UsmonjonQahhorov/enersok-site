@@ -1,4 +1,4 @@
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
@@ -9,7 +9,7 @@ import type {
 import Image from 'next/image';
 import { getProjectDetailPage } from '@/api/pages/getProjectDetailPage.api';
 import EmblaCarousel from '@/components/navigation/EmblaSlider';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Location from '@public/location-green.svg';
 import Afs1 from '@public/project-icons/afs1.svg';
@@ -67,9 +67,9 @@ export const generateMetadata: DynamicMetadata = async ({
 const ProjectDetailsPage: PageType = async ({ params }) => {
 	const { locale } = await params;
 
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale =
-		locale === 'en' ? 'Project Details' : 'Loyiha tafsilotlari';
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale =
+	// 	locale === 'en' ? 'Project Details' : 'Loyiha tafsilotlari';
 	const projectPeriodLocale =
 		locale === 'en' ? 'Project Period:' : 'Loyiha davri:';
 	const projectFirstPhaseLocale = locale === 'en' ? 'Phase 1' : '1-faza';
@@ -87,12 +87,12 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 			<section className="bg-backgroundImage1 relative overflow-hidden">
 				<Container className="pt-[104px] sm:pt-[164px] pb-8 xl:pb-11 grid xl:grid-cols-2 items-center">
 					<div>
-						<Breadcrumbs
+						{/* <Breadcrumbs
 							textHome={breadcrumHomeLocale}
 							textPage={breadcrumPageLocale}
 							urlHome={RouterConfig.Home}
 							urlPage={RouterConfig.ProjectDetails}
-						/>
+						/> */}
 						<Image
 							src={getBackendImage(
 								projectDetailPageData.data?.data.attributes
@@ -240,7 +240,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 					>
 						{projectDetailPageData.data?.data.attributes.info_section_title}
 					</Heading>
-					<Paragraph className="text-sm lg:text-2xl text-secondary lg:pr-[20%] pb-20 lg:pb-[95px]">
+					<Paragraph className="text-sm lg:text-2xl text-secondary pb-20 lg:pb-[95px]">
 						{projectDetailPageData.data?.data.attributes.about_section_text}
 					</Paragraph>
 					<EmblaCarousel

@@ -1,7 +1,7 @@
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type { DynamicMetadata, PageType } from '@/types/component.types';
 import Image from 'next/image';
 import { getNewsPage } from '@/api/pages/getNewsPage.api';
@@ -28,8 +28,8 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 	const query = await searchParams;
 	const page = Number.parseInt(query?.page as string) || 1;
 
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
 
 	const newsPageData = await getNewsPage(locale);
 
@@ -38,12 +38,12 @@ const NewsPage: PageType = async ({ params, searchParams }) => {
 			{/* Hero Section */}
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.News}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] text-secondary uppercase py-8 lg:pt-[170px] lg:pb-[105px] text-[32px] lg:text-[100px]">
 						{newsPageData.data?.data.attributes.page_title}
 					</Heading>

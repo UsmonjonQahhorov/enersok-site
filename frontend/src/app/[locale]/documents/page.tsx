@@ -1,11 +1,11 @@
 import { getDocuments } from '@/api/documents/getDocuments.api';
 import { getDGPage } from '@/api/pages/getD&GPage.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { DownloadFile } from '@/components/ui/DownloadFile';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { RouterConfig } from '@/configs/router.config';
+// import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
 	PageType,
@@ -57,9 +57,9 @@ export const generateMetadata: DynamicMetadata = async ({
 
 const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 	const { locale } = await params;
-	const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumPageLocale =
-		locale === 'en' ? 'Documents and guidelines' : "Hujjatlar va qo'llanmalar";
+	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumPageLocale =
+	// 	locale === 'en' ? 'Documents and guidelines' : "Hujjatlar va qo'llanmalar";
 
 	const DGPageData = await getDGPage(locale);
 	const documents = await getDocuments(locale);
@@ -68,12 +68,12 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumHomeLocale}
 						textPage={breadcrumPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.DocumentsAndGuidelines}
-					/>
+					/> */}
 					<Heading className="!leading-[normal] text-secondary uppercase pt-[48px] pb-[32px] lg:py-[75px] text-[32px] lg:text-[100px]">
 						{DGPageData.data?.data.attributes.heading_text}
 					</Heading>
@@ -108,6 +108,7 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 								key={document.id}
 								text={document.attributes.document_name}
 								url={document.attributes.document.data.attributes.url}
+								viewUrl={''}
 							/>
 						))}
 					</div>

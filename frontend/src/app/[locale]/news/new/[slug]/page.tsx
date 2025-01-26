@@ -1,5 +1,5 @@
 import { getSingleNews } from '@/api/news/getSingleNews.api';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+// import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
@@ -69,8 +69,8 @@ const SingleNewPage: PageType = async ({ params }) => {
 		});
 	}
 
-	const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
-	const breadcrumbsPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
+	// const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
+	// const breadcrumbsPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
 
 	const hasFullDescription =
 		(singleNewsPageData.data?.newsDescriptionFull?.trim().length ?? 0) > 0;
@@ -85,13 +85,13 @@ const SingleNewPage: PageType = async ({ params }) => {
 		<>
 			<section className="bg-backgroundImage1 relative">
 				<Container className="pt-[104px] sm:pt-[164px] pb-5 flex flex-col items-center">
-					<Breadcrumbs
+					{/* <Breadcrumbs
 						textHome={breadcrumbsHomeLocale}
 						textPage={breadcrumbsPageLocale}
 						urlHome={RouterConfig.Home}
 						urlPage={RouterConfig.News}
 						className="self-start"
-					/>
+					/> */}
 					<Heading className="!leading-[normal] w-full text-wrap break-all text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
 						{singleNewsPageData.data?.previewTitle}
 					</Heading>
