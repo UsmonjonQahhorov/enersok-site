@@ -26,7 +26,7 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 			console.error('ReCAPTCHA not available');
 			return;
 		}
-		const gRecaptchaToken = await executeRecaptcha('send-career');
+		const gRecaptchaToken = await executeRecaptcha('grm_submission');
 		try {
 			const response = await fetch('/api/send-grm', {
 				method: 'POST',

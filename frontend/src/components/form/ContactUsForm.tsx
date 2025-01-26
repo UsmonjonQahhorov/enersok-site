@@ -27,7 +27,7 @@ export const ContactUsForm: FC<ContactUsFormProps> = ({
             console.error('ReCAPTCHA not available');
             return;
         }
-        const gRecaptchaToken = await executeRecaptcha('send-contacts');
+        const gRecaptchaToken = await executeRecaptcha('contact_us');
 
         try {
             const response = await fetch('/api/send-contacts', {

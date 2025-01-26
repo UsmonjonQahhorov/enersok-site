@@ -35,7 +35,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 			console.error('ReCAPTCHA not available');
 			return;
 		}
-		const gRecaptchaToken = await executeRecaptcha('send-career');
+		const gRecaptchaToken = await executeRecaptcha('career_form');
 
 		try {
 			const formData = new FormData();
