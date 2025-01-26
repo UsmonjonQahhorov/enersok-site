@@ -30,7 +30,7 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 						'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr,1fr,1.5fr] md:gap-x-14 xl:gap-x-28 2xl:gap-x-56 pt-12 pb-8 md:py-24 md:border-b border-[rgba(255,_255,_255,_0.12)]'
 					}
 				>
-					<Link className="pb-8 md:pb-0" href={RouterConfig.Home}>
+					<Link className="py-8 md:pt-0 md:pb-0 logo-container" href={RouterConfig.Home}>
 						<Image
 							src={getBackendImage(
 								footerData.data?.data.attributes.logo.data.attributes.url,
@@ -43,10 +43,10 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 							}
 							alt="Enersok Logo"
 							priority={true}
-							className="w-[195px] h-fit"
+							className="w-[195px] h-fit relative z-[2]"
 						/>
 					</Link>
-					<ul className="flex flex-col text-left gap-y-1">
+					<ul className="mt-8 sm:mt-0 flex flex-col text-left gap-y-1">
 						{mobileNavigation.map((menu) => (
 							<li key={menu.href}>
 								<Link
