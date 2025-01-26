@@ -9,7 +9,6 @@ const ContactspageLayout: LayoutType = async ({ children, params }) => {
      return (
           <ReCaptchaProvider
                reCaptchaKey={captchaKey}
-               strategy="worker"
                id={`${locale}-recaptcha`}
           >
                {children}
