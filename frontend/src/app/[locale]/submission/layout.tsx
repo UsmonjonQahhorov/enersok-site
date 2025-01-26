@@ -1,5 +1,3 @@
-'use client';
-
 import { RECAPTCHA_SITE_KEY } from "@/configs/env.config"
 import type { LayoutType } from "@/types/component.types"
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -11,7 +9,6 @@ const GrmSubmissionLayout: LayoutType = async ({ children, params }) => {
      return (
           <ReCaptchaProvider
                reCaptchaKey={captchaKey}
-               strategy="worker"
                id={`${locale}-recaptcha`}
           >
                {children}
