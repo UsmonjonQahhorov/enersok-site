@@ -4,3 +4,5 @@ export const TOKEN = process.env.TOKEN ?? '';
 export const WEBHOOK_TOKEN = process.env.WEBHOOK_TOKEN ?? '';
 export const EMAIL_USER = process.env.EMAIL_USER ?? '';
 export const EMAIL_PASS = process.env.EMAIL_PASS ?? '';
+export const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY ?? '';
+export const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? '';
