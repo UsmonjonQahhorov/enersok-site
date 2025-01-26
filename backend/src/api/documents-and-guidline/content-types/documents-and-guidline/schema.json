@@ -38,6 +38,15 @@
       "type": "string",
       "required": true,
       "default": "Syrdarya CCGT_ESIA Volume 1 NTS_v1.2"
+    },
+    "document_googledrive_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": false
     }
   }
 }
