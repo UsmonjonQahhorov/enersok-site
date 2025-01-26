@@ -12,7 +12,7 @@ export const Newses = async ({ page, locale }: NewsesProps) => {
 
      return (
           <>
-               <div className="hidden lg:grid lg:grid-cols-3 gap-x-5">
+               {/* <div className="hidden lg:grid lg:grid-cols-3 gap-x-5">
                     {newsData.data?.data.slice(0, 3).map((news) => (
                          <NewCard
                               key={news.id}
@@ -35,9 +35,9 @@ export const Newses = async ({ page, locale }: NewsesProps) => {
                               )}
                          />
                     ))}
-               </div>
-               <div className="hidden lg:grid lg:grid-cols-2 gap-x-5">
-                    {newsData.data?.data.slice(3, 5).map((news) => (
+               </div> */}
+               <div className="hidden lg:grid lg:grid-cols-2 gap-y-10 gap-x-5">
+                    {newsData.data?.data.map((news) => (
                          <NewCard
                               key={news.id}
                               className="[&>div>a>img]:min-h-[353px] [&>div>a>img]:max-h-[353px] [&>div>a:nth-of-type(1)]:min-h-[353px] [&>div>a:nth-of-type(1)]:max-h-[353px]"
@@ -61,7 +61,7 @@ export const Newses = async ({ page, locale }: NewsesProps) => {
                          />
                     ))}
                </div>
-               <div className="hidden lg:grid lg:grid-cols-3 gap-x-5">
+               {/* <div className="hidden lg:grid lg:grid-cols-3 gap-x-5">
                     {newsData.data?.data.slice(5, 8).map((news) => (
                          <NewCard
                               key={news.id}
@@ -84,7 +84,7 @@ export const Newses = async ({ page, locale }: NewsesProps) => {
                               )}
                          />
                     ))}
-               </div>
+               </div> */}
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-12 sm:gap-5 lg:hidden">
                     {newsData.data?.data.map((news) => (
                          <NewCard
