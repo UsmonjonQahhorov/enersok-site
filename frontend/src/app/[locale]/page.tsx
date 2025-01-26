@@ -87,7 +87,7 @@ const HomePage: PageType = async ({ params }) => {
 			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-8 lg:pb-[80px]">
 				<Container>
 					<EmblaCarousel
-						className="[&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:lg:flex"
+						className="flex flex-col items-center [&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:lg:flex"
 						autoLoopInterval={7000}
 						slides={
 							carousel.data?.data
