@@ -63,7 +63,7 @@ export async function POST(req: Request) {
 
 		const formData = `secret=${secretKey}&response=${gRecaptchaToken}`;
 
-		const response = await http<RecaptchaResponseData>("https://www.google.com/recaptcha/api/siteverify", {
+		const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -71,7 +71,9 @@ export async function POST(req: Request) {
 			body: formData,
 		})
 
-		if (response.data?.success && response.data.score > 0.5) {
+		const recaptchaResponse = await response.json() as RecaptchaResponseData;
+
+		if (recaptchaResponse?.success && recaptchaResponse.score > 0.5) {
 			let file: File | undefined = undefined;
 
 			if (fileData) {
