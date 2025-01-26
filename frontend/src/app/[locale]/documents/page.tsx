@@ -108,7 +108,7 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 								key={document.id}
 								text={document.attributes.document_name}
 								url={document.attributes.document.data.attributes.url}
-								viewUrl={''}
+								viewUrl={document.attributes.document_googledrive_link ?? ''}
 							/>
 						))}
 					</div>
