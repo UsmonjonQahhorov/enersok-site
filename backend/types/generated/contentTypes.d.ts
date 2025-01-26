@@ -947,6 +947,12 @@ export interface ApiDocumentsAndGuidlineDocumentsAndGuidline
           localized: true;
         };
       }>;
+    document_googledrive_link: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     document_name: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{

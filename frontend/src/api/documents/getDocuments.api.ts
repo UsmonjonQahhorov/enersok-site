@@ -35,6 +35,7 @@ interface DatumAttributes {
 	updatedAt: Date;
 	locale: string;
 	document_name: string;
+	document_googledrive_link?: string;
 	document: Document;
 }
 
