@@ -1,10 +1,11 @@
 'use client';
-import type { FC } from 'react';
-import { TextInput } from '@/components/input/TextInput';
 import { InputBase } from '@/components/input/InputBase';
 import { Textarea } from '@/components/input/TextArea';
+import { TextInput } from '@/components/input/TextInput';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
+import { useReCaptcha } from 'next-recaptcha-v3';
+import { type FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -18,15 +19,26 @@ export const ContactUsForm: FC<ContactUsFormProps> = ({
     sumbmit,
     className,
 }) => {
+
+    const { executeRecaptcha } = useReCaptcha();
     const { register, handleSubmit, reset } = useForm<ContactUsFormData>();
     const onSubmit = async (data: ContactUsFormData) => {
+        if (!executeRecaptcha) {
+            console.error('ReCAPTCHA not available');
+            return;
+        }
+        const gRecaptchaToken = await executeRecaptcha('/api/send-contacts');
+
         try {
             const response = await fetch('/api/send-contacts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    ...data,
+                    gRecaptchaToken,
+                }),
             });
             if (response.ok) {
                 console.log('Форма успешно отправлена');

@@ -6,6 +6,7 @@ import { Textarea } from '@/components/input/TextArea';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 import { useForm } from 'react-hook-form';
+import { useReCaptcha } from 'next-recaptcha-v3';
 
 const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const phonePattern = /^[+]{1}[0-9]{7,15}$/;
@@ -18,15 +19,24 @@ export const GrmSubmissionForm: FC<GrmSubmissionFormProps> = ({
 	sumbmit,
 	className,
 }) => {
+	const { executeRecaptcha } = useReCaptcha();
 	const { register, handleSubmit, reset } = useForm<GrmSubmissionFormData>();
 	const onSubmit = async (data: GrmSubmissionFormData) => {
+		if (!executeRecaptcha) {
+			console.error('ReCAPTCHA not available');
+			return;
+		}
+		const gRecaptchaToken = await executeRecaptcha('/api/send-career');
 		try {
 			const response = await fetch('/api/send-grm', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify(data),
+				body: JSON.stringify({
+					...data,
+					gRecaptchaToken,
+				}),
 			});
 			if (response.ok) {
 				console.log('Форма успешно отправлена');

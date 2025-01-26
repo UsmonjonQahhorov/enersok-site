@@ -8,6 +8,7 @@ import { cn } from '@/utils/cn';
 import { FileInput } from '@/components/input/FileInput';
 import { Heading } from '@/components/ui/Heading';
 import { useForm } from 'react-hook-form';
+import { useReCaptcha } from 'next-recaptcha-v3';
 
 const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const phonePattern = /^[+]{1}[0-9]{7,15}$/;
@@ -22,6 +23,7 @@ export const CareerForm: FC<CareerFormProps> = ({
 	file,
 	text,
 }) => {
+	const { executeRecaptcha } = useReCaptcha();
 	const {
 		register,
 		handleSubmit,
@@ -29,12 +31,20 @@ export const CareerForm: FC<CareerFormProps> = ({
 	} = useForm<CareerFormData>();
 
 	const onSubmit = async (data: CareerFormData) => {
+		if (!executeRecaptcha) {
+			console.error('ReCAPTCHA not available');
+			return;
+		}
+		const gRecaptchaToken = await executeRecaptcha('/api/send-career');
+
 		try {
 			const formData = new FormData();
 			formData.append('name', data.name);
 			formData.append('email', data.email);
 			formData.append('phone', data.phone);
 			formData.append('message', data.message);
+			formData.append('gRecaptchaToken', gRecaptchaToken);
+
 
 			// Проверяем наличие файла
 			const fileInput =
