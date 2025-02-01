@@ -17,7 +17,8 @@ export const SponsorCard: FC<SponsorCardProps> = async ({
 		<article
 			className={cn(
 				className,
-				'bg-[#F2F7FA] min-h-[85px] md:min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-row md:flex-col justify-start md:justify-center items-center hover:shadow-lg duration-200',
+				'bg-white min-h-[85px] md:min-h-[213px] px-6 py-3 h-full w-full rounded-xl flex flex-row md:flex-col justify-start md:justify-center items-center hover:shadow-lg duration-200',
+				// 'bg-[#F2F7FA]'
 			)}
 		>
 			<NextImage

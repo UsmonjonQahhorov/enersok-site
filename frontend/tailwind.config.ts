@@ -39,6 +39,7 @@ const config: Config = {
 				backgroundImage3: 'linear-gradient(252.67deg, #F1FFF2 -11.24%, #D5E2E9 83.1%);',
 				backgroundImage4: 'linear-gradient(160.68deg, #F1FFF2 7.48%, #D5E2E9 94.06%);',
 				backgroundImage5: 'linear-gradient(163.12deg, #F1FFF2 6.92%, #D5E2E9 89.84%);',
+				backgroundImage6: 'linear-gradient(129.89deg, #F1FFF2 -31.2%, #D6E7EF 79.12%);',
 			},
 			fontFamily: {
 				mori: ['PPMori', 'sans-serif'],

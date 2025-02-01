@@ -129,7 +129,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							{sponsorsPageData.data?.data.attributes.about_section_text}
 						</Paragraph>
 					</div>
-					<div className="pt-[136px] md:pt-20">
+					{/* <div className="pt-[136px] md:pt-20">
 						<div className="w-full grid grid-cols-[0.1fr,0.9fr] md:flex md:flex-col items-start md:items-center relative">
 							<Heading
 								as="h2"
@@ -233,6 +233,107 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 									Project Сompany
 								</Heading>
 								<div className="min-h-[83px] lg:min-h-[116px] min-w-[343px] bg-[#F2F7FA] rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+									<Image
+										src={Sponsor5}
+										alt="Sponsor5 Enersok"
+										className="max-h-[34px] lg:max-h-[47px] w-auto"
+									/>
+								</div>
+							</div>
+						</div>
+					</div> */}
+					<div className="pt-[136px] md:pt-20">
+						<div className="w-full grid grid-cols-1 md:flex md:flex-col items-start md:items-center relative">
+							<div className='flex flex-col p-3 rounded-xl bg-backgroundImage6'>
+								<Heading
+									as="h2"
+									className="text-2xl hidden text-center md:block text-secondary pt-3 pb-6"
+								>
+									{sponsorsPageData.data?.data.attributes.sponsors_section_title}
+								</Heading>
+								<div className="grid md:grid-cols-4 gap-y-[10px] md:gap-x-3">
+									<Heading
+										as="h2"
+										className="text-2xl text-secondary md:hidden"
+									>
+										{
+											sponsorsPageData.data?.data.attributes
+												.sponsors_section_title
+										}
+									</Heading>
+									{sponsors.data?.data.map((sponsor) => (
+										<SponsorCard
+											image={{
+												width:
+													sponsor.attributes.sponsor_logo.data.attributes.width,
+												height:
+													sponsor.attributes.sponsor_logo.data.attributes.height,
+												url: getBackendImage(
+													sponsor.attributes.sponsor_logo.data.attributes.url,
+												),
+												name: sponsor.attributes.sponsor_logo.data.attributes
+													.name,
+											}}
+											title={sponsor.attributes.sponsor_name}
+											text={`${sponsor.attributes.sponsor_value}%`}
+											key={sponsor.id}
+										/>
+									))}
+
+									<div className="flex md:hidden flex-col md:items-center">
+										<Heading
+											as="h2"
+											className="text-base lg:text-2xl text-left md:text-center pt-6 pb-3 md:py-3"
+										>
+											{holdingCompanyLocale}
+										</Heading>
+										<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+											<Paragraph className="text-center text-2xl lg:text-[32px] text-[#5055E6]">
+												NEKS Energy B.V.
+											</Paragraph>
+										</div>
+										<span className="w-[2px] h-[73px] bg-black hidden md:block" />
+									</div>
+									<div className="flex md:hidden flex-col md:items-center">
+										<Heading
+											as="h2"
+											className="text-base lg:text-2xl text-left md:text-center pt-8 pb-3 md:py-3"
+										>
+											{projectCompanyLocale}
+										</Heading>
+										<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+											<Image
+												src={Sponsor5}
+												alt="Sponsor5 Enersok"
+												className="max-h-[34px] lg:max-h-[47px] w-auto"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<span className="w-[1px] h-[40px] bg-black hidden md:block" />
+							<div className="hidden md:flex flex-col items-center bg-backgroundImage6 min-w-[50%] rounded-xl pt-0 px-3 py-3">
+								<Heading
+									as="h2"
+									className="text-base lg:text-2xl text-center py-4"
+								>
+									Holding Сompany
+								</Heading>
+								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+									<Paragraph className="text-center text-[32px] text-[#5055E6]">
+										NEKS Energy B.V.
+									</Paragraph>
+								</div>
+							</div>
+							<span className="w-[1px] h-[40px] bg-black hidden md:block" />
+							<div className="hidden md:flex flex-col items-center bg-backgroundImage6 min-w-[30%] rounded-xl pt-0 px-3 py-3">
+								<Heading
+									as="h2"
+									className="text-base lg:text-2xl text-center py-3"
+								>
+									Project Сompany
+								</Heading>
+								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Image
 										src={Sponsor5}
 										alt="Sponsor5 Enersok"

@@ -22,13 +22,19 @@ export const SponsorCardInfo: FC<SponsorCardInfoProps> = ({
 				'grid lg:grid-cols-[1fr,3fr] lg:gap-x-[100px] lg:pb-12 lg:border-b-[1px] border-solid border-secondaryOpacity3',
 			)}
 		>
-			<div className="min-h-[150px] lg:max-h-[150px] w-full bg-[#badded] mb-3 lg:mb-0 rounded-xl flex items-center justify-center">
+			<div className={cn(
+				"min-h-[150px] lg:max-h-[150px] w-full mb-3 lg:mb-0 rounded-xl flex items-center lg:justify-center",
+				// 'bg-[#badded]'
+				)}>
 				<NextImage
 					src={image.url}
 					width={image.width}
 					height={image.height}
 					alt={'Sponsor Image Enersok'}
-					className="max-h-[70px] lg:max-h-[60px] w-auto h-full"
+					className={cn(
+						"max-h-[90px] lg:max-h-[100px] w-auto h-full",
+						// 'max-h-[70px] lg:max-h-[60px]'
+					)}
 				/>
 			</div>
 			<div className="flex flex-col gap-y-3 lg:gap-y-8">
