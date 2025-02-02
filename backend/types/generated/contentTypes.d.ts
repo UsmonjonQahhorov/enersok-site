@@ -890,7 +890,7 @@ export interface ApiDevelopmentDevelopment extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }> &
       Attribute.DefaultTo<'2026'>;
