@@ -283,7 +283,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 									<div className="flex md:hidden flex-col md:items-center">
 										<Heading
 											as="h2"
-											className="text-base lg:text-2xl text-left md:text-center pt-6 pb-3 md:py-3"
+											className="text-base lg:text-2xl text-left text-secondary uppercase md:text-center pt-6 pb-3 md:py-3"
 										>
 											{holdingCompanyLocale}
 										</Heading>
@@ -297,7 +297,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 									<div className="flex md:hidden flex-col md:items-center">
 										<Heading
 											as="h2"
-											className="text-base lg:text-2xl text-left md:text-center pt-8 pb-3 md:py-3"
+											className="text-base lg:text-2xl text-secondary uppercase text-left md:text-center pt-8 pb-3 md:py-3"
 										>
 											{projectCompanyLocale}
 										</Heading>
@@ -315,9 +315,9 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							<div className="hidden md:flex flex-col items-center bg-backgroundImage6 min-w-[50%] rounded-xl pt-0 px-3 py-3">
 								<Heading
 									as="h2"
-									className="text-base lg:text-2xl text-center py-4"
+									className="text-base lg:text-2xl text-secondary uppercase text-center py-4"
 								>
-									Holding Сompany
+									{holdingCompanyLocale}
 								</Heading>
 								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Paragraph className="text-center text-[32px] text-[#136B95]">
@@ -329,9 +329,9 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							<div className="hidden md:flex flex-col items-center bg-backgroundImage6 min-w-[30%] rounded-xl pt-0 px-3 py-3">
 								<Heading
 									as="h2"
-									className="text-base lg:text-2xl text-center py-3"
+									className="text-base lg:text-2xl text-secondary uppercase text-center py-3"
 								>
-									Project Сompany
+									{projectCompanyLocale}
 								</Heading>
 								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Image

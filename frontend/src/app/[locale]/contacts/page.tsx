@@ -82,6 +82,24 @@ const ContactsPage: PageType = async ({ params }) => {
 
 	const contactPageData = await getContactPage(locale);
 
+	function splitText(text: string): { part1: string; part2: string } {
+		const separators = ["From 9:00", "9:00 dan"];
+		const separator = separators.find(sep => text.includes(sep));
+	
+		if (!separator) {
+			return { part1: text, part2: "" };
+		}
+	
+		const parts = text.split(separator);
+		
+		return {
+			part1: (parts[0] || "").trim(),
+			part2: separator + ((parts[1] || ""))
+		};
+	}
+
+	const splitFooterText = splitText(contactPageData.data?.data.attributes.work_hours ?? '');
+
 	return (
 		<>
 			<section className="bg-backgroundImage1 relative overflow-hidden">
@@ -153,7 +171,7 @@ const ContactsPage: PageType = async ({ params }) => {
 									{workHoursLocale}
 								</Paragraph>
 								<Paragraph className="text-secondary text-lg lg:text-2xl font-normal">
-									{contactPageData.data?.data.attributes.work_hours}
+									{splitFooterText.part1}<br/>{splitFooterText.part2}
 								</Paragraph>
 							</li>
 							<li>

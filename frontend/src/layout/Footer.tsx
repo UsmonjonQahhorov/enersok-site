@@ -22,6 +22,24 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 	const footerData = await getFooter(locale);
 	const year = new Date().getFullYear();
 
+	function splitText(text: string): { part1: string; part2: string } {
+		const separators = ["From 9:00", "9:00 dan"];
+		const separator = separators.find(sep => text.includes(sep));
+	
+		if (!separator) {
+			return { part1: text, part2: "" };
+		}
+	
+		const parts = text.split(separator);
+		
+		return {
+			part1: (parts[0] || "").trim(),
+			part2: separator + ((parts[1] || ""))
+		};
+	}
+
+	const splitFooterText = splitText(footerData.data?.data.attributes.work_hours_text ?? '');
+
 	return (
 		<footer className={cn(className, 'bg-footer')}>
 			<Container className="flex flex-col">
@@ -121,7 +139,7 @@ export const Footer: FC<FooterProps> = async ({ locale, className }) => {
 									className="w-[24px] h-[24px] -mt-[3px]"
 								/>
 								<span className="w-full text-white text-2xl">
-									{footerData.data?.data.attributes.work_hours_text}
+									{splitFooterText.part1}<br/>{splitFooterText.part2}
 								</span>
 							</Paragraph>
 						</li>
