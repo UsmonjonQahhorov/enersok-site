@@ -320,7 +320,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 									Holding Сompany
 								</Heading>
 								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
-									<Paragraph className="text-center text-[32px] text-[#5055E6]">
+									<Paragraph className="text-center text-[32px] text-[#136B95]">
 										NEKS Energy B.V.
 									</Paragraph>
 								</div>
