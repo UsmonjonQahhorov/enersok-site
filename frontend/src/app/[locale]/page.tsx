@@ -81,13 +81,17 @@ const HomePage: PageType = async ({ params }) => {
 	const readMoreLinkLocale =
 		locale === 'en' ? 'Read more about us' : "Biz haqimizda ko'proq o'qing";
 
+	const [firstWord, ...remainingWords] = (carousel.data?.data[0]?.attributes.title || '').split(' ');
+	const firstPart = firstWord;
+	const remainingPart = remainingWords.join(' ');
+
 	return (
 		<>
 			{/* Heading */}
 			<section className="bg-backgroundImage1 relative overflow-hidden pt-[104px] sm:pt-[164px] pb-8 lg:pb-[80px]">
 				<Container>
 					<EmblaCarousel
-						className="flex flex-col items-center [&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:lg:flex"
+						className="flex flex-col items-center [&>div:nth-of-type(2)]:hidden [&>div:nth-of-type(2)]:lg:hidden [&>div:nth-of-type(2)]:!mt-8"
 						autoLoopInterval={7000}
 						slides={
 							carousel.data?.data
@@ -111,6 +115,23 @@ const HomePage: PageType = async ({ params }) => {
 						showCounter={true}
 						controlsPosition="below"
 					/>
+					<div className="w-full *:text-secondary mt-8 lg:mt-16">
+						<Heading
+							as="h1"
+							className={cn(
+								'text-[44px] md:text-4xl 2xl:text-7xl text-center font-semibold uppercase',
+								'lg:text-5xl',
+							)}
+						>
+							{firstPart}
+							<span className="text-base md:text-4xl mx-2 md:mx-6">
+								{remainingPart}
+							</span>
+						</Heading>
+						<Paragraph size="sm" className="md:text-2xl mt-4 md:mt-8 text-center">
+							{carousel.data?.data[0]?.attributes.text}
+						</Paragraph>
+					</div>
 				</Container>
 				<NextImage
 					src={getBackendImage(

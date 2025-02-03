@@ -13,9 +13,9 @@ import type {
 } from '@/types/component.types';
 import { getBackendImage } from '@/utils/getBackendImage';
 import Sponsor5 from '@public/logo.png';
-import Line1 from '@public/sponsors/line1.png';
-import Line2 from '@public/sponsors/line2.png';
-import Line3 from '@public/sponsors/line3.png';
+// import Line1 from '@public/sponsors/line1.png';
+// import Line2 from '@public/sponsors/line2.png';
+// import Line3 from '@public/sponsors/line3.png';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 // import Factory from '@public/facroty.png';
@@ -288,7 +288,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 											{holdingCompanyLocale}
 										</Heading>
 										<div className="min-h-[83px] lg:min-h-[116px] w-full md:min-w-[343px] bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
-											<Paragraph className="text-center text-2xl lg:text-[32px] text-[#5055E6]">
+											<Paragraph className="text-center text-2xl lg:text-[32px] text-[#136B95]">
 												NEKS Energy B.V.
 											</Paragraph>
 										</div>
