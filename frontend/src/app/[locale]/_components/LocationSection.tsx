@@ -13,7 +13,7 @@ import { useState } from 'react';
 import type { Image } from '@/types/shared.types';
 
 export const LocationSection = ({
-	description,
+	// description,
 	firstLocation,
 	secondLocation,
 	title,
@@ -36,9 +36,9 @@ export const LocationSection = ({
 				>
 					{title}
 				</Heading>
-				<Paragraph className="lg:max-w-[590px] mt-6 text-sm xl:text-lg leading-7">
+				{/* <Paragraph className="lg:max-w-[590px] mt-6 text-sm xl:text-lg leading-7">
 					{description}
-				</Paragraph>
+				</Paragraph> */}
 				<div className="mt-16 lg:mt-36 flex flex-col">
 					<div
 						className="flex flex-col md:flex-row items-start md:items-center gap-5"

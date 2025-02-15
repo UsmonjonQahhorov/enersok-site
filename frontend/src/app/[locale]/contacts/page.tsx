@@ -1,5 +1,5 @@
 import { getContactPage } from '@/api/pages/getContactPage.api';
-import { ContactUsForm } from '@/components/form/ContactUsForm';
+// import { ContactUsForm } from '@/components/form/ContactUsForm';
 // import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
@@ -70,15 +70,15 @@ const ContactsPage: PageType = async ({ params }) => {
 	const emailLocale = locale === 'en' ? 'Email:' : 'Elektron pochta:';
 	const addressLocale = locale === 'en' ? 'Address:' : 'Manzil:';
 	const workHoursLocale = locale === 'en' ? 'Office hours:' : 'Ish vaqtlari:';
-	const formNameLocale =
-		locale === 'en' ? 'Your full name' : "Sizning to'liq ismingiz";
-	const formEmailLocale =
-		locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
-	const formPhoneLocale =
-		locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
-	const formMessageLocale = locale === 'en' ? 'Message' : 'Xabar';
-	const formSubmitLocale =
-		locale === 'en' ? 'Submit the form' : "Formani jo'natish";
+	// const formNameLocale =
+	// 	locale === 'en' ? 'Your full name' : "Sizning to'liq ismingiz";
+	// const formEmailLocale =
+	// 	locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
+	// const formPhoneLocale =
+	// 	locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
+	// const formMessageLocale = locale === 'en' ? 'Message' : 'Xabar';
+	// const formSubmitLocale =
+	// 	locale === 'en' ? 'Submit the form' : "Formani jo'natish";
 
 	const contactPageData = await getContactPage(locale);
 
@@ -209,7 +209,7 @@ const ContactsPage: PageType = async ({ params }) => {
 					<GMap mapUrl={contactPageData.data?.data.attributes.map_link || ''} />
 				</Container>
 			</section>
-			<section>
+			{/* <section>
 				<Container className='pb-[50px] lg:pt-[50px] lg:pb-[142px] flex justify-center'>
 					<ContactUsForm
 						email={formEmailLocale}
@@ -219,7 +219,7 @@ const ContactsPage: PageType = async ({ params }) => {
 						sumbmit={formSubmitLocale}
 					/>
 				</Container>
-			</section>
+			</section> */}
 		</>
 	);
 };

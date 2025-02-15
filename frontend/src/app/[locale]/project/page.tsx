@@ -238,7 +238,7 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 						as="h2"
 						className="text-secondary text-[32px] lg:text-6xl uppercase pb-3 lg:pb-11"
 					>
-						{projectDetailPageData.data?.data.attributes.info_section_title}
+						{projectDetailPageData.data?.data.attributes.about_section_title}
 					</Heading>
 					<Paragraph className="text-sm lg:text-2xl text-secondary pb-20 lg:pb-[95px]">
 						{projectDetailPageData.data?.data.attributes.about_section_text}

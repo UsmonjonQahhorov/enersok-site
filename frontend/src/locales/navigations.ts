@@ -20,18 +20,25 @@ export const navigation = [
 				name_en: 'About Sponsors',
 				name_uz: 'Sponsorlar haqida',
 				href: RouterConfig.AboutSponsors,
-			},
-			{
-				name_en: 'Documents and Guidelines',
-				name_uz: 'Hujjatlar va qo`llanmalar',
-				href: RouterConfig.DocumentsAndGuidelines,
-			},
+			}
 		],
 	},
 	{
 		name_en: 'Project Details',
 		name_uz: 'Loyiha Tafsilotlari',
 		href: RouterConfig.ProjectDetails,
+		childMenus: [
+			{
+				name_en: 'Project Data',
+				name_uz: 'Loyiha Ma`lumotlari',
+				href: RouterConfig.ProjectDetails,
+			},
+			{
+				name_en: 'Documents and Guidelines',
+				name_uz: 'Hujjatlar va qo`llanmalar',
+				href: RouterConfig.DocumentsAndGuidelines,
+			},
+		]
 	},
 	{
 		name_en: 'News',

@@ -242,9 +242,9 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 							</div>
 						</div>
 					</div> */}
-					<div className="pt-[136px] md:pt-20">
-						<div className="w-full grid grid-cols-1 md:flex md:flex-col items-start md:items-center relative">
-							<div className='flex flex-col p-3 rounded-xl bg-backgroundImage6'>
+					<div className="pt-[80px] md:pt-20">
+						<div className="w-full flex flex-col items-center relative">
+							<div className='w-full flex flex-col p-3 rounded-xl bg-backgroundImage6'>
 								<Heading
 									as="h2"
 									className="text-2xl hidden text-center md:block text-secondary pt-3 pb-6"
@@ -254,7 +254,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 								<div className="grid md:grid-cols-4 gap-y-[10px] md:gap-x-3">
 									<Heading
 										as="h2"
-										className="text-2xl text-secondary md:hidden"
+										className="text-2xl text-center text-secondary md:hidden"
 									>
 										{
 											sponsorsPageData.data?.data.attributes
@@ -280,7 +280,7 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 										/>
 									))}
 
-									<div className="flex md:hidden flex-col md:items-center">
+									{/* <div className="flex md:hidden flex-col md:items-center">
 										<Heading
 											as="h2"
 											className="text-base lg:text-2xl text-left text-secondary uppercase md:text-center pt-6 pb-3 md:py-3"
@@ -308,32 +308,32 @@ const AboutSponsorsPage: PageType = async ({ params }) => {
 												className="max-h-[34px] lg:max-h-[47px] w-auto"
 											/>
 										</div>
-									</div>
+									</div> */}
 								</div>
 							</div>
-							<span className="w-[1px] h-[40px] bg-black hidden md:block" />
-							<div className="hidden md:flex flex-col items-center bg-backgroundImage6 min-w-[50%] rounded-xl pt-0 px-3 py-3">
+							<span className="w-[1px] h-[40px] bg-black md:block" />
+							<div className="flex flex-col items-center bg-backgroundImage6 w-full md:max-w-[25%] rounded-xl pt-0 px-3 py-3">
 								<Heading
 									as="h2"
 									className="text-base lg:text-2xl text-secondary uppercase text-center py-4"
 								>
 									{holdingCompanyLocale}
 								</Heading>
-								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+								<div className="min-h-[85px] md:min-h-[213px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Paragraph className="text-center text-[32px] text-[#136B95]">
 										NEKS Energy B.V.
 									</Paragraph>
 								</div>
 							</div>
-							<span className="w-[1px] h-[40px] bg-black hidden md:block" />
-							<div className="hidden md:flex flex-col items-center bg-backgroundImage6 min-w-[30%] rounded-xl pt-0 px-3 py-3">
+							<span className="w-[1px] h-[40px] bg-black block" />
+							<div className="flex flex-col items-center bg-backgroundImage6 w-full md:max-w-[25%] rounded-xl pt-0 px-3 py-3">
 								<Heading
 									as="h2"
 									className="text-base lg:text-2xl text-secondary uppercase text-center py-3"
 								>
 									{projectCompanyLocale}
 								</Heading>
-								<div className="min-h-[83px] lg:min-h-[116px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
+								<div className="min-h-[85px] md:min-h-[213px] w-full bg-white rounded-xl flex justify-center items-center px-3 hover:shadow-lg duration-200">
 									<Image
 										src={Sponsor5}
 										alt="Sponsor5 Enersok"

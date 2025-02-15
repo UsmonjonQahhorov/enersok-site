@@ -489,12 +489,12 @@ const HomePage: PageType = async ({ params }) => {
 							{homePageData.data?.data.attributes.community_section_title}
 						</Heading>
 						<div>
-							<Heading as="h2" className="text-xs md:text-xl mt-10 md:mt-16">
+							{/* <Heading as="h2" className="text-xs md:text-xl mt-10 md:mt-16">
 								{
 									homePageData.data?.data.attributes
 										.community_section_social_title
 								}
-							</Heading>
+							</Heading> */}
 							<ul className="flex gap-3 mt-6 items-center">
 								<li>
 									<a
