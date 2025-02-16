@@ -4,7 +4,7 @@ import { http } from '@/utils/http';
 
 export const getAboutPage = async (locale: Locale = 'en') => {
 	const response = await http<GetAboutPageResponse>(
-		`/about-page?populate=heading_section_picture,heading_section_background_picture,info_section_picture,info_section_first_picture,info_section_second_picture&locale=${locale}`,
+		`/about-page?populate=heading_section_picture,heading_section_background_picture,info_section_picture,info_section_first_picture,info_section_second_picture,about_table&locale=${locale}`,
 		{
 			method: 'GET',
 			cache: 'force-cache',
