@@ -42,6 +42,24 @@ interface PurpleAttributes {
 	info_section_picture: Picture;
 	info_section_first_picture: Picture;
 	info_section_second_picture: Picture;
+	about_table: AboutTable;
+}
+
+export interface AboutTable {
+	data: Datum[];
+}
+
+export interface Datum {
+	id: number;
+	attributes: DatumAttributes;
+}
+
+export interface DatumAttributes {
+	name: string;
+	value: string;
+	createdAt: Date;
+	updatedAt: Date;
+	locale: string;
 }
 
 interface Picture {

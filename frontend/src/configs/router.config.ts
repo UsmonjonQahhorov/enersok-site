@@ -5,6 +5,7 @@ export const RouterConfig = {
 	AboutSponsors: '/sponsors',
 	DocumentsAndGuidelines: '/documents',
 	ProjectDetails: '/project',
+	History: '/history',
 	News: '/news',
 	SingleNew: (slug: string) => `/news/new/${slug}`,
 	Careers: '/careers',

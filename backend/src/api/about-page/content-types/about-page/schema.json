@@ -180,6 +180,11 @@
           "localized": false
         }
       }
+    },
+    "about_table": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::about-table.about-table"
     }
   }
 }

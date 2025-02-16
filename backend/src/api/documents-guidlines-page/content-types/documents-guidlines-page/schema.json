@@ -55,10 +55,8 @@
           "localized": true
         }
       },
-      "type": "text",
-      "unique": false,
-      "required": true,
-      "default": "Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration."
+      "type": "richtext",
+      "required": true
     }
   }
 }

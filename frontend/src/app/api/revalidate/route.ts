@@ -16,7 +16,6 @@ export async function POST(req: NextRequest) {
 		return Response.json({ message: 'Invalid token' });
 	}
 
-	// TODO: check on strapi frontend production url is right
 	console.log('Revalidating all pages');
 	revalidateTag('header');
 	revalidateTag('footer');

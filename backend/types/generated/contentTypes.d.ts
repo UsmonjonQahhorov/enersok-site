@@ -379,6 +379,11 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
     };
   };
   attributes: {
+    about_table: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToMany',
+      'api::about-table.about-table'
+    >;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::about-page.about-page',
@@ -601,6 +606,59 @@ export interface ApiAboutSponsorAboutSponsor extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiAboutTableAboutTable extends Schema.CollectionType {
+  collectionName: 'about_tables';
+  info: {
+    description: '';
+    displayName: '\u0421\u043F\u0438\u0441\u043E\u043A \u0422\u0430\u0431\u043B\u0438\u0446\u0430 "\u041E \u043D\u0430\u0441"';
+    pluralName: 'about-tables';
+    singularName: 'about-table';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-table.about-table',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    locale: Attribute.String;
+    localizations: Attribute.Relation<
+      'api::about-table.about-table',
+      'oneToMany',
+      'api::about-table.about-table'
+    >;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::about-table.about-table',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    value: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -995,14 +1053,13 @@ export interface ApiDocumentsGuidlinesPageDocumentsGuidlinesPage
     };
   };
   attributes: {
-    about_text: Attribute.Text &
+    about_text: Attribute.RichText &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.DefaultTo<'Construction period started in March 2023 and the COD (Commercial Operating Date) should be reach in June 2026. That means the plant will be fully operational with two gas turbines and one steam turbine in combined cycle configuration.'>;
+      }>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::documents-guidlines-page.documents-guidlines-page',
@@ -1283,6 +1340,60 @@ export interface ApiHeaderHeader extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHistoryPageHistoryPage extends Schema.SingleType {
+  collectionName: 'history_pages';
+  info: {
+    description: '';
+    displayName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0418\u0441\u0442\u043E\u0440\u0438\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430';
+    pluralName: 'history-pages';
+    singularName: 'history-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::history-page.history-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    development_section_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Attribute.String;
+    localizations: Attribute.Relation<
+      'api::history-page.history-page',
+      'oneToMany',
+      'api::history-page.history-page'
+    >;
+    page_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::history-page.history-page',
       'oneToOne',
       'admin::user'
     > &
@@ -1721,13 +1832,6 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    heading_picture: Attribute.Media<'images'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     locale: Attribute.String;
     localizations: Attribute.Relation<
       'api::news-page.news-page',
@@ -2844,6 +2948,7 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::about-sponsor.about-sponsor': ApiAboutSponsorAboutSponsor;
+      'api::about-table.about-table': ApiAboutTableAboutTable;
       'api::carousel.carousel': ApiCarouselCarousel;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::development-feature.development-feature': ApiDevelopmentFeatureDevelopmentFeature;
@@ -2853,6 +2958,7 @@ declare module '@strapi/types' {
       'api::footer.footer': ApiFooterFooter;
       'api::grm-submission-page.grm-submission-page': ApiGrmSubmissionPageGrmSubmissionPage;
       'api::header.header': ApiHeaderHeader;
+      'api::history-page.history-page': ApiHistoryPageHistoryPage;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::manager.manager': ApiManagerManager;
       'api::news-page.news-page': ApiNewsPageNewsPage;
