@@ -3,6 +3,7 @@ import { getAboutPage } from '@/api/pages/getAboutPage.api';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
+import { TableBody, TableCell, TableRow, TableWrapper } from '@/components/ui/Table';
 // import { RouterConfig } from '@/configs/router.config';
 import type {
 	DynamicMetadata,
@@ -58,7 +59,6 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 	// const breadcrumHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	// const breadcrumAboutCompanyLocale =
 	// 	locale === 'en' ? 'About Company' : 'Kompaniya haqida';
-
 	const aboutPageData = await getAboutPage(locale);
 
 	return (
@@ -194,7 +194,7 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 
 			{/* Vision and Objective */}
 			<section>
-				<Container className="grid grid-cols-1 lg:grid-cols-2 gap-y-[18px] lg:gap-x-5 pb-20 lg:pb-[200px]">
+				<Container className="grid grid-cols-1 lg:grid-cols-2 gap-y-[18px] lg:gap-x-5 pb-20 lg:pb-[150px]">
 					<div className="bg-backgroundImage5 py-6 px-4 lg:p-8 rounded-xl flex flex-col justify-between">
 						<div>
 							<Heading
@@ -275,6 +275,29 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 							/>
 						</div>
 					</div>
+				</Container>
+			</section>
+			<section>
+				<Container className='pb-20'>
+					{
+						aboutPageData.data?.data.attributes.about_table ?
+							<div className="overflow-x-auto">
+								<TableWrapper className="min-w-[600px]" layout="fixed" fullWidth={true}>
+									<TableBody>
+										{
+											aboutPageData.data?.data.attributes.about_table.data.map((tableRow) => (
+												<TableRow key={tableRow.id}>
+													<TableCell className='border-r'>{tableRow.attributes.name}</TableCell>
+													<TableCell>{tableRow.attributes.value}</TableCell>
+												</TableRow>
+											))
+										}
+									</TableBody>
+								</TableWrapper>
+							</div>
+							:
+							null
+					}
 				</Container>
 			</section>
 		</>
