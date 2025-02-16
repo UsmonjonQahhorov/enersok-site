@@ -391,14 +391,6 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    development_section_title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<'VIEW AT ENERSOK DEVELOPMENT'>;
     heading_section_background_picture: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -512,6 +504,12 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
         };
       }> &
       Attribute.DefaultTo<'About'>;
+    table_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::about-page.about-page',
@@ -1378,6 +1376,19 @@ export interface ApiHistoryPageHistoryPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    heading_image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    heading_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Attribute.String;
     localizations: Attribute.Relation<
       'api::history-page.history-page',
@@ -1865,7 +1876,7 @@ export interface ApiNewsNews extends Schema.CollectionType {
     singularName: 'news';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   pluginOptions: {
     i18n: {
@@ -1932,6 +1943,7 @@ export interface ApiNewsNews extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<'Enersok FE LLC was formed in 2022'>;
+    publishedAt: Attribute.DateTime;
     slug: Attribute.UID<'api::news.news', 'preview_title'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{

@@ -9,6 +9,8 @@ import { Developments } from './_components/Developments';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { getHistoryPage } from '@/api/pages/getHistoryPage.api';
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import { getBackendImage } from '@/utils/getBackendImage';
 
 export const generateMetadata: DynamicMetadata = async ({
 	params,
@@ -28,9 +30,35 @@ const HistoryPage: PageType = async ({ params }) => {
 
 	return (
 		<>
+			{/* Heading */}
+			<section className="bg-backgroundImage1 relative">
+				<Container className="pt-[104px] sm:pt-[164px] pb-5 relative z-10">
+					<Heading className="!leading-[normal] text-secondary uppercase pt-[48px] pb-[32px] lg:py-[75px] text-[32px] lg:text-[100px]">
+						{historyPageData.data?.data.attributes.heading_title}
+					</Heading>
+				</Container>
+				<Image
+					src={getBackendImage(
+						historyPageData.data?.data.attributes.heading_image.data.attributes.url,
+					)}
+					width={
+						historyPageData.data?.data.attributes.heading_image.data.attributes.width
+					}
+					height={
+						historyPageData.data?.data.attributes.heading_image.data.attributes
+							.height
+					}
+					alt={
+						historyPageData.data?.data.attributes.heading_image.data.attributes
+							.name || ''
+					}
+					className="absolute hidden lg:block bottom-0 right-[122px] bg-blend-multiply opacity-40"
+					priority={true}
+				/>
+			</section>
 			{/* Developments */}
-			<section className='pt-[110px] sm:pt-[170px] md:pb-5'>
-				<Container className="pb-[140px]">
+			<section>
+				<Container className="pb-[140px] pt-[110px] sm:pt-[170px] md:pb-5">
 					<Heading
 						as="h2"
 						className="text-secondary text-[32px] lg:text-[64px] !leading-[normal] pb-8 lg:pb-[50px]"
