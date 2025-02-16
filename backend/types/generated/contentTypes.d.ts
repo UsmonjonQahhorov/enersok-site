@@ -1843,6 +1843,13 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    heading_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     locale: Attribute.String;
     localizations: Attribute.Relation<
       'api::news-page.news-page',

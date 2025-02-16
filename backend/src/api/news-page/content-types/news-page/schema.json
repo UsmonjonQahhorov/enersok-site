@@ -25,6 +25,19 @@
       "type": "string",
       "required": true,
       "default": "Our News"
+    },
+    "heading_picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": true
     }
   }
 }
