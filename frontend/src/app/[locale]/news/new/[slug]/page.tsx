@@ -71,6 +71,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 
 	// const breadcrumbsHomeLocale = locale === 'en' ? 'Main' : 'Asosiy';
 	// const breadcrumbsPageLocale = locale === 'en' ? 'News' : 'Yangiliklar';
+	const shareLocale = locale === 'en' ? 'Share' : 'Ulashish';
 
 	const hasFullDescription =
 		(singleNewsPageData.data?.newsDescriptionFull?.trim().length ?? 0) > 0;
@@ -215,7 +216,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 							company.
 						</p> */}
 					<div className="w-full xl:w-3/4 flex flex-row items-center gap-x-3 pt-[54px] pb-20 lg:pt-[65px] lg:pb-[148px] border-t-[1px] border-solid border-secondaryOpacity3">
-						<Paragraph className="pr-3 text-xl text-secondary">Share</Paragraph>
+						<Paragraph className="pr-3 text-xl text-secondary">{shareLocale}</Paragraph>
 						<SocialIcon
 							src={Telegram}
 							url="https://t.me/SYRDARYA_CCGT_2"

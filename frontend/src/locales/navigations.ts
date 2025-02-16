@@ -34,8 +34,8 @@ export const navigation = [
 				href: RouterConfig.ProjectDetails,
 			},
 			{
-				name_en: 'Project History',
-				name_uz: 'Loyiha Tarixi',
+				name_en: 'History',
+				name_uz: 'Tarixi',
 				href: RouterConfig.History,
 			},
 			{
@@ -92,6 +92,11 @@ export const mobileNavigation = [
 		name_en: 'Project Details',
 		name_uz: 'Loyiha Tafsilotlari',
 		href: RouterConfig.ProjectDetails,
+	},
+	{
+		name_en: 'History',
+		name_uz: 'Tarixi',
+		href: RouterConfig.History,
 	},
 	{
 		name_en: 'News',

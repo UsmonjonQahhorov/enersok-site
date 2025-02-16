@@ -58,7 +58,7 @@ const HistoryPage: PageType = async ({ params }) => {
 			</section>
 			{/* Developments */}
 			<section>
-				<Container className="pb-[140px] pt-[110px] sm:pt-[170px] md:pb-5">
+				<Container className="py-20 sm:py-40 sm:pb-[84px]">
 					<Heading
 						as="h2"
 						className="text-secondary text-[32px] lg:text-[64px] !leading-[normal] pb-8 lg:pb-[50px]"
