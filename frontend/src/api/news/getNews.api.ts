@@ -9,7 +9,7 @@ export const getNews = async (
 	limit: number = PaginationConfig.perPage,
 ) => {
 	const response = await http<GetNews>(
-		`/new?pagination[page]=${page}&pagination[pageSize]=${limit}&populate=preview_picture&populate=localizations&locale=${locale}`,
+		`/new?sort=updatedAt:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&populate=preview_picture&populate=localizations&locale=${locale}`,
 		{
 			method: 'GET',
 		},
