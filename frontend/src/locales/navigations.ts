@@ -34,6 +34,11 @@ export const navigation = [
 				href: RouterConfig.ProjectDetails,
 			},
 			{
+				name_en: 'Project History',
+				name_uz: 'Loyiha Tarixi',
+				href: RouterConfig.History,
+			},
+			{
 				name_en: 'Documents and Guidelines',
 				name_uz: 'Hujjatlar va qo`llanmalar',
 				href: RouterConfig.DocumentsAndGuidelines,

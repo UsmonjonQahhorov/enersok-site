@@ -9,7 +9,7 @@ export const getNews = async (
 	limit: number = PaginationConfig.perPage,
 ) => {
 	const response = await http<GetNews>(
-		`/new?sort=preview_date:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&populate=preview_picture&populate=localizations&locale=${locale}`,
+		`/new?sort=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${limit}&populate=preview_picture&populate=localizations&locale=${locale}`,
 		{
 			method: 'GET',
 		},
@@ -32,6 +32,7 @@ interface DatumAttributes {
 	preview_date: Date;
 	createdAt: Date;
 	updatedAt: Date;
+	publishedAt: Date;
 	news_description: string;
 	news_description_full: string | null;
 	preview_picture: PreviewPicture;

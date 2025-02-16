@@ -15,9 +15,6 @@ import About2 from '@public/about-icons/about2.svg';
 import Markdown from 'markdown-to-jsx';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Suspense } from 'react';
-import { Developments } from './_components/Developments';
-import { Skeleton } from '@/components/ui/Skeleton';
 // import Factory from '@public/facroty.png';
 // import Banner from '@public/vacancy-banner.png';
 // import AboutBanner1 from '@public/about.png';
@@ -191,91 +188,6 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 								and residential sectors.
 							</Paragraph> */}
 						</div>
-					</div>
-				</Container>
-			</section>
-
-			{/* Developments */}
-			<section>
-				<Container className="pb-[140px]">
-					<Heading
-						as="h2"
-						className="text-secondary text-[32px] lg:text-[64px] !leading-[normal] pb-8 lg:pb-[50px]"
-					>
-						{aboutPageData.data?.data.attributes.development_section_title}
-					</Heading>
-					<div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-y-[42px] sm:gap-x-5">
-						{/* <div className="flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit">
-							<Heading as="h4" className="text-[32px] lg:text-[80px] text-button1 uppercase">
-								2022
-							</Heading>
-							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
-								Establishment of the Company
-							</Paragraph>
-							<Paragraph className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'>
-								Establishment of the Company
-							</Paragraph>
-							<div className="w-full h-full rounded-xl">
-								<Image
-									src={Development}
-									alt="Development 1 Eneksok"
-									className="rounded-xl w-full max-h-[208px] object-cover object-center"
-								/>
-							</div>
-						</div> */}
-						{/* {aboutPageDevelopmentData.data?.data.map((development, index) => (
-							<div
-								key={development.id}
-								className={cn(
-									'flex flex-col pl-5 border-l-[1px] border-solid border-secondaryOpacity3 gap-y-8 h-fit',
-									{
-										'mt-0 lg:mt-[100px]': index % 2 !== 0,
-									},
-								)}
-							>
-								<Heading
-									as="h3"
-									className="text-[32px] break-all lg:text-[80px] text-button1 uppercase"
-								>
-									{development.attributes.development_year}
-								</Heading>
-								{development.attributes.features.data.map((feature) => (
-									<Paragraph
-										key={feature.id}
-										className='text-sm lg:text-2xl text-secondary relative before:absolute before:top-[8px] before:left-[-24px] before:content-["_"] before:w-2 before:h-2 before:bg-green-500 before:rounded-full'
-									>
-										{feature.attributes.info_text}
-									</Paragraph>
-								))}
-								<div className="w-full h-full min-h-[208px] max-h-[208px] rounded-xl">
-									<Image
-										src={getBackendImage(
-											development.attributes.development_picture.data.attributes
-												.url,
-										)}
-										width={
-											development.attributes.development_picture.data.attributes
-												.width
-										}
-										height={
-											development.attributes.development_picture.data.attributes
-												.height
-										}
-										alt="Development 1 Eneksok"
-										className="rounded-xl w-full h-full min-h-[208px] max-h-[208px] object-cover object-center"
-									/>
-								</div>
-							</div>
-						))} */}
-
-						<Suspense
-							fallback={
-								<Skeleton className="w-full h-[300px] sm:h-[400px] bg-slate-300" />
-							}
-						>
-							<Developments locale={locale} />
-						</Suspense>
-
 					</div>
 				</Container>
 			</section>

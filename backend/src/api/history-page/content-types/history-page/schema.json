@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "documents_and_guidlines_pages",
+  "collectionName": "history_pages",
   "info": {
-    "singularName": "documents-guidlines-page",
-    "pluralName": "documents-and-guidlines-pages",
-    "displayName": "Страница «Документы и рекомендации»",
+    "singularName": "history-page",
+    "pluralName": "history-pages",
+    "displayName": "Страница История проекта",
     "description": ""
   },
   "options": {
@@ -23,18 +23,16 @@
         }
       },
       "type": "string",
-      "required": true,
-      "default": "DOCUMENTS AND GUIDELINES"
+      "required": true
     },
-    "heading_text": {
+    "development_section_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text",
-      "required": true,
-      "default": "DOCUMENTS AND GUIDELINES"
+      "type": "string",
+      "required": true
     },
     "heading_image": {
       "type": "media",
@@ -49,14 +47,13 @@
         }
       }
     },
-    "about_text": {
+    "heading_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext",
-      "required": true
+      "type": "string"
     }
   }
 }
