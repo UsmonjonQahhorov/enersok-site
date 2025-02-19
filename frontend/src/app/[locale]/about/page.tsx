@@ -176,17 +176,6 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 									{aboutPageData.data?.data.attributes.info_section_text || ''}
 								</Markdown>
 							</article>
-							{/* <Paragraph className="text-sm lg:text-lg">
-								The electricity produced will be sold to Uzbek state-owned power
-								company JSC National Electricity Grid of Uzbekistan for a
-								duration of 25 years.
-							</Paragraph>
-							<Paragraph className="text-sm lg:text-lg">
-								It will be one of the nation’s largest power generating
-								facilities upon completion and will be instrumental in helping
-								the country meet its growing energy demands from both industry
-								and residential sectors.
-							</Paragraph> */}
 						</div>
 					</div>
 				</Container>
@@ -277,18 +266,31 @@ const AboutCompanyPage: PageType = async ({ params }) => {
 					</div>
 				</Container>
 			</section>
+
+			{/* Table */}
 			<section>
 				<Container className='pb-20'>
+					<Heading
+						as="h2"
+						className="!leading-[normal] text-secondary uppercase text-[32px] lg:text-[64px] pb-8 md:pb-16"
+					>
+						{
+							aboutPageData.data?.data.attributes.table_title
+						}
+					</Heading>
 					{
 						aboutPageData.data?.data.attributes.about_table ?
-							<div className="overflow-x-auto">
-								<TableWrapper className="min-w-[600px]" layout="fixed" fullWidth={true}>
+							<div className="overflow-x-auto xl:flex xl:justify-center">
+								<TableWrapper className="min-w-[600px] xl:w-[70%] bg-backgroundImage4 border-secondary" layout="fixed" fullWidth={true}>
+									{/* <TableHeader className=' border-secondary'>
+										<TableHeaderCell colSpan={2} className='text-secondary text-2xl border-secondary'>{aboutPageData.data?.data.attributes.table_title}</TableHeaderCell>
+									</TableHeader> */}
 									<TableBody>
 										{
 											aboutPageData.data?.data.attributes.about_table.data.map((tableRow) => (
 												<TableRow key={tableRow.id}>
-													<TableCell className='border-r'>{tableRow.attributes.name}</TableCell>
-													<TableCell>{tableRow.attributes.value}</TableCell>
+													<TableCell className='border-r border-secondary lg:text-2xl font-bold'>{tableRow.attributes.name}</TableCell>
+													<TableCell className='border-secondary lg:text-2xl'>{tableRow.attributes.value}</TableCell>
 												</TableRow>
 											))
 										}

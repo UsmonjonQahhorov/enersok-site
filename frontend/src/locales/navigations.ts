@@ -2,23 +2,23 @@ import { RouterConfig } from '@/configs/router.config';
 
 export const navigation = [
 	{
-		name_en: 'About Company',
-		name_uz: 'Kompaniya haqida',
+		name_en: 'About Us',
+		name_uz: 'Biz Haqimizda',
 		href: RouterConfig.AboutCompany,
 		childMenus: [
 			{
-				name_en: 'About Company',
-				name_uz: 'Kompaniya haqida',
+				name_en: 'About Us',
+				name_uz: 'Biz Haqimizda',
 				href: RouterConfig.AboutCompany,
 			},
 			{
-				name_en: 'Organizational Structure',
-				name_uz: 'Tashkiliy tuzilma',
+				name_en: 'Management',
+				name_uz: 'Boshqaruv',
 				href: RouterConfig.OrganizationalStructure,
 			},
 			{
-				name_en: 'About Sponsors',
-				name_uz: 'Sponsorlar haqida',
+				name_en: 'Sponsors',
+				name_uz: 'Sponsorlar',
 				href: RouterConfig.AboutSponsors,
 			}
 		],
@@ -29,13 +29,13 @@ export const navigation = [
 		href: RouterConfig.ProjectDetails,
 		childMenus: [
 			{
-				name_en: 'Project Data',
-				name_uz: 'Loyiha Ma`lumotlari',
+				name_en: 'About Project',
+				name_uz: 'Loyiha Haqida',
 				href: RouterConfig.ProjectDetails,
 			},
 			{
-				name_en: 'History',
-				name_uz: 'Tarixi',
+				name_en: 'Project History',
+				name_uz: 'Loyiha Tarixi',
 				href: RouterConfig.History,
 			},
 			{
@@ -56,8 +56,8 @@ export const navigation = [
 		href: RouterConfig.Careers,
 	},
 	{
-		name_en: 'GRM Submission',
-		name_uz: 'GRM topshirish',
+		name_en: 'Grievance Portal',
+		name_uz: 'Shikoyat Portali',
 		href: RouterConfig.GRMSubmission,
 	},
 ];
@@ -69,34 +69,34 @@ export const mobileNavigation = [
 		href: RouterConfig.Home,
 	},
 	{
-		name_en: 'About Company',
-		name_uz: 'Kompaniya haqida',
+		name_en: 'About Us',
+		name_uz: 'Biz Haqimizda',
 		href: RouterConfig.AboutCompany,
 	},
 	{
-		name_en: 'Organizational Structure',
-		name_uz: 'Tashkiliy tuzilma',
+		name_en: 'Management',
+		name_uz: 'Boshqaruv',
 		href: RouterConfig.OrganizationalStructure,
 	},
 	{
-		name_en: 'About Sponsors',
-		name_uz: 'Sponsorlar haqida',
+		name_en: 'Sponsors',
+		name_uz: 'Sponsorlar',
 		href: RouterConfig.AboutSponsors,
+	},
+	{
+		name_en: 'About Project',
+		name_uz: 'Loyiha Haqida',
+		href: RouterConfig.ProjectDetails,
+	},
+	{
+		name_en: 'Project History',
+		name_uz: 'Loyiha Tarixi',
+		href: RouterConfig.History,
 	},
 	{
 		name_en: 'Documents and Guidelines',
 		name_uz: 'Hujjatlar va qo`llanmalar',
 		href: RouterConfig.DocumentsAndGuidelines,
-	},
-	{
-		name_en: 'Project Details',
-		name_uz: 'Loyiha Tafsilotlari',
-		href: RouterConfig.ProjectDetails,
-	},
-	{
-		name_en: 'History',
-		name_uz: 'Tarixi',
-		href: RouterConfig.History,
 	},
 	{
 		name_en: 'News',
@@ -109,13 +109,13 @@ export const mobileNavigation = [
 		href: RouterConfig.Careers,
 	},
 	{
-		name_en: 'GRM Submission',
-		name_uz: 'GRM topshirish',
+		name_en: 'Grievance Portal',
+		name_uz: 'Shikoyat Portali',
 		href: RouterConfig.GRMSubmission,
 	},
 	{
-		name_en: 'Contacts',
-		name_uz: 'Kontaktlar',
+		name_en: 'Contact Us',
+		name_uz: 'Aloqa',
 		href: RouterConfig.ContactUs,
 	},
 ];

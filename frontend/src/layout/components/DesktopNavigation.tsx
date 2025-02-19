@@ -28,7 +28,7 @@ export const DesktopNavigation = () => {
 	const pathName = usePathname();
 	const locale = getLocale();
 
-	const contactText = locale === 'en' ? 'Contact us' : 'Aloqa';
+	const contactText = locale === 'en' ? 'Contact Us' : 'Aloqa';
 
 	return (
 		<div className="hidden items-center sm:gap-x-4 md:gap-x-8 xl:flex 2xl:gap-x-20">

@@ -103,7 +103,7 @@ const DocumentsAndGuidelinesPage: PageType = async ({ params }) => {
 					{/* <Paragraph className="w-full text-sm md:text-2xl whitespace-[10px] pt-[50px] pb-[24px] md:py-[50px] text-secondary border-b-[1px] border-secondaryOpacity3 md:border-[0]">
 						{DGPageData.data?.data.attributes.about_text}
 					</Paragraph> */}
-					<Markdown className='prose text-wrap w-full max-w-full text-sm md:text-xl whitespace-[10px] pt-[50px] pb-[24px] md:py-[50px] text-secondary border-b-[1px] border-secondaryOpacity3 md:border-[0]'>
+					<Markdown className='prose *:marker:text-secondary text-wrap w-full max-w-full text-sm md:text-xl whitespace-[10px] pt-[50px] pb-[24px] md:py-[50px] text-secondary border-b-[1px] border-secondaryOpacity3 md:border-[0]'>
 						{DGPageData.data?.data.attributes.about_text || ''}
 					</Markdown>
 					<div className="flex flex-col lg:grid lg:grid-cols-2 gap-5 pt-8 md:pt-0">
