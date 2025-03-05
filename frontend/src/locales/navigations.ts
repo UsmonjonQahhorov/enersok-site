@@ -7,8 +7,8 @@ export const navigation = [
 		href: RouterConfig.AboutCompany,
 		childMenus: [
 			{
-				name_en: 'About Us',
-				name_uz: 'Biz Haqimizda',
+				name_en: 'Who we are',
+				name_uz: 'Biz kimmiz',
 				href: RouterConfig.AboutCompany,
 			},
 			{
@@ -69,8 +69,8 @@ export const mobileNavigation = [
 		href: RouterConfig.Home,
 	},
 	{
-		name_en: 'About Us',
-		name_uz: 'Biz Haqimizda',
+		name_en: 'Who we are',
+		name_uz: 'Biz kimmiz',
 		href: RouterConfig.AboutCompany,
 	},
 	{
