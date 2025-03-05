@@ -93,7 +93,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 						urlPage={RouterConfig.News}
 						className="self-start"
 					/> */}
-					<Heading className="!leading-[normal] w-full text-wrap break-all text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
+					<Heading className="!leading-[normal] w-full text-wrap text-secondary uppercase py-8 lg:pt-[75px] lg:pb-[35px] text-[32px] lg:text-[80px] xl:w-3/4">
 						{singleNewsPageData.data?.previewTitle}
 					</Heading>
 					<div className="w-full xl:w-3/4 flex flex-row gap-x-6 relative pb-[137px] lg:pb-[253px]">
@@ -130,7 +130,7 @@ const SingleNewPage: PageType = async ({ params }) => {
 					{hasDescription && (
 						<Markdown
 							className={cn(
-								'xl:w-3/4 pb-[26px] flex flex-col gap-y-6 *:text-secondary *:text-wrap',
+								'xl:w-3/4 pb-[26px] flex flex-col *:text-secondary *:text-wrap',
 								'[&>p>img]:object-cover [&>p>img]:object-center [&>p>img]:rounded-xl [&>p>img]:max-h-[500px] [&>p>img]:min-h-[500px] [&>p>img]:w-full [&>p>img]:h-full',
 								'[&>p]:lg:text-xl [&>p]:lg:pb-6 [&>p]:text-wrap',
 								'[&>h1]:lg:text-7xl [&>h2]:lg:text-6xl [&>h3]:lg:text-5xl [&>h4]:lg:text-4xl [&>h5]:lg:text-3xl [&>h6]:lg:text-2xl',
