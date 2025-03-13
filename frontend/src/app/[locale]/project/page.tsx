@@ -72,8 +72,8 @@ const ProjectDetailsPage: PageType = async ({ params }) => {
 	// 	locale === 'en' ? 'Project Details' : 'Loyiha tafsilotlari';
 	const projectPeriodLocale =
 		locale === 'en' ? 'Project Period:' : 'Loyiha davri:';
-	const projectFirstPhaseLocale = locale === 'en' ? 'Phase 1' : '1-faza';
-	const projectSecondPhaseLocale = locale === 'en' ? 'Phase 2' : '2-faza';
+	const projectFirstPhaseLocale = locale === 'en' ? 'Phase 1' : '1-chi bosqich';
+	const projectSecondPhaseLocale = locale === 'en' ? 'Phase 2' : '2-chi bosqich';
 	const projectLocationLocale =
 		locale === 'en' ? 'Project Location:' : 'Loyiha joylashuvi:';
 
