@@ -3,17 +3,17 @@ import { RouterConfig } from '@/configs/router.config';
 export const navigation = [
 	{
 		name_en: 'About Us',
-		name_uz: 'Biz Haqimizda',
+		name_uz: 'Korxona Haqida',
 		href: RouterConfig.AboutCompany,
 		childMenus: [
 			{
 				name_en: 'Who we are',
-				name_uz: 'Biz kimmiz',
+				name_uz: 'Biz Haqimizda',
 				href: RouterConfig.AboutCompany,
 			},
 			{
 				name_en: 'Management',
-				name_uz: 'Boshqaruv',
+				name_uz: 'Rahbariyat',
 				href: RouterConfig.OrganizationalStructure,
 			},
 			{
@@ -25,7 +25,7 @@ export const navigation = [
 	},
 	{
 		name_en: 'Project Details',
-		name_uz: 'Loyiha Tafsilotlari',
+		name_uz: 'Loyiha Ma’lumoti',
 		href: RouterConfig.ProjectDetails,
 		childMenus: [
 			{
@@ -40,7 +40,7 @@ export const navigation = [
 			},
 			{
 				name_en: 'Documents and Guidelines',
-				name_uz: 'Hujjatlar va qo`llanmalar',
+				name_uz: 'Hujjatlar',
 				href: RouterConfig.DocumentsAndGuidelines,
 			},
 		]
@@ -52,12 +52,12 @@ export const navigation = [
 	},
 	{
 		name_en: 'Careers',
-		name_uz: 'Karyera',
+		name_uz: 'Ish O’rinlari',
 		href: RouterConfig.Careers,
 	},
 	{
 		name_en: 'Grievance Portal',
-		name_uz: 'Shikoyat Portali',
+		name_uz: 'Shikoyatlar Portali',
 		href: RouterConfig.GRMSubmission,
 	},
 ];
@@ -65,17 +65,17 @@ export const navigation = [
 export const mobileNavigation = [
 	{
 		name_en: 'Home',
-		name_uz: 'Bosh sahifa',
+		name_uz: 'Bosh Sahifa',
 		href: RouterConfig.Home,
 	},
 	{
 		name_en: 'Who we are',
-		name_uz: 'Biz kimmiz',
+		name_uz: 'Biz Haqimizda',
 		href: RouterConfig.AboutCompany,
 	},
 	{
 		name_en: 'Management',
-		name_uz: 'Boshqaruv',
+		name_uz: 'Rahbariyat',
 		href: RouterConfig.OrganizationalStructure,
 	},
 	{
@@ -95,7 +95,7 @@ export const mobileNavigation = [
 	},
 	{
 		name_en: 'Documents and Guidelines',
-		name_uz: 'Hujjatlar va qo`llanmalar',
+		name_uz: 'Hujjatlar',
 		href: RouterConfig.DocumentsAndGuidelines,
 	},
 	{
@@ -105,12 +105,12 @@ export const mobileNavigation = [
 	},
 	{
 		name_en: 'Careers',
-		name_uz: 'Karyera',
+		name_uz: 'Ish O’rinlari',
 		href: RouterConfig.Careers,
 	},
 	{
 		name_en: 'Grievance Portal',
-		name_uz: 'Shikoyat Portali',
+		name_uz: 'Shikoyatlar Portali',
 		href: RouterConfig.GRMSubmission,
 	},
 	{
