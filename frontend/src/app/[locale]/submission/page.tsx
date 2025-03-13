@@ -63,14 +63,14 @@ const GRMSubmissionPage: PageType = async ({ params }) => {
 	// const breadcrumPageLocale =
 	// 	locale === 'en' ? 'GRM Submission' : "GRM Jo'natish";
 	const formNameLocale =
-		locale === 'en' ? 'Your full name' : "Sizning to'liq ismingiz";
+		locale === 'en' ? 'Your full name' : "To’liq ism-sharifiningiz";
 	const formEmailLocale =
-		locale === 'en' ? 'Your e-mail' : 'Sizning elektron pochta manzilingiz';
+		locale === 'en' ? 'Your e-mail' : 'Elektron pochta manzilingiz ';
 	const formPhoneLocale =
-		locale === 'en' ? 'Your phone' : 'Sizning telefon raqamingiz';
-	const formMessageLocale = locale === 'en' ? 'Message' : 'Xabar';
+		locale === 'en' ? 'Your phone' : 'Telefon raqamingiz';
+	const formMessageLocale = locale === 'en' ? 'Message' : 'Murojaat mazmuni';
 	const formSubmitLocale =
-		locale === 'en' ? 'Submit the form' : "Formani jo'natish";
+		locale === 'en' ? 'Submit the form' : "Jo’natish";
 
 	const grmSubmissionPageData = await getGRMSubmissionPage(locale);
 
